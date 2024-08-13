@@ -9,11 +9,10 @@ const Navbar = () => {
           Doğa Turizm
         </h1>
         <div className="flex justify-center items-center gap-x-4">
-          <button className="bg-white border px-3 py-2 rounded flex justify-center items-center gap-x-2">
+          <button className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2">
             <span>
               <BiUser />
             </span>
-            <span className="font-rubik">Giriş Yap</span>
           </button>
           <div className="py-2 text-white cursor-pointer">
             <BiMenu size={30} />
