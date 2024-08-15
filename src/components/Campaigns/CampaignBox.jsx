@@ -1,7 +1,7 @@
 import React from "react";
 
 const CampaignBox = ({ campaign }) => {
-  const { image, title, price, prevPrice, discount } = campaign;
+  const { image, cityName, price, prevPrice, discount } = campaign;
   return (
     <div className="flex justify-center items-center border bg-white rounded-md flex-col p-4 gap-y-3 shadow-md">
       <img
@@ -9,8 +9,8 @@ const CampaignBox = ({ campaign }) => {
         className="rounded h-[200px] w-full object-cover cursor-pointer"
       />
       <div className="flex justify-between items-center w-full  ">
-        <div className="flex justify-center items-center gap-y-1 ">
-          <h1 className="text-2xl">{title}</h1>
+        <div className="flex justify-start items-start gap-y-1 flex-col ">
+          <h1 className="text-2xl ">{cityName}</h1>
           <div className="flex items-center justify-center gap-x-1">
             <span className="text-zinc-600">{price}₺</span>
             <span className="line-through text-xs text-zinc-600">
