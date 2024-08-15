@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <div className="relative h-[500px]">
+    <div className="relative h-[750px] sm:h-[500px]">
       <div className="w-full flex flex-col absolute ">
         <Navbar open={open} setOpen={setOpen} />
         <Hero />
@@ -34,7 +34,10 @@ const Header = () => {
       <Slider {...settings}>
         {images.map((image, i) => (
           <div key={i}>
-            <img src={image} className=" w-full h-[500px] object-cover" />
+            <img
+              src={image}
+              className=" w-full h-[750px] sm:h-[500px] object-cover"
+            />
           </div>
         ))}
       </Slider>

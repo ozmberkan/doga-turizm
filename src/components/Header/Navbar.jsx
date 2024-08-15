@@ -18,7 +18,7 @@ const Navbar = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className="container w-2/3 z-20 mx-auto">
+      <div className="container sm:w-2/3 w-full z-20 mx-auto ">
         <div className="w-full py-5 flex justify-between items-center px-14">
           <h1 className="text-3xl font-rubik font-semibold text-white">
             Doğa Turizm

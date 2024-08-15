@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../components/Header/Header";
-import Hero from "../components/Header/Hero";
 import Starter from "../components/Starter/Starter";
+import Campaign from "../components/Campaigns/Campaign";
 
 const Home = () => {
   return (
     <div>
       <Starter />
       <Header />
+      <Campaign />
     </div>
   );
 };
