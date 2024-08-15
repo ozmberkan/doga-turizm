@@ -1,43 +1,32 @@
 import React from "react";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { Fade } from "@mui/material";
-import { MdCampaign } from "react-icons/md";
-import { IoCall } from "react-icons/io5";
-import { FaCity } from "react-icons/fa";
+import {
+  Menu as HeadlessMenu,
+  MenuButton,
+  MenuItems,
+  MenuItem,
+} from "@headlessui/react";
 
-const MenuComp = ({ isMenu, openn, handleClose }) => (
-  <Menu
-    id="fade-menu"
-    MenuListProps={{
-      "aria-labelledby": "fade-button",
-    }}
-    anchorEl={isMenu}
-    open={openn}
-    onClose={handleClose}
-    TransitionComponent={Fade}
-  >
-    <div className="p-2 flex flex-col gap-y-2">
-      <MenuItem onClick={handleClose} className="flex gap-x-2 items-center">
-        <span className="text-zinc-600">
-          <FaCity size={20} />
-        </span>
-        <span className="text-zinc-600 font-rubik">Şehirler</span>
-      </MenuItem>
-      <MenuItem onClick={handleClose} className="flex gap-x-2 items-center">
-        <span className="text-zinc-600">
-          <MdCampaign size={20} />
-        </span>
-        <span className="text-zinc-600 font-rubik">Kampanyalar</span>
-      </MenuItem>
-      <MenuItem onClick={handleClose} className="flex gap-x-2 items-center ">
-        <span className="text-zinc-600">
-          <IoCall size={20} />
-        </span>
-        <span className="text-zinc-600 font-rubik">İletişim</span>
-      </MenuItem>
-    </div>
-  </Menu>
-);
+const links = [
+  { href: "/account-settings", label: "Account settings" },
+  { href: "/support", label: "Support" },
+  { href: "/license", label: "License" },
+  { href: "/sign-out", label: "Sign out" },
+];
+
+const MenuComp = () => {
+  return (
+    <HeadlessMenu>
+      <MenuItems className="absolute mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+        {links.map((link) => (
+          <MenuItem key={link.href} className="hover:bg-blue-100">
+            <a href={link.href} className="block px-4 py-2 text-gray-700">
+              {link.label}
+            </a>
+          </MenuItem>
+        ))}
+      </MenuItems>
+    </HeadlessMenu>
+  );
+};
 
 export default MenuComp;

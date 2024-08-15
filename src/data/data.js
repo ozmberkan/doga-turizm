@@ -65,21 +65,21 @@ export const campaigns = [
 ];
 
 export const cities = [
-  { id: 1, title: "İstanbul", value: "istanbul" },
-  { id: 2, title: "Ankara", value: "ankara" },
-  { id: 3, title: "İzmir", value: "izmir" },
-  { id: 4, title: "Bursa", value: "bursa" },
-  { id: 5, title: "Antalya", value: "antalya" },
-  { id: 6, title: "Adana", value: "adana" },
-  { id: 7, title: "Konya", value: "konya" },
-  { id: 8, title: "Gaziantep", value: "gaziantep" },
-  { id: 9, title: "Kayseri", value: "kayseri" },
-  { id: 10, title: "Mersin", value: "mersin" },
-  { id: 11, title: "Eskişehir", value: "eskisehir" },
-  { id: 12, title: "Samsun", value: "samsun" },
-  { id: 13, title: "Trabzon", value: "trabzon" },
-  { id: 14, title: "Erzurum", value: "erzurum" },
-  { id: 15, title: "Diyarbakır", value: "diyarbakir" },
+  { id: 1, title: "İstanbul", value: "İstanbul" },
+  { id: 2, title: "Ankara", value: "Ankara" },
+  { id: 3, title: "İzmir", value: "İzmir" },
+  { id: 4, title: "Bursa", value: "Bursa" },
+  { id: 5, title: "Antalya", value: "Antalya" },
+  { id: 6, title: "Adana", value: "Adana" },
+  { id: 7, title: "Konya", value: "Konya" },
+  { id: 8, title: "Gaziantep", value: "Gaziantep" },
+  { id: 9, title: "Kayseri", value: "Kayseri" },
+  { id: 10, title: "Mersin", value: "Mersin" },
+  { id: 11, title: "Eskişehir", value: "Eskişehir" },
+  { id: 12, title: "Samsun", value: "Samsun" },
+  { id: 13, title: "Trabzon", value: "Trabzon" },
+  { id: 14, title: "Erzurum", value: "Erzurum" },
+  { id: 15, title: "Diyarbakır", value: "Diyarbakır" },
 ];
 
 export const InputField = [

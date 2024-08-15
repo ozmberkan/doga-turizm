@@ -5,3 +5,10 @@
 body{
     background-color: #f9f9f9;
 }
+
+.ant-picker-focused {
+  border-color: #16a34a !important; /* Yeşil renk */
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important; /* Yeşil odaklanma efekti */
+}
+
+

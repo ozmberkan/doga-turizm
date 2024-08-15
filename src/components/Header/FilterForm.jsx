@@ -2,6 +2,8 @@ import React from "react";
 import { IoTicketOutline } from "react-icons/io5";
 import { cities } from "../../data/data";
 import { InputField } from "../../data/data";
+import { DatePicker } from "antd";
+import { Select } from "antd";
 
 const FilterForm = () => {
   return (
@@ -10,21 +12,13 @@ const FilterForm = () => {
         <div key={i} className="flex flex-col gap-y-1">
           <label>{input.type === "text" ? input.label : "Tarih"}</label>
           {input.type === "text" ? (
-            <select
-              type={input.type}
-              className="rounded-lg border bg-white h-12 sm:py-3 sm:px-4 text-black w-[250px] focus:outline-none focus:ring-2 focus:ring-green-600"
-            >
-              {cities.map((city) => (
-                <option key={city.id} value={city.value}>
-                  {city.title}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <input
-              type="date"
-              className="rounded-lg border bg-white h-12 sm:py-3 sm:px-4  text-black w-[250px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            <Select
+              defaultValue="Seçiniz"
+              options={cities}
+              className="!rounded-lg !font-rubik !border !bg-white !h-12 !sm:py-3 !sm:px-4 !text-black !w-[250px] !focus:outline-none !focus:ring-2 !focus:border-green-600 !hover:bg-red-500"
             />
+          ) : (
+            <DatePicker className="rounded-lg border-2 hover:border-green-600 bg-white h-12 sm:py-3 sm:px-4 text-black w-[250px] focus:ring-0 !focus:border-green-600" />
           )}
         </div>
       ))}

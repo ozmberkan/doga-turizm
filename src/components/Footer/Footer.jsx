@@ -24,6 +24,7 @@ const Footer = () => {
         <div className="flex flex-col gap-y-3 ">
           {downloadImage.map((dImage, i) => (
             <img
+              key={i}
               src={dImage}
               className="w-full sm:w-32 cursor-pointer hover:scale-105 transition-all duration-500"
             />
