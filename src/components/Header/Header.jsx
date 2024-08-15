@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Hero from "./Hero";
+import Filter from "./Filter";
 import Slider from "react-slick";
 import { images } from "../../data/data";
 
@@ -29,7 +29,7 @@ const Header = () => {
     <div className="relative h-[750px] sm:h-[500px]">
       <div className="w-full flex flex-col absolute ">
         <Navbar open={open} setOpen={setOpen} />
-        <Hero />
+        <Filter />
       </div>
       <Slider {...settings}>
         {images.map((image, i) => (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiMenu, BiUser } from "react-icons/bi";
-import DrawerComp from "./DrawerComp";
-import MenuComp from "./MenuComp";
+import DrawerComp from "./UI/DrawerComp";
+import MenuComp from "./UI/MenuComp";
 
 const Navbar = ({ open, setOpen }) => {
   const [isMenu, setIsMenu] = useState(null);

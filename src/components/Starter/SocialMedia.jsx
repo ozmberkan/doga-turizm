@@ -1,25 +1,18 @@
 import React from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaWhatsapp,
-  FaXTwitter,
-} from "react-icons/fa6";
+import { IoCall } from "react-icons/io5";
+import { socialMedia } from "../../data/data";
 
 const SocialMedia = () => {
   return (
-    <div className="flex justify-center items-center gap-x-4 text-black">
-      <div className="p-1 rounded-md bg-white border">
-        <FaXTwitter size={18} className="cursor-pointer" />
-      </div>
-      <div className="p-1 rounded-md bg-white border">
-        <FaInstagram size={18} className="cursor-pointer" />
-      </div>
-      <div className="p-1 rounded-md bg-white border">
-        <FaFacebook size={18} className="cursor-pointer" />
-      </div>
-      <div className="p-1 rounded-md bg-white border">
-        <FaWhatsapp size={18} className="cursor-pointer" />
+    <div className="flex justify-center items-center  gap-x-3 sm:gap-x-4 text-black">
+      {socialMedia.map((item, index) => (
+        <div key={index} className="p-1 rounded-md bg-white border">
+          {item.icon && <item.icon size={18} className="cursor-pointer" />}
+        </div>
+      ))}
+      <div className="flex justify-center items-center gap-x-2 bg-white rounded-md border py-1 w-full whitespace-nowrap px-4">
+        <IoCall size={18} />
+        <span className="font-rubik sm:text-base text-sm">444 58 58</span>
       </div>
     </div>
   );

@@ -4,8 +4,39 @@ import road3Img from "../assets/road3.jpg";
 import Istanbul from "../assets/istanbul.jpg";
 import Izmir from "../assets/izmir.jpg";
 import Ankara from "../assets/ankara.jpg";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaWhatsapp,
+  FaXTwitter,
+} from "react-icons/fa6";
+
+
+import appstore from "../assets/appstore.svg";
+import googleplay from "../assets/googleplay.svg";
+import huawei from "../assets/huawei.svg";
+
+export const socialMedia = [
+  {
+    icon : FaXTwitter,
+    name: "Twitter"
+  },
+   {
+    icon : FaInstagram,
+    name: "Instagram"
+  },
+  {
+    icon : FaFacebook,
+    name : "Facebook"
+  },
+  {
+    icon : FaWhatsapp,
+    name : "Whatsapp"
+  },
+]
 
 export const images = [roadImg, road2Img, road3Img];
+export const downloadImage = [appstore, googleplay, huawei];
 
 export const campaigns = [
   {
@@ -54,3 +85,27 @@ export const cities = [
   ];
   
   
+
+  export const InputField = [
+    {label:"Nereden", type: "text", name:"departure"},
+    {label:"Nereye", type: "text", name:"arrival"},
+    {label:"Tarih", type: "date", name:"arrival"}
+  ]
+
+  export const footerAbout = [
+    {title : "Hakkımızda"},
+    {title : "Kariyer"},
+    {title : "İletişim"},
+    {title : "Yenilenebilir Enerji"},
+  ]
+  export const footerSSS = [
+    {title : "Sıkça Sorulan Sorular"},
+    {title : "Kişisel Verilerin Korunması"},
+    {title : "Gizlilik Politikası"},
+    {title : "Çerez Politikası"},
+  ]
+
+  export const footerWith = [
+    {title : "Otobüsünü Kirala"},
+    {title : "Şoförümüz ol"},
+  ]

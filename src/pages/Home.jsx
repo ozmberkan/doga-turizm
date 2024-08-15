@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Starter from "../components/Starter/Starter";
 import Campaign from "../components/Campaigns/Campaign";
 import Announcement from "../components/Announcement/Announcement";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Header />
       <Campaign />
       <Announcement />
+      <Footer />
     </div>
   );
 };
