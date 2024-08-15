@@ -16,7 +16,7 @@ const DrawerComp = ({ open, setOpen }) => {
       <Box
         component="section"
         sx={{ p: 4 }}
-        className="h-full max-w-96 flex justify-start items-center flex-col gap-y-3"
+        className="h-full max-w-80 sm:max-w-96 flex justify-start items-center flex-col gap-y-3"
       >
         <h1 className="font-rubik text-3xl">Giriş Yap</h1>
         <p className="text-zinc-700/60 text-xs font-rubik text-center">

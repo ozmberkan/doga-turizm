@@ -10,7 +10,7 @@ const Starter = () => {
       </h1>
       <div className="flex justify-center items-center gap-x-5">
         <SocialMedia />
-        <div className="flex justify-center items-center gap-x-2 bg-white rounded-md border py-1 px-4">
+        <div className="flex justify-center items-center gap-x-2 bg-white rounded-md border py-1 w-full whitespace-nowrap px-4">
           <IoCall size={18} />
           <span className="font-rubik text-base">444 58 58</span>
         </div>

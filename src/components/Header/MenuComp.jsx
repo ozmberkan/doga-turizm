@@ -2,9 +2,7 @@ import React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Fade } from "@mui/material";
-import { BiExit, BiUser } from "react-icons/bi";
 import { MdCampaign } from "react-icons/md";
-import { GiSatelliteCommunication } from "react-icons/gi";
 import { IoCall } from "react-icons/io5";
 import { FaCity } from "react-icons/fa";
 

@@ -41,7 +41,7 @@ const Header = () => {
           </div>
         ))}
       </Slider>
-      <div className="absolute inset-0 right-0 bg-gradient-to-r from-green-500/70 to-transparent "></div>
+      <div className="absolute inset-0 right-0 bg-gradient-to-br sm:bg-gradient-to-r from-green-700 sm:from-green-500/70 to-transparent "></div>
     </div>
   );
 };
