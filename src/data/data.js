@@ -13,24 +13,24 @@ export const campaigns = [
     cityName : "İstanbul",
     image: Istanbul,
     price: "399.99",
-    prevPrice: "499.99",
-    discount: "50%",
+    prevPrice: "599.99",
+    discount: "%33.33",
   },
   {
     id:2,
     cityName : "İzmir",
     image: Izmir,
     price: "399.99",
-    prevPrice: "499.99",
-    discount: "50%",
+    prevPrice: "599.99",
+    discount: "%33.33",
   },
   {
     id:3,
     cityName : "Ankara",
     image: Ankara,
     price: "399.99",
-    prevPrice: "499.99",
-    discount: "50%",
+    prevPrice: "599.99",
+    discount: "%33.33",
   }
 ]
 
