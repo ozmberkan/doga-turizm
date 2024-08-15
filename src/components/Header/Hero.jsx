@@ -17,7 +17,8 @@ const Hero = () => {
             Sana en uygun bileti ara ve online rezervasyon gerçekleştir!
           </h1>
         </div>
-        <form className="h-full w-full flex justify-center items-center sm:items-center gap-y-5 gap-x-5 font-rubik sm:flex-row flex-col  ">
+        <span>Form Güncelleniyor...</span>
+        {/* <form className="h-full w-full flex justify-center items-center sm:items-center gap-y-5 gap-x-5 font-rubik sm:flex-row flex-col  ">
           <div className="flex flex-col gap-y-1">
             <label htmlFor="">Nereden</label>
             <select
@@ -57,7 +58,7 @@ const Hero = () => {
               Biletini Ara
             </button>
           </div>
-        </form>
+        </form> */}
       </div>
     </div>
   );
