@@ -1,0 +1,23 @@
+/* customSelect.css */
+
+.custom-select {
+  width: 250px;
+  height: 48px;
+}
+
+.custom-select .ant-select-selector {
+  border-color: #d9d9d9;
+  transition: all 0.3s;
+  height: 48px;
+}
+
+.custom-select:hover {
+  border-color: #38a169; /* Hover durumunda yeşil renk */
+}
+
+.custom-select .ant-select-selector:focus,
+.custom-select-focused .ant-select-selector,
+.custom-select .ant-select-selector:focus-within {
+  border-color: #2f855a; /* Focus durumunda yeşil renk */
+  box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2); /* Yeşil gölge */
+}

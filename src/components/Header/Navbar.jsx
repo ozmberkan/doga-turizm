@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BiMenu, BiUser } from "react-icons/bi";
+import Logo from "../../assets/Logo.png";
 import DrawerComp from "./UI/DrawerComp";
 import MenuComp from "./UI/MenuComp";
 
@@ -20,9 +21,8 @@ const Navbar = ({ open, setOpen }) => {
     <>
       <div className="container sm:w-2/3 w-full z-20 mx-auto ">
         <div className="w-full py-5 flex justify-between items-center px-14">
-          <h1 className="text-3xl font-rubik font-semibold text-white">
-            Doğa Turizm
-          </h1>
+          <img src={Logo} className="w-[150px] sm:w-[200px] drop-shadow-2xl" />
+
           <div className="flex justify-center items-center gap-x-4">
             <button
               onClick={() => setOpen(!open)}

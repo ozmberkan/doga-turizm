@@ -2,6 +2,8 @@ import React from "react";
 import { IoTicketOutline } from "react-icons/io5";
 import { cities } from "../../data/data";
 import { InputField } from "../../data/data";
+import { DatePicker, Select } from "antd";
+import "./filterForm.css"; // CSS dosyası ekleniyor
 
 const FilterForm = () => {
   return (
@@ -10,20 +12,17 @@ const FilterForm = () => {
         <div key={i} className="flex flex-col gap-y-1">
           <label>{input.type === "text" ? input.label : "Tarih"}</label>
           {input.type === "text" ? (
-            <select
-              type={input.type}
-              className="rounded-lg border bg-white h-12 sm:py-3 sm:px-4 text-black w-[250px] focus:outline-none focus:ring-2 focus:ring-green-600"
-            >
-              {cities.map((city) => (
-                <option key={city.id} value={city.value}>
-                  {city.title}
-                </option>
-              ))}
-            </select>
+            <Select
+              defaultValue="Seçiniz"
+              options={cities}
+              className="w-[250px] h-12 "
+              dropdownStyle={{ position: "fixed" }}
+            />
           ) : (
-            <input
-              type="date"
-              className="rounded-lg border bg-white h-12 sm:py-3 sm:px-4  text-black w-[250px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            <DatePicker
+              placeholder="Tarih Seçiniz"
+              className="w-[250px] h-12 hover:border-green-500 focus:border-green-600 focus:ring-0 cursor-pointer"
+              format="DD.MM.YYYY"
             />
           )}
         </div>
