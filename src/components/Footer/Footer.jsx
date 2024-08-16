@@ -1,5 +1,5 @@
 import React from "react";
-
+import Logo from "../../assets/Logo.png";
 import { BiDownload } from "react-icons/bi";
 import {
   socialMedia,
@@ -30,8 +30,8 @@ const Footer = () => {
   return (
     <div className="container w-full sm:w-2/3 sm:mt-12 py-5 px-6 bg-white rounded-none sm:rounded-t-md border flex-col sm:flex-row grid grid-cols-1 sm:grid-cols-5 mx-auto gap-y-2 sm:my-0 my-5 font-rubik">
       <div className="flex flex-col gap-y-5 sm:items-start items-center border-b py-5 sm:py-0 sm:border-none">
-        <h1 className="text-3xl">Doğa Turizm</h1>
-        <button className="w-[160px] bg-zinc-100 flex justify-center items-center gap-x-2 cursor-pointer p-1 border rounded-md">
+        <img src={Logo} className="w-[150px] sm:w-[200px] drop-shadow-2xl" />
+        <button className="w-[160px]  flex justify-center items-center gap-x-2 p-1">
           <BiDownload size={18} />
           <span className="text-sm">Doğa Turizm İndir!</span>
         </button>
