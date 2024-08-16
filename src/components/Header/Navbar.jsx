@@ -13,11 +13,11 @@ const Navbar = ({ open, setOpen }) => {
           <div className="flex justify-center items-center gap-x-4">
             <button
               onClick={() => setOpen(!open)}
-              className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2"
+              className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
             >
               <BiUser />
             </button>
-            <div className="py-2 text-white cursor-pointer">
+            <div className="py-2 text-white cursor-pointer hover:text-green-400 transition-all duration-500">
               <BiMenu size={30} />
             </div>
           </div>

@@ -21,7 +21,7 @@ const CampaignBox = ({ campaign }) => {
             </span>
           </div>
         </div>
-        <button className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-green-500 text-white smtext-sm">
+        <button className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-green-500 text-white smtext-sm hover:bg-green-600 transition-colors duration-500">
           Detaylar
         </button>
       </div>
