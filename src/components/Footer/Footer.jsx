@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="container w-full sm:w-2/3 sm:mt-12 py-5 px-6 bg-white rounded-t-md border flex-col sm:flex-row grid grid-cols-1 sm:grid-cols-5 mx-auto gap-y-2 sm:my-0 my-5 font-rubik">
+    <div className="container w-full sm:w-2/3 sm:mt-12 py-5 px-6 bg-white rounded-none sm:rounded-t-md border flex-col sm:flex-row grid grid-cols-1 sm:grid-cols-5 mx-auto gap-y-2 sm:my-0 my-5 font-rubik">
       <div className="flex flex-col gap-y-5 sm:items-start items-center border-b py-5 sm:py-0 sm:border-none">
         <h1 className="text-3xl">Doğa Turizm</h1>
         <button
