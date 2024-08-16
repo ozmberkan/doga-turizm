@@ -12,8 +12,11 @@
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "antd": "^5.20.1",
+<<<<<<< HEAD
     "clsx": "^2.1.1",
     "dayjs": "^1.11.12",
+=======
+>>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
