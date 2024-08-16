@@ -4,7 +4,6 @@ import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
 
-
 const DrawerComp = ({ open, setOpen }) => {
   const toggleDrawer = () => {
     setOpen(!open);
@@ -23,16 +22,19 @@ const DrawerComp = ({ open, setOpen }) => {
       <form className="p-4 flex flex-col gap-y-2">
         <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
         <div className="w-full flex border rounded-md ">
-          <input type="text" className="outline-none px-4 rounded-md text-sm" />
+          <input
+            type="text"
+            className="outline-none px-4 rounded-md text-sm w-full"
+          />
           <span className="flex justify-center items-center p-2 ">
             <BiUser size={18} />
           </span>
         </div>
         <label className="font-rubik text-xs text-zinc-700">Parola</label>
-        <div className="w-full flex border rounded-md">
+        <div className="w-full flex border rounded-md ">
           <input
             type="password"
-            className="outline-none px-4 rounded-md text-sm"
+            className="outline-none px-4 rounded-md text-sm w-full"
           />
           <span className="flex justify-center items-center p-2 ">
             <BiLock size={18} />
