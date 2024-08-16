@@ -12,11 +12,7 @@ import {
 const Footer = () => {
   return (
     <div className="container w-full sm:w-2/3 sm:mt-12 py-5 px-6 bg-white rounded-t-md border flex-col sm:flex-row grid grid-cols-1 sm:grid-cols-5 mx-auto gap-y-2 sm:my-0 my-5 font-rubik">
-<<<<<<< HEAD
-      <div className="flex flex-col gap-y-5 sm:items-start items-center sm:border-0 border-b py-5 sm:py-0">
-=======
       <div className="flex flex-col gap-y-5 sm:items-start items-center border-b py-5 sm:py-0 sm:border-none">
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
         <h1 className="text-3xl">Doğa Turizm</h1>
         <button
           href=""
@@ -35,11 +31,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="flex flex-col sm:items-start  items-center gap-y-5 py-5 sm:py-0 sm:border-0 border-b ">
-=======
       <div className="flex flex-col sm:items-start  items-center gap-y-5 py-5 sm:py-0 border-b sm:border-none ">
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
         <h1 className="text-md underline">Bizi Keşfet</h1>
         <ul className="flex flex-col items-start gap-y-2 w-full sm:w-0">
           {footerAbout.map((fAbout, i) => (
@@ -52,11 +44,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-<<<<<<< HEAD
-      <div className="flex flex-col gap-y-5 sm:items-start items-center  py-5 sm:py-0 sm:border-0 border-b">
-=======
       <div className="flex flex-col gap-y-5 sm:items-start items-center  py-5 sm:py-0 border-b sm:border-none">
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
         <h1 className="text-md underline">Yardıma İhtiyacın Var Mı ?</h1>
         <ul className="flex flex-col items-start gap-y-2  w-full sm:w-0">
           {footerSSS.map((fSSS, i) => (
@@ -69,11 +57,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-<<<<<<< HEAD
-      <div className="flex flex-col gap-y-5 sm:items-start  items-center  py-5 sm:py-0 sm:border-0 border-b">
-=======
       <div className="flex flex-col gap-y-5 sm:items-start  items-center  py-5 sm:py-0 border-b sm:border-none">
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
         <h1 className="text-md underline">İş Ortağımız Ol</h1>
         <ul className="flex text-sm flex-col items-start gap-y-2 w-full sm:w-0">
           {footerWith.map((fWith, i) => (

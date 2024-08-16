@@ -2,13 +2,7 @@ import React from "react";
 import { IoTicketOutline } from "react-icons/io5";
 import { cities } from "../../data/data";
 import { InputField } from "../../data/data";
-<<<<<<< HEAD
 import { DatePicker, Select } from "antd";
-import "./filterForm.css"; // CSS dosyası ekleniyor
-=======
-import { DatePicker } from "antd";
-import { Select } from "antd";
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
 
 const FilterForm = () => {
   return (
@@ -20,21 +14,14 @@ const FilterForm = () => {
             <Select
               defaultValue="Seçiniz"
               options={cities}
-<<<<<<< HEAD
               className="w-[250px] h-12 "
-              dropdownStyle={{ position: "fixed" }}
             />
           ) : (
             <DatePicker
               placeholder="Tarih Seçiniz"
               className="w-[250px] h-12 hover:border-green-500 focus:border-green-600 focus:ring-0 cursor-pointer"
               format="DD.MM.YYYY"
-=======
-              className="!rounded-lg !font-rubik !border !bg-white !h-12 !sm:py-3 !sm:px-4 !text-black !w-[250px] !focus:outline-none !focus:ring-2 !focus:border-green-600 !hover:bg-red-500"
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
             />
-          ) : (
-            <DatePicker className="rounded-lg border-2 hover:border-green-600 bg-white h-12 sm:py-3 sm:px-4 text-black w-[250px] focus:ring-0 !focus:border-green-600" />
           )}
         </div>
       ))}

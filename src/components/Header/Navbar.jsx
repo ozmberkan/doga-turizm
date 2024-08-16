@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiMenu, BiUser } from "react-icons/bi";
 import Logo from "../../assets/Logo.png";
 import DrawerComp from "./UI/DrawerComp";

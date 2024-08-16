@@ -65,26 +65,6 @@ export const campaigns = [
 ];
 
 export const cities = [
-<<<<<<< HEAD
-    { id: 1, title: "İstanbul", value: "İstanbul" },
-    { id: 2, title: "Ankara", value: "Ankara" },
-    { id: 3, title: "İzmir", value: "İzmir" },
-    { id: 4, title: "Bursa", value: "Bursa" },
-    { id: 5, title: "Antalya", value: "Antalya" },
-    { id: 6, title: "Adana", value: "Adana" },
-    { id: 7, title: "Konya", value: "Konya" },
-    { id: 8, title: "Gaziantep", value: "Gaziantep" },
-    { id: 9, title: "Kayseri", value: "Kayseri" },
-    { id: 10, title: "Mersin", value: "Mersin" },
-    { id: 11, title: "Eskişehir", value: "Eskişehir" },
-    { id: 12, title: "Samsun", value: "Samsun" },
-    { id: 13, title: "Trabzon", value: "Trabzon" },
-    { id: 14, title: "Erzurum", value: "Erzurum" },
-    { id: 15, title: "Diyarbakır", value: "Diyarbakır" }
-  ];
-  
-  
-=======
   { id: 1, title: "İstanbul", value: "İstanbul" },
   { id: 2, title: "Ankara", value: "Ankara" },
   { id: 3, title: "İzmir", value: "İzmir" },
@@ -101,7 +81,7 @@ export const cities = [
   { id: 14, title: "Erzurum", value: "Erzurum" },
   { id: 15, title: "Diyarbakır", value: "Diyarbakır" },
 ];
->>>>>>> 5e6caff48d75ea1d87cd39f3de81edafb4bdc8d4
+
 
 export const InputField = [
   { label: "Nereden", type: "text", name: "departure" },
