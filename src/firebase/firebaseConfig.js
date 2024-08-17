@@ -1,16 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyAtrvA9THXmD8jgouf5l49bsvYcviKFUkE",
+  authDomain: "dogaturizm-5858.firebaseapp.com",
+  projectId: "dogaturizm-5858",
+  storageBucket: "dogaturizm-5858.appspot.com",
+  messagingSenderId: "497195980589",
+  appId: "1:497195980589:web:8fe580664b0783478da5a4",
 };
 
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const chest = getStorage(app);
+const app = initializeApp(firebaseConfig);
+export const storage = getStorage(app);
