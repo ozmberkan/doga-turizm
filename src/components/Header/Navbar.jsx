@@ -10,9 +10,8 @@ const Navbar = ({ open, setOpen }) => {
   return (
     <>
       <div className="container sm:w-2/3 w-full z-20 mx-auto ">
-        <div className="w-full py-5 flex justify-between items-center px-14">
+        <div className="w-full py-5 flex justify-between items-center px-9 sm:px-14">
           <img src={Logo} className="w-[150px] sm:w-[200px] drop-shadow-2xl" />
-
           <div className="flex justify-center items-center gap-x-4">
             <button
               onClick={() => setOpen(!open)}
@@ -30,7 +29,7 @@ const Navbar = ({ open, setOpen }) => {
                   className="text-white cursor-pointer hover:text-green-400 transition-all duration-500"
                 />
               </button>
-              {menuOpen && <MenuComp />}
+              {menuOpen && <MenuComp setMenuOpen={setMenuOpen} />}
             </div>
           </div>
         </div>
