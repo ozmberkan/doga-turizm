@@ -3,6 +3,7 @@ import { BiLock, BiUser } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
+import { Link } from "react-router-dom";
 
 const DrawerComp = ({ open, setOpen }) => {
   const toggleDrawer = () => {
@@ -69,9 +70,12 @@ const DrawerComp = ({ open, setOpen }) => {
             Giriş Yap
           </span>
         </div>
-        <span className="flex justify-center mt-2 items-center  gap-x-2 font-rubik  text-zinc-700 underline cursor-pointer text-sm">
+        <Link
+          to="/register"
+          className="flex justify-center mt-2 items-center  gap-x-2 font-rubik hover:text-zinc-500 hover:underline  text-zinc-700 underline cursor-pointer text-sm"
+        >
           Henüz kayıt olmadın mı ?
-        </span>
+        </Link>
       </form>
     </Drawer>
   );
