@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiMenu, BiUser } from "react-icons/bi";
 import Logo from "../../assets/Logo.png";
 import DrawerComp from "./UI/DrawerComp";
+import MenuComp from "./UI/MenuComp";
 
 const Navbar = ({ open, setOpen }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <div className="container sm:w-2/3 w-full z-20 mx-auto ">
@@ -17,33 +20,17 @@ const Navbar = ({ open, setOpen }) => {
             >
               <BiUser />
             </button>
-            <div className="group relative">
-              <button className="flex items-center h-10 ">
+            <div className="relative">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="flex items-center h-10 focus:outline-none"
+              >
                 <BiMenu
                   size={30}
-                  className=" text-white cursor-pointer hover:text-green-400 transition-all duration-500"
+                  className="text-white cursor-pointer hover:text-green-400 transition-all duration-500"
                 />
               </button>
-              <div className="opacity-0 w-44 shadow-md  invisible group-focus-within:mt-1 group-focus-within:opacity-100 group-focus-within:visible absolute top-full  left-0 rounded p-4 bg-white  border transition-all duration-300 z-30 flex flex-col gap-y-2">
-                <a
-                  href="/login"
-                  className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
-                >
-                  Yapım Aşamasında
-                </a>
-                <a
-                  href="/login"
-                  className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
-                >
-                  Yapım Aşamasında
-                </a>
-                <a
-                  href="/login"
-                  className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
-                >
-                  Yapım Aşamasında
-                </a>
-              </div>
+              {menuOpen && <MenuComp />}
             </div>
           </div>
         </div>
