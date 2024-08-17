@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase/firebaseConfig";
 
 const CampaignBox = ({ campaign }) => {
-  const { image, cityName, price, prevPrice, discount } = campaign;
+  const { cityName, price, prevPrice, discount, imagePath } = campaign;
+  const [imageUrl, setImageUrl] = useState(null);
+
+  useEffect(() => {
+    if (imagePath) {
+      const fetchImage = async () => {
+        try {
+          const storageRef = ref(storage, `campaigns/${imagePath}`);
+          const url = await getDownloadURL(storageRef);
+          setImageUrl(url);
+        } catch (error) {
+          console.log("Error fetching image:", error);
+        }
+      };
+
+      fetchImage();
+    } else {
+      console.log("Image path bulunamadı!");
+    }
+  }, [imagePath]);
+
   return (
     <div className="flex justify-center items-center border bg-white rounded-md flex-col p-4 gap-y-3 shadow-md">
-      <img
-        src={image}
-        className="rounded h-[200px] w-full object-cover cursor-pointer"
-      />
-      <div className="flex justify-between items-center w-full  ">
-        <div className="flex justify-start items-start gap-y-1 flex-col ">
-          <h1 className="text-2xl ">{cityName}</h1>
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          className="rounded h-[200px] w-full object-cover cursor-pointer"
+          alt={cityName}
+        />
+      ) : (
+        <div className="h-[200px] w-full bg-gray-200 rounded"></div>
+      )}
+      <div className="flex justify-between items-center w-full">
+        <div className="flex justify-start items-start gap-y-1 flex-col">
+          <h1 className="text-2xl">{cityName}</h1>
           <div className="flex items-center justify-center gap-x-1">
             <span className="text-zinc-600">{price}₺</span>
             <span className="line-through text-xs text-zinc-600">

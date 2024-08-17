@@ -1,9 +1,7 @@
 import roadImg from "../assets/road.jpg";
 import road2Img from "../assets/road2.jpg";
 import road3Img from "../assets/road3.jpg";
-import Istanbul from "../assets/istanbul.jpg";
-import Izmir from "../assets/izmir.jpg";
-import Ankara from "../assets/ankara.jpg";
+
 import {
   FaFacebook,
   FaInstagram,
@@ -41,26 +39,26 @@ export const campaigns = [
   {
     id: 1,
     cityName: "İstanbul",
-    image: Istanbul,
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
+    imagePath: "istanbul.jpg",
   },
   {
     id: 2,
     cityName: "İzmir",
-    image: Izmir,
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
+    imagePath: "izmir.jpg",
   },
   {
     id: 3,
     cityName: "Ankara",
-    image: Ankara,
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
+    imagePath: "ankara.jpg",
   },
 ];
 
@@ -81,7 +79,6 @@ export const cities = [
   { id: 14, title: "Erzurum", value: "Erzurum" },
   { id: 15, title: "Diyarbakır", value: "Diyarbakır" },
 ];
-
 
 export const InputField = [
   { label: "Nereden", type: "text", name: "departure" },
