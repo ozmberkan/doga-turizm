@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { TbEdit, TbTrash } from "react-icons/tb";
 
 const AdminCampaign = () => {
