@@ -4,12 +4,13 @@ import Starter from "../components/Starter/Starter";
 import Campaign from "../components/Campaigns/Campaign";
 import Announcement from "../components/Announcement/Announcement";
 import Footer from "../components/Footer/Footer";
+import { carouselImg } from "../data/data";
 
 const Home = () => {
   return (
     <div>
       <Starter />
-      <Header />
+      <Header carouselImg={carouselImg} />
       <Campaign />
       <Announcement />
       <Footer />

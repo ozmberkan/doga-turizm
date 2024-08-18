@@ -1,7 +1,3 @@
-import roadImg from "../assets/road.jpg";
-import road2Img from "../assets/road2.jpg";
-import road3Img from "../assets/road3.jpg";
-
 import {
   FaFacebook,
   FaInstagram,
@@ -32,7 +28,21 @@ export const socialMedia = [
   },
 ];
 
-export const images = [roadImg, road2Img, road3Img];
+export const carouselImg = [
+  {
+    id:1,
+    imagePath: "road.jpg"
+  },
+  {
+    id:2,
+    imagePath: "road2.jpg"
+  },
+  {
+    id:3,
+    imagePath: "road3.jpg"
+  }
+]
+
 export const downloadImage = [appstore, googleplay, huawei];
 
 export const campaigns = [
@@ -64,20 +74,11 @@ export const campaigns = [
 
 export const cities = [
   { id: 1, title: "İstanbul", value: "İstanbul" },
-  { id: 2, title: "Ankara", value: "Ankara" },
-  { id: 3, title: "İzmir", value: "İzmir" },
-  { id: 4, title: "Bursa", value: "Bursa" },
-  { id: 5, title: "Antalya", value: "Antalya" },
-  { id: 6, title: "Adana", value: "Adana" },
-  { id: 7, title: "Konya", value: "Konya" },
-  { id: 8, title: "Gaziantep", value: "Gaziantep" },
-  { id: 9, title: "Kayseri", value: "Kayseri" },
-  { id: 10, title: "Mersin", value: "Mersin" },
-  { id: 11, title: "Eskişehir", value: "Eskişehir" },
-  { id: 12, title: "Samsun", value: "Samsun" },
-  { id: 13, title: "Trabzon", value: "Trabzon" },
-  { id: 14, title: "Erzurum", value: "Erzurum" },
-  { id: 15, title: "Diyarbakır", value: "Diyarbakır" },
+  { id: 2, title: "Bursa", value: "Bursa" },
+  { id: 3, title: "Balıkesir", value: "Balıkesir" },
+  { id: 4, title: "Edirne", value: "Edirne" },
+  { id: 5, title: "Çanakkale", value: "Çanakkale" },
+  { id: 6, title: "Tekirdağ", value: "Tekirdağ" },
 ];
 
 export const InputField = [
