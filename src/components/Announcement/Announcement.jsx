@@ -8,7 +8,7 @@ const Announcement = () => {
   useEffect(() => {
     const storageRef = ref(
       storage,
-      "gs://dogaturizm-5858.appspot.com/banner.png"
+      "gs://dogaturizm-5858.appspot.com/banners/banner.png"
     );
 
     getDownloadURL(storageRef)
@@ -34,11 +34,14 @@ const Announcement = () => {
           ile online rezervasyon yapabilirsiniz.
         </span>
         <div className="w-full h-full">
-          <img
-            src={banner}
-            alt="banner"
-            className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
-          />
+          {banner ? (
+            <img
+              src={banner}
+              className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
+            />
+          ) : (
+            <div className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2 bg-gray-200"></div>
+          )}
         </div>
       </div>
     </div>
