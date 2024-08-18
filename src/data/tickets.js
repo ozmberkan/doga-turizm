@@ -1,4 +1,4 @@
-[
+export const tickets = [
   {
     "pnr": "PNR31782",
     "departure": "Edirne",

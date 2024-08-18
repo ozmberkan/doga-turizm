@@ -7,8 +7,89 @@ body{
 }
 
 .ant-picker-focused {
-  border-color: #16a34a !important; /* Yeşil renk */
-  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important; /* Yeşil odaklanma efekti */
+  border-color: #16a34a !important; 
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important; 
+}
+
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 100px; 
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 150px; 
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 150px; 
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  width: 120px; 
+}
+
+.table th:nth-child(5),
+.table td:nth-child(5) {
+  width: 100px; 
+}
+
+.table th:nth-child(6),
+.table td:nth-child(6) {
+  width: 100px; 
+}
+
+.table th:nth-child(7),
+.table td:nth-child(7) {
+  width: 100px; 
+}
+
+.table th:nth-child(8),
+.table td:nth-child(8) {
+  width: 100px; 
+}
+
+.table th:nth-child(9),
+.table td:nth-child(9) {
+  width: 100px; 
+}
+
+.table th:nth-child(10),
+.table td:nth-child(10) {
+  width: 20px; 
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: .2rem;
+}
+
+.page-item {
+  margin: 0 0.25rem;
+}
+
+.page-link {
+  padding: 0.2rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  text-align: center;
 }
 
 
