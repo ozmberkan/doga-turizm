@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
+import DrawerComp from "../UI/DrawerComp";
+import MenuComp from "../UI/MenuComp";
 import { BiMenu, BiUser } from "react-icons/bi";
-import DrawerComp from "./UI/DrawerComp";
-import MenuComp from "./UI/MenuComp";
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, getDownloadURL } from "firebase/storage";
 
-const Navbar = ({ open, setOpen }) => {
+const NavigationBar = ({ open, setOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [logo, setLogo] = useState("");
 
   useEffect(() => {
     const storageRef = ref(
       storage,
-      "gs://dogaturizm-5858.appspot.com/logos/Logo.png"
+      "gs://dogaturizm-5858.appspot.com/logos/LogoBlack.png"
     );
 
     getDownloadURL(storageRef)
@@ -29,7 +29,7 @@ const Navbar = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className="container sm:w-2/3 w-full z-20 mx-auto ">
+      <div className="sm:w-full w-full z-20 bg-white border-y mx-auto">
         <div className="w-full py-5 flex justify-between items-center px-9 sm:px-14">
           <img src={logo} className="w-[150px] sm:w-[200px] drop-shadow-2xl" />
           <div className="flex justify-center items-center gap-x-4">
@@ -46,7 +46,7 @@ const Navbar = ({ open, setOpen }) => {
               >
                 <BiMenu
                   size={30}
-                  className="text-white cursor-pointer hover:text-green-400 transition-all duration-500"
+                  className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
                 />
               </button>
               {menuOpen && <MenuComp setMenuOpen={setMenuOpen} />}
@@ -59,4 +59,4 @@ const Navbar = ({ open, setOpen }) => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;

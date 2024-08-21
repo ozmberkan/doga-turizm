@@ -1,6 +1,6 @@
 import React from "react";
 import { IoCall } from "react-icons/io5";
-import { socialMedia } from "../../data/data";
+import { socialMedia } from "../../../data/data";
 
 const SocialMedia = () => {
   return (

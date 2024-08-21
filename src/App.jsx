@@ -6,30 +6,76 @@ import Admin from "./pages/Admin/Admin";
 import Profile from "./pages/Profile/Profile";
 import Tickets from "./pages/Tickets/Tickets";
 import TicketDetail from "./pages/Tickets/TicketDetail";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import AdminCampaign from "./pages/Admin/AdminCampaign";
 import AdminTickets from "./pages/Admin/AdminTickets";
+import FlexContainer from "./container/FlexContainer";
+import Navbar from "./components/Navbar/Navbar";
+import { useState } from "react";
 
 const App = () => {
-  return (
-    <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/admin" element={<Admin />}>
-            <Route path="campaign" element={<AdminCampaign />} />
-            <Route path="tickets" element={<AdminTickets />} />
-          </Route>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/tickets" element={<Tickets />} />
-          <Route path="/ticket:id" element={<TicketDetail />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+  const [open, setOpen] = useState(false);
+
+  const Layout = () => {
+    return (
+      <FlexContainer>
+        <Navbar open={open} setOpen={setOpen} />
+        <Outlet />
+      </FlexContainer>
+    );
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
+        {
+          path: "/tickets",
+          element: <Tickets />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: <Admin />,
+      children: [
+        {
+          path: "campaign",
+          element: <AdminCampaign />,
+        },
+        {
+          path: "tickets",
+          element: <AdminTickets />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <Error />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
