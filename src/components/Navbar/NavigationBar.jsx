@@ -4,6 +4,7 @@ import MenuComp from "../UI/MenuComp";
 import { BiMenu, BiUser } from "react-icons/bi";
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, getDownloadURL } from "firebase/storage";
+import { Link } from "react-router-dom";
 
 const NavigationBar = ({ open, setOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +32,12 @@ const NavigationBar = ({ open, setOpen }) => {
     <>
       <div className="sm:w-full w-full z-20 bg-white border-y mx-auto">
         <div className="w-full py-5 flex justify-between items-center px-9 sm:px-14">
-          <img src={logo} className="w-[150px] sm:w-[200px] drop-shadow-2xl" />
+          <Link to="/">
+            <img
+              src={logo}
+              className="w-[150px] sm:w-[200px] drop-shadow-2xl"
+            />
+          </Link>
           <div className="flex justify-center items-center gap-x-4">
             <button
               onClick={() => setOpen(!open)}
