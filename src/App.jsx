@@ -1,33 +1,26 @@
 import Home from "./pages/Home/Home";
-import Test from "./pages/Test/Test";
-import Register from "./pages/Register/Register";
 import Error from "./pages/Error/Error";
 import Admin from "./pages/Admin/Admin";
 import Profile from "./pages/Profile/Profile";
 import Tickets from "./pages/Tickets/Tickets";
-import TicketDetail from "./pages/Tickets/TicketDetail";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import AdminCampaign from "./pages/Admin/AdminCampaign";
 import AdminTickets from "./pages/Admin/AdminTickets";
 import FlexContainer from "./container/FlexContainer";
 import Navbar from "./components/Navbar/Navbar";
 import { useState } from "react";
+import { Loading } from "./components/Loading/Loading";
 
 const App = () => {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const Layout = () => {
     return (
       <FlexContainer>
         <Navbar open={open} setOpen={setOpen} />
         <Outlet />
+        {/* {loading && <Loading />} */}
       </FlexContainer>
     );
   };
@@ -39,11 +32,7 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/register",
-          element: <Register />,
+          element: <Home setLoading={setLoading} />,
         },
         {
           path: "/profile",

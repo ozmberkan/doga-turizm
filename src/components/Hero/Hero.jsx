@@ -4,9 +4,8 @@ import { Carousel } from "antd";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase/firebaseConfig";
 
-const Header = ({ carouselImg }) => {
+const Hero = ({ carouselImg, setLoading }) => {
   const [sliderImg, setSliderImg] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -19,19 +18,19 @@ const Header = ({ carouselImg }) => {
           })
         );
         setSliderImg(imageUrls);
-        setLoading(false);
       } catch (error) {
-        console.log("Fetch Problemi:", error);
+        console.error("Image fetch error:", error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchImages();
-  }, [carouselImg]);
+  }, [carouselImg, setLoading]);
 
   return (
-    <div className="relative h-[750px] sm:h-[500px] ">
-      <div className="w-full flex flex-col inset-0 absolute ">
+    <div className="relative h-[750px] sm:h-[500px]">
+      <div className="w-full flex flex-col inset-0 absolute z-10">
         <Filter />
       </div>
       <Carousel autoplay dots={false} fade>
@@ -50,4 +49,4 @@ const Header = ({ carouselImg }) => {
   );
 };
 
-export default Header;
+export default Hero;

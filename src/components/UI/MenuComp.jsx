@@ -4,22 +4,22 @@ const MenuComp = () => {
   return (
     <div className="w-44 shadow-md absolute top-full right-0 sm:right-0 rounded p-4 bg-white border transition-all duration-300 z-30 flex flex-col gap-y-2">
       <a
-        href="/login"
+        href="/profile"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
-        Yapım Aşamasında
+        Profilim
       </a>
       <a
-        href="/login"
+        href="/admin"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
-        Yapım Aşamasında
+        Admin Panel
       </a>
       <a
-        href="/login"
+        href="/tickets"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
-        Yapım Aşamasında
+        Biletler
       </a>
     </div>
   );

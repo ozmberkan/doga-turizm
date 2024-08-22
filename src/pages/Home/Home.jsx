@@ -6,10 +6,10 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import { carouselImg } from "../../data/data";
 
-const Home = () => {
+const Home = ({ setLoading }) => {
   return (
     <div>
-      <Header carouselImg={carouselImg} />
+      <Header carouselImg={carouselImg} setLoading={setLoading} />
       <Campaign />
       <Announcement />
       <Footer />
