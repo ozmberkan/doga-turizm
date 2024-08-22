@@ -1,28 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../../firebase/firebaseConfig";
+import React from "react";
+import banner from "../../assets/banner/banner.png";
 
 const Announcement = () => {
-  const [banner, setBanner] = useState("");
-
-  useEffect(() => {
-    const storageRef = ref(
-      storage,
-      "gs://dogaturizm-5858.appspot.com/banners/banner.png"
-    );
-
-    getDownloadURL(storageRef)
-      .then((url) => {
-        setBanner(url);
-      })
-      .catch((error) => {
-        console.error(
-          "Görsel Veritabanından İstekte Bulunurken Hata Meydana Geldi!",
-          error
-        );
-      });
-  }, []);
-
   return (
     <div className="container w-full sm:w-2/3 h-full flex justify-center items-center mx-auto gap-y-2 sm:my-5 my-5   ">
       <div className="py-7 flex justify-center items-center font-rubik flex-col gap-y-2 sm:w-full w-[80%] bg-white rounded-md  border sm:px-12 px-4 text-center sm:text-left">
@@ -34,14 +13,10 @@ const Announcement = () => {
           ile online rezervasyon yapabilirsiniz.
         </span>
         <div className="w-full h-full">
-          {banner ? (
-            <img
-              src={banner}
-              className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
-            />
-          ) : (
-            <div className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2 bg-gray-200"></div>
-          )}
+          <img
+            src={banner}
+            className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
+          />
         </div>
       </div>
     </div>

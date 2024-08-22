@@ -7,8 +7,7 @@ import {
   footerWith,
   downloadImage,
 } from "../../data/data";
-import { ref, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase/firebaseConfig";
+import LogoBlack from "../../assets/logos/LogoBlack.png";
 
 const FooterSection = ({ title, items }) => (
   <div className="flex flex-col gap-y-5 sm:items-start items-center py-5 sm:py-0 border-b sm:border-none">
@@ -28,28 +27,11 @@ const FooterSection = ({ title, items }) => (
 );
 
 const Footer = () => {
-  const [footerLogo, setFooterLogo] = useState("");
-
-  useEffect(() => {
-    const storageRef = ref(
-      storage,
-      "gs://dogaturizm-5858.appspot.com/logos/LogoBlack.png"
-    );
-
-    getDownloadURL(storageRef)
-      .then((ref) => {
-        setFooterLogo(ref);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }, []);
-
   return (
     <div className="container w-full sm:w-2/3 sm:mt-12 py-5 px-6 bg-white rounded-none sm:rounded-t-md border flex-col sm:flex-row grid grid-cols-1 sm:grid-cols-5 mx-auto gap-y-2 sm:my-0 my-5 font-rubik">
       <div className="flex flex-col gap-y-5 sm:items-start items-center border-b py-5 sm:py-0 sm:border-none">
         <img
-          src={footerLogo}
+          src={LogoBlack}
           className="w-[150px] sm:w-[200px] drop-shadow-2xl"
         />
         <button className="w-[160px]  flex justify-center items-center gap-x-2 p-1">

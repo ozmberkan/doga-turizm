@@ -5,9 +5,17 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 
-import appstore from "../assets/appstore.svg";
-import googleplay from "../assets/googleplay.svg";
-import huawei from "../assets/huawei.svg";
+import appstore from "../assets/social-media/appstore.svg";
+import googleplay from "../assets/social-media/googleplay.svg";
+import huawei from "../assets/social-media/huawei.svg";
+
+import road1 from "../assets/carousel/road.jpg";
+import road2 from "../assets/carousel/road2.jpg";
+import road3 from "../assets/carousel/road3.jpg";
+
+import ankara from "../assets/campaings/ankara.jpg";
+import istanbul from "../assets/campaings/istanbul.jpg";
+import izmir from "../assets/campaings/izmir.jpg";
 
 export const socialMedia = [
   {
@@ -28,20 +36,7 @@ export const socialMedia = [
   },
 ];
 
-export const carouselImg = [
-  {
-    id:1,
-    imagePath: "road.jpg"
-  },
-  {
-    id:2,
-    imagePath: "road2.jpg"
-  },
-  {
-    id:3,
-    imagePath: "road3.jpg"
-  }
-]
+export const carouselImg = [road1, road2, road3];
 
 export const downloadImage = [appstore, googleplay, huawei];
 
@@ -52,7 +47,7 @@ export const campaigns = [
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
-    imagePath: "istanbul.jpg",
+    image: istanbul,
   },
   {
     id: 2,
@@ -60,7 +55,7 @@ export const campaigns = [
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
-    imagePath: "izmir.jpg",
+    image: izmir,
   },
   {
     id: 3,
@@ -68,7 +63,7 @@ export const campaigns = [
     price: "399.99",
     prevPrice: "599.99",
     discount: "%33.33",
-    imagePath: "ankara.jpg",
+    image: ankara,
   },
 ];
 
@@ -105,29 +100,27 @@ export const footerWith = [
   { title: "Şoförümüz ol" },
 ];
 
-
-
-  export const seatsData = [
-    { id: 1, seatNumber: "1", isAvailable: true },
-    { id: 2, seatNumber: "2", isAvailable: true },
-    { id: 3, seatNumber: "3", isAvailable: false },
-    { id: 4, seatNumber: "4", isAvailable: true },
-    { id: 5, seatNumber: "5", isAvailable: true },
-    { id: 6, seatNumber: "6", isAvailable: true },
-    { id: 7, seatNumber: "7", isAvailable: false },
-    { id: 8, seatNumber: "8", isAvailable: true },
-    { id: 9, seatNumber: "9", isAvailable: true },
-    { id: 10, seatNumber: "10", isAvailable: true },
-    { id: 11, seatNumber: "11", isAvailable: false },
-    { id: 12, seatNumber: "12", isAvailable: true },
-    { id: 13, seatNumber: "13", isAvailable: true },
-    { id: 14, seatNumber: "14", isAvailable: true },
-    { id: 15, seatNumber: "15", isAvailable: false },
-    { id: 16, seatNumber: "16", isAvailable: true },
-    { id: 17, seatNumber: "17", isAvailable: true },
-    { id: 18, seatNumber: "18", isAvailable: true },
-    { id: 19, seatNumber: "19", isAvailable: false },
-    { id: 20, seatNumber: "20", isAvailable: true },
-    { id: 21, seatNumber: "21", isAvailable: true },
-    { id: 22, seatNumber: "22", isAvailable: true },
-  ];
+export const seatsData = [
+  { id: 1, seatNumber: "1", isAvailable: true },
+  { id: 2, seatNumber: "2", isAvailable: true },
+  { id: 3, seatNumber: "3", isAvailable: false },
+  { id: 4, seatNumber: "4", isAvailable: true },
+  { id: 5, seatNumber: "5", isAvailable: true },
+  { id: 6, seatNumber: "6", isAvailable: true },
+  { id: 7, seatNumber: "7", isAvailable: false },
+  { id: 8, seatNumber: "8", isAvailable: true },
+  { id: 9, seatNumber: "9", isAvailable: true },
+  { id: 10, seatNumber: "10", isAvailable: true },
+  { id: 11, seatNumber: "11", isAvailable: false },
+  { id: 12, seatNumber: "12", isAvailable: true },
+  { id: 13, seatNumber: "13", isAvailable: true },
+  { id: 14, seatNumber: "14", isAvailable: true },
+  { id: 15, seatNumber: "15", isAvailable: false },
+  { id: 16, seatNumber: "16", isAvailable: true },
+  { id: 17, seatNumber: "17", isAvailable: true },
+  { id: 18, seatNumber: "18", isAvailable: true },
+  { id: 19, seatNumber: "19", isAvailable: false },
+  { id: 20, seatNumber: "20", isAvailable: true },
+  { id: 21, seatNumber: "21", isAvailable: true },
+  { id: 22, seatNumber: "22", isAvailable: true },
+];

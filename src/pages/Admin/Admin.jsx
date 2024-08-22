@@ -1,10 +1,8 @@
-// Admin.jsx
 import React from "react";
-import Logo from "../../assets/LogoBlack.png";
+import Logo from "../../assets/logos/LogoBlack.png";
 import { CiHome } from "react-icons/ci";
 import { MdCampaign } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
-import AdminCampaign from "./AdminCampaign";
 import { BsTicket } from "react-icons/bs";
 
 const Admin = () => {

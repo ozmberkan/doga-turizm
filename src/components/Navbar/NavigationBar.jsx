@@ -1,32 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DrawerComp from "../UI/DrawerComp";
 import MenuComp from "../UI/MenuComp";
 import { BiMenu, BiUser } from "react-icons/bi";
-import { storage } from "../../firebase/firebaseConfig";
-import { ref, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
+import LogoBlack from "../../assets/logos/LogoBlack.png";
 
 const NavigationBar = ({ open, setOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [logo, setLogo] = useState("");
-
-  useEffect(() => {
-    const storageRef = ref(
-      storage,
-      "gs://dogaturizm-5858.appspot.com/logos/LogoBlack.png"
-    );
-
-    getDownloadURL(storageRef)
-      .then((url) => {
-        setLogo(url);
-      })
-      .catch((error) => {
-        console.error(
-          "Görsel Veritabanından İstekte Bulunurken Hata Meydana Geldi!",
-          error
-        );
-      });
-  }, []);
 
   return (
     <>
@@ -34,7 +14,7 @@ const NavigationBar = ({ open, setOpen }) => {
         <div className="w-full py-5 flex justify-between items-center px-9 sm:px-14">
           <Link to="/">
             <img
-              src={logo}
+              src={LogoBlack}
               className="w-[150px] sm:w-[200px] drop-shadow-2xl"
             />
           </Link>
