@@ -6,7 +6,6 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
 
 const userData = {
-  id: "90126479446",
   name: "Berkan Özmen",
   gender: "Erkek",
   phone: "5555555555",
@@ -42,8 +41,7 @@ const Profile = () => {
             <h1 className="text-2xl font-rubik mb-12">
               Bilgilerini Görüntüle / Değiştir
             </h1>
-            <form className="grid grid-cols-3 gap-5">
-              {renderInputField("T.C. Kimlik No", userData.id)}
+            <form className="grid grid-cols-4 gap-5">
               {renderInputField("Ad Soyad", userData.name)}
               {renderInputField("Cinsiyet", userData.gender)}
               {renderInputField("Cep Telefonu", userData.phone)}

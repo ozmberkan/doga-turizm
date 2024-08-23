@@ -3,7 +3,8 @@ import { BiLock, BiUser } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
-import { Link } from "react-router-dom";
+import { HiOutlineIdentification } from "react-icons/hi2";
+import { IoCallOutline } from "react-icons/io5";
 
 const DrawerComp = ({ open, setOpen }) => {
   const [logInMode, setLogInMode] = useState(true);
@@ -92,29 +93,65 @@ const DrawerComp = ({ open, setOpen }) => {
           </div>
 
           <form className="p-4 flex flex-col gap-y-2">
-            <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
-            <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
-              <input
-                type="text"
-                className="outline-none px-4 rounded-md text-sm w-full peer"
-                name="regEmail"
-                required
-              />
-              <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
-                <BiUser size={18} />
-              </span>
+            <div>
+              <label className="font-rubik text-xs text-zinc-700">
+                Ad Soyad
+              </label>
+              <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
+                <input
+                  type="password"
+                  className="outline-none px-4 rounded-md text-sm w-full peer"
+                  name="regName"
+                  required
+                />
+                <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+                  <HiOutlineIdentification size={18} />
+                </span>
+              </div>
             </div>
-            <label className="font-rubik text-xs text-zinc-700">Parola</label>
-            <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
-              <input
-                type="password"
-                className="outline-none px-4 rounded-md text-sm w-full peer"
-                name="regPassword"
-                required
-              />
-              <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
-                <BiLock size={18} />
-              </span>
+            <div>
+              <label className="font-rubik text-xs text-zinc-700">
+                Cep Telefonu
+              </label>
+              <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
+                <input
+                  type="number"
+                  className="outline-none px-4 rounded-md text-sm w-full peer"
+                  name="regPhone"
+                  required
+                />
+                <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+                  <IoCallOutline size={18} />
+                </span>
+              </div>
+            </div>
+            <div>
+              <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
+              <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
+                <input
+                  type="text"
+                  className="outline-none px-4 rounded-md text-sm w-full peer"
+                  name="regEmail"
+                  required
+                />
+                <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+                  <BiUser size={18} />
+                </span>
+              </div>
+            </div>
+            <div>
+              <label className="font-rubik text-xs text-zinc-700">Parola</label>
+              <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
+                <input
+                  type="password"
+                  className="outline-none px-4 rounded-md text-sm w-full peer"
+                  name="regPassword"
+                  required
+                />
+                <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+                  <BiLock size={18} />
+                </span>
+              </div>
             </div>
 
             <div className="w-full flex justify-center items-center   border rounded-md bg-gradient-to-r from-green-700 to-green-500  hover:opacity-85  transition-all duration-300 cursor-pointer mt-3">

@@ -22,7 +22,7 @@ const Tickets = () => {
           </ul>
         </div>
         <div className="w-full">
-          <div className="w-full bg-red- p-24  grid grid-cols-11 gap-5">
+          <div className="w-full bg-red- p-24 grid grid-cols-10 gap-5">
             {seatsData.map((seat) => (
               <div
                 key={seat.id}
@@ -92,7 +92,7 @@ const Tickets = () => {
           <span>21.08.2024</span>
         </div>
       </div>
-      <div className="w-full bg-white border rounded-md">
+      <div className="w-full bg-white  rounded-md">
         <ConfigProvider
           theme={{
             components: {
