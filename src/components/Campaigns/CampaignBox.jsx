@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const CampaignBox = ({ campaign }) => {
-  const { cityName, price, prevPrice, discount, image } = campaign;
+  const { id, cityName, price, prevPrice, discount, image } = campaign;
 
   return (
     <div className="flex justify-center items-center border bg-white rounded-md flex-col p-4 gap-y-3 shadow-md">
@@ -25,9 +27,12 @@ const CampaignBox = ({ campaign }) => {
             </span>
           </div>
         </div>
-        <button className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-green-500 text-white smtext-sm hover:bg-green-600 transition-colors duration-500">
+        <Link
+          to={`/campaign/${id}`}
+          className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-green-500 text-white smtext-sm hover:bg-green-600 transition-colors duration-500"
+        >
           Detaylar
-        </button>
+        </Link>
       </div>
     </div>
   );

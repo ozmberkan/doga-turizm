@@ -2,11 +2,11 @@ import React from "react";
 import Starter from "./Starter/Starter";
 import NavigationBar from "./NavigationBar";
 
-const Navbar = ({ open, setOpen }) => {
+const Navbar = () => {
   return (
     <div>
       <Starter />
-      <NavigationBar open={open} setOpen={setOpen} />
+      <NavigationBar />
     </div>
   );
 };

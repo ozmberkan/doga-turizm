@@ -22,14 +22,14 @@ import PrivacyPolicy from "./pages/Footer/Help/PrivacyPolicy";
 import ProtectPersonelData from "./pages/Footer/Help/ProtectPersonelData";
 import Hiring from "./pages/Footer/WithWe/Hiring";
 import Rent from "./pages/Footer/WithWe/Rent";
+import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const Layout = () => (
     <FlexContainer>
-      <Navbar open={open} setOpen={setOpen} />
+      <Navbar />
       <Outlet />
     </FlexContainer>
   );
@@ -58,6 +58,8 @@ const App = () => {
         //
         { path: "/rent", element: <Rent /> },
         { path: "/hiring", element: <Hiring /> },
+        //
+        { path: "/campaign/:id", element: <CampaignDetail /> },
       ],
     },
     {

@@ -5,7 +5,9 @@ import { BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
 
-const NavigationBar = ({ open, setOpen }) => {
+const NavigationBar = () => {
+  const [open, setOpen] = useState(false);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
