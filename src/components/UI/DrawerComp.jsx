@@ -125,6 +125,7 @@ const DrawerComp = ({ open, setOpen }) => {
                 </span>
               </div>
             </div>
+
             <div>
               <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
               <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
@@ -151,6 +152,23 @@ const DrawerComp = ({ open, setOpen }) => {
                 <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
                   <BiLock size={18} />
                 </span>
+              </div>
+            </div>
+            <div>
+              <label className="font-rubik text-xs text-zinc-700">
+                Cinsiyet
+              </label>
+              <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
+                <select
+                  type="number"
+                  className="outline-none px-4 py-2 rounded-md text-sm w-full peer"
+                  name="regGender"
+                  required
+                >
+                  <option value="">Seçiniz</option>
+                  <option value="Erkek">Erkek</option>
+                  <option value="Kadın">Kadın</option>
+                </select>
               </div>
             </div>
 

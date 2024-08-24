@@ -8,12 +8,12 @@ const SocialMedia = () => {
       {socialMedia.map((item, index) => (
         <div
           key={index}
-          className="p-1 rounded-md bg-white border hover:bg-zinc-200 cursor-pointer transition-colors duration-500"
+          className="p-1 rounded-md bg-[#E6F7E6]/35 border-green-100 text-white hover:text-black cursor-pointer transition-colors duration-500"
         >
           {item.icon && <item.icon size={18} />}
         </div>
       ))}
-      <div className="flex justify-center items-center gap-x-2 bg-white rounded-md border py-1 w-full whitespace-nowrap px-4 ">
+      <div className="flex justify-center items-center gap-x-2 bg-[#E6F7E6]/35 border-green-100 text-white rounded-md border  w-full whitespace-nowrap px-4 ">
         <IoCall size={18} />
         <span className="font-rubik sm:text-base text-sm">444 58 58</span>
       </div>

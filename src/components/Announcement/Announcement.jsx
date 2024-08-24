@@ -1,5 +1,6 @@
 import React from "react";
 import banner from "../../assets/banner/banner.png";
+import star from "../../assets/banner/star.svg";
 
 const Announcement = () => {
   return (
@@ -12,10 +13,15 @@ const Announcement = () => {
           Yeni güncellemeyle beraber artık Doğa Turizm'den cep telefonlarınız
           ile online rezervasyon yapabilirsiniz.
         </span>
-        <div className="w-full h-full">
+        <div className="w-full h-full relative">
           <img
             src={banner}
             className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
+          />
+          <img
+            src={star}
+            alt=""
+            className="absolute top-0 right-0 sm:w-[150px] w-12 sm:-top-12 sm:-right-12 drop-shadow-xl transform rotate-[10deg]"
           />
         </div>
       </div>

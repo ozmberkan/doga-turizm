@@ -83,52 +83,20 @@ export const InputField = [
 ];
 
 export const footerAbout = [
-  { title: "Hakkımızda" },
-  { title: "Kariyer" },
-  { title: "İletişim" },
-  { title: "Yenilenebilir Enerji" },
+  { title: "Hakkımızda", to:"/about" },
+  { title: "Kariyer" , to: "/carier"},
+  { title: "İletişim", to: "/contact" },
+  { title: "Yenilenebilir Enerji", to : "/energy" },
 ];
 export const footerSSS = [
-  { title: "Sıkça Sorulan Sorular" },
-  { title: "Kişisel V. Korunması" },
-  { title: "Gizlilik Politikası" },
-  { title: "Çerez Politikası" },
+  { title: "Sıkça Sorulan Sorular", to: "/questions" },
+  { title: "Kişisel V. Korunması", to:"/protectData"},
+  { title: "Gizlilik Politikası", to: "/privacy"},
+  { title: "Çerez Politikası", to: "/cookie"},
 ];
 
 export const footerWith = [
-  { title: "Otobüsünü Kirala" },
-  { title: "Şoförümüz ol" },
+  { title: "Otobüsünü Kirala" , to :"/rent"},
+  { title: "Şoförümüz ol" , to : "/hiring"},
 ];
 
-export const seatsData = [
-  { id: 1, seatNumber: "1", isAvailable: true },
-  { id: 2, seatNumber: "2", isAvailable: true },
-  { id: 3, seatNumber: "3", isAvailable: false },
-  { id: 4, seatNumber: "4", isAvailable: true },
-  { id: 5, seatNumber: "5", isAvailable: true },
-  { id: 6, seatNumber: "6", isAvailable: true },
-  { id: 7, seatNumber: "7", isAvailable: false },
-  { id: 8, seatNumber: "8", isAvailable: true },
-  { id: 9, seatNumber: "9", isAvailable: true },
-  { id: 10, seatNumber: "10", isAvailable: true },
-  { id: 11, seatNumber: "11", isAvailable: false },
-  { id: 12, seatNumber: "12", isAvailable: true },
-  { id: 13, seatNumber: "13", isAvailable: true },
-  { id: 14, seatNumber: "14", isAvailable: true },
-  { id: 15, seatNumber: "15", isAvailable: false },
-  { id: 16, seatNumber: "16", isAvailable: true },
-  { id: 17, seatNumber: "17", isAvailable: true },
-  { id: 18, seatNumber: "18", isAvailable: true },
-  { id: 19, seatNumber: "19", isAvailable: false },
-  { id: 20, seatNumber: "20", isAvailable: true },
-  { id: 21, seatNumber: "21", isAvailable: true },
-  { id: 23, seatNumber: "23", isAvailable: true },
-  { id: 24, seatNumber: "24", isAvailable: true },
-  { id: 25, seatNumber: "25", isAvailable: true },
-  { id: 26, seatNumber: "26", isAvailable: true },
-  { id: 27, seatNumber: "27", isAvailable: true },
-  { id: 28, seatNumber: "28", isAvailable: true },
-  { id: 29, seatNumber: "29", isAvailable: true },
-  { id: 30, seatNumber: "30", isAvailable: true },
-  { id: 31, seatNumber: "31", isAvailable: true },
-];

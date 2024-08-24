@@ -8,7 +8,12 @@ export const tickets = [
     "electric": false,
     "wifi": false,
     "food": true,
-    "tv": false
+    "tv": false,
+    "seats" : [
+      {
+        id:1, sNumber : 2
+      }
+    ]
   },
   {
     "pnr": "PNR47052",

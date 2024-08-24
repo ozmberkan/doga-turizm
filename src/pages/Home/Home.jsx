@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Hero/Hero";
+import Hero from "../../components/Hero/Hero";
 import Campaign from "../../components/Campaigns/Campaign";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
@@ -8,7 +8,7 @@ import { carouselImg } from "../../data/data";
 const Home = ({ setLoading }) => {
   return (
     <div>
-      <Header carouselImg={carouselImg} setLoading={setLoading} />
+      <Hero carouselImg={carouselImg} setLoading={setLoading} />
       <Campaign />
       <Announcement />
       <Footer />

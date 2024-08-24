@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BiDownload } from "react-icons/bi";
 import {
   socialMedia,
@@ -8,19 +8,21 @@ import {
   downloadImage,
 } from "../../data/data";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import { Link } from "react-router-dom";
 
 const FooterSection = ({ title, items }) => (
   <div className="flex flex-col gap-y-5 sm:items-start items-center py-5 sm:py-0 border-b sm:border-none">
     <h1 className="text-md underline">{title}</h1>
     <ul className="flex flex-col items-start gap-y-2 w-full sm:w-0">
       {items.map((item, i) => (
-        <li
+        <Link
+          to={item.to}
           key={i}
           className="p-2 text-sm rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-green-500 hover:text-white transition-colors duration-100"
         >
           {item.icon && <item.icon size={18} />}
           {item.title || item.name}
-        </li>
+        </Link>
       ))}
     </ul>
   </div>
