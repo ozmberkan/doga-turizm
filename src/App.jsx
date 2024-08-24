@@ -2,7 +2,6 @@ import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState } from "react";
 import FlexContainer from "./container/FlexContainer";
 import Navbar from "./components/Navbar/Navbar";
-
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -23,6 +22,8 @@ import ProtectPersonelData from "./pages/Footer/Help/ProtectPersonelData";
 import Hiring from "./pages/Footer/WithWe/Hiring";
 import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ const App = () => {
     <FlexContainer>
       <Navbar />
       <Outlet />
+      <ToastContainer />
     </FlexContainer>
   );
 

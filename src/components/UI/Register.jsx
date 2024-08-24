@@ -5,12 +5,31 @@ import { HiOutlineIdentification } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
 import { auth } from "~/firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
+import { scheme } from "~/validation/scheme";
 
 const Register = ({ open, toggleDrawer, setLogInMode }) => {
-  const registerHandle = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(scheme),
+  });
+
+  const registerHandle = async (data) => {
     try {
-      // await createUserWithEmailAndPassword(auth, email, password);
-      //
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      toast.success("Başarıyla Kayıt Olundu!");
+      reset();
     } catch (error) {
       console.log(error);
     }
@@ -26,15 +45,17 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
         </p>
       </div>
 
-      <form className="p-4 flex flex-col gap-y-2">
+      <form
+        className="p-4 flex flex-col gap-y-2"
+        onSubmit={handleSubmit(registerHandle)}
+      >
         <div>
           <label className="font-rubik text-xs text-zinc-700">Ad Soyad</label>
           <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
             <input
-              type="password"
+              type="text"
               className="outline-none px-4 rounded-md text-sm w-full peer"
-              name="regName"
-              required
+              {...register("fullName")}
             />
             <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
               <HiOutlineIdentification size={18} />
@@ -48,9 +69,9 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
           <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
             <input
               type="number"
+              maxLength="11"
               className="outline-none px-4 rounded-md text-sm w-full peer"
-              name="regPhone"
-              required
+              {...register("phone", { valueAsNumber: true })}
             />
             <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
               <IoCallOutline size={18} />
@@ -64,8 +85,7 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
             <input
               type="text"
               className="outline-none px-4 rounded-md text-sm w-full peer"
-              name="regEmail"
-              required
+              {...register("email")}
             />
             <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
               <BiUser size={18} />
@@ -78,8 +98,7 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
             <input
               type="password"
               className="outline-none px-4 rounded-md text-sm w-full peer"
-              name="regPassword"
-              required
+              {...register("password")}
             />
             <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
               <BiLock size={18} />
@@ -92,8 +111,7 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
             <select
               type="number"
               className="outline-none px-4 py-2 rounded-md text-sm w-full peer"
-              name="regGender"
-              required
+              {...register("gender")}
             >
               <option value="">Seçiniz</option>
               <option value="Erkek">Erkek</option>
@@ -102,11 +120,14 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center   border rounded-md bg-gradient-to-r from-green-700 to-green-500  hover:opacity-85  transition-all duration-300 cursor-pointer mt-3">
-          <span className="flex justify-center items-center px-4 py-2 gap-x-2 font-rubik text-green-100 text-sm">
+        <button
+          type="submit"
+          className="w-full flex justify-center items-center   border rounded-md bg-gradient-to-r from-green-700 to-green-500  hover:opacity-85  transition-all duration-300 cursor-pointer mt-3"
+        >
+          <div className="flex justify-center items-center px-4 py-2 gap-x-2 font-rubik text-green-100 text-sm">
             Kayıt Ol
-          </span>
-        </div>
+          </div>
+        </button>
         <span
           onClick={() => setLogInMode(true)}
           className="flex justify-center mt-2 items-center  gap-x-2 font-rubik hover:text-zinc-500 hover:underline  text-zinc-700 underline cursor-pointer text-sm"
