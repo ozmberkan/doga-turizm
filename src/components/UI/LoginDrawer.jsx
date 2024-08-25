@@ -6,14 +6,20 @@ import { Drawer } from "antd";
 import { loginscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "~/firebase/firebaseConfig";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  OAuthProvider,
+} from "firebase/auth";
+import { auth } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { doc, getDoc } from "firebase/firestore";
 
-const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
+const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
+  const provider = new GoogleAuthProvider();
+  const providerApple = new OAuthProvider("apple.com");
   const dispatch = useDispatch();
   const {
     register,
@@ -48,6 +54,28 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
       reset();
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const googleLogIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      const userData = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        phoneNumber: user.phoneNumber,
+      };
+
+      toast.success("Google ile giriş başarılı");
+      dispatch(setUser(userData));
+      reset();
+      toggleDrawer(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Google ile giriş başarısız");
     }
   };
 
@@ -88,20 +116,26 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
           </span>
         </div>
 
-        <div className="w-full justify-end items-center flex my-2">
+        <div
+          onClick={() => setForgot(true)}
+          className="w-full justify-end items-center flex my-2"
+        >
           <span className="text-xs underline cursor-pointer font-rubik">
             Şifremi Unuttum
           </span>
         </div>
         <div className="flex  gap-x-4">
-          <div className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300">
+          <div
+            onClick={googleLogIn}
+            className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300"
+          >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
                 <FcGoogle size={18} />
               </div>
             </span>
           </div>
-          <div className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300">
+          <div className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md  hover:bg-zinc-100 transition-all duration-300">
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
                 <BsApple size={18} />

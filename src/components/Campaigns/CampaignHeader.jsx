@@ -9,10 +9,10 @@ const CampaignHeader = () => {
         Sınırlı Süreli Teklif
       </span>
       <h1 className="text-2xl sm:text-4xl font-semibold text-zinc-700">
-        Bu Fırsatlar Kaçmaz
+        Bu Fırsatlar Kaçmaz!
       </h1>
       <p className="text-base sm:text-2xl text-zinc-600">
-        En çok bilet alınan şehirlerimizde büyük indirimler yapmak için bu
+        En çok bilet alınan şehirlerimizde büyük indirimler yakalamak için bu
         inanılmaz fırsatı kaçırmayın. Acele edin, bu teklif uzun sürmeyecek!
       </p>
     </div>
