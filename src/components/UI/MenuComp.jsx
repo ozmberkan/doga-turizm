@@ -24,7 +24,7 @@ const MenuComp = () => {
       >
         Biletler
       </Link>
-      {user.role === 1 && (
+      {user?.role === 1 && (
         <Link
           to="/admin"
           className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
