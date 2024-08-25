@@ -100,3 +100,7 @@ export const footerWith = [
   { title: "Şoförümüz ol" , to : "/hiring"},
 ];
 
+export const menus = [
+  {label : "Hakkımızda", to : "/about"},
+  {label : "Hizmetlerimiz", to : "/services"},
+]

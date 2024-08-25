@@ -75,7 +75,6 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       toggleDrawer(false);
     } catch (error) {
       console.log(error);
-      toast.error("Google ile giriş başarısız");
     }
   };
 
