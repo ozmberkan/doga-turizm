@@ -7,8 +7,8 @@ const MyTickets = () => {
       <div className="w-full mb-2 ">
         <h1 className="text-2xl ">Biletlerim</h1>
       </div>
-      <div className="grid grid-cols-2 gap-5 w-full">
-        <Ticket status="Pasif"/>
+      <div className="sm:grid sm:grid-cols-2 sm:gap-5 flex flex-col gap-y-5 w-full">
+        <Ticket status="Pasif" />
         <Ticket status="Aktif" />
         <Ticket status="Pasif" />
       </div>

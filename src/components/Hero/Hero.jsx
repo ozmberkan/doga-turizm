@@ -6,7 +6,7 @@ import { carouselImg } from "../../data/data";
 const Hero = () => {
   return (
     <div className="relative h-[750px] sm:h-[500px]">
-      <div className="w-full flex flex-col inset-0 absolute z-10">
+      <div className="w-full flex flex-col top-5 sm:inset-0 absolute z-10">
         <Filter />
       </div>
       <Carousel autoplay dots={false}>

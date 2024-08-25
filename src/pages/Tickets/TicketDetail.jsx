@@ -5,12 +5,12 @@ import { FiTv } from "react-icons/fi";
 import { PiLightning } from "react-icons/pi";
 
 const TicketDetail = () => {
-  const seats = Array.from({ length: 20 }, (_, i) => i + 1);
+  const seats = Array.from({ length: 36 }, (_, i) => i + 1);
   const [selectedSeat, setSelectedSeat] = useState(null);
   return (
-    <div className="w-full rounded-xl p-5 flex gap-x-5 bg-[#E6F7E6]">
-      <div className="w-[400px] border bg-[#f0faf0] rounded-xl">
-        <div className="bg-white  p-3 rounded-t-xl">
+    <div className="w-full rounded-xl p-5 flex gap-x-5 bg-[#E6F7E6] sm:flex-row flex-col gap-y-5">
+      <div className="sm:min-w-[400px] sm:h-[300px] h-[350px] border bg-[#f0faf0] rounded-xl">
+        <div className="bg-white p-3 rounded-t-xl">
           <h1 className="text-2xl font-bold text-center text-[#4FC647]">
             Bilet Detayı
           </h1>

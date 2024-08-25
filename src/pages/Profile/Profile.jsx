@@ -28,15 +28,15 @@ const Profile = () => {
   );
 
   return (
-    <div className="flex w-full h-screen items-start justify-start p-5 gap-x-5">
+    <div className="flex w-full h-screen items-start justify-start p-5 gap-x-5 sm:flex-row flex-col gap-y-5 ">
       <ProfileMenu />
       <div className="w-full flex flex-col gap-y-5">
         {location.pathname !== "/profile/mytickets" && (
-          <div className="p-5 bg-white rounded-md border flex justify-start items-start flex-col gap-x-5">
+          <div className="p-5 bg-white rounded-md border flex  justify-start items-start flex-col gap-x-5">
             <h1 className="text-2xl font-rubik mb-12">
               Bilgilerini Görüntüle / Değiştir
             </h1>
-            <form className="grid grid-cols-4 gap-5">
+            <form className="sm:grid sm:grid-cols-4 sm:gap-5 flex flex-col gap-y-5">
               {renderInputField("Ad Soyad", user.displayName)}
               {renderInputField("Cep Telefonu", user.phoneNumber)}
               {renderInputField("E-Posta", user.email)}

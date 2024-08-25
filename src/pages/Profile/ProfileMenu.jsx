@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProfileMenu = () => {
   return (
-    <div className="min-w-[250px] bg-white flex flex-col border rounded-xl">
+    <div className="min-w-full sm:min-w-[250px] bg-white flex flex-col border rounded-xl">
       <span className="bg-[#4EC646] px-4 py-2 rounded-t-xl text-white">
         Menü
       </span>

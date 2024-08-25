@@ -11,7 +11,7 @@ import { IoHelp } from "react-icons/io5";
 
 const Ticket = ({ status }) => {
   return (
-    <div className="w-full border  rounded-xl flex flex-col">
+    <div className="w-full border rounded-xl text-sm sm:text-base flex flex-col">
       <div className="w-full h-10 rounded-t-xl bg-[#4EC646] flex justify-between items-center px-4 text-white">
         <span>PNR3558</span>
         <div className="flex gap-x-2">
@@ -26,7 +26,7 @@ const Ticket = ({ status }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="flex justify-between items-center">
+        <div className="flex sm:justify-between justify-start sm:items-center items-start sm:flex-row flex-col">
           <div className="p-4 text-lg text-zinc-600">
             <span className="flex items-center gap-x-1">
               <BiUser /> Muhammed Berkan Özmen
@@ -47,7 +47,7 @@ const Ticket = ({ status }) => {
             </span>
           </div>
         </div>
-        <div className="w-full bg-[#f9f9f9] p-4 rounded-b-xl flex items-center justify-between gap-x-5">
+        <div className="w-full bg-[#f9f9f9] p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2">
             <button className="flex items-center bg-red-100 text-red-500 px-4 py-2 rounded-md gap-x-2">
               <MdCancel /> İptal Et
@@ -61,7 +61,7 @@ const Ticket = ({ status }) => {
               status === "Aktif"
                 ? "bg-green-100 text-green-500"
                 : "bg-red-100 text-red-500"
-            } px-4 py-2 rounded-md`}
+            } px-4 py-2 rounded-md w-full`}
           >
             {status}
           </button>
