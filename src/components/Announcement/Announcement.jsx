@@ -4,8 +4,8 @@ import star from "../../assets/banner/star.svg";
 
 const Announcement = () => {
   return (
-    <div className="container w-full sm:w-2/3 h-full flex justify-center items-center mx-auto gap-y-2 sm:my-5 my-5   ">
-      <div className="py-7 flex justify-center items-center font-rubik flex-col gap-y-2 sm:w-full w-[80%] bg-white rounded-md  border sm:px-12 px-4 text-center sm:text-left">
+    <div className="container w-full sm:w-2/3 h-full flex justify-center items-center mx-auto gap-y-2 sm:my-5 my-5">
+      <div className="py-7 flex justify-center items-center font-rubik flex-col gap-y-2 sm:w-full w-[80%] bg-white rounded-xl shadow-lg  border sm:px-12 px-4 text-center sm:text-left">
         <h1 className="text-3xl font-semibold bg-gradient-to-r from-[#004252] to-[#22C469] bg-clip-text text-transparent">
           Doğa Turizm Şimdi Mobil Versiyonda!
         </h1>

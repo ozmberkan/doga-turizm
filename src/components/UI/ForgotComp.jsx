@@ -5,7 +5,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 
-const ForgotComp = ({ setForgot, toggleDrawer, open }) => {
+const ForgotComp = ({ setForgot, open }) => {
   const [email, setEmail] = useState("");
 
   const sendResetEmail = async () => {
