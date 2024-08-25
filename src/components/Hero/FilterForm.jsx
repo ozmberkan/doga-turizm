@@ -3,6 +3,7 @@ import { IoTicketOutline } from "react-icons/io5";
 import { cities } from "../../data/data";
 import { InputField } from "../../data/data";
 import { DatePicker, Select } from "antd";
+import { Link } from "react-router-dom";
 
 const FilterForm = () => {
   return (
@@ -26,10 +27,13 @@ const FilterForm = () => {
         </div>
       ))}
       <div className="flex flex-col gap-y-1 w-full mt-auto">
-        <button className="w-full transition-colors duration-500 py-3 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
+        <Link
+          to="/tickets"
+          className="w-full transition-colors duration-500 py-3 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2"
+        >
           <IoTicketOutline size={20} />
           Biletini Ara
-        </button>
+        </Link>
       </div>
     </form>
   );

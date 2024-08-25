@@ -1,26 +1,28 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MenuComp = () => {
   return (
     <div className="w-44 shadow-md absolute top-full right-0 sm:right-0 rounded p-4 bg-white border transition-all duration-300 z-30 flex flex-col gap-y-2">
-      <a
-        href="/profile"
+      <Link
+        to="/about"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
-        Profilim
-      </a>
-      <a
-        href="/admin"
+        Hakkımızda
+      </Link>
+      <Link
+        to="/services"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
-        Admin Panel
-      </a>
-      <a
-        href="/tickets"
+        Hizmetlerimiz
+      </Link>
+      <Link
+        to="/tickets"
         className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
       >
         Biletler
-      </a>
+      </Link>
     </div>
   );
 };

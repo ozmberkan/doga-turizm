@@ -30,10 +30,10 @@ import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
+import AllServices from "./pages/Services/AllServices";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
-  console.log(user);
 
   const Layout = () => (
     <FlexContainer>
@@ -69,6 +69,8 @@ const App = () => {
         { path: "/hiring", element: <Hiring /> },
         //
         { path: "/campaign/:id", element: <CampaignDetail /> },
+        //
+        { path: "/services", element: <AllServices /> },
       ],
     },
     {

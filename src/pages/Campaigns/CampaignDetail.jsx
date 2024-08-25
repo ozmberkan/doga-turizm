@@ -20,11 +20,11 @@ const CampaignDetail = () => {
 
   return (
     <div className="w-full p-5 flex flex-col gap-y-5">
-      <div className="w-full h-full gap-x-4 text-4xl rounded-md text-white py-5 flex justify-center items-center bg-gradient-to-r from-green-500 to-green-700">
-        <BiSolidOffer size={40} />
+      <div className="w-full h-full gap-x-4 text-sm sm:text-4xl rounded-md text-white py-5 flex justify-center items-center bg-gradient-to-r from-green-500 to-green-700 ">
+        <BiSolidOffer className="sm:text-4xl text-lg" />
         Sınırlı süredeki kampanya için acele edin!
       </div>
-      <div className="bg-white h-full shadow-lg gap-x-5 px-4 py-2 border rounded-md flex justify-start items-center">
+      <div className="bg-white h-full shadow-lg gap-x-5 px-4 py-2 border rounded-md flex sm:flex-row flex-col justify-start items-center">
         <div>
           <img
             src={campaign.image}
@@ -32,7 +32,7 @@ const CampaignDetail = () => {
             className="w-[400px] rounded-md"
           />
         </div>
-        <div className="w-full flex flex-col justify-start items-start  p-12 gap-y-5">
+        <div className="w-full flex flex-col justify-start items-start p-5 sm:p-12 gap-y-5">
           <h1 className="text-4xl">{campaign.cityName}</h1>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ad
           exercitationem molestias tenetur illo voluptatum quisquam laborum

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DrawerComp from "../UI/DrawerComp";
 import MenuComp from "../UI/MenuComp";
-import { BiMenu, BiUser } from "react-icons/bi";
+import { BiLogOut, BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
 import { useSelector } from "react-redux";
@@ -37,18 +37,26 @@ const NavigationBar = () => {
           </Link>
           <div className="flex justify-center items-center gap-x-4">
             {user ? (
-              <button
-                onClick={exit}
-                className="px-4 py-2 bg-white rounded-md text-black border"
+              <Link
+                to="/profile"
+                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
               >
-                Çıkış Yap
-              </button>
+                <BiUser />
+              </Link>
             ) : (
               <button
                 onClick={() => setOpen(!open)}
                 className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
+              </button>
+            )}
+            {user && (
+              <button
+                onClick={exit}
+                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+              >
+                <BiLogOut />
               </button>
             )}
 
