@@ -75,7 +75,7 @@ const App = () => {
     },
     {
       path: "/admin",
-      element: user ? <Admin /> : <Navigate to="/" />,
+      element: user?.role === 1 ? <Admin /> : <Navigate to="/" />,
       children: [
         { path: "campaign", element: <AdminCampaign /> },
         { path: "tickets", element: <AdminTickets /> },

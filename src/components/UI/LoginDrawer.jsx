@@ -7,10 +7,11 @@ import { loginscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "~/firebase/firebaseConfig";
+import { auth, db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { doc, getDoc } from "firebase/firestore";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,10 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         displayName: user.displayName,
         phoneNumber: user.phoneNumber,
       };
+
+      if (user.uid === "pw7MMy1Q3NQtuBf9ywPQ6yBy9r43") {
+        userData.role = 1;
+      }
       toast.success("Giriş Başarılı");
       toggleDrawer(false);
       dispatch(setUser(userData));

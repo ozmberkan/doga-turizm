@@ -41,16 +41,8 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
         phoneNumber: data.phone,
       };
 
-      dispatch(setUser(userData));
+      dispatch(setUser({ ...userData, role: 0 }));
 
-      await addDoc(collection(db, "users"), {
-        uid: user.user.uid,
-        fullName: data.fullName,
-        email: data.email,
-        phone: data.phone,
-        role: 0,
-        createdAt: new Date(),
-      });
       toast.success("Başarıyla Kayıt Olundu!");
       reset();
     } catch (error) {
