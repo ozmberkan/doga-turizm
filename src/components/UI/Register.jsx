@@ -3,8 +3,9 @@ import React from "react";
 import { BiLock, BiUser } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
-import { auth } from "~/firebase/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "~/firebase/firebaseConfig";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
@@ -28,7 +29,23 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
         data.password
       );
 
+      await updateProfile(user.user, {
+        displayName: data.fullName,
+        phoneNumber: data.phone,
+      });
+
+      await addDoc(collection(db, "users"), {
+        uid: user.user.uid,
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        gender: data.gender,
+        role: 0,
+        createdAt: new Date(),
+      });
+
       toast.success("Başarıyla Kayıt Olundu!");
+
       reset();
     } catch (error) {
       console.log(error);
@@ -57,7 +74,11 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
               className="outline-none px-4 rounded-md text-sm w-full peer"
               {...register("fullName")}
             />
-            <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+            <span
+              className={`flex justify-center items-center p-2 text-green-500 ${
+                errors.fullName && "text-red-500"
+              }`}
+            >
               <HiOutlineIdentification size={18} />
             </span>
           </div>
@@ -73,7 +94,11 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
               className="outline-none px-4 rounded-md text-sm w-full peer"
               {...register("phone", { valueAsNumber: true })}
             />
-            <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+            <span
+              className={`flex justify-center items-center p-2 text-green-500 ${
+                errors.phone && "text-red-500"
+              }`}
+            >
               <IoCallOutline size={18} />
             </span>
           </div>
@@ -87,7 +112,11 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
               className="outline-none px-4 rounded-md text-sm w-full peer"
               {...register("email")}
             />
-            <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+            <span
+              className={`flex justify-center items-center p-2 text-green-500 ${
+                errors.email && "text-red-500"
+              }`}
+            >
               <BiUser size={18} />
             </span>
           </div>
@@ -100,7 +129,11 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
               className="outline-none px-4 rounded-md text-sm w-full peer"
               {...register("password")}
             />
-            <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
+            <span
+              className={`flex justify-center items-center p-2 text-green-500 ${
+                errors.password && "text-red-500"
+              }`}
+            >
               <BiLock size={18} />
             </span>
           </div>
@@ -110,7 +143,9 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
           <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
             <select
               type="number"
-              className="outline-none px-4 py-2 rounded-md text-sm w-full peer"
+              className={`outline-none px-4 py-2 rounded-md text-sm w-full border peer ${
+                errors.gender && "border-red-500"
+              }`}
               {...register("gender")}
             >
               <option value="">Seçiniz</option>
