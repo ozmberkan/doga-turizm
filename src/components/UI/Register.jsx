@@ -10,8 +10,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { scheme } from "~/validation/scheme";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "~/redux/slices/userSlice";
 
 const Register = ({ open, toggleDrawer, setLogInMode }) => {
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((store) => store.user);
   const {
     register,
     handleSubmit,
@@ -29,23 +34,24 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
         data.password
       );
 
-      await updateProfile(user.user, {
+      const userData = {
+        uid: user.user.uid,
+        email: user.user.email,
         displayName: data.fullName,
         phoneNumber: data.phone,
-      });
+      };
+
+      dispatch(setUser(userData));
 
       await addDoc(collection(db, "users"), {
         uid: user.user.uid,
         fullName: data.fullName,
         email: data.email,
         phone: data.phone,
-        gender: data.gender,
         role: 0,
         createdAt: new Date(),
       });
-
       toast.success("Başarıyla Kayıt Olundu!");
-
       reset();
     } catch (error) {
       console.log(error);
@@ -136,22 +142,6 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
             >
               <BiLock size={18} />
             </span>
-          </div>
-        </div>
-        <div>
-          <label className="font-rubik text-xs text-zinc-700">Cinsiyet</label>
-          <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
-            <select
-              type="number"
-              className={`outline-none px-4 py-2 rounded-md text-sm w-full border peer ${
-                errors.gender && "border-red-500"
-              }`}
-              {...register("gender")}
-            >
-              <option value="">Seçiniz</option>
-              <option value="Erkek">Erkek</option>
-              <option value="Kadın">Kadın</option>
-            </select>
           </div>
         </div>
 

@@ -5,10 +5,10 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import { carouselImg } from "../../data/data";
 
-const Home = ({ setLoading }) => {
+const Home = () => {
   return (
     <div>
-      <Hero carouselImg={carouselImg} setLoading={setLoading} />
+      <Hero carouselImg={carouselImg}  />
       <Campaign />
       <Announcement />
       <Footer />

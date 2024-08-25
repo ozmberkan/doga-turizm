@@ -1,5 +1,10 @@
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
+import {
+  Outlet,
+  createBrowserRouter,
+  RouterProvider,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import FlexContainer from "./container/FlexContainer";
 import Navbar from "./components/Navbar/Navbar";
 // Pages
@@ -24,15 +29,17 @@ import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const { user } = useSelector((store) => store.user);
+  console.log(user);
 
   const Layout = () => (
     <FlexContainer>
       <Navbar />
       <Outlet />
-      <ToastContainer />
+      <ToastContainer position="top-center" />
     </FlexContainer>
   );
 
@@ -41,10 +48,10 @@ const App = () => {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "/", element: <Home setLoading={setLoading} /> },
+        { path: "/", element: <Home /> },
         {
           path: "/profile",
-          element: <Profile />,
+          element: user ? <Profile /> : <Navigate to="/" />,
           children: [{ path: "mytickets", element: <MyTickets /> }],
         },
         { path: "/tickets", element: <Tickets /> },
@@ -66,7 +73,7 @@ const App = () => {
     },
     {
       path: "/admin",
-      element: <Admin />,
+      element: user ? <Admin /> : <Navigate to="/" />,
       children: [
         { path: "campaign", element: <AdminCampaign /> },
         { path: "tickets", element: <AdminTickets /> },

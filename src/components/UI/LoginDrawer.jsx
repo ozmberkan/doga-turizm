@@ -3,7 +3,49 @@ import { BiLock, BiUser } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
+import { loginscheme } from "~/validation/scheme";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "~/firebase/firebaseConfig";
+import { setUser } from "~/redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(loginscheme),
+  });
+
+  const LogIn = async (data) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = userCredential.user;
+      const userData = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        phoneNumber: user.phoneNumber,
+      };
+      toast.success("Giriş Başarılı");
+      toggleDrawer(false);
+      dispatch(setUser(userData));
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Drawer open={open} onClose={() => toggleDrawer(!open)} anchor="right">
       <div className="flex flex-col justify-center items-center gap-y-3">
@@ -14,13 +56,16 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         </p>
       </div>
 
-      <form className="p-4 flex flex-col gap-y-2">
+      <form
+        className="p-4 flex flex-col gap-y-2"
+        onSubmit={handleSubmit(LogIn)}
+      >
         <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
         <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
           <input
             type="text"
             className="outline-none px-4 rounded-md text-sm w-full peer"
-            required
+            {...register("email")}
           />
           <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
             <BiUser size={18} />
@@ -31,7 +76,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
           <input
             type="password"
             className="outline-none px-4 rounded-md text-sm w-full peer"
-            required
+            {...register("password")}
           />
           <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
             <BiLock size={18} />
@@ -59,17 +104,18 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode }) => {
             </span>
           </div>
         </div>
-        <div className="w-full flex justify-center items-center   border rounded-md bg-gradient-to-r from-green-700 to-green-500  hover:opacity-85  transition-all duration-300 cursor-pointer mt-3">
-          <span className="flex justify-center items-center px-4 py-2 gap-x-2 font-rubik text-green-100 text-sm">
-            Giriş Yap
-          </span>
-        </div>
         <button
+          type="submit"
+          className="w-full py-2 text-white font-rubik flex justify-center items-center   border rounded-md bg-gradient-to-r from-green-700 to-green-500  hover:opacity-85  transition-all duration-300 cursor-pointer mt-3"
+        >
+          Giriş Yap
+        </button>
+        <span
           onClick={() => setLogInMode(false)}
           className="flex justify-center mt-2 items-center  gap-x-2 font-rubik hover:text-zinc-500 hover:underline  text-zinc-700 underline cursor-pointer text-sm"
         >
           Henüz kayıt olmadın mı ?
-        </button>
+        </span>
       </form>
     </Drawer>
   );

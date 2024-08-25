@@ -5,5 +5,9 @@ export const scheme = z.object({
   phone: z.number(),
   email: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
   password: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
-  gender: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
+});
+
+export const loginscheme = z.object({
+  email: z.string().email("Geçerli bir email adresi giriniz!"),
+  password: z.string().min(6, "Parola en az 6 karakter olmalıdır!"),
 });

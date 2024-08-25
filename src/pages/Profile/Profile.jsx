@@ -4,16 +4,11 @@ import { BsTicket } from "react-icons/bs";
 import { CiEdit } from "react-icons/ci";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
-
-const userData = {
-  name: "Berkan Özmen",
-  gender: "Erkek",
-  phone: "5555555555",
-  email: "example@gmail.com",
-};
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const location = useLocation();
+  const { user } = useSelector((store) => store.user);
 
   const renderInputField = (label, value) => (
     <div className="flex flex-col gap-y-2">
@@ -42,10 +37,9 @@ const Profile = () => {
               Bilgilerini Görüntüle / Değiştir
             </h1>
             <form className="grid grid-cols-4 gap-5">
-              {renderInputField("Ad Soyad", userData.name)}
-              {renderInputField("Cinsiyet", userData.gender)}
-              {renderInputField("Cep Telefonu", userData.phone)}
-              {renderInputField("E-Posta", userData.email)}
+              {renderInputField("Ad Soyad", user.displayName)}
+              {renderInputField("Cep Telefonu", user.phoneNumber)}
+              {renderInputField("E-Posta", user.email)}
             </form>
             <div className="mt-5">
               <button className="px-4 py-2 rounded-md border">Kaydet</button>

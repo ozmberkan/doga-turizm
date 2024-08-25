@@ -4,11 +4,26 @@ import MenuComp from "../UI/MenuComp";
 import { BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
+import { auth } from "~/firebase/firebaseConfig";
+import { toast } from "react-toastify";
 
 const NavigationBar = () => {
+  const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false);
-
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const exit = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("user");
+      window.location.reload();
+      toast.success("Çıkış Yapıldı");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -21,12 +36,22 @@ const NavigationBar = () => {
             />
           </Link>
           <div className="flex justify-center items-center gap-x-4">
-            <button
-              onClick={() => setOpen(!open)}
-              className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
-            >
-              <BiUser />
-            </button>
+            {user ? (
+              <button
+                onClick={exit}
+                className="px-4 py-2 bg-white rounded-md text-black border"
+              >
+                Çıkış Yap
+              </button>
+            ) : (
+              <button
+                onClick={() => setOpen(!open)}
+                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+              >
+                <BiUser />
+              </button>
+            )}
+
             <div className="relative">
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
