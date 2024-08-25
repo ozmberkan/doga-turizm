@@ -31,6 +31,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import AllServices from "./pages/Services/AllServices";
+import Payment from "./pages/Payment/Payment";
+import LastTickets from "./pages/Profile/LastTickets";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -52,9 +54,19 @@ const App = () => {
         {
           path: "/profile",
           element: user ? <Profile /> : <Navigate to="/" />,
-          children: [{ path: "mytickets", element: <MyTickets /> }],
+          children: [
+            { path: "mytickets", element: <MyTickets /> },
+            { path: "lasttickets", element: <LastTickets /> },
+          ],
         },
-        { path: "/tickets", element: <Tickets /> },
+        {
+          path: "/payment",
+          element: user ? <Payment /> : <Navigate to="/" />,
+        },
+        {
+          path: "/tickets",
+          element: <Tickets />,
+        },
         { path: "/about", element: <About /> },
         { path: "/carier", element: <Carier /> },
         { path: "/contact", element: <Contact /> },

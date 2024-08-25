@@ -8,10 +8,10 @@ import { carouselImg } from "../../data/data";
 const Home = () => {
   return (
     <div>
-      <Hero carouselImg={carouselImg}  />
+      <Hero carouselImg={carouselImg} />
       <Campaign />
       <Announcement />
-      <Footer />
+      <Footer footerWidth={"w-2/3"} />
     </div>
   );
 };

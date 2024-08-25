@@ -17,9 +17,11 @@ const NavigationBar = () => {
   const exit = async () => {
     try {
       await signOut(auth);
-      localStorage.removeItem("user");
-      window.location.reload();
-      toast.success("Çıkış Yapıldı");
+      toast.success("Çıkış Yapılıyor...");
+      setTimeout(() => {
+        localStorage.removeItem("user");
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.log(error);
     }

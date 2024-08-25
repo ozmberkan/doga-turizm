@@ -41,12 +41,13 @@ const Register = ({ open, toggleDrawer, setLogInMode }) => {
         phoneNumber: data.phone,
       };
 
-      dispatch(setUser({ ...userData, role: 0 }));
-
       toast.success("Başarıyla Kayıt Olundu!");
+      setTimeout(() => {
+        dispatch(setUser({ ...userData, role: 0 }));
+      }, 1000);
       reset();
     } catch (error) {
-      console.log(error);
+      toast.error("Zaten böyle bir kullanıcı mevcut!");
     }
   };
 

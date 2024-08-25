@@ -19,7 +19,6 @@ import { toast } from "react-toastify";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const provider = new GoogleAuthProvider();
-  const providerApple = new OAuthProvider("apple.com");
   const dispatch = useDispatch();
   const {
     register,
@@ -48,12 +47,17 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       if (user.uid === "pw7MMy1Q3NQtuBf9ywPQ6yBy9r43") {
         userData.role = 1;
       }
+
       toast.success("Giriş Başarılı");
-      toggleDrawer(false);
-      dispatch(setUser(userData));
-      reset();
+      setTimeout(() => {
+        dispatch(setUser(userData));
+        toggleDrawer(false);
+        reset();
+      }, 1000);
     } catch (error) {
-      console.log(error);
+      toast.error(
+        "Lütfen bilgileri kontrol ediniz. Sistemde belirtilen kullanıcı bulunamadı!"
+      );
     }
   };
 
@@ -69,12 +73,16 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         phoneNumber: user.phoneNumber,
       };
 
-      toast.success("Google ile giriş başarılı");
-      dispatch(setUser(userData));
+      toast.success("Google ile giriş başarılı, yönlendiriliyorsunuz...");
+      setTimeout(() => {
+        dispatch(setUser(userData));
+        toggleDrawer(false);
+      }, 1000);
       reset();
-      toggleDrawer(false);
     } catch (error) {
-      console.log(error);
+      toast.error(
+        "Google ile giriş yapılırken hata oluştu. Lütfen daha sonra tekrar deneyiniz!"
+      );
     }
   };
 

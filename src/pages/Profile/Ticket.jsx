@@ -9,7 +9,7 @@ import {
 import { FaTurkishLiraSign } from "react-icons/fa6";
 import { IoHelp } from "react-icons/io5";
 
-const Ticket = ({ status }) => {
+const Ticket = () => {
   return (
     <div className="w-full border rounded-xl text-sm sm:text-base flex flex-col">
       <div className="w-full h-10 rounded-t-xl bg-[#4EC646] flex justify-between items-center px-4 text-white">
@@ -47,7 +47,7 @@ const Ticket = ({ status }) => {
             </span>
           </div>
         </div>
-        <div className="w-full bg-[#f9f9f9] p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
+        <div className="w-full bg-[#E6F7E6]/25 p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2">
             <button className="flex items-center bg-red-100 text-red-500 px-4 py-2 rounded-md gap-x-2">
               <MdCancel /> İptal Et
@@ -56,15 +56,6 @@ const Ticket = ({ status }) => {
               <IoHelp /> Yardım
             </button>
           </div>
-          <button
-            className={` ${
-              status === "Aktif"
-                ? "bg-green-100 text-green-500"
-                : "bg-red-100 text-red-500"
-            } px-4 py-2 rounded-md w-full`}
-          >
-            {status}
-          </button>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { PiHamburger, PiLightning } from "react-icons/pi";
 import moment from "moment";
 import "moment/locale/tr";
 import { BsTicket } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const TicketDetail = ({ ticket }) => {
   const [selectedTicket, setSelectedTicket] = useState([]);
@@ -20,8 +21,6 @@ const TicketDetail = ({ ticket }) => {
 
   const editedDate = parseDate(date);
   const formattedDate = editedDate.format("DD.MM.YYYY HH:mm");
-
-  console.log(selectedTicket);
 
   return (
     <div className="w-full rounded-xl p-5 flex gap-x-5 bg-[#E6F7E6] sm:flex-row flex-col gap-y-5">
@@ -87,19 +86,18 @@ const TicketDetail = ({ ticket }) => {
             </button>
           ))}
         </div>
-        <div className="w-full p-4">
-          <button
-            onClick={() =>
-              setSelectedTicket([
-                ...selectedTicket,
-                { selectedSeats: selectedSeat, ...ticket },
-              ])
-            }
-            className="px-4 py-2 rounded-md text-white bg-[#4FC647] w-full"
-          >
-            Bileti Seç
-          </button>
-        </div>
+        <Link
+          className="p-4 px-4 py-2 rounded-b-xl text-white bg-[#4FC647] w-full"
+          to="/payment"
+          onClick={() =>
+            setSelectedTicket([
+              ...selectedTicket,
+              { selectedSeats: selectedSeat, ...ticket },
+            ])
+          }
+        >
+          Bileti Seç
+        </Link>
       </div>
     </div>
   );
