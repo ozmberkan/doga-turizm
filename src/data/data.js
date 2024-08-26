@@ -83,10 +83,12 @@ export const tableTitles = [
   { id: 3, title: "KALKIŞ", key: "departure", sortable: true },
   { id: 4, title: "VARIŞ", key: "arrival", sortable: true },
   { id: 5, title: "TARİH", key: "date", sortable: true },
-  { id: 6, title: "WIFI", key: "wifi", sortable: true },
-  { id: 7, title: "ELEKTRİK", key: "electric", sortable: true },
-  { id: 8, title: "İKRAM", key: "food", sortable: true },
-  { id: 9, title: "TV", key: "tv", sortable: true },
+  { id: 6, title: "FİYAT", key: "price", sortable: true },
+  { id: 7, title: "WIFI", key: "wifi", sortable: true },
+  { id: 8, title: "ELEKTRİK", key: "electric", sortable: true },
+  { id: 9, title: "İKRAM", key: "food", sortable: true },
+  { id: 10, title: "TV", key: "tv", sortable: true },
+  { id: 11, title: "AKSİYON", key: "action", sortable: false },
 ];
 
 export const InputField = [
