@@ -1,5 +1,6 @@
 import { ConfigProvider, Steps } from "antd";
 import React, { useState } from "react";
+import { MdPayment, MdPayments } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -62,8 +63,8 @@ const Payment = () => {
           ]}
         />
       </ConfigProvider>
-      <div className="flex w-full mt-5 gap-x-5">
-        <div className="w-1/3  p-5 border-2 flex flex-col gap-y-5 rounded-md border-[#4FC647]">
+      <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
+        <div className="sm:w-1/3 w-full  p-5 border-2 flex flex-col gap-y-5 rounded-md border-[#4FC647]">
           <h1 className="text-3xl font-semibold text-[#4FC647]">
             Seçilen Bilet / Biletler
           </h1>
@@ -127,9 +128,9 @@ const Payment = () => {
             />
             <Link
               onClick={paymentDone}
-              className="w-full col-start-1 col-end-3 p-4 rounded-md border bg-[#4FC647] hover:bg-[#4fc615] text-white focus:ring-[#4FC647]"
+              className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border bg-[#4FC647] hover:bg-[#4fc615] text-white focus:ring-[#4FC647]"
             >
-              Ödemeyi Gerçekleştir
+              <MdPayment size={24} /> Ödemeyi Gerçekleştir
             </Link>
           </form>
         </div>

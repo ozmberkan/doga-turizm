@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BiLock, BiUser } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
@@ -37,11 +37,13 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         data.password
       );
       const user = userCredential.user;
+
       const userData = {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
         phoneNumber: user.phoneNumber,
+        emailVerified: user.emailVerified,
       };
 
       if (user.uid === "pw7MMy1Q3NQtuBf9ywPQ6yBy9r43") {
@@ -54,6 +56,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         toggleDrawer(false);
         reset();
       }, 1000);
+      console.log(userData);
     } catch (error) {
       toast.error(
         "Lütfen bilgileri kontrol ediniz. Sistemde belirtilen kullanıcı bulunamadı!"

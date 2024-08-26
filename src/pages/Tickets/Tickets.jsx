@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ConfigProvider, Steps } from "antd";
 import { db } from "~/firebase/firebaseConfig";
 import TicketDetail from "./TicketDetail";
-import { collection, doc, getDoc } from "firebase/firestore";
-import { useDispatch } from "react-redux";
-import { setTickets } from "~/redux/slices/ticketsSlice";
+import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { useSelector } from "react-redux";
+import moment from "moment";
 
 const Tickets = () => {
-  const dispatch = useDispatch();
+  const filterCriteria = useSelector((store) => store.filter.filterCriteria);
 
   const ref = collection(db, "tickets");
   const [snapshot] = useCollection(ref);
@@ -16,6 +16,18 @@ const Tickets = () => {
     id: doc.id,
     ...doc.data(),
   }));
+
+  const filteredTickets = data?.filter((ticket) => {
+    const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
+      "DD.MM.YYYY"
+    );
+
+    return (
+      ticket.departure === filterCriteria.departure &&
+      ticket.arrival === filterCriteria.arrival &&
+      formattedTicketDate === filterCriteria.date
+    );
+  });
 
   return (
     <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
@@ -44,7 +56,7 @@ const Tickets = () => {
         />
       </ConfigProvider>
       <div className="flex justify-center items-center p-3 w-full flex-col gap-y-12">
-        {data?.map((ticket) => (
+        {filteredTickets?.map((ticket) => (
           <TicketDetail key={ticket.id} ticket={ticket} />
         ))}
       </div>

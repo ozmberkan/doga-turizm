@@ -68,18 +68,19 @@ export const campaigns = [
 ];
 
 export const cities = [
-  { id: 1, title: "İstanbul", value: "İstanbul" },
-  { id: 2, title: "Bursa", value: "Bursa" },
-  { id: 3, title: "Balıkesir", value: "Balıkesir" },
-  { id: 4, title: "Edirne", value: "Edirne" },
-  { id: 5, title: "Çanakkale", value: "Çanakkale" },
-  { id: 6, title: "Tekirdağ", value: "Tekirdağ" },
+  { id: 1, title: "Seçiniz", value: "" },
+  { id: 2, title: "İstanbul", value: "Istanbul" },
+  { id: 3, title: "Bursa", value: "Bursa" },
+  { id: 4, title: "Balıkesir", value: "Balikesir" },
+  { id: 5, title: "Edirne", value: "Edirne" },
+  { id: 6, title: "Çanakkale", value: "Çanakkale" },
+  { id: 7, title: "Tekirdağ", value: "Tekirdağ" },
 ];
 
 export const InputField = [
   { label: "Nereden", type: "text", name: "departure" },
   { label: "Nereye", type: "text", name: "arrival" },
-  { label: "Tarih", type: "date", name: "arrival" },
+  { label: "Tarih", type: "date", name: "date" },
 ];
 
 export const footerAbout = [
