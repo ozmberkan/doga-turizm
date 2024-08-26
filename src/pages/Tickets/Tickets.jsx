@@ -6,9 +6,11 @@ import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const Tickets = () => {
   const filterCriteria = useSelector((store) => store.filter.filterCriteria);
+  const navigate = useNavigate();
 
   const ref = collection(db, "tickets");
   const [snapshot] = useCollection(ref);
@@ -56,9 +58,16 @@ const Tickets = () => {
         />
       </ConfigProvider>
       <div className="flex justify-center items-center p-3 w-full flex-col gap-y-12">
-        {filteredTickets?.map((ticket) => (
-          <TicketDetail key={ticket.id} ticket={ticket} />
-        ))}
+        {filteredTickets?.length > 0 ? (
+          filteredTickets?.map((ticket) => (
+            <TicketDetail key={ticket.id} ticket={ticket} />
+          ))
+        ) : (
+          <div className="w-full bg-red-200 text-red-500 p-4 rounded-md">
+            Aranan değerlerde bilet bulunamadı!, anasayfaya yeniden
+            yönlendiriliyorsunuz...
+          </div>
+        )}
       </div>
     </div>
   );

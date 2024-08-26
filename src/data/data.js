@@ -77,6 +77,18 @@ export const cities = [
   { id: 7, title: "Tekirdağ", value: "Tekirdağ" },
 ];
 
+export const tableTitles = [
+  { id: 1, title: "UID", key: "uid", sortable: false },
+  { id: 2, title: "PNR", key: "pnr", sortable: true },
+  { id: 3, title: "KALKIŞ", key: "departure", sortable: true },
+  { id: 4, title: "VARIŞ", key: "arrival", sortable: true },
+  { id: 5, title: "TARİH", key: "date", sortable: true },
+  { id: 6, title: "WIFI", key: "wifi", sortable: true },
+  { id: 7, title: "ELEKTRİK", key: "electric", sortable: true },
+  { id: 8, title: "İKRAM", key: "food", sortable: true },
+  { id: 9, title: "TV", key: "tv", sortable: true },
+];
+
 export const InputField = [
   { label: "Nereden", type: "text", name: "departure" },
   { label: "Nereye", type: "text", name: "arrival" },

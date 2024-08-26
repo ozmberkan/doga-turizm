@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
 const CampaignBox = ({ campaign }) => {
-  const { id, cityName, price, prevPrice, discount, image } = campaign;
+  const { id, cityName, newPrice, oldPrice, image } = campaign;
+
+  const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   return (
     <div className="flex justify-center items-center border bg-white rounded-md flex-col p-4 gap-y-3 shadow-md">
@@ -18,9 +20,9 @@ const CampaignBox = ({ campaign }) => {
         <div className="flex justify-start items-start gap-y-1 flex-col">
           <h1 className="text-2xl">{cityName}</h1>
           <div className="flex items-center justify-center gap-x-1">
-            <span className="text-zinc-600">{price}₺</span>
+            <span className="text-zinc-600">{newPrice}₺</span>
             <span className="line-through text-xs text-zinc-600">
-              {prevPrice}₺
+              {oldPrice}₺
             </span>
             <span className="p-1 bg-green-200 text-green-600 rounded-full text-xs">
               {discount}

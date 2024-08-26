@@ -1,12 +1,14 @@
 import React from "react";
 import { BiSolidOffer } from "react-icons/bi";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { campaigns } from "~/data/data";
 
 const CampaignDetail = () => {
   const { id } = useParams();
+  const { campaigns } = useSelector((store) => store.campaigns);
+  console.log(campaigns);
 
-  const campaign = campaigns.find((campaign) => campaign.id === Number(id));
+  const campaign = campaigns.find((campaign) => campaign.id === id);
 
   if (!campaign) {
     return (
@@ -24,7 +26,7 @@ const CampaignDetail = () => {
         <BiSolidOffer className="sm:text-3xl text-lg" />
         Sınırlı süredeki kampanya için acele edin!
       </div>
-      <div className="bg-white h-full shadow-lg  p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
+      <div className="bg-white h-full shadow-lg p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
         <div className="w-full">
           <img
             src={campaign.image}
@@ -38,14 +40,13 @@ const CampaignDetail = () => {
             <p>• Kampanya 31.12.2024'e kadar geçerlidir.</p>
             <p>• Kampanya'dan yararlanabilmek için kayıt olmalısınız</p>
             <p>• Kampanya'dan yararlanabilmek için 18 yaşını doldurmalısınız</p>
-
             <p>
-              • Kampanya'ya dahil edilen şehirler:
-              Bursa,Balıkesir,Edirne,Çanakkale,Tekirdağ
+              • Kampanya'ya dahil edilen şehirler: Bursa, Balıkesir, Edirne,
+              Çanakkale, Tekirdağ
             </p>
             <p>
-              • <span className="line-through">599 TL</span> 'den 499TL 'ye{" "}
-              <span className="text-red-500">%33</span> indirim fırsatı
+              • <span className="line-through">599 TL</span> 'den 499 TL'ye
+              <span className="text-red-500">%33 </span> indirim fırsatı
             </p>
           </div>
         </div>

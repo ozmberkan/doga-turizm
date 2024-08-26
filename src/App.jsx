@@ -13,8 +13,6 @@ import Error from "./pages/Error/Error";
 import Admin from "./pages/Admin/Admin";
 import Profile from "./pages/Profile/Profile";
 import Tickets from "./pages/Tickets/Tickets";
-import AdminCampaign from "./pages/Admin/AdminCampaign";
-import AdminTickets from "./pages/Admin/AdminTickets";
 import MyTickets from "./pages/Profile/MyTickets";
 import About from "./pages/Footer/ExploreWe/About";
 import Carier from "./pages/Footer/ExploreWe/Carier";
@@ -88,10 +86,6 @@ const App = () => {
     {
       path: "/admin",
       element: user?.role === 1 ? <Admin /> : <Navigate to="/" />,
-      children: [
-        { path: "campaign", element: <AdminCampaign /> },
-        { path: "tickets", element: <AdminTickets /> },
-      ],
     },
     { path: "*", element: <Error /> },
   ]);
