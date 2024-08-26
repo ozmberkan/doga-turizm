@@ -8,6 +8,7 @@ import { FaSort } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { orderBy } from "lodash";
 import EditModal from "~/components/UI/Modals/EditModal";
+import NewTicketModal from "~/components/UI/Modals/NewTicketModal";
 
 const TicketsTab = () => {
   const [sorting, setSorting] = useState({
@@ -16,6 +17,7 @@ const TicketsTab = () => {
   });
   const [search, setSearch] = useState("");
   const [isModal, setIsModal] = useState(false);
+  const [isAddModal, setIsAddModal] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   const ref = collection(db, "tickets");
@@ -52,13 +54,19 @@ const TicketsTab = () => {
   return (
     <>
       <div>
-        <div className="w-full mb-5 flex justify-end items-center">
+        <div className="w-full mb-5 flex justify-end items-center gap-x-2">
           <input
             type="text"
             className="px-4 py-2 rounded-md bg-white border outline-none"
             placeholder="Bilet ara... (PNR-VARIŞ-KALKIŞ)"
             onChange={(e) => setSearch(e.target.value)}
           />
+          <button
+            onClick={() => setIsAddModal(true)}
+            className="px-4 py-2 rounded-md bg-white border"
+          >
+            Ekle
+          </button>
         </div>
         <table className="border w-full">
           <thead className="bg-zinc-200">
@@ -126,6 +134,7 @@ const TicketsTab = () => {
       {isModal && (
         <EditModal setIsModal={setIsModal} selectedTicket={selectedTicket} />
       )}
+      {isAddModal && <NewTicketModal setIsAddModal={setIsAddModal} />}
     </>
   );
 };
