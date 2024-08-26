@@ -91,6 +91,15 @@ export const tableTitles = [
   { id: 11, title: "AKSİYON", key: "action", sortable: false },
 ];
 
+export const campaignTableTitles = [
+  { id: 1, title: "ID", key: "id", sortable: false },
+  { id: 2, title: "Şehir Adı", key: "cityName", sortable: true },
+  { id: 3, title: "Yeni Fiyat", key: "newPrice", sortable: true },
+  { id: 4, title: "Eski Fiyat", key: "oldPrice", sortable: true },
+  { id: 5, title: "Görsel", key: "image", sortable: true },
+  { id: 6, title: "AKSİYON", key: "action", sortable: false },
+]
+
 export const InputField = [
   { label: "Nereden", type: "text", name: "departure" },
   { label: "Nereye", type: "text", name: "arrival" },

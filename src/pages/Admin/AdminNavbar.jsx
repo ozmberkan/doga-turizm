@@ -1,8 +1,9 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { BiLogOut } from "react-icons/bi";
+import { BiHome, BiLogOut } from "react-icons/bi";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "~/firebase/firebaseConfig";
 
@@ -28,6 +29,12 @@ const AdminNavbar = () => {
       </h1>
       <div className="flex items-center gap-x-5">
         <span className="text-white">Hoş geldin, {user.email}</span>
+        <Link
+          to="/"
+          className="px-4 py-2 rounded-md hover:bg-[#f9f9f9] flex justify-center items-center gap-x-2 text-black bg-white"
+        >
+          <BiHome /> Anasayfa
+        </Link>
         <button
           onClick={exit}
           className="px-4 py-2 rounded-md hover:bg-[#f9f9f9] flex justify-center items-center gap-x-2 text-black bg-white"
