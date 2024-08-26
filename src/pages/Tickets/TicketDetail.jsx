@@ -11,8 +11,18 @@ import { Link } from "react-router-dom";
 const TicketDetail = ({ ticket }) => {
   const [selectedTicket, setSelectedTicket] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState([]);
-  const { pnr, departure, arrival, date, tv, food, wifi, electric, seats } =
-    ticket;
+  const {
+    pnr,
+    departure,
+    arrival,
+    price,
+    date,
+    tv,
+    food,
+    wifi,
+    electric,
+    seats,
+  } = ticket;
 
   const parseDate = (dateStr) => {
     const formattedStr = dateStr.replace(/ at /, " ").replace(/ UTC.*$/, "");
@@ -49,7 +59,7 @@ const TicketDetail = ({ ticket }) => {
           </div>
           <div className="flex items-center gap-x-1">
             <FaTurkishLiraSign size={14} />
-            <span className="font-semibold">Fiyat:</span> 150 TL
+            <span className="font-semibold">Fiyat:</span> {price} TL
           </div>
           <div className="flex items-center gap-x-3">
             {wifi && <FaWifi size={14} />}
