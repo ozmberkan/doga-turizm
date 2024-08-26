@@ -64,8 +64,7 @@ const Tickets = () => {
           ))
         ) : (
           <div className="w-full bg-red-200 text-red-500 p-4 rounded-md">
-            Aranan değerlerde bilet bulunamadı!, anasayfaya yeniden
-            yönlendiriliyorsunuz...
+            Aranan değerlerde bilet bulunamadı!
           </div>
         )}
       </div>

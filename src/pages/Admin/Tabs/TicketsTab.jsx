@@ -49,7 +49,7 @@ const TicketsTab = () => {
         <input
           type="text"
           className="px-4 py-2 rounded-md bg-white border outline-none"
-          placeholder="Bilet ara..."
+          placeholder="Bilet ara... (PNR-VARIŞ-KALKIŞ)"
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
