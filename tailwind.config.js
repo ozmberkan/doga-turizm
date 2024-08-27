@@ -6,6 +6,8 @@ export default {
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],
     },
+ 
+   
   },
   plugins: [],
 };
