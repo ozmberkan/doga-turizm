@@ -1,29 +1,67 @@
 import React from "react";
 import FooterDetailBox from "~/components/Footer/FooterDetailBox";
 import logoBlack from "~/assets/logos/LogoBlack.png";
+import { Link } from "react-router-dom";
 
 const CookiePolicy = () => {
   return (
     <FooterDetailBox>
-      <div className="flex items-center justify-center mb-12  ">
-        <img src={logoBlack} alt="" className="w-72" />
+      <div className="flex items-center justify-start mb-6">
+        <img src={logoBlack} alt="Doğa Turizm Logo" className="w-44" />
       </div>
       <hr className="w-full my-4" />
-      <div className="flex flex-col gap-y-5 items-center">
+      <div className="flex flex-col gap-y-5 items-start">
         <h1 className="text-4xl">Çerez Politikası</h1>
-        <p className="text-center p-5">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-          facere, deleniti corporis voluptas eius commodi deserunt quibusdam
-          molestias ex voluptatem esse laboriosam reprehenderit iusto illo,
-          distinctio maxime quo, vel quae quam temporibus. Mollitia nemo culpa
-          nesciunt ullam eius, cumque ipsum asperiores? Possimus quam, eaque
-          asperiores reprehenderit ducimus quod excepturi, recusandae fuga, id
-          deleniti odio. Reprehenderit officiis obcaecati velit consectetur, ad
-          quis doloribus in aliquid, sit provident sed id quia amet reiciendis
-          itaque praesentium exercitationem iusto, voluptate eligendi soluta
-          iste. Esse iure in nostrum odit laudantium, provident culpa quae est
-          quia ut enim voluptas exercitationem ex officiis vitae harum sunt?
-          Incidunt!
+        <p className="text-left">
+          <strong>Çerezler Nedir?</strong> Çerezler, web tarayıcınızda saklanan
+          küçük veri dosyalarıdır. Bu dosyalar, web sitelerinin sizinle ilgili
+          bilgileri hatırlamasına yardımcı olur ve tarayıcı deneyiminizi
+          kişiselleştirir.
+        </p>
+        <p className="text-left ">
+          <strong>Çerezleri Nasıl Kullanıyoruz?</strong> Web sitemiz, kullanıcı
+          deneyimini geliştirmek ve analiz yapmak amacıyla çerezler
+          kullanmaktadır. Çerezler sayesinde, ziyaretçi davranışlarını analiz
+          edebilir ve hizmetlerimizi iyileştirebiliriz. Çerezler ayrıca,
+          kullanıcıların giriş bilgilerini hatırlamaya ve tercihlerini
+          kaydetmeye yardımcı olur.
+        </p>
+        <p className="text-left">
+          <strong>Çerez Türleri</strong>
+          <ul className="list-disc list-inside mt-2">
+            <li>
+              <strong>Zorunlu Çerezler:</strong> Web sitesinin düzgün çalışması
+              için gerekli çerezlerdir. Bu çerezler genellikle tarayıcı
+              kapatıldığında silinir.
+            </li>
+            <li>
+              <strong>Performans Çerezleri:</strong> Web sitesinin performansını
+              analiz etmek için kullanılır. Bu çerezler, kullanıcıların web
+              sitesindeki davranışlarını izler.
+            </li>
+            <li>
+              <strong>Fonksiyonel Çerezler:</strong> Kullanıcı tercihlerini
+              hatırlamak ve daha kişiselleştirilmiş bir deneyim sunmak için
+              kullanılır.
+            </li>
+            <li>
+              <strong>Reklam Çerezleri:</strong> İlgi alanlarına dayalı
+              reklamlar sunmak ve reklam performansını izlemek için kullanılır.
+            </li>
+          </ul>
+        </p>
+        <p className="text-left ">
+          <strong>Çerez Yönetimi</strong> Çerezleri tarayıcı ayarlarınızdan
+          yönetebilir veya devre dışı bırakabilirsiniz. Ancak, çerezleri devre
+          dışı bırakmak bazı web sitesi işlevlerini etkileyebilir.
+        </p>
+        <p className="text-left ">
+          <strong>Gizlilik Politikamız</strong> Çerezler ve diğer gizlilik
+          konuları hakkında daha fazla bilgi için lütfen{" "}
+          <Link to="/privacy" className="text-green-500 underline">
+            Gizlilik Politikamızı
+          </Link>{" "}
+          inceleyin.
         </p>
       </div>
     </FooterDetailBox>

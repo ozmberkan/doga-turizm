@@ -8,11 +8,13 @@ const CampaignBox = ({ campaign }) => {
   return (
     <div className="flex justify-center items-center border bg-white rounded-md flex-col p-4 gap-y-3 shadow-md">
       {image ? (
-        <img
-          src={image}
-          className="rounded h-[200px] w-full object-cover cursor-pointer"
-          alt={cityName}
-        />
+        <Link className="h-[200px] w-full" to={`/campaign/${id}`}>
+          <img
+            src={image}
+            className="rounded h-[200px] w-full object-cover cursor-pointer"
+            alt={cityName}
+          />
+        </Link>
       ) : (
         <div className="h-[200px] w-full bg-gray-200 rounded"></div>
       )}

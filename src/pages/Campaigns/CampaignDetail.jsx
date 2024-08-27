@@ -9,6 +9,8 @@ const CampaignDetail = () => {
   console.log(campaigns);
 
   const campaign = campaigns.find((campaign) => campaign.id === id);
+  const { image, cityName, newPrice, oldPrice } = campaign;
+  const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   if (!campaign) {
     return (
@@ -29,24 +31,37 @@ const CampaignDetail = () => {
       <div className="bg-white h-full shadow-lg p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
         <div className="w-full">
           <img
-            src={campaign.image}
-            alt={campaign.cityName}
+            src={image}
+            alt={cityName}
             className="w-full h-[400px] object-cover rounded-md"
           />
         </div>
         <div className="w-full flex flex-col justify-start items-start p-5 sm:p-12 gap-y-2">
-          <h1 className="text-4xl font-semibold">{campaign.cityName}</h1>
+          <h1 className="text-4xl font-semibold">{cityName}</h1>
           <div className="text-zinc-500">
             <p>• Kampanya 31.12.2024'e kadar geçerlidir.</p>
-            <p>• Kampanya'dan yararlanabilmek için kayıt olmalısınız</p>
-            <p>• Kampanya'dan yararlanabilmek için 18 yaşını doldurmalısınız</p>
+            <p>• Kampanya'dan yararlanabilmek için kayıt olmalısınız.</p>
             <p>
-              • Kampanya'ya dahil edilen şehirler: Bursa, Balıkesir, Edirne,
-              Çanakkale, Tekirdağ
+              • Kampanya'dan yararlanabilmek için e-posta doğrulaması
+              yapmalısınız.
             </p>
             <p>
-              • <span className="line-through">599 TL</span> 'den 499 TL'ye
-              <span className="text-red-500">%33 </span> indirim fırsatı
+              • Kampanya'dan yararlanabilmek için 18 yaşını doldurmalısınız.
+            </p>
+            <p>
+              • Kampanya'ya dahil edilen şehirler:
+              <b>Bursa, Balıkesir, Edirne, Çanakkale, Tekirdağ.</b>
+            </p>
+            <p>
+              • Hangi şehirde olursan ol {cityName} şehrine gitmek istersen bu
+              kampanyadan yararlanabilirsin!.
+            </p>
+
+            <p>
+              • <span className="line-through">{oldPrice} TL</span> 'den{" "}
+              {newPrice} TL'ye
+              <span className="text-green-500"> {discount}</span> indirim
+              fırsatı
             </p>
           </div>
         </div>

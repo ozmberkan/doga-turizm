@@ -143,3 +143,26 @@ export const registerForm = [
   {id:4, label:"Parola",name:"password",type:"password", icon: BiLock}
 
 ]
+
+export const questions = [
+  {
+    question: "Soru 1: Doğa Turizm'in sunduğu hizmetler nelerdir?",
+    answer: "Doğa Turizm, doğa turları, ekolojik geziler, ve çevre dostu ulaşım seçenekleri sunmaktadır. Ayrıca, grup gezileri ve özel turlar da organize etmekteyiz.",
+  },
+  {
+    question: "Soru 2: Rezervasyon işlemlerini nasıl yapabilirim?",
+    answer: "Rezervasyon işlemlerini web sitemiz üzerinden online olarak yapabilirsiniz. Ayrıca, telefonla veya e-posta yoluyla da rezervasyon yapabilirsiniz.",
+  },
+  {
+    question: "Soru 3: Kampanyalardan nasıl yararlanabilirim?",
+    answer: "Kampanyalardan yararlanmak için ilgili kampanya şartlarını yerine getirmeniz gerekmektedir. Detaylar ve geçerlilik tarihleri için web sitemizi ziyaret edebilirsiniz.",
+  },
+  {
+    question: "Soru 4: Tur fiyatlarına neler dahildir?",
+    answer: "Tur fiyatlarına genellikle ulaşım, rehberlik hizmetleri ve bazı yemekler dahildir. Detaylı bilgi için tur programlarımızı inceleyebilirsiniz.",
+  },
+  {
+    question: "Soru 5: İptal ve değişiklik politikalarınız nelerdir?",
+    answer: "Rezervasyon iptali veya değişikliği ile ilgili politikalarımızı web sitemizdeki 'İptal ve Değişiklik Politikası' bölümünden öğrenebilirsiniz.",
+  },
+];
