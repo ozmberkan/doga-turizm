@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 
-const NewTicketModal = ({ setIsAddModal }) => {
+const NewCampaignModal = ({ setIsAddModal }) => {
   const {
     register,
     handleSubmit,
@@ -15,18 +15,11 @@ const NewTicketModal = ({ setIsAddModal }) => {
   } = useForm();
 
   const addTicket = async (data) => {
-    const ref = collection(db, "tickets");
-
-    const selectedDate = moment(data.date)
-      .set({ hour: 20, minute: 0, second: 0 })
-      .utcOffset("+03:00")
-      .format("MMMM DD, YYYY at hh:mm:ss A [UTC+3]");
-
-    data.date = selectedDate;
+    const ref = collection(db, "campaigns");
 
     try {
       await addDoc(ref, data);
-      toast.success("Başarıyla veritabanına bilet eklendi!");
+      toast.success("Başarıyla veritabanına kampanya eklendi!");
       setIsAddModal(false);
     } catch (error) {
       console.log(error);
@@ -38,7 +31,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
             <h3 className="text-xl font-semibold text-black ">
-              Yeni Bilet Ekle
+              Yeni Kampanya Ekle
             </h3>
             <button
               onClick={() => setIsAddModal(false)}
@@ -49,17 +42,10 @@ const NewTicketModal = ({ setIsAddModal }) => {
           </div>
           <form onSubmit={handleSubmit(addTicket)}>
             <div className="grid gap-4">
-              <input
-                type="text"
-                {...register("pnr", { required: true })}
-                placeholder="PNR"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
               <select
                 type="text"
-                name="departure"
-                {...register("departure")}
-                placeholder="Kalkış"
+                {...register("cityName")}
+                placeholder="Varış"
                 className="px-4 py-2 rounded-md bg-white border outline-none"
               >
                 {cities.map((city) => (
@@ -68,50 +54,24 @@ const NewTicketModal = ({ setIsAddModal }) => {
                   </option>
                 ))}
               </select>
-              <select
-                type="text"
-                {...register("arrival")}
-                placeholder="Varış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              >
-                {cities.map((city) => (
-                  <option value={city.value}>{city.title}</option>
-                ))}
-              </select>
               <input
-                type="date"
-                {...register("date")}
-                placeholder="Tarih"
+                type="text"
+                {...register("newPrice")}
+                placeholder="Yeni Fiyat"
                 className="px-4 py-2 rounded-md bg-white border outline-none"
               />
               <input
                 type="text"
-                {...register("price")}
-                placeholder="Fiyat"
+                {...register("oldPrice")}
+                placeholder="Eski Fiyat"
                 className="px-4 py-2 rounded-md bg-white border outline-none"
               />
-              <div className="flex gap-x-2 items-center">
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("wifi")} />
-                  Wi-Fi
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input
-                    type="checkbox"
-                    name="wifi"
-                    {...register("electric")}
-                  />
-                  Elektrik
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("food")} />
-                  Yemek
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("tv")} />
-                  TV
-                </label>
-              </div>
+              <input
+                type="text"
+                {...register("image")}
+                placeholder="Görsel Link"
+                className="px-4 py-2 rounded-md bg-white border outline-none"
+              />
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button
@@ -139,4 +99,4 @@ const NewTicketModal = ({ setIsAddModal }) => {
   );
 };
 
-export default NewTicketModal;
+export default NewCampaignModal;

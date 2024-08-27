@@ -98,7 +98,7 @@ export const campaignTableTitles = [
   { id: 2, title: "Şehir Adı", key: "cityName", sortable: true },
   { id: 3, title: "Yeni Fiyat", key: "newPrice", sortable: true },
   { id: 4, title: "Eski Fiyat", key: "oldPrice", sortable: true },
-  { id: 5, title: "Görsel", key: "image", sortable: true },
+  { id: 5, title: "Görsel", key: "image", sortable: false },
   { id: 6, title: "AKSİYON", key: "action", sortable: false },
 ]
 

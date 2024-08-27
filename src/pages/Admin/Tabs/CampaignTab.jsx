@@ -7,9 +7,14 @@ import { toast } from "react-toastify";
 import CampaignEditModal from "~/components/UI/Modals/CampaignEditModal";
 import { campaignTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
+import { orderBy } from "lodash";
+import NewCampaignModal from "~/components/UI/Modals/NewCampaignModal";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);
+  const [sorting, setSorting] = useState({ key: "", order: "" });
+  const [search, setSearch] = useState("");
+  const [isAddModal, setIsAddModal] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const ref = collection(db, "campaigns");
   const [snapshot] = useCollection(ref);
@@ -32,9 +37,33 @@ const CampaignTab = () => {
     setSelectedCampaign(campaign);
   };
 
+  const filteredCampaigns = orderBy(
+    data?.filter((campaign) => {
+      return `${campaign.cityName}`
+        .toLowerCase()
+        .includes(search.toLowerCase());
+    }),
+    [sorting.key],
+    [sorting.order]
+  );
+
   return (
-    <>
+    <div>
       <div>
+        <div className="flex gap-x-2 items-center justify-start mb-2">
+          <input
+            type="text"
+            onChange={(e) => setSearch(e.target.value)}
+            className="rounded-md px-4 outline-none border"
+            placeholder="Ara..."
+          />
+          <button
+            onClick={() => setIsAddModal(true)}
+            className="px-4 rounded-md border bg-[#f9f9f9]"
+          >
+            Ekle
+          </button>
+        </div>
         <table className="border w-full">
           <thead className="bg-zinc-200">
             <tr className="grid grid-cols-6 place-items-center h-12">
@@ -66,7 +95,7 @@ const CampaignTab = () => {
           </thead>
           <tbody className="bg-zinc-100">
             <tr className="grid grid-cols-6 place-items-center p-4  gap-5">
-              {data?.map((campaign) => (
+              {filteredCampaigns?.map((campaign) => (
                 <React.Fragment key={campaign.id}>
                   <td className="w-full">{campaign.id}</td>
                   <td>{campaign.cityName}</td>
@@ -101,7 +130,8 @@ const CampaignTab = () => {
           selectedCampaign={selectedCampaign}
         />
       )}
-    </>
+      {isAddModal && <NewCampaignModal setIsAddModal={setIsAddModal} />}
+    </div>
   );
 };
 
