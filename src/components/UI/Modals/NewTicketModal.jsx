@@ -24,6 +24,13 @@ const NewTicketModal = ({ setIsAddModal }) => {
 
     data.date = selectedDate;
 
+    const seats = Array.from({ length: 15 }, (_, index) => ({
+      isAvailable: true,
+      number: index + 1,
+    }));
+
+    data.seats = seats;
+
     try {
       await addDoc(ref, data);
       toast.success("Başarıyla veritabanına bilet eklendi!");

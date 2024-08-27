@@ -64,7 +64,7 @@ const TicketDetail = ({ ticket }) => {
             <TbSteeringWheel size={40} />
           </span>
           <div className="w-full h-full grid grid-cols-5 place-items-center">
-            {seats.map((seat) => (
+            {seats?.map((seat) => (
               <span
                 key={seat.number}
                 onClick={() => handleSeatClick(seat)}
