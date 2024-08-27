@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import Register from "./Register";
-import LoginDrawer from "./LoginDrawer";
+import Register from "./Register/RegisterDrawer";
+import LoginDrawer from "./Login/LoginDrawer";
 import ForgotComp from "./ForgotComp";
 
 const DrawerComp = ({ open, setOpen }) => {

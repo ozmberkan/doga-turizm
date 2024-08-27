@@ -85,7 +85,7 @@ const App = () => {
     },
     {
       path: "/admin",
-      element: user?.role === 1 ? <Admin /> : <Navigate to="/" />,
+      element: user?.admin === true ? <Admin /> : <Navigate to="/" />,
     },
     { path: "*", element: <Error /> },
   ]);

@@ -4,7 +4,7 @@ import {
   FaWhatsapp,
   FaXTwitter,
 } from "react-icons/fa6";
-
+import { BiLock, BiUser } from "react-icons/bi";
 import appstore from "../assets/social-media/appstore.svg";
 import googleplay from "../assets/social-media/googleplay.svg";
 import huawei from "../assets/social-media/huawei.svg";
@@ -16,6 +16,8 @@ import road3 from "../assets/carousel/road3.jpg";
 import ankara from "../assets/campaings/ankara.jpg";
 import istanbul from "../assets/campaings/istanbul.jpg";
 import izmir from "../assets/campaings/izmir.jpg";
+import { HiOutlineIdentification } from "react-icons/hi2";
+import { IoCallOutline } from "react-icons/io5";
 
 export const socialMedia = [
   {
@@ -127,4 +129,17 @@ export const footerWith = [
 export const menus = [
   {label : "Hakkımızda", to : "/about"},
   {label : "Hizmetlerimiz", to : "/services"},
+]
+
+export const loginForm = [
+  {id:1, label:"E-Mail",name:"email",type:"text",icon : BiUser},
+  {id:2, label:"Parola",name:"password",type:"password", icon: BiLock}
+]
+
+export const registerForm = [
+  {id:1, label:"Ad Soyad",name:"displayName",type:"text",icon : HiOutlineIdentification},
+  {id:2, label:"Cep Telefonu",name:"phoneNumber",type:"number",icon : IoCallOutline},
+  {id:3, label:"E-Mail",name:"email",type:"text",icon : BiUser},
+  {id:4, label:"Parola",name:"password",type:"password", icon: BiLock}
+
 ]

@@ -1,24 +1,19 @@
-import React, { useEffect } from "react";
-import { BiLock, BiUser } from "react-icons/bi";
+import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
 import { loginscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  OAuthProvider,
-} from "firebase/auth";
-import { auth } from "~/firebase/firebaseConfig";
-import { setUser } from "~/redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { loginForm } from "~/data/data";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "~/firebase/firebaseConfig";
+import { setUser } from "~/redux/slices/userSlice";
+import { doc, getDoc } from "firebase/firestore";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
-  const provider = new GoogleAuthProvider();
   const dispatch = useDispatch();
   const {
     register,
@@ -36,56 +31,39 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         data.email,
         data.password
       );
+
       const user = userCredential.user;
 
+      const userDoc = await getDoc(doc(db, "users", user.uid));
       const userData = {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
-        phoneNumber: user.phoneNumber,
+        phoneNumber: userDoc.data()?.phoneNumber || null,
         emailVerified: user.emailVerified,
+        admin: userDoc.data()?.admin || false,
       };
 
-      if (user.uid === "pw7MMy1Q3NQtuBf9ywPQ6yBy9r43") {
-        userData.role = 1;
+      toast.success("Başarıyla Giriş Yaptınız!");
+
+      setTimeout(() => {
+        dispatch(setUser(userData));
+      }, 1000);
+    } catch (error) {
+      switch (error.code) {
+        case "auth/user-not-found":
+          toast.error("Kullanıcı bulunamadı.");
+          break;
+        case "auth/wrong-password":
+          toast.error("Yanlış parola.");
+          break;
+        case "auth/invalid-email":
+          toast.error("Geçersiz e-posta adresi.");
+          break;
+        default:
+          toast.error(error.message);
+          break;
       }
-
-      toast.success("Giriş Başarılı");
-      setTimeout(() => {
-        dispatch(setUser(userData));
-        toggleDrawer(false);
-        reset();
-      }, 1000);
-      console.log(userData);
-    } catch (error) {
-      toast.error(
-        "Lütfen bilgileri kontrol ediniz. Sistemde belirtilen kullanıcı bulunamadı!"
-      );
-    }
-  };
-
-  const googleLogIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-
-      const userData = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        phoneNumber: user.phoneNumber,
-      };
-
-      toast.success("Google ile giriş başarılı, yönlendiriliyorsunuz...");
-      setTimeout(() => {
-        dispatch(setUser(userData));
-        toggleDrawer(false);
-      }, 1000);
-      reset();
-    } catch (error) {
-      toast.error(
-        "Google ile giriş yapılırken hata oluştu. Lütfen daha sonra tekrar deneyiniz!"
-      );
     }
   };
 
@@ -103,28 +81,27 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         className="p-4 flex flex-col gap-y-2"
         onSubmit={handleSubmit(LogIn)}
       >
-        <label className="font-rubik text-xs text-zinc-700">E-Mail</label>
-        <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
-          <input
-            type="text"
-            className="outline-none px-4 rounded-md text-sm w-full peer"
-            {...register("email")}
-          />
-          <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
-            <BiUser size={18} />
-          </span>
-        </div>
-        <label className="font-rubik text-xs text-zinc-700">Parola</label>
-        <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
-          <input
-            type="password"
-            className="outline-none px-4 rounded-md text-sm w-full peer"
-            {...register("password")}
-          />
-          <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
-            <BiLock size={18} />
-          </span>
-        </div>
+        {loginForm.map((input) => (
+          <div key={input.id}>
+            <label className="font-rubik text-xs text-zinc-700">
+              {input.label}
+            </label>
+            <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
+              <input
+                type={input.type}
+                className="outline-none px-4 rounded-md text-sm w-full peer"
+                {...register(input.name)}
+              />
+              <span
+                className={`flex justify-center items-center p-2 ${
+                  errors.email && "text-red-500"
+                }`}
+              >
+                {input.icon && <input.icon size={18} />}
+              </span>
+            </div>
+          </div>
+        ))}
 
         <div
           onClick={() => setForgot(true)}
@@ -135,10 +112,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
           </span>
         </div>
         <div className="flex  gap-x-4">
-          <div
-            onClick={googleLogIn}
-            className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300"
-          >
+          <div className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300">
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
                 <FcGoogle size={18} />

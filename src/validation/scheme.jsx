@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const scheme = z.object({
-  fullName: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
-  phone: z.number(),
+  displayName: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
+  phoneNumber: z.string(),
   email: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
   password: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
 });
