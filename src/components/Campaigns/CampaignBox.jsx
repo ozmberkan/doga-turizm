@@ -26,7 +26,7 @@ const CampaignBox = ({ campaign }) => {
             <span className="line-through text-xs text-zinc-600">
               {oldPrice}₺
             </span>
-            <span className="p-1 bg-green-200 text-green-600 rounded-full text-xs">
+            <span className="px-3 py-1 bg-green-200 text-green-600 rounded-full text-xs">
               {discount}
             </span>
           </div>

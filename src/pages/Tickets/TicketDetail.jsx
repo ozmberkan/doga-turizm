@@ -5,18 +5,18 @@ import moment from "moment";
 import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
-import { ticketsSlice } from "~/redux/slices/ticketsSlice";
 import { useNavigate } from "react-router-dom";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
+  const { pnr, departure, arrival, price, date, seats } = ticket;
+
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatToSelect, setSeatToSelect] = useState(null);
   const [showGenderModal, setShowGenderModal] = useState(false);
   const [finalTicket, setFinalTicket] = useState([]);
-  const { pnr, departure, arrival, price, date, seats } = ticket;
 
   const parseDate = (dateStr) => {
     const formattedStr = dateStr.replace(/ at /, " ").replace(/ UTC.*$/, "");
@@ -39,7 +39,6 @@ const TicketDetail = ({ ticket }) => {
 
   const buyToTicket = () => {
     const { seats, ...restOfTicket } = ticket;
-
     const finalTicket = { ...restOfTicket, selectedSeats };
 
     setFinalTicket(finalTicket);

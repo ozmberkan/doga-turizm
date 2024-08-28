@@ -1,4 +1,8 @@
-import React from "react";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
@@ -8,11 +12,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { loginForm } from "~/data/data";
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { auth, db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, getDoc } from "firebase/firestore";
@@ -23,7 +22,6 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(loginscheme),
   });
@@ -41,6 +39,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       const user = userCredential.user;
 
       const userDoc = await getDoc(doc(db, "users", user.uid));
+
       const userData = {
         uid: user.uid,
         email: user.email,
@@ -66,11 +65,10 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const googleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      dispatch(setUser(user));
+      dispatch(setUser(result.user));
       toast.success("Google ile giriş başarılı.");
     } catch (error) {
-      toast.error("Google ile giriş yapılırken hata oluştu: " + error.message);
+      toast.error("Google ile giriş yapılırken hata oluştu");
     }
   };
 

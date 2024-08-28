@@ -1,7 +1,7 @@
 import { ConfigProvider, Steps } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
-import { MdPayment, MdPayments } from "react-icons/md";
+import { MdPayment } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,6 +17,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const { pnr, arrival, departure, date, price } = user.ownedTickets[0];
+  
   const formatCardNumber = (value) => {
     return value
       .replace(/\D/g, "")

@@ -18,6 +18,7 @@ const Tickets = () => {
   }));
 
   const filteredTickets = data?.filter((ticket) => {
+    
     const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
       "DD.MM.YYYY"
     );

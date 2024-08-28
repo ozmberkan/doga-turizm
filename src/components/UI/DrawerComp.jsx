@@ -7,6 +7,7 @@ import ForgotComp from "./ForgotComp";
 const DrawerComp = ({ open, setOpen }) => {
   const [logInMode, setLogInMode] = useState(true);
   const [forgot, setForgot] = useState(false);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };

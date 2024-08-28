@@ -1,6 +1,6 @@
 import React from "react";
 import { IoCall } from "react-icons/io5";
-import { socialMedia } from "../../../data/data";
+import { socialMedia } from "~/data/data";
 
 const SocialMedia = () => {
   return (
@@ -15,7 +15,7 @@ const SocialMedia = () => {
       ))}
       <div className="flex justify-center items-center gap-x-2 bg-[#E6F7E6]/35 border-green-100 text-white rounded-md border  w-full whitespace-nowrap px-4 ">
         <IoCall size={18} />
-        <span className="font-rubik sm:text-base text-sm">444 58 58</span>
+        <span className="font-rubik sm:text-base text-sm">444 ** **</span>
       </div>
     </div>
   );

@@ -2,11 +2,14 @@ import {
   Outlet,
   createBrowserRouter,
   RouterProvider,
-  useNavigate,
   Navigate,
 } from "react-router-dom";
+// CSS / COMPONENTS
 import FlexContainer from "./container/FlexContainer";
 import Navbar from "./components/Navbar/Navbar";
+import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -25,9 +28,6 @@ import ProtectPersonelData from "./pages/Footer/Help/ProtectPersonelData";
 import Hiring from "./pages/Footer/WithWe/Hiring";
 import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-import { useSelector } from "react-redux";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
 import LastTickets from "./pages/Profile/LastTickets";
@@ -58,13 +58,14 @@ const App = () => {
           ],
         },
         {
-          path: "/payment",
-          element: user ? <Payment /> : <Navigate to="/" />,
-        },
-        {
           path: "/tickets",
           element: <Tickets />,
         },
+        {
+          path: "/payment",
+          element: user ? <Payment /> : <Navigate to="/" />,
+        },
+        // FOOTER
         { path: "/about", element: <About /> },
         { path: "/carier", element: <Carier /> },
         { path: "/contact", element: <Contact /> },

@@ -8,15 +8,10 @@ import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 
 const NewTicketModal = ({ setIsAddModal }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const addTicket = async (data) => {
     const ref = collection(db, "tickets");
-
     const selectedDate = moment(data.date)
       .set({ hour: 20, minute: 0, second: 0 })
       .utcOffset("+03:00")

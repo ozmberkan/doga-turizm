@@ -16,6 +16,7 @@ const CampaignTab = () => {
   const [search, setSearch] = useState("");
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
+  
   const ref = collection(db, "campaigns");
   const [snapshot] = useCollection(ref);
   const data = snapshot?.docs.map((doc) => ({

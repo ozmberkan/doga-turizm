@@ -1,14 +1,12 @@
-import React from "react";
 import { IoTicketOutline } from "react-icons/io5";
 import { cities } from "../../data/data";
 import { InputField } from "../../data/data";
-import { DatePicker, Select } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { filterscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { setFilterCriteria } from "~/redux/slices/filterSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 
 const FilterForm = () => {
@@ -53,11 +51,11 @@ const FilterForm = () => {
                 errors[input.name] ? "border-red-500" : ""
               }`}
             >
-              {cities.map((city) => (
-                <option key={city.id} value={city.value}>
-                  {city.title}
-                </option>
-              ))}
+                {cities.map((city) => (
+                  <option key={city.id} value={city.value}>
+                    {city.title}
+                  </option>
+                ))}
             </select>
           ) : (
             <input

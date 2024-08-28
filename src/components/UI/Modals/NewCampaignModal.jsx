@@ -1,6 +1,4 @@
 import { addDoc, collection, doc } from "firebase/firestore";
-import moment from "moment";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
@@ -8,11 +6,7 @@ import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 
 const NewCampaignModal = ({ setIsAddModal }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const addTicket = async (data) => {
     const ref = collection(db, "campaigns");

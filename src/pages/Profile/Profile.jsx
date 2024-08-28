@@ -1,12 +1,8 @@
-import React from "react";
-import { BiSolidRightArrow, BiUser } from "react-icons/bi";
-import { BsTicket } from "react-icons/bs";
-import { CiEdit } from "react-icons/ci";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
 import { useSelector } from "react-redux";
 import { BiMailSend } from "react-icons/bi";
-import { sendEmailVerification } from "firebase/auth";
+import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 
@@ -31,10 +27,12 @@ const Profile = () => {
   const newPassword = async (e) => {
     e.preventDefault();
     try {
-      await sendEmailVerification(auth.currentUser);
+      await sendPasswordResetEmail(auth, user.email);
       toast.success("Şifre Değiştirme Maili Gönderildi.");
     } catch (error) {
-      toast.error("Şifre Değiştirme Maili Gönderilirken bir hata oluştu.");
+      toast.error(
+        "Şifre Değiştirme Maili Gönderilirken bir hata oluştu." + error
+      );
     }
   };
 
@@ -73,7 +71,12 @@ const Profile = () => {
                   />
                 )}
                 {renderInputField("Ad Soyad", user.displayName)}
-                {renderInputField("Cep Telefonu", user.phoneNumber ? user.phoneNumber : "Cep telefonu mevcut değil!")}
+                {renderInputField(
+                  "Cep Telefonu",
+                  user.phoneNumber
+                    ? user.phoneNumber
+                    : "Cep telefonu mevcut değil!"
+                )}
                 {renderInputField("E-Posta", user.email)}
 
                 <div className="w-full flex flex-col gap-y-2">

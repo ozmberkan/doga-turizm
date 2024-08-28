@@ -1,28 +1,22 @@
 import { Drawer } from "antd";
-import React from "react";
-import { BiLock, BiUser } from "react-icons/bi";
-import { HiOutlineIdentification } from "react-icons/hi2";
-import { IoCallOutline } from "react-icons/io5";
 import { auth, db } from "~/firebase/firebaseConfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { scheme } from "~/validation/scheme";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
 import { doc, setDoc } from "firebase/firestore";
 
 const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => store.user);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(scheme),
   });

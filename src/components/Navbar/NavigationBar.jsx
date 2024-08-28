@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import DrawerComp from "../UI/DrawerComp";
-import MenuComp from "../UI/MenuComp";
 import { BiLogOut, BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import LogoBlack from "../../assets/logos/LogoBlack.png";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import DrawerComp from "../UI/DrawerComp";
+import MenuComp from "../UI/MenuComp";
+import LogoBlack from "../../assets/logos/LogoBlack.png";
 
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
+
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -72,7 +73,7 @@ const NavigationBar = () => {
                   className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
                 />
               </button>
-              {menuOpen && <MenuComp setMenuOpen={setMenuOpen} />}
+              {menuOpen && <MenuComp />}
             </div>
           </div>
         </div>

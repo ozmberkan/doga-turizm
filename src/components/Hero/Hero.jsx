@@ -14,7 +14,7 @@ const Hero = () => {
           <img
             key={index}
             src={img}
-            className="w-full h-[750px] sm:h-[500px] object-cover "
+            className="w-full h-[750px] sm:h-[500px] object-cover"
             alt="Slider Image"
           />
         ))}
