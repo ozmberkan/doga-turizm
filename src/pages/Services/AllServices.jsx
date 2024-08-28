@@ -4,7 +4,7 @@ const AllServices = () => {
   return (
     <div className="px-14 mt-12">
       <div className="w-full bg-white h-auto border rounded-md p-5 flex flex-col gap-y-5">
-        <h1 className="text-4xl">Doğa Turizmi Hizmetlerimiz</h1>
+        <h1 className="text-4xl">Hizmetlerimiz</h1>
         <p>
           Doğayla iç içe bir deneyim sunmak için, sürdürülebilir ve çevre dostu
           turizm hizmetlerimizle karşınızdayız. Doğanın güzelliklerini
