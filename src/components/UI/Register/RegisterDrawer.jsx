@@ -64,7 +64,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
 
       toast.success("Başarıyla Kayıt Oluşturuldu!");
     } catch (error) {
-      toast.error(error);
+      toast.error("Kayıt oluşturulurken bir hata oluştu.");
     }
   };
 

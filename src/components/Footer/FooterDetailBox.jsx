@@ -7,8 +7,10 @@ const FooterDetailBox = ({ children }) => {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center mt-5 px-5 flex-col">
-      <div className="bg-white rounded-md p-12 border w-full">{children}</div>
+    <div className="w-full flex justify-center items-center mt-5 sm:px-5 px-3 flex-col">
+      <div className="bg-white rounded-md sm:p-12 p-5 border w-full">
+        {children}
+      </div>
       <Footer />
     </div>
   );

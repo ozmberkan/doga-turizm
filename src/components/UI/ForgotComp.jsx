@@ -13,7 +13,9 @@ const ForgotComp = ({ setForgot, open }) => {
       await sendPasswordResetEmail(auth, email);
       toast.success("Şifre sıfırlama bağlantısı başarıyla gönderildi");
     } catch (error) {
-      console.log(error);
+      toast.error(
+        "Şifre sıfırlama bağlantısı gönderilirken bir hata oluştu. Lütfen e-mail adresinizi kontrol edin."
+      );
     }
   };
 

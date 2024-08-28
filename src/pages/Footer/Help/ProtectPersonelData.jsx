@@ -11,7 +11,7 @@ const ProtectPersonelData = () => {
       <hr className="w-full my-4" />
       <div className="flex flex-col gap-y-5 items-start text-left">
         <h1 className="text-4xl">Kişisel Verilerin Korunması</h1>
-        <p className="text-center ">
+        <p className="text-left ">
           Doğa Turizm olarak, kişisel verilerinizin güvenliğine büyük önem
           veriyoruz. Gizliliğinizi korumak ve veri güvenliğini sağlamak amacıyla
           çeşitli önlemler alıyoruz. İşte kişisel verilerinizi korumak için

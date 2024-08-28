@@ -4,12 +4,10 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const CampaignDetail = () => {
-  const { id } = useParams();
-  const { campaigns } = useSelector((store) => store.campaigns);
-  console.log(campaigns);
-
   const campaign = campaigns.find((campaign) => campaign.id === id);
+  const { id } = useParams();
   const { image, cityName, newPrice, oldPrice } = campaign;
+  const { campaigns } = useSelector((store) => store.campaigns);
   const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   if (!campaign) {

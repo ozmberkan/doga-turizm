@@ -23,7 +23,7 @@ const NavigationBar = () => {
         window.location.reload();
       }, 1000);
     } catch (error) {
-      console.log(error);
+      toast.error("Çıkış yapılırken bir hata oluştu.");
     }
   };
 

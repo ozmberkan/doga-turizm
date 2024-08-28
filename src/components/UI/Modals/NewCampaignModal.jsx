@@ -22,7 +22,7 @@ const NewCampaignModal = ({ setIsAddModal }) => {
       toast.success("Başarıyla veritabanına kampanya eklendi!");
       setIsAddModal(false);
     } catch (error) {
-      console.log(error);
+      toast.error("Kampanya eklenirken bir hata oluştu.");
     }
   };
   return (

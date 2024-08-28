@@ -29,7 +29,6 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
       toast.success("Bilet başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {
-      console.error("Error updating document: ", error);
       toast.error("Bilet güncellenirken bir hata oluştu.");
     }
   };

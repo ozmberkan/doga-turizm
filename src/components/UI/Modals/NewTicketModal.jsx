@@ -36,7 +36,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
       toast.success("Başarıyla veritabanına bilet eklendi!");
       setIsAddModal(false);
     } catch (error) {
-      console.log(error);
+      toast.error("Bilet eklenirken bir hata oluştu.");
     }
   };
   return (

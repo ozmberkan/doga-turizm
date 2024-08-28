@@ -28,7 +28,7 @@ const CampaignTab = () => {
       await deleteDoc(doc(db, "campaigns", id));
       toast.success("Kampanya başarıyla silindi.");
     } catch (error) {
-      console.log("HATA", error);
+      toast.error("Kampanya silinirken bir hata oluştu.");
     }
   };
 

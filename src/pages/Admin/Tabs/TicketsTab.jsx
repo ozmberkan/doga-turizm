@@ -32,7 +32,7 @@ const TicketsTab = () => {
       await deleteDoc(doc(db, "tickets", id));
       toast.success("Bilet başarıyla silindi.");
     } catch (error) {
-      console.error("Error removing document: ", error);
+      toast.error("Bilet silinirken bir hata oluştu.");
     }
   };
 

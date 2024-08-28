@@ -50,20 +50,9 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         dispatch(setUser(userData));
       }, 1000);
     } catch (error) {
-      switch (error.code) {
-        case "auth/user-not-found":
-          toast.error("Kullanıcı bulunamadı.");
-          break;
-        case "auth/wrong-password":
-          toast.error("Yanlış parola.");
-          break;
-        case "auth/invalid-email":
-          toast.error("Geçersiz e-posta adresi.");
-          break;
-        default:
-          toast.error(error.message);
-          break;
-      }
+      toast.error(
+        "Giriş yapılırken bir hata oluştu. Lütfen bilgilerinizi kontrol edin."
+      );
     }
   };
 

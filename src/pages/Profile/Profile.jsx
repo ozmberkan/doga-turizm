@@ -22,7 +22,9 @@ const Profile = () => {
         "E-Posta Doğrulama Maili Gönderildi. Lütfen e-posta kutunuzu kontrol ediniz."
       );
     } catch (error) {
-      console.log(error);
+      toast.error(
+        "E-Posta Doğrulama Maili Gönderilirken bir hata oluştu. Sürekli istek algılandı."
+      );
     }
   };
 
@@ -32,7 +34,7 @@ const Profile = () => {
       await sendEmailVerification(auth.currentUser);
       toast.success("Şifre Değiştirme Maili Gönderildi.");
     } catch (error) {
-      console.log(error);
+      toast.error("Şifre Değiştirme Maili Gönderilirken bir hata oluştu.");
     }
   };
 

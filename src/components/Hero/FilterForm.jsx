@@ -14,7 +14,6 @@ import moment from "moment";
 const FilterForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { filterCriteria } = useSelector((store) => store.filter);
   const {
     register,
     handleSubmit,
@@ -50,7 +49,7 @@ const FilterForm = () => {
           {input.type === "text" ? (
             <select
               {...register(input.name)}
-              className={`px-4 py-3 rounded-md border outline-none w-[250px] ${
+              className={`px-4 py-3 rounded-md border outline-none sm:w-[250px] w-[270px] ${
                 errors[input.name] ? "border-red-500" : ""
               }`}
             >
@@ -64,15 +63,18 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 py-3 rounded-md border w-[250px] ${
+              className={`px-4 sm:py-3 sm:h-auto h-8 rounded-md border sm:w-[250px] w-[270px] ${
                 errors[input.name] ? "border-red-500" : ""
               }`}
             />
           )}
         </div>
       ))}
-      <button type="submit" className="flex flex-col gap-y-1 w-full mt-auto">
-        <div className="w-full transition-colors duration-500 py-3 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
+      <button
+        type="submit"
+        className="flex sm:flex-col justify-center items-center gap-y-1 w-full mt-auto"
+      >
+        <div className="sm:w-full w-full  transition-colors duration-500 py-3 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
           <IoTicketOutline size={20} />
           Biletini Ara
         </div>

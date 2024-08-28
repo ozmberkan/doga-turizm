@@ -19,9 +19,8 @@ const Contact = () => {
         message: data.message,
       });
       toast.success("Başarıyla mesajınız gönderildi!");
-      reset(); 
+      reset();
     } catch (error) {
-      console.log(error);
       toast.error(
         "Mesajınız gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
       );
@@ -36,7 +35,7 @@ const Contact = () => {
       <hr className="w-full my-4" />
       <div className="flex flex-col gap-y-5 items-start">
         <h1 className="text-4xl">İletişim</h1>
-        <p className="text-center">
+        <p className="text-left">
           Bizimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.
           Sorularınızı, önerilerinizi veya geri bildirimlerinizi bize iletmekten
           çekinmeyin. Size en kısa sürede geri dönüş yapacağız.

@@ -24,7 +24,6 @@ const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
       toast.success("Kampanya başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {
-      console.error("Error updating document: ", error);
       toast.error("Kampanya güncellenirken bir hata oluştu.");
     }
   };
