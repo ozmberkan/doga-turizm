@@ -66,9 +66,30 @@ const Profile = () => {
                 Bilgilerini Görüntüle
               </h1>
               <form className="sm:flex sm:flex-row sm:gap-x-5 flex flex-col gap-y-3 ">
+                {user.photoURL && (
+                  <img
+                    src={user.photoURL}
+                    className="w-12 h-12 rounded-md border mt-auto"
+                  />
+                )}
                 {renderInputField("Ad Soyad", user.displayName)}
-                {renderInputField("Cep Telefonu", user.phoneNumber)}
+                {renderInputField("Cep Telefonu", user.phoneNumber ? user.phoneNumber : "Cep telefonu mevcut değil!")}
                 {renderInputField("E-Posta", user.email)}
+
+                <div className="w-full flex flex-col gap-y-2">
+                  <label className="text-xs text-zinc-500/60">
+                    Yeni şifre oluşturmak mı istiyorsun ?
+                  </label>
+                  <div className="bg-[#f9f9f9] rounded-md border px-4 py-2 flex items-center justify-between">
+                    Şifre Değiştir
+                    <button
+                      onClick={newPassword}
+                      className="bg-green-200 text-green-500  rounded-md flex justify-center items-center px-4"
+                    >
+                      <BiMailSend size={25} />
+                    </button>
+                  </div>
+                </div>
                 {user.emailVerified === false ? (
                   <div className="w-full flex  gap-x-2">
                     <div className=" w-full flex flex-col gap-y-2">
@@ -79,20 +100,6 @@ const Profile = () => {
                         E-Posta Doğrula
                         <button
                           onClick={emailVer}
-                          className="bg-green-200 text-green-500  rounded-md flex justify-center items-center px-4"
-                        >
-                          <BiMailSend size={25} />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="w-full flex flex-col gap-y-2">
-                      <label className="text-xs text-zinc-500/60">
-                        Yeni şifre oluşturmak mı istiyorsun ?
-                      </label>
-                      <div className="bg-[#f9f9f9] rounded-md border px-4 py-2 flex items-center justify-between">
-                        Şifre Değiştir
-                        <button
-                          onClick={newPassword}
                           className="bg-green-200 text-green-500  rounded-md flex justify-center items-center px-4"
                         >
                           <BiMailSend size={25} />

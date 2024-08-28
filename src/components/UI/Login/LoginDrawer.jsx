@@ -8,7 +8,11 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { loginForm } from "~/data/data";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, getDoc } from "firebase/firestore";
@@ -23,6 +27,8 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   } = useForm({
     resolver: zodResolver(loginscheme),
   });
+
+  const provider = new GoogleAuthProvider();
 
   const LogIn = async (data) => {
     try {
@@ -53,6 +59,17 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       toast.error(
         "Giriş yapılırken bir hata oluştu. Lütfen bilgilerinizi kontrol edin."
       );
+    }
+  };
+
+  const googleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      dispatch(setUser(user));
+      toast.success("Google ile giriş başarılı.");
+    } catch (error) {
+      toast.error("Google ile giriş yapılırken hata oluştu: " + error.message);
     }
   };
 
@@ -101,7 +118,10 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
           </span>
         </div>
         <div className="flex  gap-x-4">
-          <div className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300">
+          <div
+            onClick={googleSignIn}
+            className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300"
+          >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
                 <FcGoogle size={18} />
