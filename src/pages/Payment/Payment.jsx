@@ -1,4 +1,5 @@
 import { ConfigProvider, Steps } from "antd";
+import moment from "moment";
 import React, { useState } from "react";
 import { MdPayment, MdPayments } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -15,6 +16,7 @@ const Payment = () => {
 
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
+  const { pnr, arrival, departure, date, price } = user.ownedTickets[0];
   const formatCardNumber = (value) => {
     return value
       .replace(/\D/g, "")
@@ -36,6 +38,9 @@ const Payment = () => {
         : toast.error("Kullanıcı bulunamadı hata!");
     }, 2000);
   };
+  const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
+    "DD.MM.YYYY HH:mm"
+  );
 
   return (
     <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
@@ -70,19 +75,24 @@ const Payment = () => {
           </h1>
           <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-5 divide-y p-5  grid grid-cols-1 justify-between text-xl">
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">PNR:</span> PNR3416
+              <span className="font-semibold">PNR:</span> {pnr}
             </div>
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Kalkış:</span> Bursa
+              <span className="font-semibold">Kalkış:</span> {departure}
             </div>
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Varış:</span> İstanbul
+              <span className="font-semibold">Varış:</span> {arrival}
             </div>
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Tarih:</span> 26.08.2024 20:00
+              <span className="font-semibold">Tarih:</span> {formattedDate}
             </div>
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Fiyat:</span> 150 TL
+              <span className="font-semibold">Fiyat:</span> {price}₺
+            </div>
+            <div className="w-full flex justify-between items-center">
+              <span className="font-semibold">Seçilen Koltuk:</span>{" "}
+              {user.ownedTickets[0].selectedSeats[0].number} -{" "}
+              {user.ownedTickets[0].selectedSeats[0].cinsiyet}
             </div>
           </div>
         </div>

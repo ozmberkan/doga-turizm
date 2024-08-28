@@ -48,6 +48,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         phoneNumber: userDoc.data()?.phoneNumber || null,
         emailVerified: user.emailVerified,
         admin: userDoc.data()?.admin || false,
+        ownedTickets: userDoc.data()?.ownedTickets || [],
       };
 
       toast.success("Başarıyla Giriş Yaptınız!");

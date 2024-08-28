@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { TbSteeringWheel } from "react-icons/tb";
 import moment from "moment";
 import "moment/locale/tr";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "~/redux/slices/userSlice";
+import { ticketsSlice } from "~/redux/slices/ticketsSlice";
+import { useNavigate } from "react-router-dom";
 
 const TicketDetail = ({ ticket }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((store) => store.user);
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [showGenderModal, setShowGenderModal] = useState(false);
   const [seatToSelect, setSeatToSelect] = useState(null);
-
+  const [showGenderModal, setShowGenderModal] = useState(false);
+  const [finalTicket, setFinalTicket] = useState([]);
   const { pnr, departure, arrival, price, date, seats } = ticket;
 
   const parseDate = (dateStr) => {
@@ -25,9 +32,23 @@ const TicketDetail = ({ ticket }) => {
   };
 
   const handleGenderSelect = (gender) => {
-    setSelectedSeats([...selectedSeats, { ...seatToSelect, gender }]);
+    setSelectedSeats([...selectedSeats, { ...seatToSelect, cinsiyet: gender }]);
     setShowGenderModal(false);
     setSeatToSelect(null);
+  };
+
+  const buyToTicket = () => {
+    const { seats, ...restOfTicket } = ticket;
+
+    const finalTicket = { ...restOfTicket, selectedSeats };
+
+    setFinalTicket(finalTicket);
+
+    dispatch(
+      setUser({ ...user, ownedTickets: [...user.ownedTickets, finalTicket] })
+    );
+
+    navigate("/payment");
   };
 
   return (
@@ -54,7 +75,10 @@ const TicketDetail = ({ ticket }) => {
           </span>
         </div>
         <div className="flex justify-end items-center gap-x-5  w-full">
-          <button className="bg-[#4FC647] sm:w-auto w-full text-white px-4 py-2 text-xl rounded-md">
+          <button
+            onClick={() => buyToTicket(ticket)}
+            className="bg-[#4FC647] sm:w-auto w-full text-white px-4 py-2 text-xl rounded-md"
+          >
             Bileti Seç
           </button>
         </div>
