@@ -42,7 +42,7 @@ const FilterForm = () => {
       onSubmit={handleSubmit(searchTicket)}
     >
       {InputField.map((input, i) => (
-        <div key={i} className="flex flex-col gap-y-1 flex-1 ">
+        <div key={i} className="flex flex-col gap-y-1  flex-1 w-full ">
           <label>{input.type === "text" ? input.label : "Tarih"}</label>
           {input.type === "text" ? (
             <select
@@ -61,7 +61,7 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md border  ${
+              className={`px-4 h-10 rounded-md border w-[276px] sm:w-full  ${
                 errors[input.name] ? "border-red-500" : ""
               }`}
             />
@@ -70,7 +70,7 @@ const FilterForm = () => {
       ))}
       <button
         type="submit"
-        className="flex  sm:flex-col justify-center items-center gap-y-1  mt-auto"
+        className="flex sm:w-auto w-full sm:flex-col justify-center items-center gap-y-1  mt-auto"
       >
         <div className="sm:w-[200px] w-full  transition-colors duration-500 h-10 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
           <IoTicketOutline size={20} />
