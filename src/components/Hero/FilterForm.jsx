@@ -38,30 +38,30 @@ const FilterForm = () => {
 
   return (
     <form
-      className="h-full w-full flex justify-center items-center sm:items-center gap-y-3 gap-x-5 font-rubik sm:flex-row flex-col"
+      className="h-full w-full flex  justify-start items-center sm:items-center gap-y-3 gap-x-5 font-rubik sm:flex-row flex-col"
       onSubmit={handleSubmit(searchTicket)}
     >
       {InputField.map((input, i) => (
-        <div key={i} className="flex flex-col gap-y-1">
+        <div key={i} className="flex flex-col gap-y-1 flex-1 ">
           <label>{input.type === "text" ? input.label : "Tarih"}</label>
           {input.type === "text" ? (
             <select
               {...register(input.name)}
-              className={`px-4 py-3 rounded-md border outline-none sm:w-[250px] w-[270px] ${
+              className={`px-4 h-10 rounded-md border outline-none  ${
                 errors[input.name] ? "border-red-500" : ""
               }`}
             >
-                {cities.map((city) => (
-                  <option key={city.id} value={city.value}>
-                    {city.title}
-                  </option>
-                ))}
+              {cities.map((city) => (
+                <option key={city.id} value={city.value}>
+                  {city.title}
+                </option>
+              ))}
             </select>
           ) : (
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 sm:py-3 sm:h-auto h-8 rounded-md border sm:w-[250px] w-[270px] ${
+              className={`px-4 h-10 rounded-md border  ${
                 errors[input.name] ? "border-red-500" : ""
               }`}
             />
@@ -70,9 +70,9 @@ const FilterForm = () => {
       ))}
       <button
         type="submit"
-        className="flex sm:flex-col justify-center items-center gap-y-1 w-full mt-auto"
+        className="flex  sm:flex-col justify-center items-center gap-y-1  mt-auto"
       >
-        <div className="sm:w-full w-full  transition-colors duration-500 py-3 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
+        <div className="sm:w-[200px] w-full  transition-colors duration-500 h-10 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
           <IoTicketOutline size={20} />
           Biletini Ara
         </div>
