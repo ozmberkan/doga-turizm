@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 const Admin = () => {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="top-left" />
       <div className="flex flex-col">
         <AdminNavbar />
         <div className="p-5">
