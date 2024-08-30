@@ -93,7 +93,10 @@ const TicketDetail = ({ ticket }) => {
               <span
                 key={seat.number}
                 onClick={() => handleSeatClick(seat)}
-                className="bg-white border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white"
+                className={'bg-white border w-20 sm:w-24 h-10 sm:h-12 
+                  flex items-center 
+                  justify-center rounded-md cursor-pointer 
+                    hover:bg-[#4FC647] hover:text-white ${ selectedSeats.cinsiyet === "Erkek" ? "bg-blue-500 : bg-pink-500}'}
               >
                 {seat.number}
               </span>
