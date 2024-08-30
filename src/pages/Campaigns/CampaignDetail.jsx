@@ -26,7 +26,7 @@ const CampaignDetail = () => {
         <BiSolidOffer className="sm:text-3xl text-lg" />
         Sınırlı süredeki kampanya için acele edin!
       </div>
-      <div className="bg-white h-full shadow-lg p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
+      <div className="h-full shadow-lg p-4 sm:p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
         <div className="w-full">
           <img
             src={image}
