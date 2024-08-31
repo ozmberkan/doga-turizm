@@ -41,11 +41,20 @@ const Ticket = ({ ticket }) => {
               <BiUser /> {user.displayName}
             </span>
             <span className="flex items-center gap-x-1">
-              <MdEventSeat /> {ticket.selectedSeats[0].number} -{" "}
-              {ticket.selectedSeats[0].cinsiyet}
+              <MdEventSeat />{" "}
+              {user.ownedTickets.map((item) =>
+                item.selectedSeats.map((seatItem) => (
+                  <span>
+                    {seatItem.number} - {seatItem.cinsiyet}
+                  </span>
+                ))
+              )}
             </span>
             <span className="flex items-center gap-x-1">
-              <FaTurkishLiraSign /> {price}₺
+              <FaTurkishLiraSign />{" "}
+              {price *
+                user.ownedTickets.map((item) => item.selectedSeats.length)}
+              ₺
             </span>
           </div>
           <div className="p-4 text-lg text-zinc-600">

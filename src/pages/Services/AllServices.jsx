@@ -2,7 +2,7 @@ import React from "react";
 
 const AllServices = () => {
   return (
-    <div className="sm:px-14 px-3 mt-5 mt-12">
+    <div className="sm:px-5 px-3 mt-5 sm:mt-5">
       <div className="w-full bg-white h-auto border rounded-md p-5 flex flex-col gap-y-5">
         <h1 className="text-4xl">Hizmetlerimiz</h1>
         <p>

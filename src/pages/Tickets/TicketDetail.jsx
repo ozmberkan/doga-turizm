@@ -6,6 +6,7 @@ import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -27,14 +28,19 @@ const TicketDetail = ({ ticket }) => {
   const formattedDate = editedDate.format("DD.MM.YYYY HH:mm");
 
   const handleSeatClick = (seat) => {
+    if (selectedSeats.length >= 2) {
+      toast.error("En fazla iki koltuk seçebilirsiniz!");
+      return;
+    }
     setSeatToSelect(seat);
     setShowGenderModal(true);
   };
 
   const handleGenderSelect = (gender) => {
-    setSelectedSeats([...selectedSeats, { ...seatToSelect, cinsiyet: gender }]);
     setShowGenderModal(false);
     setSeatToSelect(null);
+
+    setSelectedSeats([...selectedSeats, { ...seatToSelect, cinsiyet: gender }]);
   };
 
   const buyToTicket = () => {
@@ -89,15 +95,29 @@ const TicketDetail = ({ ticket }) => {
             <TbSteeringWheel size={40} />
           </span>
           <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-2">
-            {seats?.map((seat) => (
-              <span
-                key={seat.number}
-                onClick={() => handleSeatClick(seat)}
-                className="bg-white border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white"
-              >
-                {seat.number}
-              </span>
-            ))}
+            {seats?.map((seat) => {
+              const selectedSeat = selectedSeats.find(
+                (s) => s.number === seat.number
+              );
+              const isMale = selectedSeat?.cinsiyet === "Erkek";
+              const isFemale = selectedSeat?.cinsiyet === "Kadın";
+
+              return (
+                <span
+                  key={seat.number}
+                  onClick={() => handleSeatClick(seat)}
+                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white ${
+                    isMale
+                      ? "bg-blue-500 text-white"
+                      : isFemale
+                      ? "bg-pink-500 text-white"
+                      : "bg-white"
+                  }`}
+                >
+                  {seat.number}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

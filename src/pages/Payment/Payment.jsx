@@ -17,7 +17,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const { pnr, arrival, departure, date, price } = user.ownedTickets[0];
-  
+
   const formatCardNumber = (value) => {
     return value
       .replace(/\D/g, "")
@@ -43,6 +43,7 @@ const Payment = () => {
     "DD.MM.YYYY HH:mm"
   );
 
+  console.log(user);
   return (
     <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
       <ConfigProvider
@@ -70,7 +71,7 @@ const Payment = () => {
         />
       </ConfigProvider>
       <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
-        <div className="sm:w-1/3 w-full  p-5 border-2 flex flex-col gap-y-5 rounded-md border-[#4FC647]">
+        <div className="sm:w-2/3 w-full  p-5 border-2 flex flex-col gap-y-5 rounded-md border-[#4FC647]">
           <h1 className="text-3xl font-semibold text-[#4FC647]">
             Seçilen Bilet / Biletler
           </h1>
@@ -88,12 +89,19 @@ const Payment = () => {
               <span className="font-semibold">Tarih:</span> {formattedDate}
             </div>
             <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Fiyat:</span> {price}₺
+              <span className="font-semibold">Fiyat:</span>{" "}
+              {price *
+                user.ownedTickets.map((item) => item.selectedSeats.length)}₺
             </div>
             <div className="w-full flex justify-between items-center">
               <span className="font-semibold">Seçilen Koltuk:</span>{" "}
-              {user.ownedTickets[0].selectedSeats[0].number} -{" "}
-              {user.ownedTickets[0].selectedSeats[0].cinsiyet}
+              {user.ownedTickets.map((item) =>
+                item.selectedSeats.map((seatItem) => (
+                  <span>
+                    {seatItem.number} - {seatItem.cinsiyet}
+                  </span>
+                ))
+              )}
             </div>
           </div>
         </div>

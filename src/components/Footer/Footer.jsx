@@ -31,14 +31,14 @@ const FooterSection = ({ title, items }) => (
 const Footer = ({ footerWidth }) => {
   return (
     <div
-      className={`w-full  sm:bg-white rounded-t-xl border shadow-xl sm:${footerWidth} mx-auto p-5 flex flex-col gap-y-6 `}
+      className={`w-full  sm:bg-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto p-5 flex flex-col gap-y-6 `}
     >
       <div className="sm:grid sm:grid-cols-5  flex flex-col justify-center items-center sm:place-items-start  p-5">
         <div className="flex flex-col">
           <img src={LogoBlack} alt="" className="w-44 mb-3" />
           <div className="flex flex-col gap-y-3">
             {downloadImage.map((dItem, i) => (
-              <img src={dItem} alt="" className="w-40" />
+              <img key={i} src={dItem} alt="" className="w-40" />
             ))}
           </div>
         </div>
