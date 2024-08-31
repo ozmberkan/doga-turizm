@@ -146,6 +146,9 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
                   TV
                 </label>
               </div>
+              <div>
+                {}
+              </div>
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

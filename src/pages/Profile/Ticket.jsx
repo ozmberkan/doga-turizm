@@ -6,6 +6,8 @@ import { IoHelp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { setUser } from "~/redux/slices/userSlice";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "~/firebase/firebaseConfig";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -15,14 +17,32 @@ const Ticket = ({ ticket }) => {
     "DD.MM.YYYY HH:mm"
   );
 
-  const deleteTicket = () => {
-    const updatedTickets = user.ownedTickets.filter(
-      (ownedTicket) => ownedTicket.pnr !== ticket.pnr
+  const deleteTicket = async () => {
+    try {
+      const updatedTickets = user.ownedTickets.filter(
+        (ownedTicket) => ownedTicket.pnr !== ticket.pnr
+      );
+      dispatch(setUser({ ...user, ownedTickets: updatedTickets }));
 
-      
-    );
+      const ticketRef = doc(db, "tickets", ticket.id);
+      const updatedSeats = ticket.seats.map((seat) => {
+        const isSeatOwned = user.ownedTickets.some(
+          (ownedTicket) =>
+            ownedTicket.pnr === ticket.pnr &&
+            ownedTicket.selectedSeats.some(
+              (selectedSeat) => selectedSeat.number === seat.number
+            )
+        );
+        if (isSeatOwned) {
+          return { ...seat, isAvailable: true };
+        }
+        return seat;
+      });
 
-    dispatch(setUser({ ...user, ownedTickets: updatedTickets }));
+      await updateDoc(ticketRef, { seats: updatedSeats });
+    } catch (error) {
+      console.error("Error deleting ticket:", error);
+    }
   };
 
   return (

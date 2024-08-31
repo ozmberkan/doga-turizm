@@ -60,7 +60,6 @@ const TicketDetail = ({ ticket }) => {
           return {
             ...seat,
             isAvailable: false,
-            cinsiyet: selectedSeat.cinsiyet,
           };
         }
         return seat;
@@ -132,7 +131,7 @@ const TicketDetail = ({ ticket }) => {
                   key={seat.number}
                   onClick={() => handleSeatClick(seat)}
                   disabled={seat.isAvailable === false}
-                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md  hover:bg-[#4FC647] hover:text-white ${
+                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex text-black items-center justify-center rounded-md  hover:bg-[#4FC647] hover:text-white ${
                     isMale
                       ? "bg-blue-500 text-white"
                       : isFemale
@@ -140,18 +139,9 @@ const TicketDetail = ({ ticket }) => {
                       : "bg-white"
                   } ${
                     seat.isAvailable === false
-                      ? "cursor-not-allowed bg-gray-600 text-white hover:bg-gray-600"
-                      : "cursor-pointer bg-white"
-                  }  ${
-                    seat.cinsiyet === "Erkek"
-                      ? "bg-blue-600 text-white"
-                      : "bg-white text-black"
-                  }
-                   ${
-                     seat.cinsiyet === "Kadın"
-                       ? "bg-pink-600 text-white"
-                       : "bg-white text-black"
-                   }
+                      ? "cursor-not-allowed !bg-gray-600 text-white  hover:bg-gray-600"
+                      : ""
+                  }  
                   `}
                 >
                   {seat.number}
