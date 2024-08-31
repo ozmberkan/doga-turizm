@@ -95,29 +95,15 @@ const TicketDetail = ({ ticket }) => {
             <TbSteeringWheel size={40} />
           </span>
           <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-2">
-            {seats?.map((seat) => {
-              const selectedSeat = selectedSeats.find(
-                (s) => s.number === seat.number
-              );
-              const isMale = selectedSeat?.cinsiyet === "Erkek";
-              const isFemale = selectedSeat?.cinsiyet === "Kadın";
-
-              return (
-                <span
-                  key={seat.number}
-                  onClick={() => handleSeatClick(seat)}
-                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white ${
-                    isMale
-                      ? "bg-blue-500 text-white"
-                      : isFemale
-                      ? "bg-pink-500 text-white"
-                      : "bg-white"
-                  }`}
-                >
-                  {seat.number}
-                </span>
-              );
-            })}
+            {seats?.map((seat) => (
+              <span
+                key={seat.number}
+                onClick={() => handleSeatClick(seat)}
+                className="bg-white border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white"
+              >
+                {seat.number}
+              </span>
+            ))}
           </div>
         </div>
       </div>
