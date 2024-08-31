@@ -18,6 +18,8 @@ const Ticket = ({ ticket }) => {
   const deleteTicket = () => {
     const updatedTickets = user.ownedTickets.filter(
       (ownedTicket) => ownedTicket.pnr !== ticket.pnr
+
+      
     );
 
     dispatch(setUser({ ...user, ownedTickets: updatedTickets }));

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "~/firebase/firebaseConfig";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -43,18 +45,41 @@ const TicketDetail = ({ ticket }) => {
     setSelectedSeats([...selectedSeats, { ...seatToSelect, cinsiyet: gender }]);
   };
 
-  const buyToTicket = () => {
-    const { seats, ...restOfTicket } = ticket;
-    const finalTicket = { ...restOfTicket, selectedSeats };
-
+  const buyToTicket = async () => {
+    const finalTicket = { ...ticket, selectedSeats };
     setFinalTicket(finalTicket);
 
-    dispatch(
-      setUser({ ...user, ownedTickets: [...user.ownedTickets, finalTicket] })
-    );
+    const ticketRef = doc(db, "tickets", ticket.id);
 
-    navigate("/payment");
+    try {
+      const updatedSeats = ticket.seats.map((seat) => {
+        const selectedSeat = selectedSeats.find(
+          (s) => s.number === seat.number
+        );
+        if (selectedSeat) {
+          return {
+            ...seat,
+            isAvailable: false,
+            cinsiyet: selectedSeat.cinsiyet,
+          };
+        }
+        return seat;
+      });
+
+      await updateDoc(ticketRef, { seats: updatedSeats });
+
+      dispatch(
+        setUser({ ...user, ownedTickets: [...user.ownedTickets, finalTicket] })
+      );
+
+      navigate("/payment");
+    } catch (error) {
+      console.error("Firestore update error:", error);
+      toast.error("Bir Hata oluştu, lütfen tekrar deneyiniz.");
+    }
   };
+
+  console.log(seats);
 
   return (
     <div className="w-full rounded-xl p-5 flex gap-x-5 bg-white border flex-col gap-y-5">
@@ -103,19 +128,34 @@ const TicketDetail = ({ ticket }) => {
               const isFemale = selectedSeat?.cinsiyet === "Kadın";
 
               return (
-                <span
+                <button
                   key={seat.number}
                   onClick={() => handleSeatClick(seat)}
-                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#4FC647] hover:text-white ${
+                  disabled={seat.isAvailable === false}
+                  className={`border w-20 sm:w-24 h-10 sm:h-12 flex items-center justify-center rounded-md  hover:bg-[#4FC647] hover:text-white ${
                     isMale
                       ? "bg-blue-500 text-white"
                       : isFemale
                       ? "bg-pink-500 text-white"
                       : "bg-white"
-                  }`}
+                  } ${
+                    seat.isAvailable === false
+                      ? "cursor-not-allowed bg-gray-600 text-white hover:bg-gray-600"
+                      : "cursor-pointer bg-white"
+                  }  ${
+                    seat.cinsiyet === "Erkek"
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-black"
+                  }
+                   ${
+                     seat.cinsiyet === "Kadın"
+                       ? "bg-pink-600 text-white"
+                       : "bg-white text-black"
+                   }
+                  `}
                 >
                   {seat.number}
-                </span>
+                </button>
               );
             })}
           </div>
