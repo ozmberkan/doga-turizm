@@ -12,15 +12,12 @@ const Tickets = () => {
   const ticketRef = collection(db, "tickets");
 
   const [snapshot] = useCollection(ticketRef);
-
   const data = snapshot?.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
 
   const filteredTickets = data?.filter((ticket) => {
-
-    
     const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
       "DD.MM.YYYY"
     );
@@ -39,6 +36,7 @@ const Tickets = () => {
           token: {
             colorPrimary: "#4FC647",
             contentBg: "#aaac1d",
+            
           },
         }}
       >

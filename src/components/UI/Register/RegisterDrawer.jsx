@@ -30,12 +30,12 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
       );
 
       const user = userCredential.user;
-
       await updateProfile(user, {
         displayName: data.displayName,
       });
 
       const userRef = doc(db, "users", user.uid);
+
       await setDoc(userRef, {
         uid: user.uid,
         email: user.email,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { BiLogOut, BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import LogoBlack from "../../assets/logos/LogoBlack.png";
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false); // drawer
-  const [menuOpen, setMenuOpen] = useState(false); // dropdown
+  const [menuOpen, setMenuOpen] = useState(false); // dropdrown
 
   const exit = async () => {
     try {

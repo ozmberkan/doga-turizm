@@ -20,6 +20,7 @@ import doga from "../assets/carousel/doga.png";
 export const socialMedia = [
   {
     icon: FaXTwitter,
+    name : "X | Twitter"
   },
   {
     icon: FaInstagram,

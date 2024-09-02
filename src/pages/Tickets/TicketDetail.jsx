@@ -41,7 +41,6 @@ const TicketDetail = ({ ticket }) => {
   const handleGenderSelect = (gender) => {
     setShowGenderModal(false);
     setSeatToSelect(null);
-
     setSelectedSeats([...selectedSeats, { ...seatToSelect, gender: gender }]);
   };
 
