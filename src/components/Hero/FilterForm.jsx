@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { setFilterCriteria } from "~/redux/slices/filterSlice";
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import { DatePicker } from "antd";
 
 const FilterForm = () => {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ const FilterForm = () => {
               ))}
             </select>
           ) : (
-            <DatePicker
+            <input
               type="date"
               {...register(input.name)}
               className={`px-4 h-10 rounded-md border w-[276px] sm:w-full  ${
