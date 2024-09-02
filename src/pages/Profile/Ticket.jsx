@@ -30,14 +30,14 @@ const Ticket = ({ ticket }) => {
       const userRef = doc(db, "users", user.uid);
 
       const updatedSeats = ticket.seats.map((seat) => {
-        const isSeatOwned = user.ownedTickets.some(
+        const isSeatOwned = updatedTickets.some(
           (ownedTicket) =>
             ownedTicket.pnr === ticket.pnr &&
-            ownedTicket.selectedSeats.some(
+            ownedTicket.seats.some(
               (selectedSeat) => selectedSeat.number === seat.number
             )
         );
-        if (isSeatOwned) {
+        if (!isSeatOwned) {
           return { ...seat, isAvailable: true };
         }
         return seat;
@@ -83,9 +83,7 @@ const Ticket = ({ ticket }) => {
             </span>
             <span className="flex items-center gap-x-1">
               <FaTurkishLiraSign />{" "}
-              {price *
-                user.ownedTickets.map((item) => item.ownedTickets.length)}
-              ₺
+              {price * user.ownedTickets.map((item) => item.seats.length)}₺
             </span>
           </div>
           <div className="p-4 text-lg text-zinc-600">
