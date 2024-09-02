@@ -8,6 +8,7 @@ import moment from "moment";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
+import { toast } from "react-toastify";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -17,14 +18,17 @@ const Ticket = ({ ticket }) => {
     "DD.MM.YYYY HH:mm"
   );
 
-  const deleteTicket = async () => {
+  const deleteTicket = async (pnr) => {
     try {
       const updatedTickets = user.ownedTickets.filter(
-        (ownedTicket) => ownedTicket.pnr !== ticket.pnr
+        (ownedTicket) => ownedTicket.pnr !== pnr
       );
+
       dispatch(setUser({ ...user, ownedTickets: updatedTickets }));
 
       const ticketRef = doc(db, "tickets", ticket.id);
+      const userRef = doc(db, "users", user.uid);
+
       const updatedSeats = ticket.seats.map((seat) => {
         const isSeatOwned = user.ownedTickets.some(
           (ownedTicket) =>
@@ -40,15 +44,20 @@ const Ticket = ({ ticket }) => {
       });
 
       await updateDoc(ticketRef, { seats: updatedSeats });
+      await updateDoc(userRef, {
+        ownedTickets: updatedTickets,
+      });
+
+      toast.success("Bilet başarıyla silindi.");
     } catch (error) {
-      console.error("Error deleting ticket:", error);
+      toast.error("Bilet silinirken bir hata oluştu!");
     }
   };
 
   return (
     <div className="w-full border rounded-xl text-sm sm:text-base flex flex-col">
       <div className="w-full h-10 rounded-t-xl bg-[#4EC646] flex justify-between items-center px-4 text-white">
-        <span>{ticket.pnr}</span>
+        <span>{pnr}</span>
         <div className="flex gap-x-2">
           <span className="flex items-center gap-x-1">
             <MdDateRange />
@@ -65,9 +74,9 @@ const Ticket = ({ ticket }) => {
             <span className="flex items-center gap-x-1">
               <MdEventSeat />{" "}
               {user.ownedTickets.map((item) =>
-                item.selectedSeats.map((seatItem) => (
+                item.seats.map((seatItem) => (
                   <span>
-                    {seatItem.number} - {seatItem.cinsiyet}
+                    {seatItem.number} - {seatItem.gender}
                   </span>
                 ))
               )}
@@ -75,7 +84,7 @@ const Ticket = ({ ticket }) => {
             <span className="flex items-center gap-x-1">
               <FaTurkishLiraSign />{" "}
               {price *
-                user.ownedTickets.map((item) => item.selectedSeats.length)}
+                user.ownedTickets.map((item) => item.ownedTickets.length)}
               ₺
             </span>
           </div>
@@ -87,7 +96,7 @@ const Ticket = ({ ticket }) => {
         <div className="w-full bg-[#E6F7E6]/25 p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2">
             <button
-              onClick={deleteTicket}
+              onClick={() => deleteTicket(pnr)}
               className="flex items-center bg-red-100 text-red-500 px-4 py-2 rounded-md gap-x-2"
             >
               <MdCancel /> İptal Et

@@ -42,14 +42,19 @@ const TicketDetail = ({ ticket }) => {
     setShowGenderModal(false);
     setSeatToSelect(null);
 
-    setSelectedSeats([...selectedSeats, { ...seatToSelect, cinsiyet: gender }]);
+    setSelectedSeats([...selectedSeats, { ...seatToSelect, gender: gender }]);
   };
 
   const buyToTicket = async () => {
-    const finalTicket = { ...ticket, selectedSeats };
+    const finalTicket = {
+      ...ticket,
+      seats: selectedSeats,
+    };
+
     setFinalTicket(finalTicket);
 
     const ticketRef = doc(db, "tickets", ticket.id);
+    const userRef = doc(db, "users", user.uid);
 
     try {
       const updatedSeats = ticket.seats.map((seat) => {
@@ -60,6 +65,7 @@ const TicketDetail = ({ ticket }) => {
           return {
             ...seat,
             isAvailable: false,
+            gender: selectedSeat.gender,
           };
         }
         return seat;
@@ -67,8 +73,15 @@ const TicketDetail = ({ ticket }) => {
 
       await updateDoc(ticketRef, { seats: updatedSeats });
 
+      await updateDoc(userRef, {
+        ownedTickets: [...user.ownedTickets, finalTicket],
+      });
+
       dispatch(
-        setUser({ ...user, ownedTickets: [...user.ownedTickets, finalTicket] })
+        setUser({
+          ...user,
+          ownedTickets: [...user.ownedTickets, finalTicket],
+        })
       );
 
       navigate("/payment");
@@ -77,8 +90,6 @@ const TicketDetail = ({ ticket }) => {
       toast.error("Bir Hata oluştu, lütfen tekrar deneyiniz.");
     }
   };
-
-  console.log(seats);
 
   return (
     <div className="w-full rounded-xl p-5 flex gap-x-5 bg-white border flex-col gap-y-5">
@@ -123,9 +134,8 @@ const TicketDetail = ({ ticket }) => {
               const selectedSeat = selectedSeats.find(
                 (s) => s.number === seat.number
               );
-              const isMale = selectedSeat?.cinsiyet === "Erkek";
-              const isFemale = selectedSeat?.cinsiyet === "Kadın";
-
+              const isMale = selectedSeat?.gender === "Erkek";
+              const isFemale = selectedSeat?.gender === "Kadın";
               return (
                 <button
                   key={seat.number}
@@ -133,13 +143,18 @@ const TicketDetail = ({ ticket }) => {
                   disabled={seat.isAvailable === false}
                   className={`border w-20 sm:w-24 h-10 sm:h-12 flex text-black items-center justify-center rounded-md  hover:bg-[#4FC647] hover:text-white ${
                     isMale
-                      ? "bg-blue-500 text-white"
+                      ? "!bg-blue-500 text-white"
                       : isFemale
-                      ? "bg-pink-500 text-white"
+                      ? "!bg-pink-500 text-white"
                       : "bg-white"
                   } ${
-                    seat.isAvailable === false
-                      ? "cursor-not-allowed !bg-gray-600 text-white  hover:bg-gray-600"
+                    seat.isAvailable === false && seat.gender === "Erkek"
+                      ? "cursor-not-allowed !bg-blue-600 text-white  hover:bg-gray-600"
+                      : ""
+                  }  
+                  ${
+                    seat.isAvailable === false && seat.gender === "Kadın"
+                      ? "cursor-not-allowed !bg-pink-600 text-white  hover:bg-gray-600"
                       : ""
                   }  
                   `}

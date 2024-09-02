@@ -90,15 +90,14 @@ const Payment = () => {
             </div>
             <div className="w-full flex justify-between items-center">
               <span className="font-semibold">Fiyat:</span>{" "}
-              {price *
-                user.ownedTickets.map((item) => item.selectedSeats.length)}₺
+              {price * user.ownedTickets.map((item) => item.seats.length)}₺
             </div>
             <div className="w-full flex justify-between items-center">
               <span className="font-semibold">Seçilen Koltuk:</span>{" "}
               {user.ownedTickets.map((item) =>
-                item.selectedSeats.map((seatItem) => (
+                item.seats.map((seatItem) => (
                   <span>
-                    {seatItem.number} - {seatItem.cinsiyet}
+                    {seatItem.number} - {seatItem.gender}
                   </span>
                 ))
               )}

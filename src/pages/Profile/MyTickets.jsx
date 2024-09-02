@@ -11,7 +11,9 @@ const MyTickets = () => {
       </div>
       <div className="sm:grid sm:grid-cols-2 sm:w-full sm:gap-5 flex flex-col gap-y-5 w-full">
         {user?.ownedTickets.length > 0 ? (
-          user?.ownedTickets.map((ticket) => <Ticket ticket={ticket} />)
+          user?.ownedTickets?.map((ticket) => (
+            <Ticket key={ticket.id} ticket={ticket} />
+          ))
         ) : (
           <div className="bg-red-100 text-red-500 p-3 rounded-md">
             Herhangi bir bilet bulunamadı!
