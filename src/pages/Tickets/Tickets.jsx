@@ -1,23 +1,25 @@
-import React from "react";
 import { ConfigProvider, Steps } from "antd";
 import { db } from "~/firebase/firebaseConfig";
-import TicketDetail from "./TicketDetail";
 import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
+import TicketDetail from "./TicketDetail";
 import moment from "moment";
 
 const Tickets = () => {
   const filterCriteria = useSelector((store) => store.filter.filterCriteria);
 
-  const ref = collection(db, "tickets");
-  const [snapshot] = useCollection(ref);
+  const ticketRef = collection(db, "tickets");
+
+  const [snapshot] = useCollection(ticketRef);
+
   const data = snapshot?.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
 
   const filteredTickets = data?.filter((ticket) => {
+
     
     const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
       "DD.MM.YYYY"

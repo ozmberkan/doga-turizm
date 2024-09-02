@@ -11,6 +11,7 @@ import { IoCallOutline } from "react-icons/io5";
 import appstore from "../assets/social-media/appstore.svg";
 import googleplay from "../assets/social-media/googleplay.svg";
 import huawei from "../assets/social-media/huawei.svg";
+// carousel
 import road1 from "../assets/carousel/road.jpg";
 import road2 from "../assets/carousel/road2.jpg";
 import road3 from "../assets/carousel/road3.jpg";
@@ -19,19 +20,15 @@ import doga from "../assets/carousel/doga.png";
 export const socialMedia = [
   {
     icon: FaXTwitter,
-    name: "Twitter",
   },
   {
     icon: FaInstagram,
-    name: "Instagram",
   },
   {
     icon: FaFacebook,
-    name: "Facebook",
   },
   {
     icon: FaWhatsapp,
-    name: "Whatsapp",
   },
 ];
 

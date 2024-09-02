@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-
-import Register from "./Register/RegisterDrawer";
+import { useState } from "react";
+import RegisterDrawer from "./Register/RegisterDrawer";
 import LoginDrawer from "./Login/LoginDrawer";
 import ForgotComp from "./ForgotComp";
 
@@ -22,7 +21,7 @@ const DrawerComp = ({ open, setOpen }) => {
           setForgot={setForgot}
         />
       ) : (
-        <Register
+        <RegisterDrawer
           open={open}
           toggleDrawer={toggleDrawer}
           setLogInMode={setLogInMode}

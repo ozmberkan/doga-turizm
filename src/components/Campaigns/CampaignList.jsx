@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { db } from "~/firebase/firebaseConfig";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
@@ -11,9 +11,10 @@ const CampaignList = () => {
   const ref = collection(db, "campaigns");
 
   const [snapshot] = useCollection(ref);
+  
   useEffect(() => {
     if (snapshot) {
-      const campaignData = snapshot.docs.map((doc) => ({
+      const campaignData = snapshot?.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));

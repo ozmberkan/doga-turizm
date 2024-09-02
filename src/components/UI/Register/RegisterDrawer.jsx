@@ -35,7 +35,8 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         displayName: data.displayName,
       });
 
-      await setDoc(doc(db, "users", user.uid), {
+      const userRef = doc(db, "users", user.uid);
+      await setDoc(userRef, {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
@@ -56,11 +57,13 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
 
       setTimeout(() => {
         dispatch(setUser(userData));
-      }, 1000);
+      }, 500);
 
       toast.success("Başarıyla Kayıt Oluşturuldu!");
     } catch (error) {
-      toast.error("Kayıt oluşturulurken bir hata oluştu.");
+      toast.error(
+        "Kayıt oluşturulurken bir hata oluştu. Bilgileri kontrol ediniz."
+      );
     }
   };
 
@@ -83,7 +86,11 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
             <label className="font-rubik text-xs text-zinc-700">
               {input.label}
             </label>
-            <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200">
+            <div
+              className={`w-full ${
+                errors[input.name] && "ring-red-500"
+              }  flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200`}
+            >
               <input
                 type={input.type}
                 className="outline-none px-4 rounded-md text-sm w-full peer"

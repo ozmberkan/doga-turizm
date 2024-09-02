@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { Drawer } from "antd";
-import React, { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";

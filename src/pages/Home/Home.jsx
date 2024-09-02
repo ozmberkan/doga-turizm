@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "../../components/Hero/Hero";
 import Campaign from "../../components/Campaigns/Campaign";
 import Announcement from "../../components/Announcement/Announcement";

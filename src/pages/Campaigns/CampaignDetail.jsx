@@ -48,7 +48,7 @@ const CampaignDetail = () => {
             </p>
             <p>
               • Kampanya'ya dahil edilen şehirler:
-              <b>Bursa, Balıkesir, Edirne, Çanakkale, Tekirdağ.</b>
+              <b>Bursa, Balıkesir, Çanakkale, İstanbul.</b>
             </p>
             <p>
               • Hangi şehirde olursan ol {cityName} şehrine gitmek istersen bu

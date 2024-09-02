@@ -1,6 +1,5 @@
-import React from "react";
-import CampaignList from "./CampaignList";
 import CampaignHeader from "./CampaignHeader";
+import CampaignList from "./CampaignList";
 
 const Campaign = () => {
   return (

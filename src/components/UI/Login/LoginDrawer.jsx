@@ -18,6 +18,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
+  const provider = new GoogleAuthProvider();
   const {
     register,
     handleSubmit,
@@ -25,8 +26,6 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   } = useForm({
     resolver: zodResolver(loginscheme),
   });
-
-  const provider = new GoogleAuthProvider();
 
   const LogIn = async (data) => {
     try {
@@ -91,7 +90,11 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
             <label className="font-rubik text-xs text-zinc-700">
               {input.label}
             </label>
-            <div className="w-full flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer">
+            <div
+              className={`w-full ${
+                errors.email && "ring-red-500"
+              } flex border rounded-md focus-within:ring-2 ring-offset-2 ring-green-500 transition-all duration-200 peer`}
+            >
               <input
                 type={input.type}
                 className="outline-none px-4 rounded-md text-sm w-full peer"

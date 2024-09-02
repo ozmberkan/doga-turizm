@@ -70,12 +70,12 @@ const App = () => {
         { path: "/carier", element: <Carier /> },
         { path: "/contact", element: <Contact /> },
         { path: "/energy", element: <Energy /> },
-        //
+        // FOOTER
         { path: "/questions", element: <AskedQuestions /> },
         { path: "/cookie", element: <CookiePolicy /> },
         { path: "/privacy", element: <PrivacyPolicy /> },
         { path: "/protectData", element: <ProtectPersonelData /> },
-        //
+        // FOOTER
         { path: "/rent", element: <Rent /> },
         { path: "/hiring", element: <Hiring /> },
         //

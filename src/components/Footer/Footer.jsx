@@ -1,5 +1,3 @@
-import React from "react";
-import { BiDownload } from "react-icons/bi";
 import {
   socialMedia,
   footerAbout,

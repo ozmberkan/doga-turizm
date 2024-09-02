@@ -1,7 +1,6 @@
-import React from "react";
-import Filter from "./Filter";
 import { Carousel } from "antd";
 import { carouselImg } from "../../data/data";
+import Filter from "./Filter";
 
 const Hero = () => {
   return (
@@ -10,16 +9,16 @@ const Hero = () => {
         <Filter />
       </div>
       <Carousel autoplay dots={false}>
-        {carouselImg.map((img, index) => (
+        {carouselImg.map((img, i) => (
           <img
-            key={index}
+            key={i}
             src={img}
             className="w-full h-[750px] sm:h-[500px] object-cover"
-            alt="Slider Image"
+            alt="Slider Images"
           />
         ))}
       </Carousel>
-      <div className="absolute inset-0 right-0 bg-gradient-to-br sm:bg-gradient-to-l from-green-700 sm:from-green-500/70 to-transparent"></div>
+      <div className="absolute inset-0 right-0 bg-gradient-to-br sm:bg-gradient-to-bl from-green-700 sm:from-green-500/70 to-transparent"></div>
     </div>
   );
 };
