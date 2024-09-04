@@ -7,7 +7,7 @@ const Features = () => {
       <h1 className="text-2xl text-zinc-700 font-semibold">
         Neden Doğa Turizm ?
       </h1>
-      <div className="gap-5 grid grid-cols-4 place-items-center w-full ">
+      <div className="sm:gap-5 sm:grid sm:grid-cols-4 sm:place-items-center w-full flex flex-col gap-y-3">
         {features.map((item) => (
           <FeaturesItem key={item.id} item={item} />
         ))}
