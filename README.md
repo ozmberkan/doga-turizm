@@ -4,7 +4,7 @@
 ## İçindekiler
 - [Kurulum](#kurulum)
 - [Kullanılan Paketler](#Kullanılan-Paketler)
-- [Renk Referansı](#renk-referansi)
+- [Renk Referansı](#Renk-Referansı)
 
 <hr/>
 
