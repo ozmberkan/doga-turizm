@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "~/components/Footer/Footer";
 
 const AllServices = () => {
   return (
@@ -40,6 +41,7 @@ const AllServices = () => {
           hizmetlerimizle tanışmak için bizimle iletişime geçin!
         </p>
       </div>
+      <Footer />
     </div>
   );
 };
