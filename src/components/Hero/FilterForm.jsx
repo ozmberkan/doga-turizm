@@ -42,13 +42,13 @@ const FilterForm = () => {
       onSubmit={handleSubmit(searchTicket)}
     >
       {InputField.map((input, i) => (
-        <div key={i} className="flex flex-col gap-y-1  flex-1 w-full ">
+        <div key={i} className="flex flex-col gap-y-1 flex-1 w-full ">
           <label>{input.type === "text" ? input.label : "Tarih"}</label>
           {input.type === "text" ? (
             <select
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md border outline-none  ${
-                errors[input.name] ? "border-red-500" : ""
+              className={`px-4 h-10 rounded-md border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
+                errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             >
               {cities.map((city) => (
@@ -61,8 +61,8 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md border w-[276px] sm:w-full  ${
-                errors[input.name] ? "border-red-500" : ""
+              className={`px-4 h-10 rounded-md border w-[276px] sm:w-full outline-none transition-all duration-500   ${
+                errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             />
           )}
