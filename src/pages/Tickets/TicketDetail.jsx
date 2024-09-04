@@ -47,6 +47,16 @@ const TicketDetail = ({ ticket }) => {
   };
 
   const buyToTicket = async () => {
+    if (!user) {
+      toast.error(
+        "Bileti satın almak için giriş yapmalısınız. Sizleri anasayfaya yönlendiriyorum.",
+        { autoClose: 1000 }
+      );
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+
     const finalTicket = {
       ...ticket,
       seats: selectedSeats,
@@ -89,7 +99,6 @@ const TicketDetail = ({ ticket }) => {
 
       navigate("/payment");
     } catch (error) {
-      console.error("Firestore update error:", error);
       toast.error("Bir Hata oluştu, lütfen tekrar deneyiniz.");
     }
   };

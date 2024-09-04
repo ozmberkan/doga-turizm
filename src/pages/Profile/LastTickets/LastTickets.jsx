@@ -29,7 +29,7 @@ const LastTickets = () => {
     <div className="w-full bg-white rounded-md border p-4">
       <div className="w-full mb-5 flex justify-between items-center ">
         <h1 className="text-2xl ">Geçmiş Biletlerim</h1>
-        <div className="flex gap-x-3">
+        <div className="flex gap-x-3 sm:flex-row flex-col gap-y-2">
           <button
             onClick={deleteLastTickets}
             className="bg-red-100 text-red-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1 "

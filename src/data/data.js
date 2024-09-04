@@ -46,11 +46,11 @@ export const carouselImg = [road1, road2, road3, doga];
 export const downloadImage = [appstore, googleplay, huawei];
 
 export const cities = [
-  { id: 1, title: "Seçiniz", value: "" },
+  { id: 1, title: "Seçiniz..", value: "" },
   { id: 2, title: "İstanbul", value: "Istanbul" },
-  { id: 6, title: "Çanakkale", value: "Çanakkale" },
-  { id: 3, title: "Bursa", value: "Bursa" },
-  { id: 4, title: "Balıkesir", value: "Balikesir" },
+  { id: 3, title: "Çanakkale", value: "Çanakkale" },
+  { id: 4, title: "Bursa", value: "Bursa" },
+  { id: 5, title: "Balıkesir", value: "Balikesir" },
 ];
 
 export const tableTitles = [

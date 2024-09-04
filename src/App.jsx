@@ -39,7 +39,9 @@ const App = () => {
     <FlexContainer>
       <Navbar />
       <Outlet />
-      <ToastContainer position="top-left" />
+      <div className="p-4">
+        <ToastContainer position="bottom-right" />
+      </div>
     </FlexContainer>
   );
 
