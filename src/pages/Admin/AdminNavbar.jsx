@@ -36,15 +36,15 @@ const AdminNavbar = () => {
       <div className="flex items-center gap-x-5">
         <Link
           to="/"
-          className="px-4 py-2 rounded-md hover:bg-[#f9f9f9] border flex justify-center items-center gap-x-2 text-black bg-white"
+          className="p-2 rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 text-black bg-white transition-all duration-100"
         >
-          <BiHome /> Anasayfa
+          <BiHome />
         </Link>
         <button
           onClick={exit}
-          className="px-4 py-2 rounded-md hover:bg-[#f9f9f9] border  flex justify-center items-center gap-x-2 text-black bg-white"
+          className="p-2 rounded-md hover:bg-primary hover:text-white border  flex justify-center items-center gap-x-2 text-black bg-white transition-all duration-100"
         >
-          <BiLogOut /> Çıkış Yap
+          <BiLogOut />
         </button>
       </div>
     </div>

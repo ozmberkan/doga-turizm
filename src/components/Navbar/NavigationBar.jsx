@@ -54,14 +54,6 @@ const NavigationBar = () => {
                 <BiUser />
               </button>
             )}
-            {user && (
-              <button
-                onClick={exit}
-                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
-              >
-                <BiLogOut />
-              </button>
-            )}
             {user?.admin === true && (
               <Link
                 to="/admin"
@@ -69,6 +61,14 @@ const NavigationBar = () => {
               >
                 <RiAdminFill />
               </Link>
+            )}
+            {user && (
+              <button
+                onClick={exit}
+                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+              >
+                <BiLogOut />
+              </button>
             )}
 
             <div className="relative">
