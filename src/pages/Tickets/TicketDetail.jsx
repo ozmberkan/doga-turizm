@@ -49,7 +49,7 @@ const TicketDetail = ({ ticket }) => {
   const buyToTicket = async () => {
     if (!user) {
       toast.error(
-        "Bileti satın almak için giriş yapmalısınız. Sizleri anasayfaya yönlendiriyorum.",
+        "Bileti satın almak için giriş yapmalısınız. Anasayfaya yönlendiriliyorsunuz.",
         { autoClose: 1000 }
       );
       setTimeout(() => {
