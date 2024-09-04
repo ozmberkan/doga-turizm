@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LastTicket from "./LastTicket";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BiTrash } from "react-icons/bi";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, setDoc } from "firebase/firestore";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import LastTicket from "./LastTicket";
 
 const LastTickets = () => {
   const [hide, setHide] = useState(false);
