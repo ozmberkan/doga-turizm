@@ -54,7 +54,7 @@ export const cities = [
 ];
 
 export const tableTitles = [
-  { id: 1, title: "UID", key: "uid", sortable: false },
+  { id: 1, title: "UID", key: "uid",  },
   { id: 2, title: "PNR", key: "pnr", sortable: true },
   { id: 3, title: "KALKIŞ", key: "departure", sortable: true },
   { id: 4, title: "VARIŞ", key: "arrival", sortable: true },
@@ -74,6 +74,17 @@ export const campaignTableTitles = [
   { id: 4, title: "Eski Fiyat", key: "oldPrice", sortable: true },
   { id: 5, title: "Görsel", key: "image", sortable: false },
   { id: 6, title: "AKSİYON", key: "action", sortable: false },
+];
+
+export const annTableTitles = [
+  { id: 1, title: "ID"},
+  { id: 2, title: "Ana Başlık" },
+  { id: 3, title: "Ana Açıklama" },
+  { id: 4, title: "Görsel"},
+  { id: 5, title: "Mobile Görsel"  },
+  { id: 6, title: "İç Başlık" },
+  { id: 6, title: "İç Açıklama"  },
+  { id: 6, title: "AKSİYON"},
 ];
 
 export const InputField = [
