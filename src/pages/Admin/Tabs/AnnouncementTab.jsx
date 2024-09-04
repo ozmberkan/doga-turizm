@@ -22,7 +22,7 @@ const AnnouncementTab = () => {
   };
 
   return (
-    <div>
+    <div className="bg-white p-3 border rounded-md shadow-md">
       <div>
         <div className="flex gap-x-2 items-center justify-start mb-2">
           <input
@@ -38,8 +38,8 @@ const AnnouncementTab = () => {
             Ekle
           </button>
         </div>
-        <table className="border w-full">
-          <thead className="bg-zinc-200">
+        <table className="border w-full mt-5">
+          <thead className="bg-zinc-100">
             <tr className="grid grid-cols-9 place-items-center h-12">
               {annTableTitles.map((title) => (
                 <th key={title.id} className="flex items-center gap-x-2">
@@ -48,7 +48,7 @@ const AnnouncementTab = () => {
               ))}
             </tr>
           </thead>
-          <tbody className="bg-zinc-100">
+          <tbody className="bg-zinc-50/5">
             <tr className="grid grid-cols-9 place-items-center p-4  gap-5 text-sm">
               {data?.map((announcement) => (
                 <React.Fragment key={announcement.id}>

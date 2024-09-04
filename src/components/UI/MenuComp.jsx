@@ -15,15 +15,6 @@ const MenuComp = () => {
           {item.label}
         </Link>
       ))}
-
-      {user?.admin === true && (
-        <Link
-          to="/admin"
-          className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
-        >
-          Admin Panel
-        </Link>
-      )}
     </div>
   );
 };

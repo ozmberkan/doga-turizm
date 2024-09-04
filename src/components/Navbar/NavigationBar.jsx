@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { RiAdminFill } from "react-icons/ri";
+
 import DrawerComp from "../UI/DrawerComp";
 import MenuComp from "../UI/MenuComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
@@ -59,6 +61,14 @@ const NavigationBar = () => {
               >
                 <BiLogOut />
               </button>
+            )}
+            {user?.admin === true && (
+              <Link
+                to="/admin"
+                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+              >
+                <RiAdminFill />
+              </Link>
             )}
 
             <div className="relative">

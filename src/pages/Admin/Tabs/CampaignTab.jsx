@@ -16,7 +16,7 @@ const CampaignTab = () => {
   const [search, setSearch] = useState("");
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
-  
+
   const ref = collection(db, "campaigns");
   const [snapshot] = useCollection(ref);
   const data = snapshot?.docs.map((doc) => ({
@@ -49,7 +49,7 @@ const CampaignTab = () => {
   );
 
   return (
-    <div>
+    <div className="bg-white p-3 border rounded-md shadow-md">
       <div>
         <div className="flex gap-x-2 items-center justify-start mb-2">
           <input
@@ -65,8 +65,8 @@ const CampaignTab = () => {
             Ekle
           </button>
         </div>
-        <table className="border w-full">
-          <thead className="bg-zinc-200">
+        <table className="border w-full mt-5">
+          <thead className="bg-zinc-100">
             <tr className="grid grid-cols-6 place-items-center h-12">
               {campaignTableTitles.map((title) => (
                 <th key={title.id} className="flex items-center gap-x-2">
@@ -94,7 +94,7 @@ const CampaignTab = () => {
               ))}
             </tr>
           </thead>
-          <tbody className="bg-zinc-100">
+          <tbody className="bg-zinc-50/5">
             <tr className="grid grid-cols-6 place-items-center p-4  gap-5">
               {filteredCampaigns?.map((campaign) => (
                 <React.Fragment key={campaign.id}>
