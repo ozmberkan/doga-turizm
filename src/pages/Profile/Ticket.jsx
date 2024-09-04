@@ -52,7 +52,7 @@ const Ticket = ({ ticket }) => {
 
   return (
     <div className="w-full border rounded-xl text-sm sm:text-base flex flex-col">
-      <div className="w-full h-10 rounded-t-xl bg-[#4EC646] flex justify-between items-center px-4 text-white">
+      <div className="w-full h-10 rounded-t-xl bg-primary flex justify-between items-center px-4 text-white">
         <span>{pnr}</span>
         <div className="flex gap-x-2">
           <span className="flex items-center gap-x-1">

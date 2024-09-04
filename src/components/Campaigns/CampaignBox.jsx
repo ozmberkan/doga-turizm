@@ -33,7 +33,7 @@ const CampaignBox = ({ campaign }) => {
         </div>
         <Link
           to={`/campaign/${id}`}
-          className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-green-500 text-white smtext-sm hover:bg-green-600 transition-colors duration-500"
+          className="px-2 py-1 text-xs sm:px-4 sm:py-2 rounded-md bg-primary text-white smtext-sm hover:bg-[#4FE100] transition-colors duration-500"
         >
           Detaylar
         </Link>

@@ -72,7 +72,7 @@ const FilterForm = () => {
         type="submit"
         className="flex sm:w-auto w-full sm:flex-col justify-center items-center gap-y-1  mt-auto"
       >
-        <div className="sm:w-[200px] w-full  transition-colors duration-500 h-10 px-4 hover:bg-green-500 bg-green-600 text-white border rounded flex justify-center items-center gap-x-2">
+        <div className="sm:w-[200px] w-full  transition-colors duration-500 h-10 px-4 hover:bg-hoverPrimary bg-primary text-white border rounded flex justify-center items-center gap-x-2">
           <IoTicketOutline size={20} />
           Biletini Ara
         </div>

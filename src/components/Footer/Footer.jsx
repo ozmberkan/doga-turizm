@@ -16,7 +16,7 @@ const FooterSection = ({ title, items }) => (
         <Link
           to={item.to}
           key={i}
-          className="p-2 text-sm bg-white rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-green-500 hover:text-white transition-colors duration-100"
+          className="p-2 text-sm bg-white rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-100"
         >
           {item.icon && <item.icon size={18} />}
           {item.title || item.name}

@@ -23,12 +23,11 @@ const AdminNavbar = () => {
   };
 
   return (
-    <div className="w-full bg-green-400  py-4 px-6 flex justify-between items-center">
+    <div className="w-full bg-primary  py-4 px-6 flex justify-between items-center">
       <h1 className="text-2xl text-white flex items-center gap-x-2">
-        Doğa Turizm Admin Panel <MdAdminPanelSettings />
+        <span className="text-white">Hoş geldin, {user.displayName}</span>
       </h1>
       <div className="flex items-center gap-x-5">
-        <span className="text-white">Hoş geldin, {user.email}</span>
         <Link
           to="/"
           className="px-4 py-2 rounded-md hover:bg-[#f9f9f9] flex justify-center items-center gap-x-2 text-black bg-white"

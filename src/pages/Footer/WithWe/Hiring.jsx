@@ -39,7 +39,7 @@ const Hiring = () => {
           <h2 className="text-2xl font-semibold">Başvuru Süreci</h2>
           <p>
             Başvurunuzu dogaturizm@carier.com üzerinden bize iletebilir veya{" "}
-            <Link to="/contact" className="text-green-500 underline">
+            <Link to="/contact" className="text-primary underline">
               başvuru formu linki
             </Link>{" "}
             üzerinden online başvuru yapabilirsiniz. Tüm başvurular titizlikle

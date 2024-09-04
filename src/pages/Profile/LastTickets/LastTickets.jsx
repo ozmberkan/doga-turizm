@@ -32,22 +32,25 @@ const LastTickets = () => {
         <div className="flex gap-x-3">
           <button
             onClick={deleteLastTickets}
-            className="bg-red-100 text-red-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1"
+            className="bg-red-100 text-red-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1 "
           >
             <BiTrash /> Biletleri Temizle
           </button>
-          <button
-            onClick={() => setHide(true)}
-            className="bg-zinc-100 text-zinc-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1"
-          >
-            <FaEyeSlash /> Biletleri Gizle
-          </button>
-          <button
-            onClick={() => setHide(false)}
-            className="bg-green-100 text-green-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1"
-          >
-            <FaEye /> Biletleri Göster
-          </button>
+          {hide === false ? (
+            <button
+              onClick={() => setHide(true)}
+              className="bg-zinc-100 text-zinc-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1 min-w-[200px]"
+            >
+              <FaEyeSlash /> Biletleri Gizle
+            </button>
+          ) : (
+            <button
+              onClick={() => setHide(false)}
+              className="bg-green-100 text-green-500 px-4 py-2 rounded-md flex justify-center items-center gap-x-1 min-w-[200px]"
+            >
+              <FaEye /> Biletleri Göster
+            </button>
+          )}
         </div>
       </div>
       <div className="sm:grid sm:grid-cols-2 sm:w-full sm:gap-5 flex flex-col gap-y-5 w-full">

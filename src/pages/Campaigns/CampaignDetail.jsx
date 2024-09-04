@@ -22,7 +22,7 @@ const CampaignDetail = () => {
 
   return (
     <div className="w-full p-5 flex flex-col gap-y-5 container mx-auto">
-      <div className="w-full h-full gap-x-4 text-sm sm:text-3xl rounded-md shadow-md py-5 flex justify-center items-center border-2 border-[#4EC546] text-[#4EC546]">
+      <div className="w-full h-full gap-x-4 text-sm sm:text-3xl rounded-md shadow-md py-5 flex justify-center items-center border-2 border-primary text-primary">
         <BiSolidOffer className="sm:text-3xl text-lg" />
         Sınırlı süredeki kampanya için acele edin!
       </div>
@@ -58,8 +58,7 @@ const CampaignDetail = () => {
             <p>
               • <span className="line-through">{oldPrice} TL</span> 'den{" "}
               {newPrice} TL'ye
-              <span className="text-green-500"> {discount}</span> indirim
-              fırsatı
+              <span className="text-primary"> {discount}</span> indirim fırsatı
             </p>
           </div>
         </div>
