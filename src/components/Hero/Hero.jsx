@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="w-full flex flex-col top-5 sm:inset-0 absolute z-10">
         <Filter />
       </div>
-      <Carousel autoplay dots={false}>
+      <Carousel autoplay dots={false} fade>
         {carouselImg.map((img, i) => (
           <img
             key={i}

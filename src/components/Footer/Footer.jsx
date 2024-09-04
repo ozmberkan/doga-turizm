@@ -16,7 +16,7 @@ const FooterSection = ({ title, items }) => (
         <Link
           to={item.to}
           key={i}
-          className="p-2 text-sm bg-white rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-100"
+          className="p-2 text-sm bg-white rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
         >
           {item.icon && <item.icon size={18} />}
           {item.title || item.name}
@@ -29,14 +29,19 @@ const FooterSection = ({ title, items }) => (
 const Footer = ({ footerWidth }) => {
   return (
     <div
-      className={`w-full  sm:bg-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto pt-5 pb-0 px-5 flex flex-col gap-y-6 `}
+      className={`w-full  sm:bg-white rounded-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto pt-5 pb-0 px-5 flex flex-col gap-y-6 `}
     >
-      <div className="sm:grid sm:grid-cols-5  flex flex-col justify-center items-center sm:place-items-start  p-5">
+      <div className="sm:grid sm:grid-cols-5  flex flex-col justify-center items-center sm:place-items-start ">
         <div className="flex flex-col">
           <img src={LogoBlack} alt="" className="w-44 mb-3" />
           <div className="flex flex-col gap-y-3">
             {downloadImage.map((dItem, i) => (
-              <img key={i} src={dItem} alt="" className="w-40" />
+              <img
+                key={i}
+                src={dItem}
+                alt=""
+                className="w-40 hover:scale-110 transition-all duration-700 cursor-pointer"
+              />
             ))}
           </div>
         </div>
@@ -45,7 +50,7 @@ const Footer = ({ footerWidth }) => {
         <FooterSection title="İş Ortağımız Ol" items={footerWith} />
         <FooterSection title="Sosyal Medya" items={socialMedia} />
       </div>
-      <div className="col-span-1 sm:col-span-5 text-zinc-500 text-left  text-sm border-t py-2 px-5">
+      <div className="col-span-1 sm:col-span-5 text-zinc-500 text-left  text-sm border-t py-3 ">
         © 2024 Doğa Turizm. All rights reserved.
       </div>
     </div>

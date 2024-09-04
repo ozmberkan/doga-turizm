@@ -111,7 +111,7 @@ const TicketDetail = ({ ticket }) => {
             {pnr}
           </span>
           <span className="bg-[#4FC647] w-full sm:w-auto text-green-100 p-2 sm:p-2 rounded-md">
-            {price}₺
+            {user && user.emailVerified === true ? price : "650"}₺
           </span>
           <span className="flex items-center gap-x-1 text-zinc-700/90 bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
             <CiLocationOn size={20} />

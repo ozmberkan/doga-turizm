@@ -22,8 +22,8 @@ const CampaignDetail = () => {
 
   return (
     <div className="w-full p-5 flex flex-col gap-y-5 container mx-auto">
-      <div className="w-full h-full gap-x-4 text-sm sm:text-3xl rounded-md shadow-md py-5 flex justify-center items-center border-2 border-primary text-primary">
-        <BiSolidOffer className="sm:text-3xl text-lg" />
+      <div className="w-full h-full gap-x-4 text-sm sm:text-3xl font-semibold rounded-md shadow-md py-5 flex justify-center items-center border-2 border-primary text-primary">
+        <BiSolidOffer className="sm:text-3xl text-lg font-semibold" />
         Sınırlı süredeki kampanya için acele edin!
       </div>
       <div className="h-full shadow-lg p-4 sm:p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
@@ -37,18 +37,22 @@ const CampaignDetail = () => {
         <div className="w-full flex flex-col justify-start items-start p-5 sm:p-12 gap-y-2">
           <h1 className="text-4xl font-semibold">{cityName}</h1>
           <div className="text-zinc-500">
-            <p>• Kampanya 31.12.2024'e kadar geçerlidir.</p>
-            <p>• Kampanya'dan yararlanabilmek için kayıt olmalısınız.</p>
             <p>
-              • Kampanya'dan yararlanabilmek için e-posta doğrulaması
+              • Kampanya <strong>31.12.2024'e</strong> kadar geçerlidir.
+            </p>
+            <p>
+              • Kampanya'dan yararlanabilmek için{" "}
+              <strong>kayıt olmalısınız.</strong>
+            </p>
+            <p>
+              • Kampanya'dan yararlanabilmek için{" "}
+              <strong>e-posta doğrulaması </strong>
               yapmalısınız.
             </p>
-            <p>
-              • Kampanya'dan yararlanabilmek için 18 yaşını doldurmalısınız.
-            </p>
+
             <p>
               • Kampanya'ya dahil edilen şehirler:
-              <b>Bursa, Balıkesir, Çanakkale, İstanbul.</b>
+              <b> Çanakkale, İstanbul, Balıkesir.</b>
             </p>
             <p>
               • Hangi şehirde olursan ol {cityName} şehrine gitmek istersen bu

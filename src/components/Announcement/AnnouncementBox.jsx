@@ -9,11 +9,11 @@ const AnnouncementBox = ({ annItem }) => {
       <span className="text-sm text-[rgb(107,132,142)] ">
         {annItem?.titleDesc}
       </span>
-      <div className="w-full relative shadow-xl rounded-md h-[250px] sm:h-[500px] object-cover drop-shadow-2xl mt-2 bg-center bg-cover ">
+      <div className="w-full relative shadow-xl rounded-md h-[250px] sm:h-[500px] object-cover  mt-2  ">
         <img
           src={annItem?.image}
           alt="Announcement Image"
-          className="w-full rounded-md h-[250px] sm:h-[500px] border  object-cover drop-shadow-2xl mt-2"
+          className="w-full rounded-md h-[250px] sm:h-[500px] object-cover drop-shadow-2xl mt-2"
         />
         <img
           src={star}
