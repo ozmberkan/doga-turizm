@@ -7,6 +7,11 @@ import {
 import { BiLock, BiUser } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
+import { GiReceiveMoney } from "react-icons/gi";
+import { BsTicketDetailed } from "react-icons/bs";
+
+import { FaTree,FaUsersViewfinder } from "react-icons/fa6";
+
 
 import appstore from "../assets/social-media/appstore.svg";
 import googleplay from "../assets/social-media/googleplay.svg";
@@ -148,3 +153,31 @@ export const questions = [
       "Rezervasyon iptali veya değişikliği ile ilgili politikalarımızı web sitemizdeki 'İptal ve Değişiklik Politikası' bölümünden öğrenebilirsiniz.",
   },
 ];
+
+
+export const features = [
+  {
+    id:1,
+    icon : GiReceiveMoney,
+    title : "Ucuz Fiyat",
+    description : "Uygun fiyatlı biletlerimiz."
+  },
+  {
+    id:2,
+    icon : BsTicketDetailed,
+    title : "Kolay Bilet",
+    description : "Kolay bilet alma işlemi."
+  },
+  {
+    id:3,
+    icon : FaUsersViewfinder,
+    title : "Müşteri Memnuniyeti",
+    description : "Müşteri memnuniyeti odaklı hizmet."
+  },
+  {
+    id:4,
+    icon : FaTree,
+    title : "Çevre Dostu",
+    description : "Çevre dostu hizmetler."
+  }
+]
