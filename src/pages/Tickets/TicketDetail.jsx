@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
+import { IoClose } from "react-icons/io5";
+import { FaMale, FaFemale } from "react-icons/fa";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -170,25 +172,35 @@ const TicketDetail = ({ ticket }) => {
 
       {showGenderModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-5 rounded-lg flex flex-col gap-y-3">
-            <h3 className="text-lg font-bold">Cinsiyet Seçin</h3>
+          <div className="bg-white p-5 rounded-lg flex flex-col gap-y-5 sm:w-[500px] w-auto">
+            <div className="flex flex-col  ">
+              <div className="flex justify-between items-center">
+                <h1 className="text-lg font-semibold">Cinsiyet Seçin</h1>
+                <span
+                  onClick={() => setShowGenderModal(false)}
+                  className="p-2 rounded-md bg-zinc-300 cursor-pointer hover:bg-zinc-200 transition-colors text-zinc-700 flex justify-center items-center "
+                >
+                  <IoClose />
+                </span>
+              </div>
+
+              <p className="text-sm text-zinc-500">
+                Lütfen koltuk seçiminiz sırasında cinsiyetinizi seçiniz.
+              </p>
+            </div>
             <button
               onClick={() => handleGenderSelect("Erkek")}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              className="bg-blue-100 text-blue-500 hover:bg-blue-200 transition-colors  px-4 py-2 rounded-md flex justify-start items-center gap-x-2"
             >
+              <FaMale size={21} />
               Erkek
             </button>
             <button
               onClick={() => handleGenderSelect("Kadın")}
-              className="bg-pink-500 text-white px-4 py-2 rounded-md"
+              className="bg-pink-100 text-pink-500 hover:bg-pink-200 transition-colors px-4 py-2 rounded-md flex justify-start items-center gap-x-2"
             >
+              <FaFemale size={21} />
               Kadın
-            </button>
-            <button
-              onClick={() => setShowGenderModal(false)}
-              className="bg-gray-500 text-white px-4 py-2 rounded-md"
-            >
-              İptal
             </button>
           </div>
         </div>

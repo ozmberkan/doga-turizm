@@ -1,7 +1,8 @@
 import { ConfigProvider, Steps } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
-import { MdPayment } from "react-icons/md";
+import { FaFemale, FaMale } from "react-icons/fa";
+import { MdEventSeat, MdPayment } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -43,7 +44,6 @@ const Payment = () => {
     "DD.MM.YYYY HH:mm"
   );
 
-  console.log(user);
   return (
     <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
       <ConfigProvider
@@ -75,7 +75,7 @@ const Payment = () => {
           <h1 className="text-3xl font-semibold text-[#4FC647]">
             Seçilen Bilet / Biletler
           </h1>
-          <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-5 divide-y p-5  grid grid-cols-1 justify-between text-xl">
+          <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-5 p-5 grid grid-cols-1 justify-between text-xl">
             <div className="w-full flex justify-between items-center">
               <span className="font-semibold">PNR:</span> {pnr}
             </div>
@@ -94,13 +94,27 @@ const Payment = () => {
             </div>
             <div className="w-full flex justify-between items-center">
               <span className="font-semibold">Seçilen Koltuk:</span>{" "}
-              {user.ownedTickets.map((item) =>
-                item.seats.map((seatItem) => (
-                  <span>
-                    {seatItem.number} - {seatItem.gender}
-                  </span>
-                ))
-              )}
+              <div className="flex gap-x-2">
+                {user.ownedTickets.map((item) =>
+                  item.seats.map((seatItem, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-x-2 p-2 rounded-md bg-white text-[#4FC647]"
+                    >
+                      <MdEventSeat /> {seatItem.number} - {seatItem.gender}
+                      {seatItem.gender === "Erkek" ? (
+                        <span className="text-blue-500">
+                          <FaMale />
+                        </span>
+                      ) : (
+                        <span className="text-pink-500">
+                          <FaFemale />
+                        </span>
+                      )}{" "}
+                    </span>
+                  ))
+                )}
+              </div>
             </div>
           </div>
         </div>
