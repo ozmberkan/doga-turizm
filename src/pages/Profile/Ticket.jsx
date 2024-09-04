@@ -1,19 +1,18 @@
-import React from "react";
+import moment from "moment";
 import { BiUser } from "react-icons/bi";
 import { MdCancel, MdDateRange, MdEventSeat } from "react-icons/md";
 import { FaTurkishLiraSign } from "react-icons/fa6";
-import { IoHelp } from "react-icons/io5";
+import { IoHelp, IoLocationSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
 import { setUser } from "~/redux/slices/userSlice";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
-  const { pnr, departure, arrival, price, date, seats } = ticket;
+  const { pnr, departure, arrival, price, date } = ticket;
   const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
     "DD.MM.YYYY HH:mm"
   );
@@ -27,28 +26,25 @@ const Ticket = ({ ticket }) => {
       dispatch(setUser({ ...user, ownedTickets: updatedTickets }));
 
       const ticketRef = doc(db, "tickets", ticket.id);
+      const ticketDoc = await getDoc(ticketRef);
+
+      if (ticketDoc.exists()) {
+        const ticketData = ticketDoc.data();
+
+        const updatedSeats = ticketData.seats.map((seat) => {
+          return {
+            number: seat.number,
+            isAvailable: true,
+          };
+        });
+
+        await updateDoc(ticketRef, { seats: updatedSeats });
+      }
+
       const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, { ownedTickets: updatedTickets });
 
-      const updatedSeats = ticket.seats.map((seat) => {
-        const isSeatOwned = updatedTickets.some(
-          (ownedTicket) =>
-            ownedTicket.pnr === ticket.pnr &&
-            ownedTicket.seats.some(
-              (selectedSeat) => selectedSeat.number === seat.number
-            )
-        );
-        if (!isSeatOwned) {
-          return { ...seat, isAvailable: true };
-        }
-        return seat;
-      });
-
-      await updateDoc(ticketRef, { seats: updatedSeats });
-      await updateDoc(userRef, {
-        ownedTickets: updatedTickets,
-      });
-
-      toast.success("Bilet başarıyla silindi.");
+      toast.success("Bilet başarıyla silindi ve koltuk bilgileri güncellendi.");
     } catch (error) {
       toast.error("Bilet silinirken bir hata oluştu!");
     }
@@ -75,7 +71,7 @@ const Ticket = ({ ticket }) => {
               <MdEventSeat />{" "}
               {user.ownedTickets.map((item) =>
                 item.seats.map((seatItem) => (
-                  <span>
+                  <span key={seatItem.number}>
                     {seatItem.number} - {seatItem.gender}
                   </span>
                 ))
@@ -87,8 +83,16 @@ const Ticket = ({ ticket }) => {
             </span>
           </div>
           <div className="p-4 text-lg text-zinc-600">
-            <span className="flex items-center gap-x-1">{departure}</span>
-            <span className="flex items-center gap-x-1">{arrival}</span>
+            <span className="flex items-center gap-x-1">
+              {" "}
+              <IoLocationSharp />
+              {departure}
+            </span>
+            <span className="flex items-center gap-x-1">
+              {" "}
+              <IoLocationSharp />
+              {arrival}
+            </span>
           </div>
         </div>
         <div className="w-full bg-[#E6F7E6]/25 p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">

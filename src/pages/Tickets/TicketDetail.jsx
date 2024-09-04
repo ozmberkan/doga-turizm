@@ -53,7 +53,7 @@ const TicketDetail = ({ ticket }) => {
     setFinalTicket(finalTicket);
 
     const ticketRef = doc(db, "tickets", ticket.id);
-    const userRef = doc(db, "users", user.uid);
+    const userRef = doc(db, "users", user?.uid);
 
     try {
       const updatedSeats = ticket.seats.map((seat) => {
@@ -74,12 +74,14 @@ const TicketDetail = ({ ticket }) => {
 
       await updateDoc(userRef, {
         ownedTickets: [...user.ownedTickets, finalTicket],
+        fullTickets: [...user.fullTickets, finalTicket],
       });
 
       dispatch(
         setUser({
           ...user,
           ownedTickets: [...user.ownedTickets, finalTicket],
+          fullTickets: [...user.fullTickets, finalTicket],
         })
       );
 

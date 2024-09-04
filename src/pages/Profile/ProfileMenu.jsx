@@ -20,13 +20,13 @@ const ProfileMenu = () => {
           to="mytickets"
           className="bg-zinc-100 p-3 rounded-md text-black border flex justify-start items-center gap-x-3 cursor-pointer"
         >
-          <BsTicket /> Biletlerim
+          <BsTicket /> Aktif Biletlerim
         </Link>
         <Link
           to="lasttickets"
           className="bg-zinc-100 p-3 rounded-md text-black border flex justify-start items-center gap-x-3 cursor-pointer"
         >
-          <BsTicketDetailed /> Önceki Biletlerim
+          <BsTicketDetailed /> Geçmiş Biletlerim
         </Link>
       </ul>
     </div>

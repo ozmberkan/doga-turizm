@@ -30,7 +30,7 @@ import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
-import LastTickets from "./pages/Profile/LastTickets";
+import LastTickets from "./pages/Profile/LastTickets/LastTickets";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);

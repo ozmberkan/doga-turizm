@@ -43,6 +43,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         phoneNumber: data.phoneNumber,
         admin: false,
         ownedTickets: [],
+        fullTickets: [],
       });
 
       const userData = {
@@ -53,6 +54,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         emailVerified: user.emailVerified,
         admin: false,
         ownedTickets: [],
+        fullTickets: [],
       };
 
       setTimeout(() => {

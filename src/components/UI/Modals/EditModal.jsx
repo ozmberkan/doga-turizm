@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
@@ -25,7 +25,8 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateDoc(doc(db, "tickets", selectedTicket.id), formData);
+      const ref = doc(db, "tickets", selectedTicket.id);
+      await updateDoc(ref, formData);
       toast.success("Bilet başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {
@@ -146,9 +147,7 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
                   TV
                 </label>
               </div>
-              <div>
-                {}
-              </div>
+              <div>{}</div>
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

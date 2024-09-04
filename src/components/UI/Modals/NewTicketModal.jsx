@@ -1,4 +1,4 @@
-import { addDoc, collection, doc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import moment from "moment";
 import React from "react";
 import { useForm } from "react-hook-form";

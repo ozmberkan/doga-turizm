@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
@@ -20,7 +20,8 @@ const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateDoc(doc(db, "campaigns", selectedCampaign.id), formData);
+      const ref = doc(db, "campaigns", selectedCampaign.id);
+      await updateDoc(ref, formData);
       toast.success("Kampanya başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {
