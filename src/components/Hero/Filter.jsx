@@ -4,8 +4,8 @@ import FilterForm from "./FilterForm";
 
 const Filter = () => {
   return (
-    <div className="container w-full sm:w-3/4 h-full  flex justify-center items-center z-10 mx-auto px-10 sm:px-14 flex-col gap-y-2 ">
-      <div className="w-full z-20">
+    <div className="container w-full sm:w-3/4 h-full  flex justify-center items-center mx-auto px-10 sm:px-14 flex-col gap-y-2 ">
+      <div className="w-full">
         <div className="bg-white rounded-md w-[150px] gap-x-2 flex justify-center items-center font-rubik py-1 ">
           <BiBus /> Sefer Ara
         </div>

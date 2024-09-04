@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BiLogOut, BiMenu, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import DrawerComp from "../UI/DrawerComp";
 import MenuComp from "../UI/MenuComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
-
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false); // drawer
