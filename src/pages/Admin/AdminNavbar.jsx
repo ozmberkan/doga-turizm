@@ -30,7 +30,9 @@ const AdminNavbar = () => {
         </span>
         <span className="text-zinc-700 flex flex-col ">
           Yeniden Hoş geldin,
-          <small className="text-primary font-medium">{user.displayName}</small>
+          <small className="text-primary font-medium">
+            {user?.displayName}
+          </small>
         </span>
       </h1>
       <div className="flex items-center gap-x-5">

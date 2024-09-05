@@ -83,8 +83,18 @@ export const annTableTitles = [
   { id: 4, title: "Görsel"},
   { id: 5, title: "Mobile Görsel"  },
   { id: 6, title: "İç Başlık" },
-  { id: 6, title: "İç Açıklama"  },
-  { id: 6, title: "AKSİYON"},
+  { id: 7, title: "İç Açıklama"  },
+  { id: 8, title: "AKSİYON"},
+];
+
+export const userTableTitles = [
+  { id: 1, title: "ID"},
+  { id: 2, title: "Yönetici" },
+  { id: 3, title: "Ad Soyad" },
+  { id: 4, title: "E-Mail"},
+  { id: 5, title: "Alınan Bilet/Koltuk"  },
+  { id: 6, title: "Telefon Numarası" },
+  { id: 7, title: "AKSİYON"},
 ];
 
 export const InputField = [

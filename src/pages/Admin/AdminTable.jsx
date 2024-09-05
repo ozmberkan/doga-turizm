@@ -1,13 +1,13 @@
-import React from "react";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import TicketsTab from "./Tabs/TicketsTab";
 import CampaignTab from "./Tabs/CampaignTab";
 import AnnouncementTab from "./Tabs/AnnouncementTab";
+import UsersTab from "./Tabs/UsersTab";
 
 const AdminTable = () => {
   return (
     <TabGroup>
-      <TabList className="bg-white w-[500px] flex items-center justify-center rounded-md border gap-x-3 px-5 py-2  mb-5">
+      <TabList className="bg-white w-[700px] flex items-center justify-center rounded-md border gap-x-3 px-5 py-2  mb-5">
         <Tab className=" rounded-md py-1 px-5 data-[selected]:bg-zinc-100 data-[selected]:shadow-md outline-none">
           Biletler
         </Tab>
@@ -16,6 +16,9 @@ const AdminTable = () => {
         </Tab>
         <Tab className=" rounded-md py-1 px-5 data-[selected]:bg-zinc-100 data-[selected]:shadow-md outline-none">
           Duyuru / Yenilikler
+        </Tab>
+        <Tab className=" rounded-md py-1 px-5 data-[selected]:bg-zinc-100 data-[selected]:shadow-md outline-none">
+          Kullanıcılar
         </Tab>
       </TabList>
       <TabPanels>
@@ -27,6 +30,9 @@ const AdminTable = () => {
         </TabPanel>
         <TabPanel>
           <AnnouncementTab />
+        </TabPanel>
+        <TabPanel>
+          <UsersTab />
         </TabPanel>
       </TabPanels>
     </TabGroup>
