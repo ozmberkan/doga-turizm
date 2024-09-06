@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { TbSteeringWheel } from "react-icons/tb";
-import moment from "moment";
-import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "~/firebase/firebaseConfig";
 import { IoClose } from "react-icons/io5";
 import { FaMale, FaFemale } from "react-icons/fa";
+import moment from "moment";
+import "moment/locale/tr";
+import { setFinalTicket } from "~/redux/slices/finalTicketSlice";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -21,7 +19,6 @@ const TicketDetail = ({ ticket }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatToSelect, setSeatToSelect] = useState(null);
   const [showGenderModal, setShowGenderModal] = useState(false);
-  const [finalTicket, setFinalTicket] = useState([]);
 
   const parseDate = (dateStr) => {
     const formattedStr = dateStr.replace(/ at /, " ").replace(/ UTC.*$/, "");
@@ -55,52 +52,19 @@ const TicketDetail = ({ ticket }) => {
       setTimeout(() => {
         navigate("/");
       }, 1000);
+      return;
     }
 
     const finalTicket = {
       ...ticket,
-      seats: selectedSeats,
+      seats: selectedSeats.map((selectedSeat) => ({
+        ...selectedSeat,
+        isAvailable: false,
+      })),
     };
+    dispatch(setFinalTicket(finalTicket));
 
-    setFinalTicket(finalTicket);
-
-    const ticketRef = doc(db, "tickets", ticket.id);
-    const userRef = doc(db, "users", user?.uid);
-
-    try {
-      const updatedSeats = ticket.seats.map((seat) => {
-        const selectedSeat = selectedSeats.find(
-          (s) => s.number === seat.number
-        );
-        if (selectedSeat) {
-          return {
-            ...seat,
-            isAvailable: false,
-            gender: selectedSeat.gender,
-          };
-        }
-        return seat;
-      });
-
-      await updateDoc(ticketRef, { seats: updatedSeats });
-
-      await updateDoc(userRef, {
-        ownedTickets: [...user.ownedTickets, finalTicket],
-        fullTickets: [...user.fullTickets, finalTicket],
-      });
-
-      dispatch(
-        setUser({
-          ...user,
-          ownedTickets: [...user.ownedTickets, finalTicket],
-          fullTickets: [...user.fullTickets, finalTicket],
-        })
-      );
-
-      navigate("/payment");
-    } catch (error) {
-      toast.error("Bir Hata oluştu, lütfen tekrar deneyiniz.");
-    }
+    navigate("/payment");
   };
 
   return (
@@ -182,7 +146,7 @@ const TicketDetail = ({ ticket }) => {
       {showGenderModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-5 rounded-lg flex flex-col gap-y-5 sm:w-[500px] w-auto">
-            <div className="flex flex-col  ">
+            <div className="flex flex-col">
               <div className="flex justify-between items-center">
                 <h1 className="text-lg font-semibold">Cinsiyet Seçin</h1>
                 <span
