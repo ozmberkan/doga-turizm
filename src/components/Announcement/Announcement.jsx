@@ -4,7 +4,8 @@ import { collection } from "firebase/firestore";
 import AnnouncementBox from "./AnnouncementBox";
 
 const Announcement = () => {
-  const [snapshot] = useCollection(collection(db, "announcement"));
+  const annRef = collection(db, "announcement");
+  const [snapshot] = useCollection(annRef);
 
   const data = snapshot?.docs.map((doc) => ({
     id: doc.id,

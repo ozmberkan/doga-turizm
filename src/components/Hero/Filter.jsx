@@ -1,4 +1,3 @@
-import React from "react";
 import { BiBus } from "react-icons/bi";
 import FilterForm from "./FilterForm";
 

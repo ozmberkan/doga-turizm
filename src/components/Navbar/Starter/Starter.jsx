@@ -1,4 +1,3 @@
-import React from "react";
 import SocialMedia from "./children/SocialMedia";
 import TypewriterComp from "./children/Typewriter";
 

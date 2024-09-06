@@ -6,10 +6,10 @@ import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { RiAdminFill } from "react-icons/ri";
-
 import DrawerComp from "../UI/DrawerComp";
 import MenuComp from "../UI/MenuComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false); // drawer

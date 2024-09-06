@@ -1,4 +1,3 @@
-import React from "react";
 import { BiUser } from "react-icons/bi";
 import { BsTicket, BsTicketDetailed } from "react-icons/bs";
 import { Link } from "react-router-dom";

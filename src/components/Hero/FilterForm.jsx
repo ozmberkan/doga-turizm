@@ -7,7 +7,6 @@ import { filterscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { setFilterCriteria } from "~/redux/slices/filterSlice";
 import { useDispatch } from "react-redux";
-import { Select } from "antd";
 import moment from "moment";
 
 const FilterForm = () => {

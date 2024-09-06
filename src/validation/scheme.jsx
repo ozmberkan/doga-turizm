@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const scheme = z.object({
+export const registerscheme = z.object({
   displayName: z.string().min(1, "Bu alanı lütfen doldurunuz!"),
   phoneNumber: z.string(),
   email: z.string().min(1, "Bu alanı lütfen doldurunuz!"),

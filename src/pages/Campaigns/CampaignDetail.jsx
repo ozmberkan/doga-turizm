@@ -1,4 +1,3 @@
-import React from "react";
 import { BiSolidOffer } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -7,8 +6,6 @@ const CampaignDetail = () => {
   const { campaigns } = useSelector((store) => store.campaigns);
   const { id } = useParams();
   const campaign = campaigns.find((campaign) => campaign.id === id);
-  const { image, cityName, newPrice, oldPrice } = campaign;
-  const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   if (!campaign) {
     return (
@@ -19,6 +16,9 @@ const CampaignDetail = () => {
       </div>
     );
   }
+
+  const { cityName, image, oldPrice, newPrice } = campaign;
+  const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   return (
     <div className="w-full p-5 flex flex-col gap-y-5 container mx-auto">
@@ -61,8 +61,9 @@ const CampaignDetail = () => {
 
             <p>
               • <span className="line-through">{oldPrice} TL</span> 'den{" "}
-              {newPrice} TL'ye
-              <span className="text-primary"> {discount}</span> indirim fırsatı
+              {newPrice}
+              TL'ye
+              <span className="text-primary"> {discount} </span> indirim fırsatı
             </p>
           </div>
         </div>

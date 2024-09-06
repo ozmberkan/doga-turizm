@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 // CSS / COMPONENTS
 import FlexContainer from "./container/FlexContainer";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -39,9 +39,7 @@ const App = () => {
     <FlexContainer>
       <Navbar />
       <Outlet />
-      <div className="p-4">
-        <ToastContainer position="bottom-right" />
-      </div>
+      <ToastContainer position="bottom-right" />
     </FlexContainer>
   );
 

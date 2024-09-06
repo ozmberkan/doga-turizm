@@ -13,13 +13,14 @@ import { db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 
 const Payment = () => {
-  const dispatch = useDispatch();
   const [cartNo, setCartNo] = useState("");
   const [cartName, setCartName] = useState("");
   const [cartLast, setCartLast] = useState("");
   const [cartCvc, setCartCvc] = useState("");
-  const { finalTicket } = useSelector((store) => store.finalTicket);
+  // //
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { finalTicket } = useSelector((store) => store.finalTicket);
   const { user } = useSelector((store) => store.user);
 
   if (!finalTicket) {
@@ -51,10 +52,12 @@ const Payment = () => {
       const ticketRef = doc(db, "tickets", finalTicket.id);
 
       const ticketSnapshot = await getDoc(ticketRef);
+
       if (!ticketSnapshot.exists()) {
         toast.error("Bilet bulunamadı.");
         return;
       }
+
       const existingSeats = ticketSnapshot.data().seats;
 
       const updatedSeats = existingSeats.map((seat) => {

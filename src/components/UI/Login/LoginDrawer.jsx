@@ -19,6 +19,7 @@ import { doc, getDoc } from "firebase/firestore";
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
+
   const {
     register,
     handleSubmit,
@@ -37,7 +38,9 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
 
       const user = userCredential.user;
 
-      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userRef = doc(db, "users", user.uid);
+      
+      const userDoc = await getDoc(userRef);
 
       const userData = {
         uid: user.uid,

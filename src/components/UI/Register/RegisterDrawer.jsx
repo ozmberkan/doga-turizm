@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
-import { scheme } from "~/validation/scheme";
+import { registerscheme } from "~/validation/scheme";
 import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
@@ -18,7 +18,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(scheme),
+    resolver: zodResolver(registerscheme),
   });
 
   const registerHandle = async (data) => {
@@ -30,11 +30,14 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
       );
 
       const user = userCredential.user;
+
+
       await updateProfile(user, {
         displayName: data.displayName,
       });
 
       const userRef = doc(db, "users", user.uid);
+
 
       await setDoc(userRef, {
         uid: user.uid,
@@ -62,7 +65,8 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
       }, 500);
 
       toast.success("Başarıyla Kayıt Oluşturuldu!");
-    } catch (error) {
+    } 
+    catch (error) {
       toast.error(
         "Kayıt oluşturulurken bir hata oluştu. Bilgileri kontrol ediniz."
       );
