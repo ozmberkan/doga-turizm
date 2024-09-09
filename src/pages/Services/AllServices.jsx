@@ -1,9 +1,13 @@
 import Footer from "~/components/Footer/Footer";
+import logoBlack from "~/assets/logos/LogoBlack.png";
 
 const AllServices = () => {
   return (
     <div className="sm:px-5 px-3 mt-5 sm:mt-5">
-      <div className="w-full bg-white h-auto border rounded-md p-5 flex flex-col gap-y-5">
+      <div className="w-full bg-white h-auto border rounded-md p-12 flex flex-col gap-y-5">
+        <img src={logoBlack} alt="" className="w-44" />
+        <hr className="w-full my-4" />
+
         <h1 className="text-4xl">Hizmetlerimiz</h1>
         <p>
           Doğayla iç içe bir deneyim sunmak için, sürdürülebilir ve çevre dostu
