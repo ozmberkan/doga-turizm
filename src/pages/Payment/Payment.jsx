@@ -102,7 +102,7 @@ const Payment = () => {
       toast.success("Ödeme başarıyla tamamlandı!, yönlendiriliyorsunuz!");
       navigate("/profile/mytickets");
     } catch (error) {
-      toast.error("Bir hata oluştu, lütfen tekrar deneyiniz.");
+      toast.error("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
     }
   };
 

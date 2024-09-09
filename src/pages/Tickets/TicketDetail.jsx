@@ -55,6 +55,11 @@ const TicketDetail = ({ ticket }) => {
       return;
     }
 
+    if (selectedSeats.length === 0) {
+      toast.error("Lütfen en az bir koltuk seçiniz!");
+      return;
+    }
+
     const finalTicket = {
       ...ticket,
       seats: selectedSeats.map((selectedSeat) => ({
@@ -63,7 +68,6 @@ const TicketDetail = ({ ticket }) => {
       })),
     };
     dispatch(setFinalTicket(finalTicket));
-
     navigate("/payment");
   };
 
