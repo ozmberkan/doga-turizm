@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { usersEditInput } from "~/data/data";
 
 const UsersEditModal = ({ setIsModal, selectedUser }) => {
   const [formData, setFormData] = useState({
@@ -44,41 +45,29 @@ const UsersEditModal = ({ setIsModal, selectedUser }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
-              <select
-                type="text"
-                name="admin"
-                value={formData.admin}
-                onChange={handleInputChange}
-                placeholder="Admin"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              >
-                <option value={true}>Evet</option>
-                <option value={false}>Hayır</option>
-              </select>
-              <input
-                type="text"
-                name="displayName"
-                value={formData.displayName}
-                onChange={handleInputChange}
-                placeholder="Ad Soyad"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="E-Mail"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleInputChange}
-                placeholder="Telefon Numarası"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
+              {usersEditInput.map((input) =>
+                input.name === "admin" ? (
+                  <select
+                    key={input.name}
+                    name={input.name}
+                    value={formData[input.name]}
+                    onChange={handleInputChange}
+                    className="px-4 py-2 rounded-md w-full bg-white border outline-none"
+                  >
+                    <option value={true}>Yönetici</option>
+                    <option value={false}>Kullanıcı</option>
+                  </select>
+                ) : (
+                  <input
+                    key={input.name}
+                    type={input.type}
+                    name={input.name}
+                    value={formData[input.name]}
+                    onChange={handleInputChange}
+                    className="px-4 py-2 rounded-md w-full bg-white border outline-none"
+                  />
+                )
+              )}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

@@ -205,3 +205,205 @@ export const features = [
     description : "Çevre dostu hizmetler."
   }
 ]
+
+export const adminTabs = [
+  {
+    id:1,
+    label : "Biletler",
+  },
+  {
+    id:2,
+    label : "Kampanyalar",
+  },
+  {
+    id:3,
+    label : "Duyuru / Yenilikler",
+  },
+  {
+    id:4,
+    label : "Kullanıcılar",
+  }
+]
+
+export const announcementEditInput = [
+  {
+    type : "text",
+    name :"title",
+  },
+  {
+    type : "text",
+    name :"titleDesc",
+  },
+  {
+    type : "text",
+    name :"image",
+  },
+  {
+    type : "text",
+    name :"mobileImg",
+  },
+  {
+    type : "text",
+    name :"annTitle",
+  },
+  {
+    type : "text",
+    name :"annDesc",
+  },
+]
+
+export const campaignEditInput = [
+  {
+    type : "text",
+    name :"cityName",
+  },
+  {
+    type : "text",
+    name :"newPrice",
+  },
+  {
+    type : "text",
+    name :"oldPrice",
+  },
+  {
+    type : "text",
+    name :"image",
+  },
+]
+
+
+export const ticketEditInput = [
+  {
+    type : "text",
+    name :"pnr",
+  },
+  {
+    type : "text",
+    name :"departure",
+  },
+  {
+    type : "text",
+    name :"arrival",
+  },
+  {
+    type : "text",
+    name :"date",
+  },
+  {
+    type : "text",
+    name :"price",
+  },
+  {
+    type : "checkbox",
+    name :"wifi",
+    label : "Wi-Fi"
+  },
+  {
+    type : "checkbox",
+    name :"electric",
+    label : "Elektrik"
+  },
+  {
+    type : "checkbox",
+    name :"food",
+    label : "İkram"
+  },
+  {
+    type : "checkbox",
+    name :"tv",
+    label : "TV"
+  },
+]
+
+
+export const newCampaignInput = [
+
+
+  {
+    type : "text",
+    name: "cityName",
+    placeholder : "Varış",
+  },
+  {
+    type : "text",
+    name: "newPrice",
+    placeholder : "Yeni Fiyat",
+  },
+  {
+    type : "text",
+    name: "oldPrice",
+    placeholder : "Eski Fiyat",
+  },
+  {
+    type : "text",
+    name: "image",
+    placeholder : "Görsel",
+  }
+]
+
+export const newTicketInput = [
+  {
+    type : "text",
+    name :"pnr",
+    placeholder : "PNR"
+  },
+  {
+    type : "text",
+    name :"departure",
+    placeholder : "Kalkış"
+  },
+  {
+    type : "text",
+    name :"arrival",
+    placeholder : "Varış"
+  },
+  {
+    type : "date",
+    name :"date",
+  },
+  {
+    type : "text",
+    name :"price",
+    placeholder : "Fiyat"
+  },
+  {
+    type : "checkbox",
+    name :"wifi",
+    label : "Wi-Fi"
+  },
+  {
+    type : "checkbox",
+    name :"electric",
+    label : "Elektrik"
+  },
+  {
+    type : "checkbox",
+    name :"food",
+    label : "İkram"
+  },
+  {
+    type : "checkbox",
+    name :"tv",
+    label : "TV"
+  },
+]
+
+
+export const usersEditInput = [
+  {
+    type : "text",
+    name : "admin"
+  },
+  {
+    type : "text",
+    name : "displayName"
+  },
+  {
+    type : "text",
+    name : "email"
+  },
+  {
+    type : "text",
+    name : "phoneNumber"
+  }
+]

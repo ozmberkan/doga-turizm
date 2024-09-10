@@ -1,6 +1,5 @@
 import { IoTicketOutline } from "react-icons/io5";
-import { cities } from "../../data/data";
-import { InputField } from "../../data/data";
+import { cities, InputField } from "../../data/data";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { filterscheme } from "~/validation/scheme";

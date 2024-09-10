@@ -7,7 +7,7 @@ import { carouselImg } from "../../data/data";
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-y-12">
       <Hero carouselImg={carouselImg} />
       <Campaign />
       <Features />

@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
+import { newTicketInput } from "~/data/data";
 
 const NewTicketModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();
@@ -50,70 +51,51 @@ const NewTicketModal = ({ setIsAddModal }) => {
             </button>
           </div>
           <form onSubmit={handleSubmit(addTicket)}>
-            <div className="grid gap-4">
-              <input
-                type="text"
-                {...register("pnr", { required: true })}
-                placeholder="PNR"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <select
-                type="text"
-                name="departure"
-                {...register("departure")}
-                placeholder="Kalkış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              >
-                {cities.map((city) => (
-                  <option key={city.id} value={city.value}>
-                    {city.title}
-                  </option>
-                ))}
-              </select>
-              <select
-                type="text"
-                {...register("arrival")}
-                placeholder="Varış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              >
-                {cities.map((city) => (
-                  <option value={city.value}>{city.title}</option>
-                ))}
-              </select>
-              <input
-                type="date"
-                {...register("date")}
-                placeholder="Tarih"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                {...register("price")}
-                placeholder="Fiyat"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <div className="flex gap-x-2 items-center">
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("wifi")} />
-                  Wi-Fi
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input
-                    type="checkbox"
-                    name="wifi"
-                    {...register("electric")}
-                  />
-                  Elektrik
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("food")} />
-                  Yemek
-                </label>
-                <label className="flex items-center gap-x-2">
-                  <input type="checkbox" name="wifi" {...register("tv")} />
-                  TV
-                </label>
-              </div>
+            <div className="grid gap-5">
+              {newTicketInput.map((input) => {
+                if (input.name === "departure" || input.name === "arrival") {
+                  return (
+                    <div key={input.name}>
+                      <select
+                        name={input.name}
+                        {...register(input.name)}
+                        className="px-4 py-2 rounded-md bg-white border outline-none w-full"
+                      >
+                        {cities.map((city) => (
+                          <option key={city.id} value={city.value}>
+                            {city.title}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  );
+                } else if (input.type === "text" || input.type === "date") {
+                  return (
+                    <div key={input.name}>
+                      <input
+                        type={input.type}
+                        {...register(input.name)}
+                        placeholder={input.placeholder}
+                        className="px-4 py-2 rounded-md bg-white border outline-none w-full"
+                      />
+                    </div>
+                  );
+                } else {
+                  return (
+                    <label
+                      key={input.name}
+                      className="flex items-center gap-x-2"
+                    >
+                      <input
+                        type={input.type}
+                        name={input.name}
+                        {...register(input.name)}
+                      />
+                      {input.label}
+                    </label>
+                  );
+                }
+              })}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

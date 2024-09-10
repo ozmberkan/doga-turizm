@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { announcementEditInput } from "~/data/data";
 
 const AnnouncementEditModal = ({ setIsModal, selectedAnn }) => {
   const [formData, setFormData] = useState({
@@ -46,54 +47,15 @@ const AnnouncementEditModal = ({ setIsModal, selectedAnn }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                placeholder="Ana başlık"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="titleDesc"
-                value={formData.titleDesc}
-                onChange={handleInputChange}
-                placeholder="Ana Açıklama"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleInputChange}
-                placeholder="Görsel"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="mobileImg"
-                value={formData.mobileImg}
-                onChange={handleInputChange}
-                placeholder="Mobil Görsel"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="annTitle"
-                value={formData.annTitle}
-                onChange={handleInputChange}
-                placeholder="Mobil Görsel"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="annDesc"
-                value={formData.annDesc}
-                onChange={handleInputChange}
-                placeholder="Mobil Görsel"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
+              {announcementEditInput.map((input) => (
+                <input
+                  type={input.type}
+                  name={input.name}
+                  value={formData[input.name]}
+                  onChange={handleInputChange}
+                  className="px-4 py-2 rounded-md bg-white border outline-none"
+                />
+              ))}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

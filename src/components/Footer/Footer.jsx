@@ -29,9 +29,9 @@ const FooterSection = ({ title, items }) => (
 const Footer = ({ footerWidth }) => {
   return (
     <div
-      className={`w-full  sm:bg-white rounded-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto pt-5 pb-0 px-5 flex flex-col gap-y-6 `}
+      className={`w-full sm:bg-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto p-12 pb-0 flex flex-col gap-y-6 `}
     >
-      <div className="sm:grid sm:grid-cols-5  flex flex-col justify-center items-center sm:place-items-start ">
+      <div className="sm:grid sm:grid-cols-5 flex flex-col justify-center items-center sm:place-items-start ">
         <div className="flex flex-col">
           <img src={LogoBlack} alt="" className="w-44 mb-3" />
           <div className="flex flex-col gap-y-3">
@@ -50,7 +50,7 @@ const Footer = ({ footerWidth }) => {
         <FooterSection title="İş Ortağımız Ol" items={footerWith} />
         <FooterSection title="Sosyal Medya" items={socialMedia} />
       </div>
-      <div className="col-span-1 sm:col-span-5 text-zinc-500 text-left  text-sm border-t py-3 ">
+      <div className="col-span-1 sm:col-span-5 text-zinc-500 text-left  text-sm border-t py-3 mb-auto ">
         © 2024 Doğa Turizm. All rights reserved.
       </div>
     </div>

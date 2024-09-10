@@ -31,13 +31,11 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
 
       const user = userCredential.user;
 
-
       await updateProfile(user, {
         displayName: data.displayName,
       });
 
       const userRef = doc(db, "users", user.uid);
-
 
       await setDoc(userRef, {
         uid: user.uid,
@@ -65,8 +63,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
       }, 500);
 
       toast.success("Başarıyla Kayıt Oluşturuldu!");
-    } 
-    catch (error) {
+    } catch (error) {
       toast.error(
         "Kayıt oluşturulurken bir hata oluştu. Bilgileri kontrol ediniz."
       );

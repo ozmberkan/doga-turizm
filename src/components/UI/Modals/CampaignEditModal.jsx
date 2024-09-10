@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { campaignEditInput } from "~/data/data";
 
 const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
   const [formData, setFormData] = useState({
@@ -44,38 +45,15 @@ const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
-              <input
-                type="text"
-                name="cityName"
-                value={formData.cityName}
-                onChange={handleInputChange}
-                placeholder="PNR"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="newPrice"
-                value={formData.newPrice}
-                onChange={handleInputChange}
-                placeholder="Kalkış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="oldPrice"
-                value={formData.oldPrice}
-                onChange={handleInputChange}
-                placeholder="Varış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleInputChange}
-                placeholder="Tarih"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
+              {campaignEditInput.map((input) => (
+                <input
+                  type={input.type}
+                  name={input.name}
+                  value={formData[input.name]}
+                  onChange={handleInputChange}
+                  className="px-4 py-2 rounded-md bg-white border outline-none"
+                />
+              ))}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

@@ -24,20 +24,6 @@ const AnnouncementTab = () => {
   return (
     <div className="bg-white p-3 border rounded-md shadow-md">
       <div>
-        <div className="flex gap-x-2 items-center justify-start mb-2">
-          <input
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-            className="rounded-md px-4 outline-none border"
-            placeholder="Ara..."
-          />
-          <button
-            onClick={() => setIsAddModal(true)}
-            className="px-4 rounded-md border bg-[#f9f9f9]"
-          >
-            Ekle
-          </button>
-        </div>
         <table className="border w-full mt-5">
           <thead className="bg-zinc-100">
             <tr className="grid grid-cols-9 place-items-center h-12">

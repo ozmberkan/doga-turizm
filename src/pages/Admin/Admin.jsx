@@ -2,17 +2,18 @@ import React from "react";
 import AdminNavbar from "./AdminNavbar";
 import AdminTable from "./AdminTable";
 import { ToastContainer } from "react-toastify";
+import FlexContainer from "~/container/FlexContainer";
 
 const Admin = () => {
   return (
     <>
       <ToastContainer position="top-left" />
-      <div className="flex flex-col">
+      <FlexContainer>
         <AdminNavbar />
         <div className="p-5">
           <AdminTable />
         </div>
-      </div>
+      </FlexContainer>
     </>
   );
 };

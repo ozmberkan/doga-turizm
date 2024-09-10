@@ -1,9 +1,10 @@
-import { addDoc, collection, doc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
+import { newCampaignInput } from "~/data/data";
 
 const NewCampaignModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();
@@ -19,6 +20,7 @@ const NewCampaignModal = ({ setIsAddModal }) => {
       toast.error("Kampanya eklenirken bir hata oluştu.");
     }
   };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="bg-zinc-100 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
@@ -36,36 +38,30 @@ const NewCampaignModal = ({ setIsAddModal }) => {
           </div>
           <form onSubmit={handleSubmit(addTicket)}>
             <div className="grid gap-4">
-              <select
-                type="text"
-                {...register("cityName")}
-                placeholder="Varış"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              >
-                {cities.map((city) => (
-                  <option key={city.id} value={city.value}>
-                    {city.title}
-                  </option>
-                ))}
-              </select>
-              <input
-                type="text"
-                {...register("newPrice")}
-                placeholder="Yeni Fiyat"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                {...register("oldPrice")}
-                placeholder="Eski Fiyat"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
-              <input
-                type="text"
-                {...register("image")}
-                placeholder="Görsel Link"
-                className="px-4 py-2 rounded-md bg-white border outline-none"
-              />
+              {newCampaignInput.map((input) =>
+                input.name === "cityName" ? (
+                  <select
+                    key={input.name}
+                    {...register(input.name)}
+                    placeholder={input.placeholder}
+                    className="px-4 py-2 rounded-md bg-white border outline-none"
+                  >
+                    {cities.map((city) => (
+                      <option key={city.id} value={city.value}>
+                        {city.title}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    key={input.name}
+                    type={input.type}
+                    {...register(input.name)}
+                    placeholder={input.placeholder}
+                    className="px-4 py-2 rounded-md bg-white border outline-none"
+                  />
+                )
+              )}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">
               <button

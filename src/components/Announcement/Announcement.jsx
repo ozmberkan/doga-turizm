@@ -13,7 +13,7 @@ const Announcement = () => {
   }));
 
   return (
-    <div className="container w-full sm:w-2/3 h-full  flex justify-center items-center mx-auto gap-y-2 sm:my-5 my-5">
+    <div className="container w-full sm:w-2/3 h-full  flex justify-center items-center mx-auto gap-y-2">
       {data?.map((annItem) => (
         <AnnouncementBox key={annItem.id} annItem={annItem} />
       ))}

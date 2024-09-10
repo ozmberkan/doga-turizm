@@ -39,7 +39,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       const user = userCredential.user;
 
       const userRef = doc(db, "users", user.uid);
-      
+
       const userDoc = await getDoc(userRef);
 
       const userData = {
