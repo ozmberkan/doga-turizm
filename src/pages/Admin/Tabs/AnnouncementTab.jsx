@@ -23,10 +23,10 @@ const AnnouncementTab = () => {
 
   return (
     <div className="bg-white p-3 border rounded-md shadow-md">
-      <div>
+      <div className="overflow-x-auto">
         <table className="border w-full mt-5">
           <thead className="bg-zinc-100">
-            <tr className="grid grid-cols-9 place-items-center h-12">
+            <tr className="sm:grid flex sm:grid-cols-9  grid-cols-1 place-items-center p-4 gap-5">
               {annTableTitles.map((title) => (
                 <th key={title.id} className="flex items-center gap-x-2">
                   {title.title}
@@ -34,9 +34,9 @@ const AnnouncementTab = () => {
               ))}
             </tr>
           </thead>
-          <tbody className="bg-zinc-50/5">
-            <tr className="grid grid-cols-9 place-items-center p-4  gap-5 text-sm">
-              {data?.map((announcement) => (
+          <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
+            {data?.map((announcement) => (
+              <tr className="sm:grid flex sm:grid-cols-9 grid-cols-1 place-items-center p-4 gap-5">
                 <React.Fragment key={announcement.id}>
                   <td className="w-full">{announcement.id}</td>
                   <td>{announcement.title}</td>
@@ -52,14 +52,14 @@ const AnnouncementTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(announcement)}
-                      className="border border-[#4FC647] text-[#4FC647] p-3 rounded-md"
+                      className="border border-[#4FC647] text-[#4FC647]  sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>
                   </td>
                 </React.Fragment>
-              ))}
-            </tr>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

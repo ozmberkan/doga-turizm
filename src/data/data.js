@@ -230,26 +230,32 @@ export const announcementEditInput = [
   {
     type: "text",
     name: "title",
+    label: "Dış Başlık",
   },
   {
     type: "text",
     name: "titleDesc",
+    label: "Dış Açıklama",
   },
   {
     type: "text",
     name: "image",
+    label: "Görsel",
   },
   {
     type: "text",
     name: "mobileImg",
+    label: "Mobil Görsel",
   },
   {
     type: "text",
     name: "annTitle",
+    label: "İç Başlık",
   },
   {
     type: "text",
     name: "annDesc",
+    label: "İç Açıklama",
   },
 ];
 
@@ -257,18 +263,22 @@ export const campaignEditInput = [
   {
     type: "text",
     name: "cityName",
+    label: "Şehir Adı",
   },
   {
     type: "text",
     name: "newPrice",
+    label: "Yeni Fiyat",
   },
   {
     type: "text",
     name: "oldPrice",
+    label: "Eski Fiyat",
   },
   {
     type: "text",
     name: "image",
+    label: "Görsel",
   },
 ];
 
@@ -276,22 +286,27 @@ export const ticketEditInput = [
   {
     type: "text",
     name: "pnr",
+    label: "PNR",
   },
   {
     type: "text",
     name: "departure",
+    label: "Kalkış",
   },
   {
     type: "text",
     name: "arrival",
+    label: "Varış",
   },
   {
     type: "text",
     name: "date",
+    label: "Tarih",
   },
   {
     type: "text",
     name: "price",
+    label: "Fiyat",
   },
   {
     type: "checkbox",
@@ -319,22 +334,26 @@ export const newCampaignInput = [
   {
     type: "text",
     name: "cityName",
-    placeholder: "Varış",
+    placeholder: "Şehir Adı",
+    label: "Şehir Adı",
   },
   {
     type: "text",
     name: "newPrice",
     placeholder: "Yeni Fiyat",
+    label: "Yeni Fiyat",
   },
   {
     type: "text",
     name: "oldPrice",
     placeholder: "Eski Fiyat",
+    label: "Eski Fiyat",
   },
   {
     type: "text",
     name: "image",
     placeholder: "Görsel",
+    label: "Görsel",
   },
 ];
 
@@ -343,25 +362,30 @@ export const newTicketInput = [
     type: "text",
     name: "pnr",
     placeholder: "PNR",
+    label: "PNR",
   },
   {
     type: "text",
     name: "departure",
     placeholder: "Kalkış",
+    label: "Kalkış",
   },
   {
     type: "text",
     name: "arrival",
     placeholder: "Varış",
+    label: "Varış",
   },
   {
     type: "date",
     name: "date",
+    label: "Tarih",
   },
   {
     type: "text",
     name: "price",
     placeholder: "Fiyat",
+    label: "Fiyat",
   },
   {
     type: "checkbox",
@@ -389,17 +413,21 @@ export const usersEditInput = [
   {
     type: "text",
     name: "admin",
+    label: "Yetki",
   },
   {
     type: "text",
     name: "displayName",
+    label: "İsim Soyisim",
   },
   {
     type: "text",
     name: "email",
+    label: "E-Posta",
   },
   {
     type: "text",
     name: "phoneNumber",
+    label: "Cep No.",
   },
 ];

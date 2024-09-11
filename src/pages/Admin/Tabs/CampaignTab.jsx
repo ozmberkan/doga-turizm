@@ -65,65 +65,70 @@ const CampaignTab = () => {
             Ekle
           </button>
         </div>
-        <table className="border w-full mt-5">
-          <thead className="bg-zinc-100">
-            <tr className="grid grid-cols-6 place-items-center h-12">
-              {campaignTableTitles.map((title) => (
-                <th key={title.id} className="flex items-center gap-x-2">
-                  {title.title}
-                  {title.sortable && (
-                    <button
-                      onClick={() => {
-                        if (title.key === sorting.key) {
-                          setSorting({
-                            key: title.key,
-                            order: sorting.order === "asc" ? "desc" : "asc",
-                          });
-                        } else {
-                          setSorting({
-                            key: title.key,
-                            order: "asc",
-                          });
-                        }
-                      }}
-                    >
-                      <FaSort size={20} />
-                    </button>
-                  )}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-zinc-50/5">
-            <tr className="grid grid-cols-6 place-items-center p-4  gap-5">
+        <div className="overflow-x-auto">
+          <table className="border w-full mt-5">
+            <thead className="bg-zinc-100">
+              <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
+                {campaignTableTitles.map((title) => (
+                  <th key={title.id} className="flex items-center gap-x-2">
+                    {title.title}
+                    {title.sortable && (
+                      <button
+                        onClick={() => {
+                          if (title.key === sorting.key) {
+                            setSorting({
+                              key: title.key,
+                              order: sorting.order === "asc" ? "desc" : "asc",
+                            });
+                          } else {
+                            setSorting({
+                              key: title.key,
+                              order: "asc",
+                            });
+                          }
+                        }}
+                      >
+                        <FaSort size={20} />
+                      </button>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
               {filteredCampaigns?.map((campaign) => (
-                <React.Fragment key={campaign.id}>
-                  <td className="w-full">{campaign.id}</td>
-                  <td>{campaign.cityName}</td>
-                  <td>{campaign.newPrice}</td>
-                  <td>{campaign.oldPrice}</td>
-                  <td>
-                    <img src={campaign.image} className="w-12" />
-                  </td>
-                  <td className="flex gap-x-2 ">
-                    <button
-                      onClick={() => deleteCampaign(campaign.id)}
-                      className="border border-[#4FC647] text-[#4FC647] p-3 rounded-md"
-                    >
-                      <BiTrash size={20} />
-                    </button>
-                    <button
-                      onClick={() => openEdit(campaign)}
-                      className="border border-[#4FC647] text-[#4FC647] p-3 rounded-md"
-                    >
-                      <BiEdit size={20} />
-                    </button>
-                  </td>
-                </React.Fragment>
+                <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
+                  <React.Fragment key={campaign.id}>
+                    <td className="w-full">{campaign.id}</td>
+                    <td>{campaign.cityName}</td>
+                    <td>{campaign.newPrice}</td>
+                    <td>{campaign.oldPrice}</td>
+                    <td>
+                      <img
+                        src={campaign.image}
+                        className="sm:w-12 rounded-md shadow-sm w-24"
+                      />
+                    </td>
+                    <td className="flex gap-x-2 ">
+                      <button
+                        onClick={() => deleteCampaign(campaign.id)}
+                        className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      >
+                        <BiTrash size={20} />
+                      </button>
+                      <button
+                        onClick={() => openEdit(campaign)}
+                        className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      >
+                        <BiEdit size={20} />
+                      </button>
+                    </td>
+                  </React.Fragment>
+                </tr>
               ))}
-            </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
       {isModal && (
         <CampaignEditModal

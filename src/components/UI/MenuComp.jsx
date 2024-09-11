@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const MenuComp = () => {
   return (
     <Menu>
-      <MenuButton className="outline-none text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
+      <MenuButton className="outline-none sm:text-xs text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
         <BiMenu size={30} />
       </MenuButton>
       <Transition
