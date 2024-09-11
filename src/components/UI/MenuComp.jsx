@@ -13,11 +13,8 @@ import { Link } from "react-router-dom";
 const MenuComp = () => {
   return (
     <Menu>
-      <MenuButton>
-        <BiMenu
-          size={30}
-          className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
-        />
+      <MenuButton className="outline-none text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
+        <BiMenu size={30} />
       </MenuButton>
       <Transition
         enter="transition ease-out duration-200"
@@ -29,12 +26,12 @@ const MenuComp = () => {
       >
         <MenuItems
           anchor="bottom end"
-          className="[--anchor-gap:4px] sm:[--anchor-gap:8px] bg-white rounded-md p-3 border"
+          className="[--anchor-gap:4px] sm:[--anchor-gap:8px] bg-white rounded-md p-3 border border-black/15 outline-none absolute z-30"
         >
           {menus.map((menu, index) => (
             <MenuItem key={index}>
               <Link
-                className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-3"
+                className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-3 "
                 to={menu.to}
               >
                 <h1 className="flex items-center gap-x-2 text-zinc-600/80">
