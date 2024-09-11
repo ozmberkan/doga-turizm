@@ -1,19 +1,55 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
 import { menus } from "~/data/data";
+import { BiMenu } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const MenuComp = () => {
   return (
-    <div className="w-44 shadow-md absolute top-full right-0 sm:right-0 rounded p-4 bg-white border transition-all duration-300 z-30 flex flex-col gap-y-2">
-      {menus.map((item, id) => (
-        <Link
-          key={id}
-          to={item.to}
-          className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-2"
+    <Menu>
+      <MenuButton>
+        <BiMenu
+          size={30}
+          className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
+        />
+      </MenuButton>
+      <Transition
+        enter="transition ease-out duration-200"
+        enterFrom="transform opacity-0 -translate-y-4"
+        enterTo="transform opacity-100 translate-y-0"
+        leave="transition ease-in duration-150"
+        leaveFrom="transform opacity-100 translate-y-0"
+        leaveTo="transform opacity-0 -translate-y-4"
+      >
+        <MenuItems
+          anchor="bottom end"
+          className="[--anchor-gap:4px] sm:[--anchor-gap:8px] bg-white rounded-md p-3 border"
         >
-          {item.label}
-        </Link>
-      ))}
-    </div>
+          {menus.map((menu, index) => (
+            <MenuItem key={index}>
+              <Link
+                className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-3"
+                to={menu.to}
+              >
+                <h1 className="flex items-center gap-x-2 text-zinc-600/80">
+                  {" "}
+                  <span>
+                    <menu.icon size={20} />
+                  </span>
+                  {menu.label}
+                </h1>
+              </Link>
+            </MenuItem>
+          ))}
+        </MenuItems>
+      </Transition>
+    </Menu>
   );
 };
 

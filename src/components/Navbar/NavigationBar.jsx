@@ -7,13 +7,12 @@ import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { RiAdminFill } from "react-icons/ri";
 import DrawerComp from "../UI/DrawerComp";
-import MenuComp from "../UI/MenuComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import MenuComp from "../UI/MenuComp";
 
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false); // drawer
-  const [menuOpen, setMenuOpen] = useState(false); // dropdrown
 
   const exit = async () => {
     try {
@@ -70,19 +69,7 @@ const NavigationBar = () => {
                 <BiLogOut />
               </button>
             )}
-
-            <div className="relative">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="flex items-center h-10 focus:outline-none"
-              >
-                <BiMenu
-                  size={30}
-                  className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
-                />
-              </button>
-              {menuOpen && <MenuComp />}
-            </div>
+            <MenuComp />
           </div>
         </div>
       </div>
