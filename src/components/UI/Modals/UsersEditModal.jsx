@@ -21,8 +21,7 @@ const UsersEditModal = ({ setIsModal, selectedUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const ref = doc(db, "users", selectedUser.id);
-      await updateDoc(ref, formData);
+      await updateDoc(doc(db, "users", selectedUser.id), formData);
       toast.success("Kullanıcı başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {

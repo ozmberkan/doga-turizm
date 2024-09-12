@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const AnnouncementBox = ({ annItem }) => {
   return (
     <div className="py-7 flex justify-center items-start font-rubik flex-col gap-y-2 text-center sm:w-full w-[80%] rounded-xl   sm:text-left  bg-white sm:p-12 p-3 border ">

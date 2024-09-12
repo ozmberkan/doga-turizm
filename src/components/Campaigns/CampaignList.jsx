@@ -3,19 +3,17 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setCampaigns } from "~/redux/slices/campaignSlice";
-import CampaignBox from "./CampaignBox";
 import { useEffect } from "react";
+import CampaignBox from "./CampaignBox";
 
 const CampaignList = () => {
-  const campaignRef = collection(db, "campaigns");
-  const [snapshot] = useCollection(campaignRef);
+  const dispatch = useDispatch();
+  const [snapshot] = useCollection(collection(db, "campaigns"));
 
   const data = snapshot?.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data) {

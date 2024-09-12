@@ -1,4 +1,3 @@
-import React from "react";
 import smLogo from "~/assets/logos/smlogo.png";
 
 const PaymentCreditCart = ({ cartName, cartCvc, cartLast, cartNo }) => {

@@ -11,8 +11,8 @@ import LogoBlack from "../../assets/logos/LogoBlack.png";
 import MenuComp from "../UI/MenuComp";
 
 const NavigationBar = () => {
+  const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.user);
-  const [open, setOpen] = useState(false); // drawer
 
   const exit = async () => {
     try {

@@ -1,5 +1,5 @@
-import SocialMedia from "./children/SocialMedia";
 import TypewriterComp from "./children/Typewriter";
+import SocialMedia from "./children/SocialMedia";
 
 const Starter = () => {
   return (

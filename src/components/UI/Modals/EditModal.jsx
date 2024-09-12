@@ -31,8 +31,7 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const ref = doc(db, "tickets", selectedTicket.id);
-      await updateDoc(ref, formData);
+      await updateDoc(doc(db, "tickets", selectedTicket.id), formData);
       toast.success("Bilet başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {

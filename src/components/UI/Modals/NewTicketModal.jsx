@@ -12,7 +12,6 @@ const NewTicketModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();
 
   const addTicket = async (data) => {
-    const ref = collection(db, "tickets");
     const selectedDate = moment(data.date)
       .set({ hour: 20, minute: 0, second: 0 })
       .utcOffset("+03:00")
@@ -28,7 +27,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
     data.seats = seats;
 
     try {
-      await addDoc(ref, data);
+      await addDoc(collection(db, "tickets"), data);
       toast.success("Başarıyla veritabanına bilet eklendi!");
       setIsAddModal(false);
     } catch (error) {

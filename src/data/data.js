@@ -9,20 +9,17 @@ import { HiOutlineIdentification } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
 import { BsTicketDetailed } from "react-icons/bs";
-
 import { IoIosBusiness } from "react-icons/io";
 import { MdOutlineBusinessCenter } from "react-icons/md";
-
 import { FaTree, FaUsersViewfinder } from "react-icons/fa6";
-
 import appstore from "../assets/social-media/appstore.svg";
 import googleplay from "../assets/social-media/googleplay.svg";
 import huawei from "../assets/social-media/huawei.svg";
-// carousel
 import road1 from "../assets/carousel/road.jpg";
 import road2 from "../assets/carousel/road2.jpg";
 import road3 from "../assets/carousel/road3.webp";
 import doga from "../assets/carousel/doga.webp";
+
 
 export const socialMedia = [
   {

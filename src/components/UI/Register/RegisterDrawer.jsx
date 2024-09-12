@@ -35,9 +35,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         displayName: data.displayName,
       });
 
-      const userRef = doc(db, "users", user.uid);
-
-      await setDoc(userRef, {
+      await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,

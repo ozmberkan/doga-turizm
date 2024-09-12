@@ -21,8 +21,7 @@ const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const ref = doc(db, "campaigns", selectedCampaign.id);
-      await updateDoc(ref, formData);
+      await updateDoc(doc(db, "campaigns", selectedCampaign.id), formData);
       toast.success("Kampanya başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {

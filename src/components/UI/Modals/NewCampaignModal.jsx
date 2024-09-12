@@ -10,10 +10,8 @@ const NewCampaignModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();
 
   const addTicket = async (data) => {
-    const ref = collection(db, "campaigns");
-
     try {
-      await addDoc(ref, data);
+      await addDoc(collection(db, "campaigns"), data);
       toast.success("Başarıyla veritabanına kampanya eklendi!");
       setIsAddModal(false);
     } catch (error) {

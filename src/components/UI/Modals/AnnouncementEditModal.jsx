@@ -23,8 +23,7 @@ const AnnouncementEditModal = ({ setIsModal, selectedAnn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const ref = doc(db, "announcement", selectedAnn.id);
-      await updateDoc(ref, formData);
+      await updateDoc(doc(db, "announcement", selectedAnn.id), formData);
       toast.success("Duyurular başarıyla güncellendi.");
       setIsModal(false);
     } catch (error) {

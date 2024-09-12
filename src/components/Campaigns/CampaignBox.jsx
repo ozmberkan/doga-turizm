@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const CampaignBox = ({ campaign }) => {
   const { id, cityName, newPrice, oldPrice, image } = campaign;
-
   const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   return (

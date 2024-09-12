@@ -37,10 +37,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
       );
 
       const user = userCredential.user;
-
-      const userRef = doc(db, "users", user.uid);
-
-      const userDoc = await getDoc(userRef);
+      const userDoc = await getDoc(doc(db, "users", user.uid));
 
       const userData = {
         uid: user.uid,
@@ -52,9 +49,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         ownedTickets: userDoc.data()?.ownedTickets || [],
         fullTickets: userDoc.data()?.fullTickets || [],
       };
-
       toast.success("Başarıyla Giriş Yaptınız!");
-
       setTimeout(() => {
         dispatch(setUser(userData));
       }, 1000);
