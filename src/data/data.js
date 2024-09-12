@@ -19,8 +19,8 @@ import huawei from "../assets/social-media/huawei.svg";
 // carousel
 import road1 from "../assets/carousel/road.jpg";
 import road2 from "../assets/carousel/road2.jpg";
-import road3 from "../assets/carousel/road3.jpg";
-import doga from "../assets/carousel/doga.png";
+import road3 from "../assets/carousel/road3.webp";
+import doga from "../assets/carousel/doga.webp";
 
 export const socialMedia = [
   {
