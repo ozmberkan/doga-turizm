@@ -23,17 +23,17 @@ const AdminNavbar = () => {
   return (
     <div className="w-full border-b bg-white  py-3 px-6 flex justify-between items-center">
       <h1 className=" text-zinc-700 flex items-center gap-x-2">
-        <span className="rounded-md p-2 bg-zinc-100 border">
+        <span className="rounded-md p-2 sm:block hidden bg-zinc-100 border">
           <BiUser />
         </span>
-        <span className="text-zinc-700 flex flex-col ">
+        <span className="text-zinc-700 flex flex-col sm:text-base text-sm ">
           Yeniden Hoş geldin,
           <small className="text-primary font-medium">
             {user?.displayName}
           </small>
         </span>
       </h1>
-      <div className="flex items-center gap-x-5">
+      <div className="flex items-center gap-x-2 sm:gap-x-5">
         <Link
           to="/"
           className="p-2 rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 text-black bg-white transition-all duration-100"

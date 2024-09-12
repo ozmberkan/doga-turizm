@@ -43,3 +43,7 @@ body{
 *::-webkit-scrollbar-thumb:active {
   background-color: #4FC646;
 }
+
+.ticketDetail {
+  @apply bg-green-100 text-green-500 p-2 rounded-md
+}

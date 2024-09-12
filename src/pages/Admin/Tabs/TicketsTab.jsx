@@ -68,39 +68,42 @@ const TicketsTab = () => {
             Ekle
           </button>
         </div>
-        <table className="border w-full mt-5">
-          <thead className="bg-zinc-100">
-            <tr className="grid grid-cols-11 place-items-center h-12">
-              {tableTitles.map((title) => (
-                <th key={title.id} className="flex items-center gap-x-2">
-                  {title.title}
-                  {title.sortable && (
-                    <button
-                      onClick={() => {
-                        if (title.key === sorting.key) {
-                          setSorting({
-                            key: title.key,
-                            order: sorting.order === "asc" ? "desc" : "asc",
-                          });
-                        } else {
-                          setSorting({
-                            key: title.key,
-                            order: "asc",
-                          });
-                        }
-                      }}
-                    >
-                      <FaSort size={20} />
-                    </button>
-                  )}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-zinc-50/5">
-            <tr className="grid grid-cols-11 place-items-center p-4  gap-5">
+        <div className="overflow-x-auto">
+          <table className="border w-full mt-5">
+            <thead className="bg-zinc-100 sticky top-0">
+              <tr className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center p-4 gap-5">
+                {tableTitles.map((title) => (
+                  <th key={title.id} className="flex items-center gap-x-2">
+                    {title.title}
+                    {title.sortable && (
+                      <button
+                        onClick={() => {
+                          if (title.key === sorting.key) {
+                            setSorting({
+                              key: title.key,
+                              order: sorting.order === "asc" ? "desc" : "asc",
+                            });
+                          } else {
+                            setSorting({
+                              key: title.key,
+                              order: "asc",
+                            });
+                          }
+                        }}
+                      >
+                        <FaSort size={20} />
+                      </button>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
               {filteredTickets?.map((ticket) => (
-                <React.Fragment key={ticket.id}>
+                <tr
+                  key={ticket.id}
+                  className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center  p-4 gap-5"
+                >
                   <td className="w-full">{ticket.id}</td>
                   <td>{ticket.pnr}</td>
                   <td>{ticket.departure}</td>
@@ -114,22 +117,22 @@ const TicketsTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => deleteTicket(ticket.id)}
-                      className="border border-[#4FC647] text-[#4FC647] p-3 rounded-md"
+                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiTrash size={20} />
                     </button>
                     <button
                       onClick={() => openEditModal(ticket)}
-                      className="border border-[#4FC647] text-[#4FC647] p-3 rounded-md"
+                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>
                   </td>
-                </React.Fragment>
+                </tr>
               ))}
-            </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
       {isModal && (
         <EditModal setIsModal={setIsModal} selectedTicket={selectedTicket} />

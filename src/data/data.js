@@ -10,8 +10,10 @@ import { IoCallOutline } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
 import { BsTicketDetailed } from "react-icons/bs";
 
-import { FaTree,FaUsersViewfinder } from "react-icons/fa6";
+import { IoIosBusiness } from "react-icons/io";
+import { MdOutlineBusinessCenter } from "react-icons/md";
 
+import { FaTree, FaUsersViewfinder } from "react-icons/fa6";
 
 import appstore from "../assets/social-media/appstore.svg";
 import googleplay from "../assets/social-media/googleplay.svg";
@@ -25,19 +27,19 @@ import doga from "../assets/carousel/doga.webp";
 export const socialMedia = [
   {
     icon: FaXTwitter,
-    name : "Twitter"
+    name: "Twitter",
   },
   {
     icon: FaInstagram,
-    name : "Instagram"
+    name: "Instagram",
   },
   {
     icon: FaFacebook,
-    name : "Facebook"
+    name: "Facebook",
   },
   {
     icon: FaWhatsapp,
-    name : "Whatsapp"
+    name: "Whatsapp",
   },
 ];
 
@@ -54,7 +56,7 @@ export const cities = [
 ];
 
 export const tableTitles = [
-  { id: 1, title: "UID", key: "uid",  },
+  { id: 1, title: "UID", key: "uid" },
   { id: 2, title: "PNR", key: "pnr", sortable: true },
   { id: 3, title: "KALKIŞ", key: "departure", sortable: true },
   { id: 4, title: "VARIŞ", key: "arrival", sortable: true },
@@ -77,24 +79,24 @@ export const campaignTableTitles = [
 ];
 
 export const annTableTitles = [
-  { id: 1, title: "ID"},
+  { id: 1, title: "ID" },
   { id: 2, title: "Ana Başlık" },
   { id: 3, title: "Ana Açıklama" },
-  { id: 4, title: "Görsel"},
-  { id: 5, title: "Mobile Görsel"  },
+  { id: 4, title: "Görsel" },
+  { id: 5, title: "Mobile Görsel" },
   { id: 6, title: "İç Başlık" },
-  { id: 7, title: "İç Açıklama"  },
-  { id: 8, title: "AKSİYON"},
+  { id: 7, title: "İç Açıklama" },
+  { id: 8, title: "AKSİYON" },
 ];
 
 export const userTableTitles = [
-  { id: 1, title: "ID"},
+  { id: 1, title: "ID" },
   { id: 2, title: "Yönetici" },
   { id: 3, title: "Ad Soyad" },
-  { id: 4, title: "E-Mail"},
-  { id: 5, title: "Alınan Bilet/Koltuk"  },
+  { id: 4, title: "E-Mail" },
+  { id: 5, title: "Alınan Bilet/Koltuk" },
   { id: 6, title: "Telefon Numarası" },
-  { id: 7, title: "AKSİYON"},
+  { id: 7, title: "AKSİYON" },
 ];
 
 export const InputField = [
@@ -122,8 +124,8 @@ export const footerWith = [
 ];
 
 export const menus = [
-  { label: "Hakkımızda", to: "/about" },
-  { label: "Hizmetlerimiz", to: "/services" },
+  { label: "Hakkımızda", to: "/about", icon: MdOutlineBusinessCenter },
+  { label: "Hizmetlerimiz", to: "/services", icon: IoIosBusiness },
 ];
 
 export const loginForm = [
@@ -178,232 +180,254 @@ export const questions = [
   },
 ];
 
-
 export const features = [
   {
-    id:1,
-    icon : GiReceiveMoney,
-    title : "Ucuz Fiyat",
-    description : "Uygun fiyatlı biletlerimiz."
+    id: 1,
+    icon: GiReceiveMoney,
+    title: "Ucuz Fiyat",
+    description: "Uygun fiyatlı biletlerimiz.",
   },
   {
-    id:2,
-    icon : BsTicketDetailed,
-    title : "Kolay Bilet",
-    description : "Kolay bilet alma işlemi."
+    id: 2,
+    icon: BsTicketDetailed,
+    title: "Kolay Bilet",
+    description: "Kolay bilet alma işlemi.",
   },
   {
-    id:3,
-    icon : FaUsersViewfinder,
-    title : "Müşteri Memnuniyeti",
-    description : "Müşteri memnuniyeti odaklı hizmet."
+    id: 3,
+    icon: FaUsersViewfinder,
+    title: "Müşteri Memnuniyeti",
+    description: "Müşteri memnuniyeti odaklı hizmet.",
   },
   {
-    id:4,
-    icon : FaTree,
-    title : "Çevre Dostu",
-    description : "Çevre dostu hizmetler."
-  }
-]
+    id: 4,
+    icon: FaTree,
+    title: "Çevre Dostu",
+    description: "Çevre dostu hizmetler.",
+  },
+];
 
 export const adminTabs = [
   {
-    id:1,
-    label : "Biletler",
+    id: 1,
+    label: "Biletler",
   },
   {
-    id:2,
-    label : "Kampanyalar",
+    id: 2,
+    label: "Kampanyalar",
   },
   {
-    id:3,
-    label : "Duyuru / Yenilikler",
+    id: 3,
+    label: "Duyuru / Yenilikler",
   },
   {
-    id:4,
-    label : "Kullanıcılar",
-  }
-]
+    id: 4,
+    label: "Kullanıcılar",
+  },
+];
 
 export const announcementEditInput = [
   {
-    type : "text",
-    name :"title",
+    type: "text",
+    name: "title",
+    label: "Dış Başlık",
   },
   {
-    type : "text",
-    name :"titleDesc",
+    type: "text",
+    name: "titleDesc",
+    label: "Dış Açıklama",
   },
   {
-    type : "text",
-    name :"image",
+    type: "text",
+    name: "image",
+    label: "Görsel",
   },
   {
-    type : "text",
-    name :"mobileImg",
+    type: "text",
+    name: "mobileImg",
+    label: "Mobil Görsel",
   },
   {
-    type : "text",
-    name :"annTitle",
+    type: "text",
+    name: "annTitle",
+    label: "İç Başlık",
   },
   {
-    type : "text",
-    name :"annDesc",
+    type: "text",
+    name: "annDesc",
+    label: "İç Açıklama",
   },
-]
+];
 
 export const campaignEditInput = [
   {
-    type : "text",
-    name :"cityName",
+    type: "text",
+    name: "cityName",
+    label: "Şehir Adı",
   },
   {
-    type : "text",
-    name :"newPrice",
+    type: "text",
+    name: "newPrice",
+    label: "Yeni Fiyat",
   },
   {
-    type : "text",
-    name :"oldPrice",
+    type: "text",
+    name: "oldPrice",
+    label: "Eski Fiyat",
   },
   {
-    type : "text",
-    name :"image",
+    type: "text",
+    name: "image",
+    label: "Görsel",
   },
-]
-
+];
 
 export const ticketEditInput = [
   {
-    type : "text",
-    name :"pnr",
+    type: "text",
+    name: "pnr",
+    label: "PNR",
   },
   {
-    type : "text",
-    name :"departure",
+    type: "text",
+    name: "departure",
+    label: "Kalkış",
   },
   {
-    type : "text",
-    name :"arrival",
+    type: "text",
+    name: "arrival",
+    label: "Varış",
   },
   {
-    type : "text",
-    name :"date",
+    type: "text",
+    name: "date",
+    label: "Tarih",
   },
   {
-    type : "text",
-    name :"price",
+    type: "text",
+    name: "price",
+    label: "Fiyat",
   },
   {
-    type : "checkbox",
-    name :"wifi",
-    label : "Wi-Fi"
+    type: "checkbox",
+    name: "wifi",
+    label: "Wi-Fi",
   },
   {
-    type : "checkbox",
-    name :"electric",
-    label : "Elektrik"
+    type: "checkbox",
+    name: "electric",
+    label: "Elektrik",
   },
   {
-    type : "checkbox",
-    name :"food",
-    label : "İkram"
+    type: "checkbox",
+    name: "food",
+    label: "İkram",
   },
   {
-    type : "checkbox",
-    name :"tv",
-    label : "TV"
+    type: "checkbox",
+    name: "tv",
+    label: "TV",
   },
-]
-
+];
 
 export const newCampaignInput = [
-
-
   {
-    type : "text",
+    type: "text",
     name: "cityName",
-    placeholder : "Varış",
+    placeholder: "Şehir Adı",
+    label: "Şehir Adı",
   },
   {
-    type : "text",
+    type: "text",
     name: "newPrice",
-    placeholder : "Yeni Fiyat",
+    placeholder: "Yeni Fiyat",
+    label: "Yeni Fiyat",
   },
   {
-    type : "text",
+    type: "text",
     name: "oldPrice",
-    placeholder : "Eski Fiyat",
+    placeholder: "Eski Fiyat",
+    label: "Eski Fiyat",
   },
   {
-    type : "text",
+    type: "text",
     name: "image",
-    placeholder : "Görsel",
-  }
-]
+    placeholder: "Görsel",
+    label: "Görsel",
+  },
+];
 
 export const newTicketInput = [
   {
-    type : "text",
-    name :"pnr",
-    placeholder : "PNR"
+    type: "text",
+    name: "pnr",
+    placeholder: "PNR",
+    label: "PNR",
   },
   {
-    type : "text",
-    name :"departure",
-    placeholder : "Kalkış"
+    type: "text",
+    name: "departure",
+    placeholder: "Kalkış",
+    label: "Kalkış",
   },
   {
-    type : "text",
-    name :"arrival",
-    placeholder : "Varış"
+    type: "text",
+    name: "arrival",
+    placeholder: "Varış",
+    label: "Varış",
   },
   {
-    type : "date",
-    name :"date",
+    type: "date",
+    name: "date",
+    label: "Tarih",
   },
   {
-    type : "text",
-    name :"price",
-    placeholder : "Fiyat"
+    type: "text",
+    name: "price",
+    placeholder: "Fiyat",
+    label: "Fiyat",
   },
   {
-    type : "checkbox",
-    name :"wifi",
-    label : "Wi-Fi"
+    type: "checkbox",
+    name: "wifi",
+    label: "Wi-Fi",
   },
   {
-    type : "checkbox",
-    name :"electric",
-    label : "Elektrik"
+    type: "checkbox",
+    name: "electric",
+    label: "Elektrik",
   },
   {
-    type : "checkbox",
-    name :"food",
-    label : "İkram"
+    type: "checkbox",
+    name: "food",
+    label: "İkram",
   },
   {
-    type : "checkbox",
-    name :"tv",
-    label : "TV"
+    type: "checkbox",
+    name: "tv",
+    label: "TV",
   },
-]
-
+];
 
 export const usersEditInput = [
   {
-    type : "text",
-    name : "admin"
+    type: "text",
+    name: "admin",
+    label: "Yetki",
   },
   {
-    type : "text",
-    name : "displayName"
+    type: "text",
+    name: "displayName",
+    label: "İsim Soyisim",
   },
   {
-    type : "text",
-    name : "email"
+    type: "text",
+    name: "email",
+    label: "E-Posta",
   },
   {
-    type : "text",
-    name : "phoneNumber"
-  }
-]
+    type: "text",
+    name: "phoneNumber",
+    label: "Cep No.",
+  },
+];

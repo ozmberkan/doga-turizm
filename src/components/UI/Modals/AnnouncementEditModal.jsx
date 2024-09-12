@@ -33,7 +33,7 @@ const AnnouncementEditModal = ({ setIsModal, selectedAnn }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
       <div className="bg-zinc-100 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
@@ -48,13 +48,16 @@ const AnnouncementEditModal = ({ setIsModal, selectedAnn }) => {
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
               {announcementEditInput.map((input) => (
-                <input
-                  type={input.type}
-                  name={input.name}
-                  value={formData[input.name]}
-                  onChange={handleInputChange}
-                  className="px-4 py-2 rounded-md bg-white border outline-none"
-                />
+                <div className="flex flex-col sm:text-base text-sm">
+                  <label>{input.label}</label>
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    value={formData[input.name]}
+                    onChange={handleInputChange}
+                    className="px-4 py-2 rounded-md bg-white border outline-none"
+                  />
+                </div>
               ))}
             </div>
             <div className="flex justify-end mt-5 gap-x-2">

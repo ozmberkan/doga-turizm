@@ -1,19 +1,18 @@
 import { useState } from "react";
-import { BiLogOut, BiMenu, BiUser } from "react-icons/bi";
+import { BiLogOut, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
-import { RiAdminFill } from "react-icons/ri";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import DrawerComp from "../UI/DrawerComp";
-import MenuComp from "../UI/MenuComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import MenuComp from "../UI/MenuComp";
 
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const [open, setOpen] = useState(false); // drawer
-  const [menuOpen, setMenuOpen] = useState(false); // dropdrown
 
   const exit = async () => {
     try {
@@ -38,18 +37,18 @@ const NavigationBar = () => {
               className="w-[150px] sm:w-[200px] drop-shadow-2xl"
             />
           </Link>
-          <div className="flex justify-center items-center gap-x-4">
+          <div className="flex justify-center items-center sm:gap-x-4 gap-x-2">
             {user ? (
               <Link
                 to="/profile"
-                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </Link>
             ) : (
               <button
                 onClick={() => setOpen(!open)}
-                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </button>
@@ -57,32 +56,20 @@ const NavigationBar = () => {
             {user?.admin === true && (
               <Link
                 to="/admin"
-                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
-                <RiAdminFill />
+                <MdOutlineAdminPanelSettings />
               </Link>
             )}
             {user && (
               <button
                 onClick={exit}
-                className="bg-white border p-2 rounded-full flex justify-center items-center gap-x-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-500"
+                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiLogOut />
               </button>
             )}
-
-            <div className="relative">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="flex items-center h-10 focus:outline-none"
-              >
-                <BiMenu
-                  size={30}
-                  className="text-black cursor-pointer hover:text-green-400 transition-all duration-500"
-                />
-              </button>
-              {menuOpen && <MenuComp />}
-            </div>
+            <MenuComp />
           </div>
         </div>
       </div>

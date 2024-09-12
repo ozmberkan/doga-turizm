@@ -36,7 +36,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
     }
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
       <div className="bg-zinc-100 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
@@ -51,15 +51,19 @@ const NewTicketModal = ({ setIsAddModal }) => {
             </button>
           </div>
           <form onSubmit={handleSubmit(addTicket)}>
-            <div className="grid gap-5">
+            <div className="grid gap-2">
               {newTicketInput.map((input) => {
                 if (input.name === "departure" || input.name === "arrival") {
                   return (
-                    <div key={input.name}>
+                    <div
+                      key={input.name}
+                      className="flex flex-col sm:text-base text-sm"
+                    >
+                      <label>{input.label}</label>
                       <select
                         name={input.name}
                         {...register(input.name)}
-                        className="px-4 py-2 rounded-md bg-white border outline-none w-full"
+                        className="px-4 py-2 h-10 rounded-md bg-white border outline-none w-full"
                       >
                         {cities.map((city) => (
                           <option key={city.id} value={city.value}>
@@ -71,12 +75,16 @@ const NewTicketModal = ({ setIsAddModal }) => {
                   );
                 } else if (input.type === "text" || input.type === "date") {
                   return (
-                    <div key={input.name}>
+                    <div
+                      key={input.name}
+                      className="flex flex-col sm:text-base text-sm"
+                    >
+                      <label>{input.label}</label>
                       <input
                         type={input.type}
                         {...register(input.name)}
                         placeholder={input.placeholder}
-                        className="px-4 py-2 rounded-md bg-white border outline-none w-full"
+                        className="px-4 py-2 rounded-md h-10  bg-white border outline-none w-full"
                       />
                     </div>
                   );

@@ -31,7 +31,7 @@ const UsersEditModal = ({ setIsModal, selectedUser }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
       <div className="bg-zinc-100 border rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
@@ -47,25 +47,31 @@ const UsersEditModal = ({ setIsModal, selectedUser }) => {
             <div className="grid gap-4">
               {usersEditInput.map((input) =>
                 input.name === "admin" ? (
-                  <select
-                    key={input.name}
-                    name={input.name}
-                    value={formData[input.name]}
-                    onChange={handleInputChange}
-                    className="px-4 py-2 rounded-md w-full bg-white border outline-none"
-                  >
-                    <option value={true}>Yönetici</option>
-                    <option value={false}>Kullanıcı</option>
-                  </select>
+                  <div className="flex flex-col sm:text-base text-sm">
+                    <label>{input.label}</label>
+                    <select
+                      key={input.name}
+                      name={input.name}
+                      value={formData[input.name]}
+                      onChange={handleInputChange}
+                      className="px-4 py-2 h-10 rounded-md w-full bg-white border outline-none"
+                    >
+                      <option value={true}>Yönetici</option>
+                      <option value={false}>Kullanıcı</option>
+                    </select>
+                  </div>
                 ) : (
-                  <input
-                    key={input.name}
-                    type={input.type}
-                    name={input.name}
-                    value={formData[input.name]}
-                    onChange={handleInputChange}
-                    className="px-4 py-2 rounded-md w-full bg-white border outline-none"
-                  />
+                  <div className="flex flex-col sm:text-base text-sm">
+                    <label>{input.label}</label>
+                    <input
+                      key={input.name}
+                      type={input.type}
+                      name={input.name}
+                      value={formData[input.name]}
+                      onChange={handleInputChange}
+                      className="px-4 py-2 rounded-md w-full bg-white border outline-none"
+                    />
+                  </div>
                 )
               )}
             </div>
