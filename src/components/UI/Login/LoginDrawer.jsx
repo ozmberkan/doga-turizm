@@ -9,16 +9,18 @@ import { Drawer } from "antd";
 import { loginscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { loginForm } from "~/data/data";
 import { auth, db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, getDoc } from "firebase/firestore";
+import { current } from "@reduxjs/toolkit";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
+  const { user } = useSelector((store) => store.user);
 
   const {
     register,
