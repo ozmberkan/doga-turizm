@@ -1,15 +1,12 @@
+// CSS / IMPORTS
 import {
-  Outlet,
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-// CSS / COMPONENTS
-import FlexContainer from "./container/FlexContainer";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar/Navbar";
 import { useSelector } from "react-redux";
-import { ToastContainer } from "react-toastify";
+import Layout from "./layout/Layout";
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -34,14 +31,6 @@ import LastTickets from "./pages/Profile/LastTickets/LastTickets";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
-
-  const Layout = () => (
-    <FlexContainer>
-      <Navbar />
-      <Outlet />
-      <ToastContainer position="bottom-right" />
-    </FlexContainer>
-  );
 
   const router = createBrowserRouter([
     {
