@@ -8,7 +8,7 @@ import { BiLock, BiUser } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
-import { BsTicketDetailed } from "react-icons/bs";
+import { BsTicket, BsTicketDetailed } from "react-icons/bs";
 import { IoIosBusiness } from "react-icons/io";
 import { MdOutlineBusinessCenter } from "react-icons/md";
 import { FaTree, FaUsersViewfinder } from "react-icons/fa6";
@@ -428,3 +428,25 @@ export const usersEditInput = [
     label: "Cep No.",
   },
 ];
+
+
+export const sideBarTabs = [
+  {
+    id:1,
+    label:"Kullanıcı Bilgilerim",
+    to : "myprofile",
+    icon: BiUser,
+  },
+  {
+    id:2,
+    label:"Aktif Biletlerim",
+    to : "mytickets",
+    icon: BsTicket,
+  },
+  {
+    id:3,
+    label:"Geçmiş Biletlerim",
+    to : "lasttickets",
+    icon: BsTicketDetailed,
+  },
+]

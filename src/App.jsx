@@ -14,11 +14,9 @@ import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
 import Admin from "./pages/Admin/Admin";
-import Profile from "./pages/Profile/Profile";
 import Tickets from "./pages/Tickets/Tickets";
-import MyTickets from "./pages/Profile/MyTickets";
 import About from "./pages/Footer/ExploreWe/About";
-import Carier from "./pages/Footer/ExploreWe/Carier";
+import Career from "./pages/Footer/ExploreWe/Career";
 import Contact from "./pages/Footer/ExploreWe/Contact";
 import Energy from "./pages/Footer/ExploreWe/Energy";
 import AskedQuestions from "./pages/Footer/Help/AskedQuestions";
@@ -30,6 +28,9 @@ import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
+import ProfileLayout from "./layouts/ProfileLayout";
+import Profile from "./pages/Profile/MyProfile/Profile";
+import MyTickets from "./pages/Profile/MyTickets/MyTickets";
 import LastTickets from "./pages/Profile/LastTickets/LastTickets";
 
 const App = () => {
@@ -53,8 +54,9 @@ const App = () => {
         { path: "/", element: <Home /> },
         {
           path: "/profile",
-          element: user ? <Profile /> : <Navigate to="/" />,
+          element: user ? <ProfileLayout /> : <Navigate to="/" />,
           children: [
+            { path: "myprofile", element: <Profile /> },
             { path: "mytickets", element: <MyTickets /> },
             { path: "lasttickets", element: <LastTickets /> },
           ],
@@ -69,7 +71,7 @@ const App = () => {
         },
         // FOOTER
         { path: "/about", element: <About /> },
-        { path: "/carier", element: <Carier /> },
+        { path: "/career", element: <Career /> },
         { path: "/contact", element: <Contact /> },
         { path: "/energy", element: <Energy /> },
         // FOOTER

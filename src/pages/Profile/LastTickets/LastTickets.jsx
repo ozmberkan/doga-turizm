@@ -26,7 +26,7 @@ const LastTickets = () => {
   };
 
   return (
-    <div className="w-full bg-white rounded-md border p-4">
+    <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 flex justify-between items-center ">
         <h1 className="text-2xl ">Geçmiş Biletlerim</h1>
         <div className="flex gap-x-3 sm:flex-row flex-col gap-y-2">
