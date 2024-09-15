@@ -1,4 +1,6 @@
 // CSS / IMPORTS
+import Navbar from "./components/Navbar/Navbar";
+import FlexContainer from "./container/FlexContainer";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -7,6 +9,7 @@ import {
 } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -28,9 +31,6 @@ import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
 import LastTickets from "./pages/Profile/LastTickets/LastTickets";
-import Navbar from "./components/Navbar/Navbar";
-import FlexContainer from "./container/FlexContainer";
-import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
