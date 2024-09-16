@@ -103,9 +103,10 @@ const Profile = () => {
             {!isEditMode ? (
               <button
                 onClick={() => setIsEditMode(!isEditMode)}
-                className="rounded-md w-1/12 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
+                className="rounded-md sm:w-1/12 px-2 sm:px-0 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
               >
-                Düzenle <CiEdit size={25} />
+                <span className="sm:flex hidden">Düzenle</span>{" "}
+                <CiEdit size={25} />
               </button>
             ) : (
               <div className="flex gap-x-3">
