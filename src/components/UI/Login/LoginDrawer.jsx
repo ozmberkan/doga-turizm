@@ -65,7 +65,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const googleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      dispatch(setUser(result.user));
+      dispatch(setUser({ ...result.user, ownedTickets: [], fullTickets: [] }));
       toast.success("Google ile giriş başarılı.");
     } catch (error) {
       toast.error("Google ile giriş yapılırken hata oluştu");
@@ -122,8 +122,8 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         </div>
         <div className="flex  gap-x-4">
           <div
-            onClick={googleSignIn}
-            className="w-full flex justify-center items-center  border rounded-md cursor-pointer hover:bg-zinc-100 transition-all duration-300"
+            onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
+            className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md hover:bg-zinc-100 transition-all duration-300"
           >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
@@ -131,7 +131,10 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
               </div>
             </span>
           </div>
-          <div className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md  hover:bg-zinc-100 transition-all duration-300">
+          <div
+            onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
+            className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md  hover:bg-zinc-100 transition-all duration-300"
+          >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
                 <BsApple size={18} />
