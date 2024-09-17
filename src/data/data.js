@@ -40,6 +40,8 @@ export const socialMedia = [
   },
 ];
 
+export const validCoupons = ["İNDİRİM50", "YAZFIRSATI50", "DOGA50", "TATİL50"];
+
 export const carouselImg = [road1, road2, road3, doga];
 
 export const downloadImage = [appstore, googleplay, huawei];

@@ -11,13 +11,17 @@ import Footer from "~/components/Footer/Footer";
 import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import { db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
+import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
+import { validCoupons } from "~/data/data";
 
 const Payment = () => {
   const [cartNo, setCartNo] = useState("");
   const [cartName, setCartName] = useState("");
   const [cartLast, setCartLast] = useState("");
   const [cartCvc, setCartCvc] = useState("");
-  // //
+  const [coupon, setCoupon] = useState("");
+  const [discountedPrice, setDiscountedPrice] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { finalTicket } = useSelector((store) => store.finalTicket);
@@ -41,6 +45,19 @@ const Payment = () => {
     setCartNo(formatCardNumber(e.target.value));
   };
 
+  const handleCouponChange = (e) => {
+    setCoupon(e.target.value);
+  };
+
+  const applyCoupon = () => {
+    if (validCoupons.includes(coupon)) {
+      setDiscountedPrice(price * seats.length - 50);
+      toast.success("İndirim kuponu uygulandı!");
+    } else {
+      toast.error("Geçersiz indirim kuponu.");
+    }
+  };
+
   const paymentDone = async () => {
     if (!user || !finalTicket) {
       toast.error("Geçersiz kullanıcı veya bilet bilgisi.");
@@ -60,7 +77,7 @@ const Payment = () => {
 
       const existingSeats = ticketSnapshot.data().seats;
 
-      const updatedSeats = existingSeats.map((seat) => {
+      const updatedSeats = existingSeats?.map((seat) => {
         const selectedSeat = seats.find((s) => s.number === seat.number);
         if (selectedSeat) {
           return {
@@ -72,18 +89,21 @@ const Payment = () => {
         return seat;
       });
 
+      const finalPrice =
+        discountedPrice !== null ? discountedPrice : price * seats.length;
+
       await updateDoc(ticketRef, {
         seats: updatedSeats,
       });
 
       const updatedOwnedTickets = [
         ...user.ownedTickets,
-        { ...finalTicket, seats: seats },
+        { ...finalTicket, seats: seats, price: finalPrice },
       ];
 
       const updatedFullTickets = [
         ...user.fullTickets,
-        { ...finalTicket, seats: seats },
+        { ...finalTicket, seats: seats, price: finalPrice },
       ];
 
       await updateDoc(userRef, {
@@ -131,49 +151,71 @@ const Payment = () => {
         />
       </ConfigProvider>
       <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
-        <div className="sm:w-2/3 w-full p-5 border-2 flex flex-col gap-y-5 rounded-md border-primary">
-          <h1 className="text-3xl font-semibold text-primary">
-            Seçilen Bilet / Biletler
-          </h1>
-          <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-5 p-5 grid grid-cols-1 justify-between text-xl">
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">PNR:</span> {pnr}
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Kalkış:</span> {departure}
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Varış:</span> {arrival}
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Tarih:</span> {formattedDate}
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Fiyat:</span>{" "}
-              {price * seats.length}₺
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="font-semibold">Seçilen Koltuk:</span>
-              <div className="flex gap-x-2">
-                {seats.map((seatItem, i) => (
-                  <span
-                    key={i}
-                    className="flex items-center gap-x-2 p-2 rounded-md bg-white text-primary"
-                  >
-                    <MdEventSeat /> {seatItem.number} - {seatItem.gender}
-                    {seatItem.gender === "Erkek" ? (
-                      <span className="text-blue-500">
-                        <FaMale />
-                      </span>
-                    ) : (
-                      <span className="text-pink-500">
-                        <FaFemale />
-                      </span>
-                    )}
-                  </span>
-                ))}
+        <div className="w-full  flex flex-col gap-y-3">
+          <div className="sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ring-primary">
+            <h1 className="text-2xl font-semibold text-primary">
+              Seçilen Bilet / Biletler
+            </h1>
+            <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl">
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">PNR:</span> {pnr}
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">Kalkış:</span> {departure}
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">Varış:</span> {arrival}
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">Tarih:</span> {formattedDate}
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">Fiyat:</span>{" "}
+                {discountedPrice !== null
+                  ? discountedPrice
+                  : price * seats?.length}
+                ₺
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="font-semibold">Seçilen Koltuk:</span>
+                <div className="flex gap-x-2">
+                  {seats?.map((seatItem, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-x-2 p-2 rounded-md bg-white text-primary"
+                    >
+                      <MdEventSeat /> {seatItem.number} - {seatItem.gender}
+                      {seatItem.gender === "Erkek" ? (
+                        <span className="text-blue-500">
+                          <FaMale />
+                        </span>
+                      ) : (
+                        <span className="text-pink-500">
+                          <FaFemale />
+                        </span>
+                      )}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+          <div>
+            <form className="flex w-1/2 gap-x-3 ">
+              <input
+                className="px-4 py-2 rounded-md border bg-white focus:ring-2 transition-all ring-offset-1 ring-primary outline-none"
+                placeholder="İndirim Kuponu"
+                value={coupon}
+                onChange={handleCouponChange}
+              />
+              <button
+                type="button"
+                onClick={applyCoupon}
+                className="bg-primary/20 text-primary px-3 rounded-md hover:bg-primary hover:text-white transition-colors"
+              >
+                <TbRosetteDiscountCheckFilled size={25} />
+              </button>
+            </form>
           </div>
         </div>
         <div className="w-full flex flex-col gap-y-12">
