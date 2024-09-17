@@ -1,4 +1,3 @@
-import React from "react";
 import FooterDetailBox from "~/components/Footer/FooterDetailBox";
 import logoBlack from "~/assets/logos/LogoBlack.png";
 import { questions } from "~/data/data";

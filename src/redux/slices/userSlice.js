@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice } from "@reduxjs/toolkit";
+
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
@@ -23,6 +24,9 @@ export const userSlice = createSlice({
     },
   },
 });
+
+
+
 
 export const { setUser, updateUserProfile } = userSlice.actions;
 
