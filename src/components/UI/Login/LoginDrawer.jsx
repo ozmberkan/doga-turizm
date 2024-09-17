@@ -16,6 +16,7 @@ import { auth, db } from "~/firebase/firebaseConfig";
 import { setUser } from "~/redux/slices/userSlice";
 import { doc, getDoc } from "firebase/firestore";
 import { current } from "@reduxjs/toolkit";
+import { has } from "lodash";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         admin: userDoc.data()?.admin || false,
         ownedTickets: userDoc.data()?.ownedTickets || [],
         fullTickets: userDoc.data()?.fullTickets || [],
+        hasBeenLogin: userDoc.data()?.hasBeenLogin || false,
       };
       toast.success("Başarıyla Giriş Yaptınız!");
       setTimeout(() => {
@@ -62,15 +64,15 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
     }
   };
 
-  const googleSignIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      dispatch(setUser({ ...result.user, ownedTickets: [], fullTickets: [] }));
-      toast.success("Google ile giriş başarılı.");
-    } catch (error) {
-      toast.error("Google ile giriş yapılırken hata oluştu");
-    }
-  };
+  // const googleSignIn = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, provider);
+  //     dispatch(setUser({ ...result.user, ownedTickets: [], fullTickets: [] }));
+  //     toast.success("Google ile giriş başarılı.");
+  //   } catch (error) {
+  //     toast.error("Google ile giriş yapılırken hata oluştu");
+  //   }
+  // };
 
   return (
     <Drawer open={open} onClose={() => toggleDrawer(!open)} anchor="right">
