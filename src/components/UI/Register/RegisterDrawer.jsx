@@ -44,6 +44,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         ownedTickets: [],
         fullTickets: [],
         hasBeenLogin: false,
+        usedDiscount: false,
       });
 
       const userData = {
@@ -56,6 +57,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
         ownedTickets: [],
         fullTickets: [],
         hasBeenLogin: false,
+        usedDiscount: false,
       };
 
       setTimeout(() => {

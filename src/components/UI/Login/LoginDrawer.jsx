@@ -52,6 +52,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
         ownedTickets: userDoc.data()?.ownedTickets || [],
         fullTickets: userDoc.data()?.fullTickets || [],
         hasBeenLogin: userDoc.data()?.hasBeenLogin || false,
+        usedDiscount: userDoc.data()?.usedDiscount || false,
       };
       toast.success("Başarıyla Giriş Yaptınız!");
       setTimeout(() => {

@@ -6,7 +6,7 @@ import { FaFemale, FaMale } from "react-icons/fa";
 import { MdEventSeat, MdPayment } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Footer from "~/components/Footer/Footer";
 import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import { db } from "~/firebase/firebaseConfig";
@@ -45,17 +45,41 @@ const Payment = () => {
     setCartNo(formatCardNumber(e.target.value));
   };
 
-  const handleCouponChange = (e) => {
-    setCoupon(e.target.value);
+  const applyCoupon = async () => {
+    try {
+      if (user.usedDiscount) {
+        toast.error("Daha önce indirim kullandınız.");
+        return;
+      }
+
+      if (validCoupons.includes(coupon)) {
+        // dispatch(setUser({ ...user, usedDiscount: true }));
+        setDiscountedPrice(price * seats?.length - 50);
+
+        try {
+          const userRef = doc(db, "users", user.uid);
+          await updateDoc(userRef, {
+            usedDiscount: true,
+          });
+          dispatch(setUser({ ...user, usedDiscount: true }));
+        } catch (error) {
+          console.error("Kupon kullanım hatası:", error);
+        }
+        toast.success("Kupon başarıyla uygulandı.");
+      } else {
+        toast.error("Geçersiz kupon kodu.");
+      }
+    } catch (error) {
+      console.error("Kupon uygulama hatası:", error);
+      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+    }
   };
 
-  const applyCoupon = () => {
-    if (validCoupons.includes(coupon)) {
-      setDiscountedPrice(price * seats.length - 50);
-      toast.success("İndirim kuponu uygulandı!");
-    } else {
-      toast.error("Geçersiz indirim kuponu.");
+  const getFinalPrice = () => {
+    if (user?.emailVerified === false) {
+      return 650;
     }
+    return discountedPrice !== null ? discountedPrice : price * seats?.length;
   };
 
   const paymentDone = async () => {
@@ -67,7 +91,6 @@ const Payment = () => {
     try {
       const userRef = doc(db, "users", user.uid);
       const ticketRef = doc(db, "tickets", finalTicket.id);
-
       const ticketSnapshot = await getDoc(ticketRef);
 
       if (!ticketSnapshot.exists()) {
@@ -77,20 +100,14 @@ const Payment = () => {
 
       const existingSeats = ticketSnapshot.data().seats;
 
-      const updatedSeats = existingSeats?.map((seat) => {
+      const updatedSeats = existingSeats.map((seat) => {
         const selectedSeat = seats.find((s) => s.number === seat.number);
-        if (selectedSeat) {
-          return {
-            ...seat,
-            isAvailable: false,
-            gender: selectedSeat.gender,
-          };
-        }
-        return seat;
+        return selectedSeat
+          ? { ...seat, isAvailable: false, gender: selectedSeat.gender }
+          : seat;
       });
 
-      const finalPrice =
-        discountedPrice !== null ? discountedPrice : price * seats.length;
+      const finalPrice = getFinalPrice();
 
       await updateDoc(ticketRef, {
         seats: updatedSeats,
@@ -98,31 +115,22 @@ const Payment = () => {
 
       const updatedOwnedTickets = [
         ...user.ownedTickets,
-        { ...finalTicket, seats: seats, price: finalPrice },
-      ];
-
-      const updatedFullTickets = [
-        ...user.fullTickets,
-        { ...finalTicket, seats: seats, price: finalPrice },
+        { ...finalTicket, seats, price: finalPrice },
       ];
 
       await updateDoc(userRef, {
         ownedTickets: updatedOwnedTickets,
-        fullTickets: updatedFullTickets,
+        fullTickets: [
+          ...user.fullTickets,
+          { ...finalTicket, seats, price: finalPrice },
+        ],
       });
 
-      dispatch(
-        setUser({
-          ...user,
-          ownedTickets: updatedOwnedTickets,
-          fullTickets: updatedFullTickets,
-        })
-      );
+      dispatch(setUser({ ...user, ownedTickets: updatedOwnedTickets }));
 
-      toast.success("Ödeme başarıyla tamamlandı!, yönlendiriliyorsunuz!");
       navigate("/profile/mytickets");
     } catch (error) {
-      toast.error("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
+      console.log("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
     }
   };
 
@@ -131,144 +139,140 @@ const Payment = () => {
   );
 
   return (
-    <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#4FC647",
-            contentBg: "#aaac1d",
-          },
-        }}
-      >
-        <Steps
-          size="large"
-          current={2}
-          items={[
-            { title: "Sefer Seçimi" },
-            { title: "Koltuk Seçimi" },
-            { title: "Ödeme Bilgileri" },
-          ]}
-        />
-      </ConfigProvider>
-      <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
-        <div className="w-full  flex flex-col gap-y-3">
-          <div className="sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ring-primary">
-            <h1 className="text-2xl font-semibold text-primary">
-              Seçilen Bilet / Biletler
-            </h1>
-            <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl">
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">PNR:</span> {pnr}
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">Kalkış:</span> {departure}
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">Varış:</span> {arrival}
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">Tarih:</span> {formattedDate}
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">Fiyat:</span>{" "}
-                {discountedPrice !== null
-                  ? discountedPrice
-                  : price * seats?.length}
-                ₺
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <span className="font-semibold">Seçilen Koltuk:</span>
-                <div className="flex gap-x-2">
-                  {seats?.map((seatItem, i) => (
-                    <span
-                      key={i}
-                      className="flex items-center gap-x-2 p-2 rounded-md bg-white text-primary"
-                    >
-                      <MdEventSeat /> {seatItem.number} - {seatItem.gender}
-                      {seatItem.gender === "Erkek" ? (
-                        <span className="text-blue-500">
-                          <FaMale />
-                        </span>
-                      ) : (
-                        <span className="text-pink-500">
-                          <FaFemale />
-                        </span>
-                      )}
-                    </span>
-                  ))}
+    <>
+      <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#4FC647",
+              contentBg: "#aaac1d",
+            },
+          }}
+        >
+          <Steps
+            size="large"
+            current={2}
+            items={[
+              { title: "Sefer Seçimi" },
+              { title: "Koltuk Seçimi" },
+              { title: "Ödeme Bilgileri" },
+            ]}
+          />
+        </ConfigProvider>
+        <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
+          <div className="w-full flex flex-col gap-y-3">
+            <div className="sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ring-primary">
+              <h1 className="text-2xl font-semibold text-primary">
+                Seçilen Bilet / Biletler
+              </h1>
+              <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl">
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">PNR:</span> {pnr}
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">Kalkış:</span> {departure}
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">Varış:</span> {arrival}
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">Tarih:</span> {formattedDate}
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">Fiyat:</span>{" "}
+                  {getFinalPrice()}₺
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="font-semibold">Seçilen Koltuk:</span>
+                  <div className="flex gap-x-2">
+                    {seats?.map((seatItem, i) => (
+                      <span
+                        key={i}
+                        className="flex items-center gap-x-2 p-2 rounded-md bg-white text-primary"
+                      >
+                        <MdEventSeat /> {seatItem.number} - {seatItem.gender}
+                        {seatItem.gender === "Erkek" ? (
+                          <span className="text-blue-500">
+                            <FaMale />
+                          </span>
+                        ) : (
+                          <span className="text-pink-500">
+                            <FaFemale />
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
+            <div>
+              <form className="flex w-1/2 gap-x-3">
+                <input
+                  className="px-4 py-2 rounded-md border bg-white focus:ring-2 transition-all ring-offset-1 ring-primary outline-none"
+                  placeholder="İndirim Kuponu"
+                  value={coupon}
+                  onChange={(e) => setCoupon(e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={applyCoupon}
+                  className="bg-primary/20 text-primary px-3 rounded-md hover:bg-primary hover:text-white transition-colors"
+                >
+                  <TbRosetteDiscountCheckFilled size={25} />
+                </button>
+              </form>
+            </div>
           </div>
-          <div>
-            <form className="flex w-1/2 gap-x-3 ">
-              <input
-                className="px-4 py-2 rounded-md border bg-white focus:ring-2 transition-all ring-offset-1 ring-primary outline-none"
-                placeholder="İndirim Kuponu"
-                value={coupon}
-                onChange={handleCouponChange}
+          <div className="w-full flex flex-col gap-y-12">
+            <div className="relative w-full flex flex-col h-[200px] aspect-[16/9] bg-gradient-to-br from-primary to-[#45B23E] rounded-xl overflow-hidden shadow-2xl">
+              <PaymentCreditCart
+                cartNo={cartNo}
+                cartLast={cartLast}
+                cartName={cartName}
+                cartCvc={cartCvc}
               />
-              <button
-                type="button"
-                onClick={applyCoupon}
-                className="bg-primary/20 text-primary px-3 rounded-md hover:bg-primary hover:text-white transition-colors"
+            </div>
+            <form className="grid grid-cols-2 gap-5">
+              <input
+                placeholder="Ad Soyad"
+                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                onChange={(e) => setCartName(e.target.value)}
+              />
+              <input
+                placeholder="1234 1234 1234 1234"
+                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                onChange={handleCardNumberChange}
+                maxLength={19}
+              />
+              <select
+                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent text-zinc-400"
+                onChange={(e) => setCartLast(e.target.value)}
               >
-                <TbRosetteDiscountCheckFilled size={25} />
-              </button>
+                <option value="">Ay Seçin</option>
+                <option value="Ocak">Ocak</option>
+                <option value="Şubat">Şubat</option>
+                <option value="Mart">Mart</option>
+                {/* Diğer aylar buraya eklenebilir */}
+              </select>
+              <input
+                placeholder="CVC"
+                maxLength={3}
+                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                onChange={(e) => setCartCvc(e.target.value)}
+              />
+              <Link
+                onClick={paymentDone}
+                className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border bg-primary hover:bg-[#4fc615] text-white focus:ring-primary"
+              >
+                <MdPayment size={24} /> Ödemeyi Gerçekleştir
+              </Link>
             </form>
           </div>
         </div>
-        <div className="w-full flex flex-col gap-y-12">
-          <div className="relative w-full flex flex-col h-[200px] aspect-[16/9] bg-gradient-to-br from-primary to-[#45B23E] rounded-xl overflow-hidden shadow-2xl">
-            <PaymentCreditCart
-              cartNo={cartNo}
-              cartLast={cartLast}
-              cartName={cartName}
-              cartCvc={cartCvc}
-            />
-          </div>
-          <form className="grid grid-cols-2 gap-5">
-            <input
-              id="name"
-              placeholder="Ad Soyad"
-              className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-              onChange={(e) => setCartName(e.target.value)}
-            />
-            <input
-              id="name"
-              placeholder="1234 1234 1234 1234"
-              className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-              onChange={handleCardNumberChange}
-              maxLength={16}
-            />
-            <select
-              id="name"
-              placeholder="Ad Soyad"
-              className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent text-zinc-400"
-              onChange={(e) => setCartLast(e.target.value)}
-            >
-              <option value="Ocak">Ocak</option>
-              <option value="Şubat">Şubat</option>
-              <option value="Mart">Mart</option>
-            </select>
-            <input
-              id="name"
-              placeholder="CVC"
-              maxLength={3}
-              className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-              onChange={(e) => setCartCvc(e.target.value)}
-            />
-            <Link
-              onClick={paymentDone}
-              className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border bg-primary hover:bg-[#4fc615] text-white focus:ring-primary"
-            >
-              <MdPayment size={24} /> Ödemeyi Gerçekleştir
-            </Link>
-          </form>
-        </div>
+        <Footer footerWidth={"w-1/2"} />
       </div>
-      <Footer footerWidth={"w-1/2"} />
-    </div>
+    </>
   );
 };
 

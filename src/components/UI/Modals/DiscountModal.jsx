@@ -7,6 +7,7 @@ import { MdOutlineDiscount } from "react-icons/md";
 import { CgCloseR } from "react-icons/cg";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { toast } from "react-toastify";
+import { FiAlertCircle } from "react-icons/fi";
 
 const DiscountModal = ({ setIsModalOpen }) => {
   const { user } = useSelector((store) => store.user);
@@ -35,13 +36,14 @@ const DiscountModal = ({ setIsModalOpen }) => {
   return (
     <div>
       <div
-        className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50"
+        className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 "
         onClick={closeModal}
       >
         <div
-          className="bg-white  rounded-md shadow-lg max-w-2xl w-full flex flex-col"
+          className="bg-white  rounded-md shadow-lg max-w-2xl w-full flex flex-col relative z-10 overflow-hidden "
           onClick={(e) => e.stopPropagation()}
         >
+          <FiAlertCircle className="text-primary/20 rotate-12 text-[250px] absolute z-0 -bottom-16 -right-20" />
           <div className="py-4 rounded-t-md text-primary w-full bg-primary/20 flex justify-between items-center px-4 gap-x-2">
             <span className="flex items-center gap-x-3">
               <MdOutlineDiscount size={20} />
@@ -60,15 +62,16 @@ const DiscountModal = ({ setIsModalOpen }) => {
             </h1>
             <p>
               Bizlere duymuş olduğunuz güven için teşekkür ederiz. Sana özel bir
-              indirim kodu hazırladık. İndirim kodunu kullanarak bir sonraki
-              rezervasyonunda 50TL indirim kazanabilirsin.
+              indirim kodu hazırladık. E-Postanı Doğruladıktan sonra indirim
+              kodunu kullanarak bir sonraki rezervasyonunda 50TL indirim
+              kazanabilirsin.
             </p>
             <form className="flex gap-x-3 items-center">
               <input
                 type="text"
                 readOnly
                 value={"DOGA50"}
-                className="px-4 py-2 h-10 rounded-md border bg-zinc-200/40"
+                className="px-4 py-2 h-10 rounded-md border bg-zinc-200/40 outline-none"
               />
               <button
                 onClick={copyText}
