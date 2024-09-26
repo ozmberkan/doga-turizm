@@ -4,12 +4,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAtrvA9THXmD8jgouf5l49bsvYcviKFUkE",
-  authDomain: "dogaturizm-5858.firebaseapp.com",
-  projectId: "dogaturizm-5858",
-  storageBucket: "dogaturizm-5858.appspot.com",
-  messagingSenderId: "497195980589",
-  appId: "1:497195980589:web:8fe580664b0783478da5a4",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
