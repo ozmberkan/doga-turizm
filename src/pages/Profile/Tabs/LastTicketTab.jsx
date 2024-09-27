@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import LastTicket from "../LastTicket";
+import { BsTicketDetailedFill } from "react-icons/bs";
 
 const LastTicketTab = () => {
   const [hide, setHide] = useState(false);
@@ -28,7 +29,10 @@ const LastTicketTab = () => {
   return (
     <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 flex justify-between items-center ">
-        <h1 className="text-2xl ">Geçmiş Biletlerim</h1>
+        <h1 className="text-2xl flex items-center gap-x-2 font-medium">
+          <BsTicketDetailedFill />
+          Geçmiş Biletlerim
+        </h1>
         <div className="flex gap-x-3 sm:flex-row flex-col gap-y-2">
           <button
             onClick={deleteLastTickets}

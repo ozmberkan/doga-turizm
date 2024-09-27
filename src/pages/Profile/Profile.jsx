@@ -4,6 +4,7 @@ import { FiUser } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import MyTicketsTab from "./Tabs/MyTicketsTab";
 import LastTicketTab from "./Tabs/LastTicketTab";
+import { BsTicketDetailed, BsTicketDetailedFill } from "react-icons/bs";
 
 const Profile = () => {
   const { user } = useSelector((store) => store.user);
@@ -33,10 +34,12 @@ const Profile = () => {
                 Kişisel Bilgilerim
               </Tab>
               <Tab className="w-full rounded-md py-1 px-5 flex justify-center  text-zinc-400 data-[selected]:text-zinc-800 items-center gap-x-1.5 data-[selected]:bg-white data-[selected]:shadow-md outline-none transition-colors duration-300">
-                Tab 2
+                <BsTicketDetailed />
+                Aktif Biletlerim
               </Tab>
               <Tab className="w-full rounded-md py-1 px-5 flex justify-center text-zinc-400 data-[selected]:text-zinc-800  items-center gap-x-1.5 data-[selected]:bg-white data-[selected]:shadow-md outline-none transition-colors duration-300">
-                Tab 3
+                <BsTicketDetailedFill />
+                Geçmiş Biletlerim
               </Tab>
             </TabList>
             <TabPanels>
