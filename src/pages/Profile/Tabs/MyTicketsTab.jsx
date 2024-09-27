@@ -1,7 +1,8 @@
+import React from "react";
 import Ticket from "../Ticket";
 import { useSelector } from "react-redux";
 
-const MyTickets = () => {
+const MyTicketsTab = () => {
   const { user } = useSelector((store) => store.user);
   return (
     <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
@@ -23,4 +24,4 @@ const MyTickets = () => {
   );
 };
 
-export default MyTickets;
+export default MyTicketsTab;

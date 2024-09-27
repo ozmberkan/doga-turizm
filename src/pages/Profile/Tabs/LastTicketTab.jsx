@@ -6,9 +6,9 @@ import { doc, setDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
-import LastTicket from "./LastTicket";
+import LastTicket from "../LastTicket";
 
-const LastTickets = () => {
+const LastTicketTab = () => {
   const [hide, setHide] = useState(false);
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
@@ -68,4 +68,4 @@ const LastTickets = () => {
   );
 };
 
-export default LastTickets;
+export default LastTicketTab;

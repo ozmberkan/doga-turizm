@@ -8,11 +8,6 @@ body{
     scroll-behavior: smooth;
 }
 
-.ant-picker-focused {
-  border-color: #16a34a !important; 
-  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important; 
-}
-
 
 *::-webkit-scrollbar {
   height: 7px;

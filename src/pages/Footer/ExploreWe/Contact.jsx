@@ -12,12 +12,13 @@ const Contact = () => {
   const sendMessage = async (data) => {
     try {
       const newContactRef = doc(collection(db, "contacts"));
-      await setDoc(newContactRef, {
+      const contactData = {
         name: data.name,
         email: data.email,
         phone: data.phone,
         message: data.message,
-      });
+      };
+      await setDoc(newContactRef, contactData);
       toast.success("Başarıyla mesajınız gönderildi!");
       reset();
     } catch (error) {

@@ -28,10 +28,7 @@ import Rent from "./pages/Footer/WithWe/Rent";
 import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
-import ProfileLayout from "./layouts/ProfileLayout";
-import Profile from "./pages/Profile/MyProfile/Profile";
-import MyTickets from "./pages/Profile/MyTickets/MyTickets";
-import LastTickets from "./pages/Profile/LastTickets/LastTickets";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -54,12 +51,7 @@ const App = () => {
         { path: "/", element: <Home /> },
         {
           path: "/profile",
-          element: user ? <ProfileLayout /> : <Navigate to="/" />,
-          children: [
-            { path: "myprofile", element: <Profile /> },
-            { path: "mytickets", element: <MyTickets /> },
-            { path: "lasttickets", element: <LastTickets /> },
-          ],
+          element: user ? <Profile /> : <Navigate to="/" />,
         },
         {
           path: "/tickets",
