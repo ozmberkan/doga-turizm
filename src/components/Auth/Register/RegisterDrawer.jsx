@@ -1,14 +1,11 @@
 import { Drawer } from "antd";
-import { auth, db } from "~/firebase/firebaseConfig";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { registerscheme } from "~/validation/scheme";
 import { useDispatch } from "react-redux";
-import { setUser } from "~/redux/slices/userSlice";
+import { registerService } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
-import { doc, setDoc } from "firebase/firestore";
 
 const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
   const dispatch = useDispatch();
@@ -23,48 +20,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
 
   const registerHandle = async (data) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-
-      const user = userCredential.user;
-
-      await updateProfile(user, {
-        displayName: data.displayName,
-      });
-
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        phoneNumber: data.phoneNumber,
-        admin: false,
-        ownedTickets: [],
-        fullTickets: [],
-        hasBeenLogin: false,
-        usedDiscount: false,
-      });
-
-      const userData = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        phoneNumber: data.phoneNumber,
-        emailVerified: user.emailVerified,
-        admin: false,
-        ownedTickets: [],
-        fullTickets: [],
-        hasBeenLogin: false,
-        usedDiscount: false,
-      };
-
-      setTimeout(() => {
-        dispatch(setUser(userData));
-      }, 500);
-
-      toast.success("Başarıyla Kayıt Oluşturuldu!");
+      dispatch(registerService(data));
     } catch (error) {
       toast.error(
         "Kayıt oluşturulurken bir hata oluştu. Bilgileri kontrol ediniz."

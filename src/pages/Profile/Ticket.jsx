@@ -4,7 +4,7 @@ import { MdCancel, MdDateRange, MdEventSeat } from "react-icons/md";
 import { FaTurkishLiraSign } from "react-icons/fa6";
 import { IoHelp, IoLocationSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "~/redux/slices/userSlice";
+import { setUpdate } from "~/redux/slices/userSlice";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
@@ -23,7 +23,7 @@ const Ticket = ({ ticket }) => {
         (ownedTicket) => ownedTicket.pnr !== pnr
       );
 
-      dispatch(setUser({ ...user, ownedTickets: updatedTickets }));
+      dispatch(setUpdate({ ...user, ownedTickets: updatedTickets }));
 
       const ticketRef = doc(db, "tickets", ticket.id);
       const ticketDoc = await getDoc(ticketRef);

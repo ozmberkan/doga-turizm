@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiTrash } from "react-icons/bi";
-import { setUser } from "~/redux/slices/userSlice";
+import { setUpdate } from "~/redux/slices/userSlice";
 import { doc, setDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { db } from "~/firebase/firebaseConfig";
@@ -23,7 +23,7 @@ const LastTicketTab = () => {
       toast.error("Biletler temizlenirken bir hata oluştu.");
     }
 
-    dispatch(setUser({ ...user, fullTickets: [] }));
+    dispatch(setUpdate({ ...user, fullTickets: [] }));
   };
 
   return (

@@ -1,8 +1,4 @@
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { Drawer } from "antd";
@@ -12,16 +8,11 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { loginForm } from "~/data/data";
-import { auth, db } from "~/firebase/firebaseConfig";
-import { setUser } from "~/redux/slices/userSlice";
-import { doc, getDoc } from "firebase/firestore";
-import { current } from "@reduxjs/toolkit";
-import { has } from "lodash";
+import { loginService } from "~/redux/slices/userSlice";
 
 const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
-  const provider = new GoogleAuthProvider();
-  const { user } = useSelector((store) => store.user);
+  const { user, isSuccess } = useSelector((store) => store.user);
 
   const {
     register,
@@ -33,31 +24,7 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
 
   const LogIn = async (data) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-
-      const user = userCredential.user;
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-
-      const userData = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        phoneNumber: userDoc.data()?.phoneNumber || null,
-        emailVerified: user.emailVerified,
-        admin: userDoc.data()?.admin || false,
-        ownedTickets: userDoc.data()?.ownedTickets || [],
-        fullTickets: userDoc.data()?.fullTickets || [],
-        hasBeenLogin: userDoc.data()?.hasBeenLogin || false,
-        usedDiscount: userDoc.data()?.usedDiscount || false,
-      };
-      toast.success("Başarıyla Giriş Yaptınız!");
-      setTimeout(() => {
-        dispatch(setUser(userData));
-      }, 1000);
+      dispatch(loginService(data));
     } catch (error) {
       toast.error(
         "Giriş yapılırken bir hata oluştu. Lütfen bilgilerinizi kontrol edin."
@@ -65,15 +32,9 @@ const LoginDrawer = ({ open, toggleDrawer, setLogInMode, setForgot }) => {
     }
   };
 
-  // const googleSignIn = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, provider);
-  //     dispatch(setUser({ ...result.user, ownedTickets: [], fullTickets: [] }));
-  //     toast.success("Google ile giriş başarılı.");
-  //   } catch (error) {
-  //     toast.error("Google ile giriş yapılırken hata oluştu");
-  //   }
-  // };
+  if (isSuccess) {
+    toast.success("Giriş Başarılı");
+  }
 
   return (
     <Drawer open={open} onClose={() => toggleDrawer(!open)} anchor="right">

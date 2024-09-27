@@ -10,7 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Footer from "~/components/Footer/Footer";
 import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import { db } from "~/firebase/firebaseConfig";
-import { setUser } from "~/redux/slices/userSlice";
+import { setUpdate } from "~/redux/slices/userSlice";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
 
@@ -46,7 +46,7 @@ const Payment = () => {
           await updateDoc(userRef, {
             usedDiscount: true,
           });
-          dispatch(setUser({ ...user, usedDiscount: true }));
+          dispatch(setUpdate({ ...user, usedDiscount: true }));
         } catch (error) {
           console.error("Kupon kullanım hatası:", error);
         }

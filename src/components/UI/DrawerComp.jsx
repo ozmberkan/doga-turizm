@@ -1,7 +1,7 @@
 import { useState } from "react";
-import RegisterDrawer from "./Register/RegisterDrawer";
-import LoginDrawer from "./Login/LoginDrawer";
-import ForgotComp from "./ForgotComp";
+import RegisterDrawer from "../Auth/Register/RegisterDrawer";
+import LoginDrawer from "../Auth/Login/LoginDrawer";
+import ForgotComp from "../Auth/Forgot/ForgotComp";
 
 const DrawerComp = ({ open, setOpen }) => {
   const [logInMode, setLogInMode] = useState(true);

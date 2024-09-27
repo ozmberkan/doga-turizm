@@ -2,7 +2,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { db } from "~/firebase/firebaseConfig";
-import { setUser } from "~/redux/slices/userSlice";
+import { setUpdate } from "~/redux/slices/userSlice";
 import { MdOutlineDiscount } from "react-icons/md";
 import { CgCloseR } from "react-icons/cg";
 import { MdOutlineContentCopy } from "react-icons/md";
@@ -20,7 +20,7 @@ const DiscountModal = ({ setIsModalOpen }) => {
         hasBeenLogin: true,
       });
 
-      dispatch(setUser({ ...user, hasBeenLogin: true }));
+      dispatch(setUpdate({ ...user, hasBeenLogin: true }));
       setIsModalOpen(false);
     } catch (error) {
       console.log(error);
