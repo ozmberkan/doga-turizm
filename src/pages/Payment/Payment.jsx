@@ -111,7 +111,7 @@ const Payment = () => {
         ],
       });
 
-      dispatch(setUser({ ...user, ownedTickets: updatedOwnedTickets }));
+      dispatch(setUpdate({ ...user, ownedTickets: updatedOwnedTickets }));
 
       navigate("/profile");
     } catch (error) {
