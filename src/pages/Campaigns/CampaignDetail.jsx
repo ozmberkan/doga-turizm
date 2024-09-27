@@ -1,13 +1,23 @@
+import { quantum } from "ldrs";
+import { useEffect } from "react";
 import { BiSolidOffer } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getCampaignById } from "~/redux/slices/campaignSlice";
 
 const CampaignDetail = () => {
-  const { campaigns } = useSelector((store) => store.campaigns);
+  quantum.register();
   const { id } = useParams();
-  const campaign = campaigns.find((campaign) => campaign.id === id);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCampaignById(id));
+  }, []);
 
-  if (!campaign) {
+  const { currentCampaign, isLoading, isError } = useSelector(
+    (store) => store.campaigns
+  );
+
+  if (isError) {
     return (
       <div className="w-full flex justify-center items-center p-12">
         <span className="w-full text-xl bg-red-200 text-red-500 rounded-md border px-4 py-2">
@@ -17,7 +27,15 @@ const CampaignDetail = () => {
     );
   }
 
-  const { cityName, image, oldPrice, newPrice } = campaign;
+  if (isLoading) {
+    return (
+      <div className="w-full h-[500px] flex justify-center items-center">
+        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>;
+      </div>
+    );
+  }
+
+  const { cityName, image, oldPrice, newPrice } = currentCampaign;
   const discount = Math.floor(((oldPrice - newPrice) / oldPrice) * 100) + "%";
 
   return (
