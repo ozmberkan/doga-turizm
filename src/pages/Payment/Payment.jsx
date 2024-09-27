@@ -103,6 +103,11 @@ const Payment = () => {
         { ...finalTicket, seats, price: finalPrice },
       ];
 
+      const updatedFullTickets = [
+        ...user.fullTickets,
+        { ...finalTicket, seats, price: finalPrice },
+      ];
+
       await updateDoc(userRef, {
         ownedTickets: updatedOwnedTickets,
         fullTickets: [
@@ -111,7 +116,13 @@ const Payment = () => {
         ],
       });
 
-      dispatch(setUpdate({ ...user, ownedTickets: updatedOwnedTickets }));
+      dispatch(
+        setUpdate({
+          ...user,
+          ownedTickets: updatedOwnedTickets,
+          fullTickets: updatedFullTickets,
+        })
+      );
 
       navigate("/profile");
     } catch (error) {

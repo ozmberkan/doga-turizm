@@ -18,6 +18,7 @@ const CampaignList = () => {
     return () => {
       dispatch(reset());
     };
+    
   }, [dispatch]);
 
   if (isLoading) {
