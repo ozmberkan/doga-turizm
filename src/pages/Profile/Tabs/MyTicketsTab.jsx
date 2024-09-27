@@ -8,7 +8,7 @@ const MyTicketsTab = () => {
   return (
     <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 ">
-        <h1 className="text-2xl flex items-center gap-x-2 font-medium">
+        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium">
           {" "}
           <BsTicketDetailed />
           Aktif Biletlerim

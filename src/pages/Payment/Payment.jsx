@@ -15,10 +15,6 @@ import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
 
 const Payment = () => {
-  const [cartNo, setCartNo] = useState("");
-  const [cartName, setCartName] = useState("");
-  const [cartLast, setCartLast] = useState("");
-  const [cartCvc, setCartCvc] = useState("");
   const [coupon, setCoupon] = useState("");
   const [discountedPrice, setDiscountedPrice] = useState(null);
 
@@ -29,21 +25,10 @@ const Payment = () => {
 
   if (!finalTicket) {
     toast.error("Bilet bilgisi bulunamadı.");
-    return null;
+    navigate("/");
   }
 
   const { pnr, arrival, departure, date, price, seats } = finalTicket;
-
-  const formatCardNumber = (value) => {
-    return value
-      .replace(/\D/g, "")
-      .replace(/(.{4})/g, "$1 ")
-      .trim();
-  };
-
-  const handleCardNumberChange = (e) => {
-    setCartNo(formatCardNumber(e.target.value));
-  };
 
   const applyCoupon = async () => {
     try {
@@ -128,7 +113,7 @@ const Payment = () => {
 
       dispatch(setUser({ ...user, ownedTickets: updatedOwnedTickets }));
 
-      navigate("/profile/mytickets");
+      navigate("/profile");
     } catch (error) {
       console.log("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
     }
@@ -226,29 +211,19 @@ const Payment = () => {
           </div>
           <div className="w-full flex flex-col gap-y-12">
             <div className="relative w-full flex flex-col h-[200px] aspect-[16/9] bg-gradient-to-br from-primary to-[#45B23E] rounded-xl overflow-hidden shadow-2xl">
-              <PaymentCreditCart
-                cartNo={cartNo}
-                cartLast={cartLast}
-                cartName={cartName}
-                cartCvc={cartCvc}
-              />
+              <PaymentCreditCart />
             </div>
             <form className="grid grid-cols-2 gap-5">
               <input
                 placeholder="Ad Soyad"
                 className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-                onChange={(e) => setCartName(e.target.value)}
               />
               <input
                 placeholder="1234 1234 1234 1234"
                 className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-                onChange={handleCardNumberChange}
                 maxLength={19}
               />
-              <select
-                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent text-zinc-400"
-                onChange={(e) => setCartLast(e.target.value)}
-              >
+              <select className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent text-zinc-400">
                 <option value="">Ay Seçin</option>
                 <option value="Ocak">Ocak</option>
                 <option value="Şubat">Şubat</option>
@@ -259,7 +234,6 @@ const Payment = () => {
                 placeholder="CVC"
                 maxLength={3}
                 className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
-                onChange={(e) => setCartCvc(e.target.value)}
               />
               <Link
                 onClick={paymentDone}

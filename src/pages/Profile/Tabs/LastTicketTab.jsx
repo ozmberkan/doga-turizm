@@ -29,7 +29,7 @@ const LastTicketTab = () => {
   return (
     <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 flex justify-between items-center ">
-        <h1 className="text-2xl flex items-center gap-x-2 font-medium">
+        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium">
           <BsTicketDetailedFill />
           Geçmiş Biletlerim
         </h1>
@@ -38,21 +38,23 @@ const LastTicketTab = () => {
             onClick={deleteLastTickets}
             className="bg-red-100 text-red-500 px-4 py-1 rounded-md flex justify-center items-center gap-x-1 "
           >
-            <BiTrash /> Biletleri Temizle
+            <BiTrash />
+            <span className="sm:flex hidden">Biletleri Temizle</span>
           </button>
           {hide === false ? (
             <button
               onClick={() => setHide(true)}
-              className="bg-zinc-100 text-zinc-500 px-4 py-1 rounded-md flex justify-center items-center gap-x-1 min-w-[200px]"
+              className="bg-zinc-100 text-zinc-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
             >
-              <FaEyeSlash /> Biletleri Gizle
+              <FaEyeSlash />{" "}
+              <span className="sm:flex hidden">Biletleri Gizle</span>
             </button>
           ) : (
             <button
               onClick={() => setHide(false)}
-              className="bg-green-100 text-green-500 px-4 py-1 rounded-md flex justify-center items-center gap-x-1 min-w-[200px]"
+              className="bg-green-100 text-green-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
             >
-              <FaEye /> Biletleri Göster
+              <FaEye /> <span className="sm:flex hidden">Biletleri Göster</span>
             </button>
           )}
         </div>

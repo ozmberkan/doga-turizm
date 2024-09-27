@@ -8,6 +8,8 @@ import { CiEdit } from "react-icons/ci";
 import { useState } from "react";
 import { updateUserProfile } from "~/redux/slices/userSlice";
 import { FiUser } from "react-icons/fi";
+import { FaRegSave } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 
 const UserTab = () => {
   const dispatch = useDispatch();
@@ -97,37 +99,38 @@ const UserTab = () => {
 
   return (
     <div className="p-5  rounded-md border flex flex-col gap-y-5 relative flex-grow">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-medium  mb-3 flex justify-center items-center gap-x-2">
+      <div className="flex justify-between sm:items-center items-baseline">
+        <h1 className="sm:text-2xl text-base font-medium  mb-3 flex justify-center items-center gap-x-2">
           <FiUser />
           Kişisel Bilgilerim
         </h1>
         {!isEditMode ? (
           <button
             onClick={() => setIsEditMode(!isEditMode)}
-            className="rounded-md hover:bg-primary hover:text-white transition-colors duration-300 sm:w-1/12 px-2 sm:px-0 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
+            className="rounded-md  hover:bg-primary hover:text-white transition-colors duration-300 sm:w-1/12 px-2 sm:px-0 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
           >
-            <span className="sm:flex hidden ">Düzenle</span>{" "}
-            <CiEdit size={25} />
+            <span className="sm:flex hidden ">Düzenle</span> <CiEdit />
           </button>
         ) : (
           <div className="flex gap-x-3">
             <button
               onClick={saveProfile}
-              className="rounded-md px-4 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
+              className="rounded-md px-2 sm:px-4 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
             >
-              Kaydet
+              <FaRegSave />
+              <span className="sm:flex hidden">Kaydet</span>
             </button>
             <button
               onClick={() => setIsEditMode(false)}
-              className="rounded-md px-4 py-1 bg-red-100 text-red-500 flex justify-center items-center cursor-pointer gap-x-3"
+              className="rounded-md  px-2 sm:px-4 py-1 bg-red-100 text-red-500 flex justify-center items-center cursor-pointer gap-x-3"
             >
-              Vazgeç
+              <MdCancel />
+              <span className="sm:flex hidden">Vazgeç</span>
             </button>
           </div>
         )}
       </div>
-      <form className="grid grid-cols-2 gap-5 ">
+      <form className="grid sm:grid-cols-2 grid-cols-1 gap-5 ">
         {user.photoURL && (
           <img
             src={user.photoURL}
