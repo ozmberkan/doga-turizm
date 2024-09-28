@@ -2,8 +2,14 @@ import { quantum } from "ldrs";
 import { useEffect } from "react";
 import { BiSolidOffer } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCampaignById } from "~/redux/slices/campaignSlice";
+import { CiCalendarDate } from "react-icons/ci";
+
+//
+import { FiInfo } from "react-icons/fi";
+import { FaRegEnvelope } from "react-icons/fa6";
+import { TbLocation } from "react-icons/tb";
 
 const CampaignDetail = () => {
   quantum.register();
@@ -40,51 +46,94 @@ const CampaignDetail = () => {
 
   return (
     <div className="w-full p-5 flex flex-col gap-y-5 container mx-auto">
-      <div className="w-full h-full gap-x-4 text-sm sm:text-3xl font-semibold rounded-md shadow-md py-5 flex justify-center items-center border-2 border-primary text-primary">
-        <BiSolidOffer className="sm:text-3xl text-lg font-semibold" />
-        Sınırlı süredeki kampanya için acele edin!
-      </div>
-      <div className="h-full shadow-lg p-4 sm:p-12 border rounded-md flex sm:flex-row flex-col justify-start items-center">
-        <div className="w-full">
-          <img
-            src={image}
-            alt={cityName}
-            className="w-full h-[400px] object-cover rounded-md"
-          />
+      <div className="flex flex-col gap-y-1">
+        <div className="w-full text-lg sm:text-2xl font-semibold  py-1 flex justify-center items-center text-primary">
+          {cityName} Yolculuk Kampanyası
         </div>
-        <div className="w-full flex flex-col justify-start items-start p-5 sm:p-12 gap-y-2">
-          <h1 className="text-4xl font-semibold">{cityName}</h1>
-          <div className="text-zinc-500">
-            <p>
-              • Kampanya <strong>31.12.2024'e</strong> kadar geçerlidir.
+        <div className="w-full flex flex-col text-xs sm:text-base font-medium gap-y-3  py-1 justify-center items-center text-neutral-500">
+          {cityName} Yolculuğu İçin Özel Fırsat!
+          <div className="sm:w-1/2 w-full gap-y-5 flex sm:flex-row flex-col justify-center items-center gap-x-5">
+            <span className="w-full rounded-full border bg-white whitespace-nowrap py-2 px-5 flex items-center justify-center gap-x-2 font-medium text-zinc-500">
+              <CiCalendarDate size={20} />
+              Kampanya 31.12.2024'e kadar geçerlidir.
+            </span>
+            <span className="w-full rounded-full border bg-red-500 whitespace-nowrap py-2 px-5 flex items-center justify-center gap-x-2 font-medium text-zinc-100">
+              <BiSolidOffer size={20} />
+              {discount} İndirim Fırsatı
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="w-full  sm:h-[400px] rounded-md flex justify-start items-center gap-5 sm:flex-row flex-col">
+        <div className="sm:w-1/2 bg-white h-full p-5 rounded-md border flex flex-col gap-y-12">
+          <span className="text-2xl font-semibold">Kampanya Detayları</span>
+          <div className="flex flex-col gap-y-3 w-full">
+            <p className="flex gap-x-2 items-center justify-start ">
+              <span className="text-lg">
+                <FiInfo />
+              </span>
+              <span className="sm:text-base text-sm">
+                Kampanyadan yararlanabilmek için kayıt olmalısınız!
+              </span>
             </p>
-            <p>
-              • Kampanya'dan yararlanabilmek için{" "}
-              <strong>kayıt olmalısınız.</strong>
+            <p className="flex gap-x-2 items-center justify-start ">
+              <span className="text-lg">
+                <FaRegEnvelope />
+              </span>
+              <span className="sm:text-base text-sm">
+                Kampanya'dan yararlanabilmek için e-posta doğrulaması
+                yapmalısınız.
+              </span>
             </p>
-            <p>
-              • Kampanya'dan yararlanabilmek için{" "}
-              <strong>e-posta doğrulaması </strong>
-              yapmalısınız.
+            <p className="flex gap-x-2 items-center justify-start ">
+              <span className="text-lg">
+                <TbLocation />
+              </span>
+              <span className="sm:text-base text-sm">
+                Kampanyaya dahil edilen şehirler: İstanbul,Çanakkale,Balıkesir
+              </span>
             </p>
-
-            <p>
-              • Kampanya'ya dahil edilen şehirler:
-              <b> Çanakkale, İstanbul, Balıkesir.</b>
-            </p>
-            <p>
-              • Hangi şehirde olursan ol {cityName} şehrine gitmek istersen bu
-              kampanyadan yararlanabilirsin!.
-            </p>
-
-            <p>
-              • <span className="line-through">{oldPrice} TL</span> 'den{" "}
-              {newPrice}
-              TL'ye
-              <span className="text-primary"> {discount} </span> indirim fırsatı
+            <p className="flex gap-x-2 items-center justify-start ">
+              <span className="text-lg">
+                <FiInfo />
+              </span>
+              <span className="sm:text-base text-sm">
+                Hangi şehirde olursan ol İstanbul şehrine gitmek istersen bu
+                kampanyadan yararlanabilirsin!
+              </span>
             </p>
           </div>
         </div>
+        <div className="sm:w-1/2 w-full bg-white rounded-md border h-full p-5 sm:gap-y-0 gap-y-5 flex flex-col justify-between items-start">
+          <div className="flex flex-col sm:gap-y-0 gap-y-2">
+            <h1 className="text-2xl font-semibold">{cityName} 'a/e yolculuk</h1>
+            <p className="text-sm text-zinc-600">
+              500 TL yerine sadece 400 TL!
+            </p>
+          </div>
+          <img
+            src={image}
+            className="w-full h-1/2 rounded-md object-cover shadow-xl"
+          />
+          <Link
+            to="/"
+            className="w-full bg-primary hover:bg-hoverPrimary text-white rounded-md p-2 flex justify-center items-center"
+          >
+            Hemen Rezervasyon Yap
+          </Link>
+        </div>
+      </div>
+      <div className="w-full   flex justify-center items-center flex-col mt-5 gap-y-3">
+        <h1 className="text-xl font-semibold">Fırsatı Kaçırmayın!</h1>
+        <p className="text-sm text-zinc-600">
+          Bu özel indirim 31.12.2024 tarihine kadar geçerlidir.
+        </p>
+        <Link
+          to="/"
+          className="bg-primary hover:bg-hoverPrimary text-white px-4 py-2 rounded-md"
+        >
+          Hemen Kayıt Ol
+        </Link>
       </div>
     </div>
   );
