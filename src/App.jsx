@@ -1,15 +1,11 @@
 // CSS / IMPORTS
-import Navbar from "./components/Navbar/Navbar";
-import FlexContainer from "./container/FlexContainer";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
-  Outlet,
 } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import { ToastContainer } from "react-toastify";
 // Pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
@@ -29,19 +25,10 @@ import CampaignDetail from "./pages/Campaigns/CampaignDetail";
 import AllServices from "./pages/Services/AllServices";
 import Payment from "./pages/Payment/Payment";
 import Profile from "./pages/Profile/Profile";
+import Layout from "./layouts/Layout";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
-
-  const Layout = () => {
-    return (
-      <FlexContainer>
-        <Navbar />
-        <Outlet />
-        <ToastContainer position="bottom-right" />
-      </FlexContainer>
-    );
-  };
 
   const router = createBrowserRouter([
     {

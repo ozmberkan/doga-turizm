@@ -239,7 +239,6 @@ const Payment = () => {
                 <option value="Ocak">Ocak</option>
                 <option value="Şubat">Şubat</option>
                 <option value="Mart">Mart</option>
-                {/* Diğer aylar buraya eklenebilir */}
               </select>
               <input
                 placeholder="CVC"

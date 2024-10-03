@@ -60,7 +60,7 @@ const LastTicketTab = () => {
         </div>
       </div>
       <div className="sm:grid sm:grid-cols-2 sm:w-full sm:gap-5 flex flex-col gap-y-5 w-full">
-        {user?.fullTickets.length > 0 ? (
+        {user?.fullTickets?.length > 0 ? (
           user?.fullTickets?.map((ticket) => (
             <LastTicket key={ticket.id} ticket={ticket} hide={hide} />
           ))
