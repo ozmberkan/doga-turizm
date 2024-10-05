@@ -254,7 +254,6 @@ const Payment = () => {
             </form>
           </div>
         </div>
-        <Footer footerWidth={"w-1/2"} />
       </div>
     </>
   );
