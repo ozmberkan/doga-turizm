@@ -18,7 +18,7 @@ const FooterSection = ({ title, items }) => (
         <Link
           to={item.to}
           key={i}
-          className="p-2 text-sm bg-white dark:bg-gray-700 rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
+          className="p-2 text-sm bg-white dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
         >
           {item.icon && <item.icon size={18} />}
           {item.title || item.name}
@@ -58,7 +58,7 @@ const Footer = ({ footerWidth }) => {
         <FooterSection title="İş Ortağımız Ol" items={footerWith} />
         <FooterSection title="Sosyal Medya" items={socialMedia} />
       </div>
-      <div className="col-span-1 sm:col-span-5 text-zinc-500 text-left  text-sm border-t py-3 mb-auto ">
+      <div className="col-span-1 sm:col-span-5 text-zinc-500 dark:text-white text-left  text-sm dark:border-gray-600 border-t py-3 mb-auto ">
         © 2024 Doğa Turizm. All rights reserved.
       </div>
     </div>

@@ -53,24 +53,24 @@ const TicketsTab = () => {
 
   return (
     <>
-      <div className="bg-white p-3 border rounded-md shadow-md">
+      <div className="bg-white dark:bg-gray-800 dark:border-gray-700 p-3 border rounded-md shadow-md">
         <div className="flex gap-x-2 items-center justify-start mb-2">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-md px-4 outline-none border"
+            className="rounded-md px-4 py-1 outline-none border dark:bg-transparent dark:border-gray-700 dark:text-white"
             placeholder="Ara..."
           />
           <button
             onClick={() => setIsAddModal(true)}
-            className="px-4 rounded-md border bg-[#f9f9f9]"
+            className="px-4 py-1 rounded-md border dark:bg-gray-700 dark:border-gray-600 dark:text-white bg-[#f9f9f9]"
           >
             Ekle
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="border w-full mt-5">
-            <thead className="bg-zinc-100 sticky top-0">
+          <table className="border dark:border-gray-700 w-full mt-5">
+            <thead className="bg-zinc-100 dark:bg-gray-900 dark:text-white sticky top-0">
               <tr className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center p-4 gap-5">
                 {tableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
@@ -102,7 +102,7 @@ const TicketsTab = () => {
               {filteredTickets?.map((ticket) => (
                 <tr
                   key={ticket.id}
-                  className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center  p-4 gap-5"
+                  className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center dark:text-white  p-4 gap-5"
                 >
                   <td className="w-full">{ticket.id}</td>
                   <td>{ticket.pnr}</td>
@@ -117,13 +117,13 @@ const TicketsTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => deleteTicket(ticket.id)}
-                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiTrash size={20} />
                     </button>
                     <button
                       onClick={() => openEditModal(ticket)}
-                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>

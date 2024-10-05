@@ -20,7 +20,7 @@ const MenuComp = () => {
 
   return (
     <Menu>
-      <MenuButton className="outline-none sm:text-xs dark:text-white dark:hover:text-gray-700 text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
+      <MenuButton className="outline-none sm:text-xs  dark:text-white dark:hover:text-gray-700 text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
         <BiMenu size={30} />
       </MenuButton>
       <Transition
@@ -33,15 +33,15 @@ const MenuComp = () => {
       >
         <MenuItems
           anchor="bottom end"
-          className="[--anchor-gap:4px] sm:[--anchor-gap:8px] bg-white rounded-md p-3 border border-black/15 outline-none absolute z-30"
+          className="[--anchor-gap:4px] sm:[--anchor-gap:8px] dark:bg-gray-800  bg-white rounded-md p-3 border border-black/15 outline-none absolute z-30"
         >
           {menus.map((menu, index) => (
             <MenuItem key={index}>
               <Link
-                className="hover:bg-gray-100 w-full flex items-start justify-start rounded p-3 "
+                className="hover:bg-gray-100 dark:hover:bg-gray-700 w-full flex items-start justify-start rounded p-3 "
                 to={menu.to}
               >
-                <h1 className="flex items-center gap-x-2 text-zinc-600/80">
+                <h1 className="flex items-center gap-x-2 text-zinc-600/80 dark:text-white">
                   {" "}
                   <span>
                     <menu.icon size={20} />
@@ -54,10 +54,12 @@ const MenuComp = () => {
           <MenuItem>
             <button
               onClick={() => dispatch(toggleTheme())}
-              className="hover:bg-gray-100 w-full gap-x-2 justify-start text-zinc-600/80 rounded p-3  flex items-center"
+              className="hover:bg-gray-100 w-full gap-x-2  dark:hover:bg-gray-700 justify-start text-zinc-600/80  dark:text-white rounded p-3  flex items-center"
             >
               {theme === "light" ? <FaMoon size={18} /> : <FaSun size={18} />}
-              <span className="text-zinc-600/80">Temayı Değiştir</span>
+              <span className="text-zinc-600/80 dark:text-white">
+                Temayı Değiştir
+              </span>
             </button>
           </MenuItem>
         </MenuItems>

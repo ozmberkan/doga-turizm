@@ -81,13 +81,17 @@ const UserTab = () => {
 
   const renderInputField = (label, name, value) => (
     <div className="flex flex-col gap-y-2">
-      <label className="text-xs text-zinc-500/60">{label}</label>
+      <label className="text-xs text-zinc-500/60 dark:text-white">
+        {label}
+      </label>
       <div className="flex gap-x-1.5">
         <input
           type="text"
           name={name}
-          className={`rounded-md border px-6 py-2 outline-none w-full ${
-            isEditMode ? "bg-white" : "bg-[#f9f9f9]"
+          className={`rounded-md border dark:border-gray-700 px-6 py-2 outline-none w-full ${
+            isEditMode
+              ? "bg-white dark:bg-gray-800 dark:text-white"
+              : "bg-[#f9f9f9] dark:bg-gray-700 dark:text-white"
           }`}
           value={value || ""}
           onChange={handleChange}
@@ -98,16 +102,16 @@ const UserTab = () => {
   );
 
   return (
-    <div className="p-5  rounded-md border flex flex-col gap-y-5 relative flex-grow">
+    <div className="p-5  rounded-md dark:border-gray-700 border flex flex-col gap-y-5 relative flex-grow">
       <div className="flex justify-between sm:items-center items-baseline">
-        <h1 className="sm:text-2xl text-base font-medium  mb-3 flex justify-center items-center gap-x-2">
+        <h1 className="sm:text-2xl text-base font-medium  mb-3 flex justify-center items-center gap-x-2 dark:text-white">
           <FiUser />
           Kişisel Bilgilerim
         </h1>
         {!isEditMode ? (
           <button
             onClick={() => setIsEditMode(!isEditMode)}
-            className="rounded-md  hover:bg-primary hover:text-white transition-colors duration-300 sm:w-1/12 px-2 sm:px-0 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
+            className="rounded-md dark:bg-gray-800 dark:border-gray-700 dark:border dark:text-gray-500 dark:hover:text-white  hover:bg-primary hover:text-white transition-colors duration-300 sm:w-1/12 px-2 sm:px-0 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
           >
             <span className="sm:flex hidden ">Düzenle</span> <CiEdit />
           </button>
@@ -115,14 +119,14 @@ const UserTab = () => {
           <div className="flex gap-x-3">
             <button
               onClick={saveProfile}
-              className="rounded-md px-2 sm:px-4 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
+              className="rounded-md px-2 dark:bg-gray-800 dark:border-gray-700 dark:border dark:text-gray-500 dark:hover:text-white transition-colors sm:px-4 py-1 bg-green-200 text-green-500 flex justify-center items-center cursor-pointer gap-x-3"
             >
               <FaRegSave />
               <span className="sm:flex hidden">Kaydet</span>
             </button>
             <button
               onClick={() => setIsEditMode(false)}
-              className="rounded-md  px-2 sm:px-4 py-1 bg-red-100 text-red-500 flex justify-center items-center cursor-pointer gap-x-3"
+              className="rounded-md dark:bg-gray-800 dark:border-gray-700 dark:border dark:text-gray-500 dark:hover:text-white transition-colors  px-2 sm:px-4 py-1 bg-red-100 text-red-500 flex justify-center items-center cursor-pointer gap-x-3"
             >
               <MdCancel />
               <span className="sm:flex hidden">Vazgeç</span>
@@ -148,14 +152,14 @@ const UserTab = () => {
         {renderInputField("E-Posta", "email", profileData.email)}
 
         <div className="w-full flex flex-col gap-y-2">
-          <label className="text-xs text-zinc-500/60">
+          <label className="text-xs text-zinc-500/60 dark:text-white">
             Yeni şifre oluşturmak mı istiyorsun ?
           </label>
-          <div className="bg-[#f9f9f9] rounded-md border px-4 py-2 flex items-center justify-between">
+          <div className="bg-[#f9f9f9] dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded-md border px-4 py-2 flex items-center justify-between">
             Şifre Değiştir
             <button
               onClick={newPassword}
-              className="bg-green-200 text-green-500 rounded-md flex justify-center items-center px-4"
+              className="bg-green-200 dark:bg-gray-700 dark:text-gray-500 transition-colors dark:hover:text-white text-green-500 rounded-md flex justify-center items-center px-4"
             >
               <BiMailSend size={25} />
             </button>
@@ -164,14 +168,14 @@ const UserTab = () => {
         {user.emailVerified === false ? (
           <div className="w-full flex gap-x-2">
             <div className="w-full flex flex-col gap-y-2">
-              <label className="text-xs text-zinc-500/60">
+              <label className="text-xs text-zinc-500/60 dark:text-white">
                 E-Postanı doğrulaman gerek!
               </label>
-              <div className="bg-[#f9f9f9] rounded-md border px-4 py-2 flex items-center justify-between">
+              <div className="bg-[#f9f9f9] dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded-md border px-4 py-2 flex items-center justify-between">
                 E-Posta Doğrula
                 <button
                   onClick={emailVer}
-                  className="bg-green-200 text-green-500 rounded-md flex justify-center items-center px-4"
+                  className="bg-green-200 dark:bg-gray-700 dark:text-gray-500 transition-colors dark:hover:text-white text-green-500 rounded-md flex justify-center items-center px-4"
                 >
                   <BiMailSend size={25} />
                 </button>

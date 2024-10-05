@@ -49,25 +49,25 @@ const CampaignTab = () => {
   );
 
   return (
-    <div className="bg-white p-3 border rounded-md shadow-md">
+    <div className="bg-white dark:bg-gray-800 p-3 border rounded-md shadow-md">
       <div>
         <div className="flex gap-x-2 items-center justify-start mb-2">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-md px-4 outline-none border"
+            className="rounded-md dark:bg-transparent dark:border-gray-700 dark:text-white py-1 px-4 outline-none border"
             placeholder="Ara..."
           />
           <button
             onClick={() => setIsAddModal(true)}
-            className="px-4 rounded-md border bg-[#f9f9f9]"
+            className="px-4 py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white rounded-md border bg-[#f9f9f9]"
           >
             Ekle
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="border w-full mt-5">
-            <thead className="bg-zinc-100">
+          <table className="border w-full mt-5 dark:border-gray-700 ">
+            <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">
               <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
                 {campaignTableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
@@ -97,7 +97,7 @@ const CampaignTab = () => {
             </thead>
             <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
               {filteredCampaigns?.map((campaign) => (
-                <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
+                <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center dark:text-white p-4 gap-5">
                   <React.Fragment key={campaign.id}>
                     <td className="w-full">{campaign.id}</td>
                     <td>{campaign.cityName}</td>
@@ -112,13 +112,13 @@ const CampaignTab = () => {
                     <td className="flex gap-x-2 ">
                       <button
                         onClick={() => deleteCampaign(campaign.id)}
-                        className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                        className="border dark:text-white dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                       >
                         <BiTrash size={20} />
                       </button>
                       <button
                         onClick={() => openEdit(campaign)}
-                        className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                        className="border dark:text-white dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                       >
                         <BiEdit size={20} />
                       </button>

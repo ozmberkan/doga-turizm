@@ -6,9 +6,9 @@ import { BsTicketDetailed } from "react-icons/bs";
 const MyTicketsTab = () => {
   const { user } = useSelector((store) => store.user);
   return (
-    <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
+    <div className="w-full bg-white dark:bg-gray-800 dark:border-gray-700 rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 ">
-        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium">
+        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium dark:text-white">
           {" "}
           <BsTicketDetailed />
           Aktif Biletlerim
@@ -20,7 +20,7 @@ const MyTicketsTab = () => {
             <Ticket key={i} ticket={ticket} />
           ))
         ) : (
-          <div className="bg-red-100 text-red-500 p-3 rounded-md">
+          <div className="bg-red-100 text-red-500 dark:bg-red-900 dark:text-red-300 p-3 rounded-md">
             Herhangi bir bilet bulunamadı!
           </div>
         )}

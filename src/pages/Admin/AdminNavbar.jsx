@@ -7,6 +7,7 @@ import { auth } from "~/firebase/firebaseConfig";
 
 const AdminNavbar = () => {
   const { user } = useSelector((store) => store.user);
+
   const exit = async () => {
     try {
       await signOut(auth);
@@ -21,14 +22,14 @@ const AdminNavbar = () => {
   };
 
   return (
-    <div className="w-full border-b bg-white  py-3 px-6 flex justify-between items-center">
+    <div className="w-full border-b bg-white dark:bg-gray-800 dark:border-gray-700   py-3 px-6 flex justify-between items-center">
       <h1 className=" text-zinc-700 flex items-center gap-x-2">
-        <span className="rounded-md p-2 sm:block hidden bg-zinc-100 border">
+        <span className="rounded-md p-2 sm:block hidden bg-zinc-100 dark:bg-gray-800 dark:border-gray-700  dark:text-white border">
           <BiUser />
         </span>
-        <span className="text-zinc-700 flex flex-col sm:text-base text-sm ">
+        <span className="text-zinc-700 flex flex-col  dark:text-white sm:text-base text-sm ">
           Yeniden Hoş geldin,
-          <small className="text-primary font-medium">
+          <small className="text-primary font-medium dark:text-gray-400">
             {user?.displayName}
           </small>
         </span>
@@ -36,13 +37,13 @@ const AdminNavbar = () => {
       <div className="flex items-center gap-x-2 sm:gap-x-5">
         <Link
           to="/"
-          className="p-2 rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 text-black bg-white transition-all duration-100"
+          className="p-2 rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100"
         >
           <BiHome />
         </Link>
         <button
           onClick={exit}
-          className="p-2 rounded-md hover:bg-primary hover:text-white border  flex justify-center items-center gap-x-2 text-black bg-white transition-all duration-100"
+          className="p-2 rounded-md hover:bg-primary hover:text-white border  flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100"
         >
           <BiLogOut />
         </button>

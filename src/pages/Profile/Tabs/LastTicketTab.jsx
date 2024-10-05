@@ -27,16 +27,16 @@ const LastTicketTab = () => {
   };
 
   return (
-    <div className="w-full bg-white rounded-md border p-5 min-h-[200px]">
+    <div className="w-full bg-white dark:bg-gray-800 dark:border-gray-700 rounded-md border p-5 min-h-[200px]">
       <div className="w-full mb-5 flex justify-between items-center ">
-        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium">
+        <h1 className="sm:text-2xl text-base flex items-center gap-x-2 font-medium dark:text-white">
           <BsTicketDetailedFill />
           Geçmiş Biletlerim
         </h1>
         <div className="flex gap-x-3 sm:flex-row flex-col gap-y-2">
           <button
             onClick={deleteLastTickets}
-            className="bg-red-100 text-red-500 px-4 py-1 rounded-md flex justify-center items-center gap-x-1 "
+            className="bg-red-100 text-red-500 dark:bg-red-900 px-4 py-1 rounded-md flex justify-center items-center gap-x-1 "
           >
             <BiTrash />
             <span className="sm:flex hidden">Biletleri Temizle</span>
@@ -44,7 +44,7 @@ const LastTicketTab = () => {
           {hide === false ? (
             <button
               onClick={() => setHide(true)}
-              className="bg-zinc-100 text-zinc-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
+              className="bg-zinc-100 dark:bg-gray-700 text-zinc-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
             >
               <FaEyeSlash />{" "}
               <span className="sm:flex hidden">Biletleri Gizle</span>
@@ -52,7 +52,7 @@ const LastTicketTab = () => {
           ) : (
             <button
               onClick={() => setHide(false)}
-              className="bg-green-100 text-green-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
+              className="bg-green-100 dark:bg-gray-700 text-green-500 sm:px-4 py-1 rounded-md flex justify-center items-center gap-x-1 sm:min-w-[200px]"
             >
               <FaEye /> <span className="sm:flex hidden">Biletleri Göster</span>
             </button>
@@ -65,7 +65,7 @@ const LastTicketTab = () => {
             <LastTicket key={ticket.id} ticket={ticket} hide={hide} />
           ))
         ) : (
-          <div className="bg-red-100 text-red-500 p-3 rounded-md">
+          <div className="bg-red-100 text-red-500 dark:bg-red-900 dark:text-red-300  p-3 rounded-md">
             Herhangi bir bilet bulunamadı!
           </div>
         )}

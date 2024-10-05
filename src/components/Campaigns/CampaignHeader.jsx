@@ -3,7 +3,7 @@ import { BiSolidOffer } from "react-icons/bi";
 const CampaignHeader = () => {
   return (
     <div className="font-rubik flex flex-col gap-y-4 sm:justify-start sm:items-start justify-center items-center w-full sm:text-left text-center">
-      <span className="bg-gradient-to-r dark:border-gray-700 from-green-500 to-green-700 text-white w-44 justify-center items-center flex text-sm gap-x-2  rounded-md border px-4 py-1">
+      <span className="bg-gradient-to-r dark:from-gray-950 dark:to-gray-900 dark:border-gray-800 from-green-500 to-green-700 text-white w-44 justify-center items-center flex text-sm gap-x-2  rounded-md border px-4 py-1">
         <BiSolidOffer size={18} />
         Sınırlı Süreli Teklif
       </span>

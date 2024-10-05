@@ -52,8 +52,8 @@ const Ticket = ({ ticket }) => {
   };
 
   return (
-    <div className="w-full border rounded-xl text-sm sm:text-base flex flex-col">
-      <div className="w-full h-10 rounded-t-xl bg-primary flex justify-between items-center px-4 text-white">
+    <div className="w-full border dark:border-gray-900 rounded-xl text-sm sm:text-base flex flex-col">
+      <div className="w-full h-10 rounded-t-xl bg-primary dark:bg-gray-900 flex justify-between items-center px-4 text-white">
         <span>{pnr}</span>
         <div className="flex gap-x-2">
           <span className="flex items-center gap-x-1">
@@ -64,7 +64,7 @@ const Ticket = ({ ticket }) => {
       </div>
       <div className="flex flex-col">
         <div className="flex sm:justify-between justify-start sm:items-center items-start sm:flex-row flex-col">
-          <div className="p-4 text-lg text-zinc-600">
+          <div className="p-4 text-lg text-zinc-600 dark:text-white">
             <span className="flex items-center gap-x-1">
               <BiUser /> {user.displayName}
             </span>
@@ -83,7 +83,7 @@ const Ticket = ({ ticket }) => {
               {price * user.ownedTickets.map((item) => item.seats.length)}₺
             </span>
           </div>
-          <div className="p-4 text-lg text-zinc-600">
+          <div className="p-4 text-lg text-zinc-600 dark:text-white">
             <span className="flex items-center gap-x-1">
               {" "}
               <IoLocationSharp />
@@ -96,17 +96,17 @@ const Ticket = ({ ticket }) => {
             </span>
           </div>
         </div>
-        <div className="w-full bg-[#E6F7E6]/25 p-4 rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
+        <div className="w-full bg-[#E6F7E6]/25 dark:bg-gray-900 p-4  rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2">
             <button
               onClick={() => deleteTicket(pnr)}
-              className="flex items-center bg-red-100 text-red-500 px-4 py-2 rounded-md gap-x-2"
+              className="flex items-center bg-red-100 text-red-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
               <MdCancel /> İptal Et
             </button>
             <Link
               to="/contact"
-              className="flex items-center bg-blue-100 text-blue-500 px-4 py-2 rounded-md gap-x-2"
+              className="flex items-center bg-blue-100 text-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
               <IoHelp /> Yardım
             </Link>

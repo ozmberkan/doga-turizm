@@ -8,7 +8,7 @@ import moment from "moment";
 
 const Tickets = () => {
   const filterCriteria = useSelector((store) => store.filter.filterCriteria);
-
+  const theme = useSelector((store) => store.theme.theme);
   const ticketRef = collection(db, "tickets");
 
   const [snapshot] = useCollection(ticketRef);
@@ -18,7 +18,6 @@ const Tickets = () => {
   }));
 
   const filteredTickets = data?.filter((ticket) => {
-    
     const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
       "DD.MM.YYYY"
     );
@@ -30,20 +29,23 @@ const Tickets = () => {
     );
   });
 
+  const configTheme = {
+    token: {
+      colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
+      colorText: theme === "dark" ? "#E5E5E5" : "#000",
+    },
+  };
+
   return (
-    <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#4FC647",
-            contentBg: "#aaac1d",
-            
-          },
-        }}
-      >
+    <div
+      className={`w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik ${
+        theme === "dark" ? "bg-gray-900 text-white" : ""
+      }`}
+    >
+      <ConfigProvider theme={configTheme}>
         <Steps
           size="large"
-          current={1}
+          current={2}
           items={[
             {
               title: "Sefer Seçimi",
@@ -63,7 +65,13 @@ const Tickets = () => {
             <TicketDetail key={ticket.id} ticket={ticket} />
           ))
         ) : (
-          <div className="w-full bg-red-200 text-red-500 p-4 rounded-md">
+          <div
+            className={`w-full p-4 rounded-md ${
+              theme === "dark"
+                ? "bg-red-900 text-red-300"
+                : "bg-red-200 text-red-500"
+            }`}
+          >
             Aranan değerlerde bilet bulunamadı!
           </div>
         )}

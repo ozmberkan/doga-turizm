@@ -6,10 +6,6 @@ import { rentData } from "~/data/data";
 const Rent = () => {
   return (
     <FooterDetailBox>
-      <div className="flex items-center justify-start mb-6">
-        <img src={logoBlack} alt="Doğa Turizm Logo" className="w-44" />
-      </div>
-      <hr className="w-full my-4" />
       <div className="flex flex-col gap-y-5 items-start text-left">
         {rentData.map((section) => (
           <div key={section.id} className="flex flex-col gap-y-4">

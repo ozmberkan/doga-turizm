@@ -45,14 +45,14 @@ const NavigationBar = () => {
             {user ? (
               <Link
                 to="/profile"
-                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:border-gray-600 dark:ring-offset-transparent dark:ring-gray-600 dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </Link>
             ) : (
               <button
                 onClick={() => dispatch(setOpen(!open))}
-                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-transparent dark:ring-gray-600 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </button>
@@ -60,7 +60,7 @@ const NavigationBar = () => {
             {user?.admin === true && (
               <Link
                 to="/admin"
-                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-transparent dark:ring-gray-600 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <MdOutlineAdminPanelSettings />
               </Link>
@@ -68,7 +68,7 @@ const NavigationBar = () => {
             {user && (
               <button
                 onClick={exit}
-                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-transparent dark:ring-gray-600 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiLogOut />
               </button>

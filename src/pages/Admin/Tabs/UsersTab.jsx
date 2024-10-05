@@ -39,19 +39,19 @@ const UsersTab = () => {
   );
 
   return (
-    <div className="bg-white p-3 border rounded-md shadow-md">
+    <div className="bg-white dark:bg-gray-800 dark:border-gray-700  p-3 border rounded-md shadow-md">
       <div>
         <div className="flex gap-x-2 items-center justify-start mb-2">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-md px-4 outline-none border"
+            className="rounded-md py-1 px-4 outline-none border dark:bg-transparent dark:border-gray-700 dark:text-white"
             placeholder="Ara..."
           />
         </div>
         <div className="overflow-x-auto">
-          <table className="border w-full mt-5">
-            <thead className="bg-zinc-100">
+          <table className="border dark:border-gray-700 w-full mt-5">
+            <thead className="bg-zinc-100 dark:bg-gray-900 dark:text-white">
               <tr className="sm:grid flex sm:grid-cols-7 grid-cols-1 place-items-center p-4 gap-5">
                 {userTableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
@@ -64,7 +64,7 @@ const UsersTab = () => {
               {filteredUsers?.map((user) => (
                 <tr
                   key={user.id}
-                  className="sm:grid flex sm:grid-cols-7 grid-cols-1 place-items-center  p-4 gap-5"
+                  className="sm:grid flex sm:grid-cols-7 grid-cols-1 dark:text-white place-items-center  p-4 gap-5"
                 >
                   <td className="w-full">{user.uid}</td>
                   <td>{user?.admin === true ? "Yönetici" : "Kullanıcı"}</td>
@@ -105,7 +105,7 @@ const UsersTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(user)}
-                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>

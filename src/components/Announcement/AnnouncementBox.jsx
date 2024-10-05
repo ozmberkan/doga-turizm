@@ -1,11 +1,11 @@
 const AnnouncementBox = ({ annItem }) => {
   return (
-    <div className="py-7 flex justify-center items-start font-rubik flex-col gap-y-2 text-center sm:w-full w-[80%] rounded-xl   sm:text-left  bg-white dark:bg-gray-800 sm:p-12 p-3 border ">
+    <div className="py-7 flex justify-center items-start font-rubik flex-col gap-y-2 text-center sm:w-full w-[80%] rounded-xl   sm:text-left  bg-white dark:border-gray-700 dark:bg-gray-800 sm:p-12 p-3 border ">
       <div className="mb-5 flex flex-col gap-y-3 ">
         <h1 className="sm:text-3xl text-xl font-semibold bg-gradient-to-r from-[#6B848E] drop-shadow-sm to-primary bg-clip-text text-transparent">
           {annItem?.title}
         </h1>
-        <span className="sm:text-sm text-xs text-[rgb(107,132,142)] drop-shadow-sm ">
+        <span className="sm:text-sm text-xs dark:text-white text-[rgb(107,132,142)] drop-shadow-sm ">
           {annItem?.titleDesc}
         </span>
       </div>

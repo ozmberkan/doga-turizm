@@ -30,10 +30,6 @@ const Contact = () => {
 
   return (
     <FooterDetailBox>
-      <div className="flex items-center justify-start mb-6">
-        <img src={logoBlack} alt="Doğa Turizm Logo" className="w-44" />
-      </div>
-      <hr className="w-full my-4" />
       <div className="flex flex-col gap-y-5 items-start">
         <h1 className="text-4xl">İletişim</h1>
         <p className="text-left">
@@ -58,13 +54,13 @@ const Contact = () => {
                   {...register(input.name)}
                   placeholder={input.placeholder}
                   required
-                  className="w-full p-2 border placeholder:text-sm rounded-md ring-2 ring-offset-2 outline-none ring-primary"
+                  className="w-full dark:bg-transparent dark:ring-offset-transparent dark:ring-gray-700 p-2 border placeholder:text-sm rounded-md ring-2 ring-offset-2 outline-none ring-primary"
                 />
               </div>
             ))}
             <button
               type="submit"
-              className="bg-green-500 text-white p-3 rounded-md mt-4 hover:bg-green-600 transition duration-300"
+              className="bg-green-500 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:bg-gray-900 transition-colors text-white p-3 rounded-md mt-4 hover:bg-green-600 transition duration-300"
             >
               Gönder
             </button>

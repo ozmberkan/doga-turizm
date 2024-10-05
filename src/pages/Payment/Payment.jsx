@@ -17,6 +17,7 @@ import { validCoupons } from "~/data/data";
 const Payment = () => {
   const { finalTicket } = useSelector((store) => store.finalTicket);
   const { user } = useSelector((store) => store.user);
+  const theme = useSelector((store) => store.theme.theme); // Redux'tan tema bilgisi alındı
   const { pnr, arrival, departure, date, price, seats } = finalTicket;
 
   const dispatch = useDispatch();
@@ -38,7 +39,6 @@ const Payment = () => {
       }
 
       if (validCoupons.includes(coupon)) {
-        // dispatch(setUser({ ...user, usedDiscount: true }));
         setDiscountedPrice(price * seats?.length - 50);
 
         try {
@@ -110,10 +110,7 @@ const Payment = () => {
 
       await updateDoc(userRef, {
         ownedTickets: updatedOwnedTickets,
-        fullTickets: [
-          ...user.fullTickets,
-          { ...finalTicket, seats, price: finalPrice },
-        ],
+        fullTickets: updatedFullTickets,
       });
 
       dispatch(
@@ -134,20 +131,24 @@ const Payment = () => {
     "DD.MM.YYYY HH:mm"
   );
 
+  const configTheme = {
+    token: {
+      colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
+      colorText: theme === "dark" ? "#E5E5E5" : "#000",
+    },
+  };
+
   return (
     <>
-      <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: "#4FC647",
-              contentBg: "#aaac1d",
-            },
-          }}
-        >
+      <div
+        className={`w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik ${
+          theme === "dark" ? "bg-gray-900 text-white" : " text-black"
+        }`}
+      >
+        <ConfigProvider theme={configTheme}>
           <Steps
             size="large"
-            current={2}
+            current={4}
             items={[
               { title: "Sefer Seçimi" },
               { title: "Koltuk Seçimi" },
@@ -157,11 +158,25 @@ const Payment = () => {
         </ConfigProvider>
         <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
           <div className="w-full flex flex-col gap-y-3">
-            <div className="sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ring-primary">
-              <h1 className="text-2xl font-semibold text-primary">
+            <div
+              className={`sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ${
+                theme === "dark" ? "ring-gray-700" : "ring-primary"
+              }`}
+            >
+              <h1
+                className={`text-2xl font-semibold ${
+                  theme === "dark" ? "text-gray-200" : "text-primary"
+                }`}
+              >
                 Seçilen Bilet / Biletler
               </h1>
-              <div className="w-full h-full bg-[#4ABD43] text-white rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl">
+              <div
+                className={`w-full h-full ${
+                  theme === "dark"
+                    ? "bg-gray-800 text-white"
+                    : "bg-[#4ABD43] text-white"
+                } rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl`}
+              >
                 <div className="w-full flex justify-between items-center">
                   <span className="font-semibold">PNR:</span> {pnr}
                 </div>
@@ -184,7 +199,11 @@ const Payment = () => {
                     {seats?.map((seatItem, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-x-2 p-2 rounded-md bg-white text-primary"
+                        className={`flex items-center gap-x-2 p-2 rounded-md ${
+                          theme === "dark"
+                            ? "bg-gray-700 text-gray-200"
+                            : "bg-white text-primary"
+                        }`}
                       >
                         <MdEventSeat /> {seatItem.number} - {seatItem.gender}
                         {seatItem.gender === "Erkek" ? (
@@ -205,7 +224,11 @@ const Payment = () => {
             <div>
               <form className="flex w-1/2 gap-x-3">
                 <input
-                  className="px-4 py-2 rounded-md border bg-white focus:ring-2 transition-all ring-offset-1 ring-primary outline-none"
+                  className={`px-4 py-2 rounded-md border ${
+                    theme === "dark"
+                      ? "bg-gray-800 border-gray-600 text-white"
+                      : "bg-white border-primary"
+                  } focus:ring-2 transition-all ring-offset-1 ring-primary outline-none`}
                   placeholder="İndirim Kuponu"
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
@@ -213,7 +236,11 @@ const Payment = () => {
                 <button
                   type="button"
                   onClick={applyCoupon}
-                  className="bg-primary/20 text-primary px-3 rounded-md hover:bg-primary hover:text-white transition-colors"
+                  className={`px-3 rounded-md transition-colors ${
+                    theme === "dark"
+                      ? "bg-gray-700 text-gray-200 hover:bg-gray-600"
+                      : "bg-primary/20 text-primary hover:bg-primary hover:text-white"
+                  }`}
                 >
                   <TbRosetteDiscountCheckFilled size={25} />
                 </button>
@@ -221,20 +248,36 @@ const Payment = () => {
             </div>
           </div>
           <div className="w-full flex flex-col gap-y-12">
-            <div className="relative w-full flex flex-col h-[200px] aspect-[16/9] bg-gradient-to-br from-primary to-[#45B23E] rounded-xl overflow-hidden shadow-2xl">
+            <div
+              className={`relative w-full flex flex-col h-[200px] aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ${
+                theme === "dark"
+                  ? "bg-gradient-to-br from-gray-800 to-gray-600"
+                  : "bg-gradient-to-br from-primary to-[#45B23E]"
+              }`}
+            >
               <PaymentCreditCart />
             </div>
             <form className="grid grid-cols-2 gap-5">
               <input
                 placeholder="Ad Soyad"
-                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                className={`border-primary focus:ring-primary border p-4 rounded-md ${
+                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
+                }`}
               />
               <input
                 placeholder="1234 1234 1234 1234"
-                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                className={`border-primary focus:ring-primary border p-4 rounded-md ${
+                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
+                }`}
                 maxLength={19}
               />
-              <select className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent text-zinc-400">
+              <select
+                className={`border-primary focus:ring-primary border p-4 rounded-md ${
+                  theme === "dark"
+                    ? "bg-gray-700 text-white"
+                    : "bg-transparent text-zinc-400"
+                }`}
+              >
                 <option value="">Ay Seçin</option>
                 <option value="Ocak">Ocak</option>
                 <option value="Şubat">Şubat</option>
@@ -243,11 +286,17 @@ const Payment = () => {
               <input
                 placeholder="CVC"
                 maxLength={3}
-                className="border-primary focus:ring-primary border p-4 rounded-md bg-transparent"
+                className={`border-primary focus:ring-primary border p-4 rounded-md ${
+                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
+                }`}
               />
               <Link
                 onClick={paymentDone}
-                className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border bg-primary hover:bg-[#4fc615] text-white focus:ring-primary"
+                className={`w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border ${
+                  theme === "dark"
+                    ? "bg-gray-800 text-white hover:bg-gray-700"
+                    : "bg-primary hover:bg-[#4fc615] text-white"
+                } focus:ring-primary`}
               >
                 <MdPayment size={24} /> Ödemeyi Gerçekleştir
               </Link>

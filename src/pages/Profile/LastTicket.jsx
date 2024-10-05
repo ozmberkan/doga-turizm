@@ -15,11 +15,11 @@ const LastTicket = ({ ticket, hide }) => {
   return (
     <>
       {!hide && (
-        <div className="w-full rounded-xl border text-sm sm:text-base flex flex-col transition-all duration-200 ">
-          <div className="w-full h-10 rounded-t-xl bg-zinc-100 flex justify-between  items-center px-4 text-zinc-500 border-zinc-300">
-            <span>{pnr}</span>
+        <div className="w-full rounded-xl border dark:border-gray-900 text-sm sm:text-base flex flex-col transition-all duration-200 ">
+          <div className="w-full h-10 rounded-t-xl bg-zinc-100 dark:bg-gray-900  flex justify-between  items-center px-4 text-zinc-500 border-zinc-300">
+            <span className="dark:text-white">{pnr}</span>
             <div className="flex gap-x-2">
-              <span className="flex items-center gap-x-1">
+              <span className="flex items-center gap-x-1 dark:text-white">
                 <MdDateRange />
                 {formattedDate}
               </span>
@@ -27,7 +27,7 @@ const LastTicket = ({ ticket, hide }) => {
           </div>
           <div className="flex flex-col">
             <div className="flex sm:justify-between justify-start sm:items-center items-start sm:flex-row flex-col">
-              <div className="p-4 text-lg text-zinc-600">
+              <div className="p-4 text-lg text-zinc-600 dark:text-white">
                 <span className="flex items-center gap-x-1">
                   <BiUser /> {user.displayName}
                 </span>
@@ -46,7 +46,7 @@ const LastTicket = ({ ticket, hide }) => {
                   {price * user.fullTickets.map((item) => item.seats.length)}₺
                 </span>
               </div>
-              <div className="p-4 text-lg text-zinc-600">
+              <div className="p-4 text-lg text-zinc-600 dark:text-white">
                 <span className="flex items-center gap-x-1">
                   {" "}
                   <IoLocationSharp />
