@@ -5,7 +5,7 @@ import { aboutData } from "~/data/data";
 const About = () => {
   return (
     <FooterDetailBox>
-      <div className="flex items-center justify-start mb-6  ">
+      <div className="flex items-center justify-start mb-6   ">
         <img src={logoBlack} alt="" className="w-44" />
       </div>
       <hr className="w-full my-4" />
