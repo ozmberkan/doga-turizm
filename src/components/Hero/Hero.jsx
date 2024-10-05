@@ -13,9 +13,8 @@ const Hero = () => {
       </div>
       <Carousel autoplay dots={false} fade>
         {carouselImg.map((img, i) => (
-          <div>
+          <div key={i}>
             <img
-              key={i}
               src={img}
               className="w-full h-[750px] sm:h-[500px] object-cover"
               alt="Slider Images"
