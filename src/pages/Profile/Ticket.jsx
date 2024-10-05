@@ -8,6 +8,7 @@ import { setUpdate } from "~/redux/slices/userSlice";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -103,9 +104,12 @@ const Ticket = ({ ticket }) => {
             >
               <MdCancel /> İptal Et
             </button>
-            <button className="flex items-center bg-blue-100 text-blue-500 px-4 py-2 rounded-md gap-x-2">
+            <Link
+              to="/contact"
+              className="flex items-center bg-blue-100 text-blue-500 px-4 py-2 rounded-md gap-x-2"
+            >
               <IoHelp /> Yardım
-            </button>
+            </Link>
           </div>
         </div>
       </div>

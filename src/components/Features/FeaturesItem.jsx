@@ -4,7 +4,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 
 const FeaturesItem = ({ item }) => {
   return (
-    <div className="bg-white w-full p-4 flex items-center gap-x-3 rounded-xl shadow-xl hover:scale-105 transition-all duration-500 ">
+    <div className="bg-white dark:bg-gray-800  w-full p-4 flex items-center gap-x-3 rounded-xl shadow-xl hover:scale-105 transition-all duration-500 ">
       <span
         className={`p-3 rounded-full bg-green-100 text-green-500 flex justify-center items-center
         ${item.icon === FaUsersViewfinder && "!bg-red-100 !text-red-500"}
@@ -15,7 +15,7 @@ const FeaturesItem = ({ item }) => {
       >
         {item.icon && <item.icon size={20} />}
       </span>
-      <div className="text-zinc-700">
+      <div className="text-zinc-700 dark:text-white">
         <h1 className="font-medium">{item.title}</h1>
         <span className="text-xs">{item.description}</span>
       </div>

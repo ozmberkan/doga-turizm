@@ -46,12 +46,16 @@ const FilterForm = () => {
           {input.type === "text" ? (
             <select
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
+              className={`px-4 h-10 rounded-md dark:bg-transparent border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
                 errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             >
               {cities.map((city) => (
-                <option key={city.id} value={city.value}>
+                <option
+                  key={city.id}
+                  value={city.value}
+                  className="dark:text-black"
+                >
                   {city.title}
                 </option>
               ))}
@@ -60,7 +64,7 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md border w-[276px] sm:w-full outline-none transition-all duration-500   ${
+              className={`px-4 h-10 dark:bg-transparent rounded-md border w-[276px] sm:w-full outline-none transition-all duration-500   ${
                 errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             />
@@ -71,7 +75,7 @@ const FilterForm = () => {
         type="submit"
         className="flex sm:w-auto w-full sm:flex-col justify-center items-center gap-y-1  mt-auto"
       >
-        <div className="sm:w-[200px] w-full  transition-colors duration-500 h-10 px-4 hover:bg-hoverPrimary bg-primary text-white border rounded flex justify-center items-center gap-x-2">
+        <div className="sm:w-[200px] dark:border-gray-700 w-full  transition-colors duration-500 h-10 px-4 hover:bg-hoverPrimary bg-primary text-white border rounded flex justify-center items-center gap-x-2">
           <IoTicketOutline size={20} />
           Biletini Ara
         </div>

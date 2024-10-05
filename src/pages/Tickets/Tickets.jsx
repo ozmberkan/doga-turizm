@@ -3,7 +3,7 @@ import { db } from "~/firebase/firebaseConfig";
 import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
-import TicketDetail from "./TicketDetail";
+import TicketDetail from "../../components/Ticket/TicketDetail";
 import moment from "moment";
 
 const Tickets = () => {

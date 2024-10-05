@@ -9,12 +9,27 @@ import { FaMale, FaFemale } from "react-icons/fa";
 import moment from "moment";
 import "moment/locale/tr";
 import { setFinalTicket } from "~/redux/slices/finalTicketSlice";
+import { PiTelevisionSimple } from "react-icons/pi";
+import { FaWifi } from "react-icons/fa6";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { AiOutlineThunderbolt } from "react-icons/ai";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
-  const { pnr, departure, arrival, price, date, seats } = ticket;
+  const {
+    pnr,
+    departure,
+    arrival,
+    price,
+    date,
+    seats,
+    tv,
+    food,
+    electric,
+    wifi,
+  } = ticket;
 
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatToSelect, setSeatToSelect] = useState(null);
@@ -73,8 +88,8 @@ const TicketDetail = ({ ticket }) => {
 
   return (
     <div className="w-full rounded-xl p-5 flex gap-x-5 bg-white border flex-col gap-y-5">
-      <div className="w-full flex justify-between items-center sm:flex-row flex-col gap-y-2">
-        <div className="flex justify-start items-center gap-x-5 sm:text-base text-xs gap-y-2 w-full flex-col sm:flex-row">
+      <div className="flex justify-start items-center sm:flex-row flex-col gap-y-2 ">
+        <div className="flex justify-start items-center gap-x-5 sm:text-base text-xs gap-y-2 w-full flex-col sm:flex-row ">
           <span className="bg-[#4FC647] w-full sm:w-auto text-green-100 p-2 sm:p-2 rounded-md">
             {pnr}
           </span>
@@ -93,8 +108,28 @@ const TicketDetail = ({ ticket }) => {
             <CiCalendarDate size={20} />
             {formattedDate}
           </span>
+          {tv && (
+            <span className="flex items-center gap-x-1 text-zinc-700/90 bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+              <PiTelevisionSimple /> Televizyon
+            </span>
+          )}
+          {wifi && (
+            <span className="flex items-center gap-x-1 text-zinc-700/90 bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+              <FaWifi /> Wi-Fi
+            </span>
+          )}
+          {food && (
+            <span className="flex items-center gap-x-1 text-zinc-700/90 bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+              <IoFastFoodOutline /> İkram
+            </span>
+          )}
+          {electric && (
+            <span className="flex items-center gap-x-1 text-zinc-700/90 bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+              <AiOutlineThunderbolt /> Elektrik
+            </span>
+          )}
         </div>
-        <div className="flex justify-end items-center gap-x-5  w-full">
+        <div className="flex justify-end items-center gap-x-5 w-[300px]">
           <button
             onClick={() => buyToTicket(ticket)}
             className="bg-[#4FC647] sm:w-auto w-full text-white px-4 py-2 text-xl rounded-md"

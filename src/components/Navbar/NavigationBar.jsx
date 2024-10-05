@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import DrawerComp from "../UI/DrawerComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import LogoWhite from "~/assets/logos/Logo.png";
 import MenuComp from "../UI/MenuComp";
 import { setOpen } from "~/redux/slices/drawerSlice";
 
@@ -14,6 +15,8 @@ const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);
   const { open } = useSelector((store) => store.drawer);
   const dispatch = useDispatch();
+
+  const { theme } = useSelector((store) => store.theme);
 
   const exit = async () => {
     try {
@@ -30,11 +33,11 @@ const NavigationBar = () => {
 
   return (
     <>
-      <div className="sm:w-full w-full z-20 bg-white border-y mx-auto">
+      <div className="sm:w-full w-full z-20 bg-white dark:bg-gray-800  mx-auto">
         <div className="w-full py-5 flex justify-between items-center px-9 sm:px-14">
           <Link to="/">
             <img
-              src={LogoBlack}
+              src={theme === "light" ? LogoBlack : LogoWhite}
               className="w-[150px] sm:w-[200px] drop-shadow-2xl"
             />
           </Link>
@@ -42,14 +45,14 @@ const NavigationBar = () => {
             {user ? (
               <Link
                 to="/profile"
-                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </Link>
             ) : (
               <button
                 onClick={() => dispatch(setOpen(!open))}
-                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
               </button>
@@ -57,7 +60,7 @@ const NavigationBar = () => {
             {user?.admin === true && (
               <Link
                 to="/admin"
-                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <MdOutlineAdminPanelSettings />
               </Link>
@@ -65,7 +68,7 @@ const NavigationBar = () => {
             {user && (
               <button
                 onClick={exit}
-                className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
+                className="bg-white dark:bg-gray-700 dark:text-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiLogOut />
               </button>

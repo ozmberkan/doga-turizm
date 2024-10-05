@@ -12,5 +12,6 @@ export default {
       rubik: ["Rubik", "sans-serif"],
     },
   },
+  darkMode: "class",
   plugins: [],
 };

@@ -9,11 +9,18 @@ import {
 import { menus } from "~/data/data";
 import { BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { toggleTheme } from "~/redux/slices/themeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { FaMoon, FaSun } from "react-icons/fa6";
 
 const MenuComp = () => {
+  const dispatch = useDispatch();
+
+  const { theme } = useSelector((store) => store.theme);
+
   return (
     <Menu>
-      <MenuButton className="outline-none sm:text-xs text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
+      <MenuButton className="outline-none sm:text-xs dark:text-white dark:hover:text-gray-700 text-black cursor-pointer hover:text-green-400 transition-all duration-500 ">
         <BiMenu size={30} />
       </MenuButton>
       <Transition
@@ -44,6 +51,15 @@ const MenuComp = () => {
               </Link>
             </MenuItem>
           ))}
+          <MenuItem>
+            <button
+              onClick={() => dispatch(toggleTheme())}
+              className="hover:bg-gray-100 w-full gap-x-2 justify-start text-zinc-600/80 rounded p-3  flex items-center"
+            >
+              {theme === "light" ? <FaMoon size={18} /> : <FaSun size={18} />}
+              <span className="text-zinc-600/80">Temayı Değiştir</span>
+            </button>
+          </MenuItem>
         </MenuItems>
       </Transition>
     </Menu>

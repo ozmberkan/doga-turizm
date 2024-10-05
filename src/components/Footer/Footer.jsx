@@ -6,7 +6,9 @@ import {
   downloadImage,
 } from "../../data/data";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
+import LogoWhite from "../../assets/logos/Logo.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const FooterSection = ({ title, items }) => (
   <div className="flex flex-col gap-y-5 sm:items-start items-center py-5 w-full sm:w-auto sm:py-0 border-b sm:border-none">
@@ -16,7 +18,7 @@ const FooterSection = ({ title, items }) => (
         <Link
           to={item.to}
           key={i}
-          className="p-2 text-sm bg-white rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
+          className="p-2 text-sm bg-white dark:bg-gray-700 rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
         >
           {item.icon && <item.icon size={18} />}
           {item.title || item.name}
@@ -27,13 +29,19 @@ const FooterSection = ({ title, items }) => (
 );
 
 const Footer = ({ footerWidth }) => {
+  const { theme } = useSelector((store) => store.theme);
+
   return (
     <div
-      className={`w-full sm:bg-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto p-12 pb-0 flex flex-col gap-y-6 `}
+      className={`w-full sm:bg-white dark:bg-gray-800 dark:border-none dark:text-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto p-12 pb-0 flex flex-col gap-y-6 `}
     >
       <div className="sm:grid sm:grid-cols-5 flex flex-col justify-center items-center sm:place-items-start ">
         <div className="flex flex-col">
-          <img src={LogoBlack} alt="" className="w-44 mb-3" />
+          <img
+            src={theme === "light" ? LogoBlack : LogoWhite}
+            alt=""
+            className="w-44 mb-3"
+          />
           <div className="flex flex-col gap-y-3">
             {downloadImage.map((dItem, i) => (
               <img
