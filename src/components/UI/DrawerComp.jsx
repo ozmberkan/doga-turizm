@@ -2,38 +2,22 @@ import { useState } from "react";
 import RegisterDrawer from "../Auth/Register/RegisterDrawer";
 import LoginDrawer from "../Auth/Login/LoginDrawer";
 import ForgotComp from "../Auth/Forgot/ForgotComp";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpen } from "~/redux/slices/drawerSlice";
 
-const DrawerComp = ({ open, setOpen }) => {
+const DrawerComp = () => {
   const [logInMode, setLogInMode] = useState(true);
   const [forgot, setForgot] = useState(false);
-
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+  const dispatch = useDispatch();
 
   return (
     <div>
       {logInMode ? (
-        <LoginDrawer
-          open={open}
-          toggleDrawer={toggleDrawer}
-          setLogInMode={setLogInMode}
-          setForgot={setForgot}
-        />
+        <LoginDrawer setLogInMode={setLogInMode} setForgot={setForgot} />
       ) : (
-        <RegisterDrawer
-          open={open}
-          toggleDrawer={toggleDrawer}
-          setLogInMode={setLogInMode}
-        />
+        <RegisterDrawer setLogInMode={setLogInMode} />
       )}
-      {forgot && (
-        <ForgotComp
-          setForgot={setForgot}
-          toggleDrawer={toggleDrawer}
-          open={open}
-        />
-      )}
+      {forgot && <ForgotComp setForgot={setForgot} />}
     </div>
   );
 };

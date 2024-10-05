@@ -4,9 +4,12 @@ import { BiUser } from "react-icons/bi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const ForgotComp = ({ setForgot, open }) => {
+const ForgotComp = ({ setForgot }) => {
   const [email, setEmail] = useState("");
+
+  const { open } = useSelector((store) => store.drawer);
 
   const sendResetEmail = async () => {
     try {

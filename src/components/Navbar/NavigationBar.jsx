@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { BiLogOut, BiUser } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
@@ -9,10 +8,12 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import DrawerComp from "../UI/DrawerComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
 import MenuComp from "../UI/MenuComp";
+import { setOpen } from "~/redux/slices/drawerSlice";
 
 const NavigationBar = () => {
-  const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.user);
+  const { open } = useSelector((store) => store.drawer);
+  const dispatch = useDispatch();
 
   const exit = async () => {
     try {
@@ -47,7 +48,7 @@ const NavigationBar = () => {
               </Link>
             ) : (
               <button
-                onClick={() => setOpen(!open)}
+                onClick={() => dispatch(setOpen(!open))}
                 className="bg-white border sm:p-2.5 p-1.5 rounded-full flex justify-center items-center gap-x-2 hover:ring-2 ring-offset-2 ring-primary hover:text-hoverPrimary hover:scale-105 transition-all duration-500"
               >
                 <BiUser />
@@ -73,7 +74,7 @@ const NavigationBar = () => {
           </div>
         </div>
       </div>
-      <DrawerComp open={open} setOpen={setOpen} />
+      <DrawerComp />
     </>
   );
 };

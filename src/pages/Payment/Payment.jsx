@@ -15,20 +15,20 @@ import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
 
 const Payment = () => {
-  const [coupon, setCoupon] = useState("");
-  const [discountedPrice, setDiscountedPrice] = useState(null);
+  const { finalTicket } = useSelector((store) => store.finalTicket);
+  const { user } = useSelector((store) => store.user);
+  const { pnr, arrival, departure, date, price, seats } = finalTicket;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { finalTicket } = useSelector((store) => store.finalTicket);
-  const { user } = useSelector((store) => store.user);
+
+  const [discountedPrice, setDiscountedPrice] = useState(null);
+  const [coupon, setCoupon] = useState("");
 
   if (!finalTicket) {
     toast.error("Bilet bilgisi bulunamadı.");
     navigate("/");
   }
-
-  const { pnr, arrival, departure, date, price, seats } = finalTicket;
 
   const applyCoupon = async () => {
     try {

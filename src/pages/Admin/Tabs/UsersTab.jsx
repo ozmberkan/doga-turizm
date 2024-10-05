@@ -32,15 +32,6 @@ const UsersTab = () => {
       .format("DD MMMM YYYY, HH:mm");
   };
 
-  const deleteUser = async (id) => {
-    try {
-      await deleteDoc(doc(db, "users", id));
-      toast.success("Kullanıcı başarıyla silindi.");
-    } catch (error) {
-      toast.error("Kullanıcı silinirken bir hata oluştu." + error);
-    }
-  };
-
   const filteredUsers = data?.filter((user) =>
     `${user.displayName} ${user.email}`
       .toLowerCase()
@@ -112,12 +103,6 @@ const UsersTab = () => {
                   </td>
                   <td>{user.phoneNumber}</td>
                   <td className="flex gap-x-2 ">
-                    <button
-                      onClick={() => deleteUser(user.id)}
-                      className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
-                    >
-                      <BiTrash size={20} />
-                    </button>
                     <button
                       onClick={() => openEdit(user)}
                       className="border border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"

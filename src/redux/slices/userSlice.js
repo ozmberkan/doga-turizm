@@ -98,11 +98,12 @@ export const registerService = createAsyncThunk(
         email: user.email,
         displayName: user.displayName,
         phoneNumber: data.phoneNumber,
-        admin: false,
         ownedTickets: [],
         fullTickets: [],
         hasBeenLogin: false,
         usedDiscount: false,
+        admin: false,
+        disabled: false,
       });
 
       const userData = {
@@ -115,7 +116,6 @@ export const registerService = createAsyncThunk(
         ownedTickets: [],
         fullTickets: [],
         hasBeenLogin: false,
-        usedDiscount: false,
       };
 
       return userData;
@@ -145,11 +145,11 @@ export const loginService = createAsyncThunk(
         displayName: user.displayName,
         phoneNumber: userDoc.data()?.phoneNumber || null,
         emailVerified: user.emailVerified,
-        admin: userDoc.data()?.admin || false,
         ownedTickets: userDoc.data()?.ownedTickets || [],
         fullTickets: userDoc.data()?.fullTickets || [],
+        admin: userDoc.data()?.admin || false,
         hasBeenLogin: userDoc.data()?.hasBeenLogin || false,
-        usedDiscount: userDoc.data()?.usedDiscount || false,
+        disabled: userDoc.data().disabled || false,
       };
 
       return userData;

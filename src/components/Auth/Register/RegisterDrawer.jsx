@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { registerscheme } from "~/validation/scheme";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerService } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
+import { setOpen } from "~/redux/slices/drawerSlice";
 
-const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
+const RegisterDrawer = ({ setLogInMode }) => {
   const dispatch = useDispatch();
+  const { open } = useSelector((store) => store.drawer);
 
   const {
     register,
@@ -29,7 +31,7 @@ const RegisterDrawer = ({ open, toggleDrawer, setLogInMode }) => {
   };
 
   return (
-    <Drawer open={open} onClose={() => toggleDrawer(!open)} anchor="right">
+    <Drawer open={open} onClose={() => dispatch(setOpen(!open))} anchor="right">
       <div className="flex flex-col justify-center items-center gap-y-3">
         <h1 className="font-rubik text-3xl">Kayıt Ol</h1>
         <p className="text-zinc-700/60 text-xs font-rubik text-center">
