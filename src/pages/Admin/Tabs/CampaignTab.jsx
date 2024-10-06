@@ -1,14 +1,14 @@
 import { collection, deleteDoc, doc } from "firebase/firestore";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { FaSort } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import CampaignEditModal from "~/components/UI/Modals/CampaignEditModal";
 import { campaignTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { orderBy } from "lodash";
 import NewCampaignModal from "~/components/UI/Modals/NewCampaignModal";
+import CampaignEditModal from "~/components/UI/Modals/CampaignEditModal";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);
