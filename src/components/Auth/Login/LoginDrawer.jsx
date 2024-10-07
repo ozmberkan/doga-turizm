@@ -100,7 +100,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
         <div className="flex  gap-x-4">
           <div
             onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
-            className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md hover:bg-zinc-100 transition-all duration-300"
+            className="w-full cursor-not-allowed flex justify-center items-center dark:border-gray-600 border rounded-md hover:bg-zinc-100 transition-all duration-300"
           >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">
@@ -110,7 +110,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
           </div>
           <div
             onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
-            className="w-full cursor-not-allowed flex justify-center items-center  border rounded-md  hover:bg-zinc-100 transition-all duration-300"
+            className="w-full cursor-not-allowed flex justify-center items-center dark:border-gray-600 border rounded-md  hover:bg-zinc-100 transition-all duration-300"
           >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
               <div className="w-[20px] flex justify-center items-center ">

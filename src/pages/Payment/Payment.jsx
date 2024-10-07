@@ -7,17 +7,17 @@ import { MdEventSeat, MdPayment } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import Footer from "~/components/Footer/Footer";
 import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import { db } from "~/firebase/firebaseConfig";
 import { setUpdate } from "~/redux/slices/userSlice";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
+import PaymentTicket from "./PaymentTicket/PaymentTicket";
 
 const Payment = () => {
   const { finalTicket } = useSelector((store) => store.finalTicket);
   const { user } = useSelector((store) => store.user);
-  const theme = useSelector((store) => store.theme.theme); // Redux'tan tema bilgisi alındı
+  const theme = useSelector((store) => store.theme.theme);
   const { pnr, arrival, departure, date, price, seats } = finalTicket;
 
   const dispatch = useDispatch();
@@ -127,10 +127,6 @@ const Payment = () => {
     }
   };
 
-  const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
-    "DD.MM.YYYY HH:mm"
-  );
-
   const configTheme = {
     token: {
       colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
@@ -156,98 +152,14 @@ const Payment = () => {
             ]}
           />
         </ConfigProvider>
-        <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col">
+        <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col ">
           <div className="w-full flex flex-col gap-y-3">
-            <div
-              className={`sm:w-full w-full p-5 ring-2 ring-offset-1 flex flex-col gap-y-1 rounded-md ${
-                theme === "dark" ? "ring-gray-700" : "ring-primary"
-              }`}
-            >
-              <h1
-                className={`text-2xl font-semibold ${
-                  theme === "dark" ? "text-gray-200" : "text-primary"
-                }`}
-              >
-                Seçilen Bilet / Biletler
-              </h1>
-              <div
-                className={`w-full h-full ${
-                  theme === "dark"
-                    ? "bg-gray-800 text-white"
-                    : "bg-[#4ABD43] text-white"
-                } rounded-md gap-4 p-5 grid grid-cols-1 justify-between text-xl`}
-              >
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">PNR:</span> {pnr}
-                </div>
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">Kalkış:</span> {departure}
-                </div>
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">Varış:</span> {arrival}
-                </div>
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">Tarih:</span> {formattedDate}
-                </div>
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">Fiyat:</span>{" "}
-                  {getFinalPrice()}₺
-                </div>
-                <div className="w-full flex justify-between items-center">
-                  <span className="font-semibold">Seçilen Koltuk:</span>
-                  <div className="flex gap-x-2">
-                    {seats?.map((seatItem, i) => (
-                      <span
-                        key={i}
-                        className={`flex items-center gap-x-2 p-2 rounded-md ${
-                          theme === "dark"
-                            ? "bg-gray-700 text-gray-200"
-                            : "bg-white text-primary"
-                        }`}
-                      >
-                        <MdEventSeat /> {seatItem.number} - {seatItem.gender}
-                        {seatItem.gender === "Erkek" ? (
-                          <span className="text-blue-500">
-                            <FaMale />
-                          </span>
-                        ) : (
-                          <span className="text-pink-500">
-                            <FaFemale />
-                          </span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <form className="flex w-1/2 gap-x-3">
-                <input
-                  className={`px-4 py-2 rounded-md border ${
-                    theme === "dark"
-                      ? "bg-gray-800 border-gray-600 text-white"
-                      : "bg-white border-primary"
-                  } focus:ring-2 transition-all ring-offset-1 ring-primary outline-none`}
-                  placeholder="İndirim Kuponu"
-                  value={coupon}
-                  onChange={(e) => setCoupon(e.target.value)}
-                />
-                <button
-                  type="button"
-                  onClick={applyCoupon}
-                  className={`px-3 rounded-md transition-colors ${
-                    theme === "dark"
-                      ? "bg-gray-700 text-gray-200 hover:bg-gray-600"
-                      : "bg-primary/20 text-primary hover:bg-primary hover:text-white"
-                  }`}
-                >
-                  <TbRosetteDiscountCheckFilled size={25} />
-                </button>
-              </form>
-            </div>
+            <PaymentTicket
+              finalTicket={finalTicket}
+              getFinalPrice={getFinalPrice}
+            />
           </div>
-          <div className="w-full flex flex-col gap-y-12">
+          <div className="flex flex-col gap-y-3 w-1/3">
             <div
               className={`relative w-full flex flex-col h-[200px] aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ${
                 theme === "dark"
@@ -257,27 +169,17 @@ const Payment = () => {
             >
               <PaymentCreditCart />
             </div>
-            <form className="grid grid-cols-2 gap-5">
+            <form className="grid grid-cols-2 gap-4">
               <input
                 placeholder="Ad Soyad"
-                className={`border-primary focus:ring-primary border p-4 rounded-md ${
-                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
-                }`}
+                className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600"
               />
               <input
                 placeholder="1234 1234 1234 1234"
-                className={`border-primary focus:ring-primary border p-4 rounded-md ${
-                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
-                }`}
+                className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600"
                 maxLength={19}
               />
-              <select
-                className={`border-primary focus:ring-primary border p-4 rounded-md ${
-                  theme === "dark"
-                    ? "bg-gray-700 text-white"
-                    : "bg-transparent text-zinc-400"
-                }`}
-              >
+              <select className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-gray-500 dark:bg-transparent dark:border-gray-600">
                 <option value="">Ay Seçin</option>
                 <option value="Ocak">Ocak</option>
                 <option value="Şubat">Şubat</option>
@@ -286,17 +188,35 @@ const Payment = () => {
               <input
                 placeholder="CVC"
                 maxLength={3}
-                className={`border-primary focus:ring-primary border p-4 rounded-md ${
-                  theme === "dark" ? "bg-gray-700 text-white" : "bg-transparent"
-                }`}
+                className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600 "
               />
+              <div className="w-full  col-span-2">
+                <form className="flex flex-1 gap-x-3">
+                  <input
+                    className="px-4 py-2 rounded-md border focus:ring-2 transition-all ring-offset-1 ring-primary outline-none dark:bg-transparent dark:border-gray-600 dark:ring-gray-600 dark:text-white dark:ring-offset-transparent"
+                    placeholder="İndirim Kuponu"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={applyCoupon}
+                    className="px-3 flex-1 flex justify-center items-center rounded-md bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+                  >
+                    <TbRosetteDiscountCheckFilled size={25} />
+                  </button>
+                </form>
+              </div>
+
+              <p className="flex justify-between items-center w-full dark:bg-gray-700 bg-white col-span-2 py-2 px-5 rounded-md">
+                Toplam Tutar
+                <span className="text-primary dark:text-white font-semibold text-2xl">
+                  {getFinalPrice(price)}₺
+                </span>
+              </p>
               <Link
                 onClick={paymentDone}
-                className={`w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border ${
-                  theme === "dark"
-                    ? "bg-gray-800 text-white hover:bg-gray-700"
-                    : "bg-primary hover:bg-[#4fc615] text-white"
-                } focus:ring-primary`}
+                className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border dark:border-gray-700 dark:hover:bg-gray-600 bg-primary dark:bg-gray-700 text-white hover:bg-primary/90 transition-all"
               >
                 <MdPayment size={24} /> Ödemeyi Gerçekleştir
               </Link>
