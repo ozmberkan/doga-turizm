@@ -10,7 +10,7 @@ const Profile = () => {
   const { user } = useSelector((store) => store.user);
   return (
     <div className="w-full sm:px-14 px-3 py-3 ">
-      <div className="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-md w-full border sm:p-3 p-1.5 sm:h-[600px]">
+      <div className="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-md w-full border sm:p-3 p-1.5 ">
         <div className="border-b dark:border-gray-700 sm:p-3 p-2 flex items-center justify-start gap-x-5">
           <img
             src={user?.photoURL || "https://avatar.iran.liara.run/public/13"}

@@ -71,7 +71,7 @@ const RegisterDrawer = ({ setLogInMode }) => {
             >
               <input
                 type={input.type}
-                className="outline-none dark:bg-transparent px-4 rounded-md dar text-sm w-full peer"
+                className="outline-none dark:bg-transparent dark:text-white px-4 rounded-md dar text-sm w-full peer"
                 {...register(input.name)}
               />
               <span

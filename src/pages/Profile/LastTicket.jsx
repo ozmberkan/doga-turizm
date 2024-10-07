@@ -33,7 +33,7 @@ const LastTicket = ({ ticket, hide }) => {
                 </span>
                 <span className="flex items-center gap-x-1">
                   <MdEventSeat />{" "}
-                  {user.fullTickets.map((item) =>
+                  {user.allTickets.map((item) =>
                     item.seats.map((seatItem) => (
                       <span key={seatItem.number}>
                         {seatItem.number} - {seatItem.gender}
@@ -43,7 +43,7 @@ const LastTicket = ({ ticket, hide }) => {
                 </span>
                 <span className="flex items-center gap-x-1">
                   <FaTurkishLiraSign />{" "}
-                  {price * user.fullTickets.map((item) => item.seats.length)}₺
+                  {price * user.allTickets.map((item) => item.seats.length)}₺
                 </span>
               </div>
               <div className="p-4 text-lg text-zinc-600 dark:text-white">
