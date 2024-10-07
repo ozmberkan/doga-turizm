@@ -159,7 +159,7 @@ const Payment = () => {
               getFinalPrice={getFinalPrice}
             />
           </div>
-          <div className="flex flex-col gap-y-3 w-1/3">
+          <div className="flex flex-col gap-y-3 sm:w-1/3 pb-12">
             <div
               className={`relative w-full flex flex-col h-[200px] aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ${
                 theme === "dark"
