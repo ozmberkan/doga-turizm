@@ -40,27 +40,27 @@ const DiscountModal = ({ setIsModalOpen }) => {
         onClick={closeModal}
       >
         <div
-          className="bg-white  rounded-md shadow-lg max-w-2xl w-full flex flex-col relative z-10 overflow-hidden "
+          className="bg-white dark:bg-gray-900 rounded-md shadow-lg max-w-2xl w-full flex flex-col relative z-10 overflow-hidden "
           onClick={(e) => e.stopPropagation()}
         >
-          <FiAlertCircle className="text-primary/20 rotate-12 text-[250px] absolute z-0 -bottom-16 -right-20" />
-          <div className="py-4 rounded-t-md text-primary w-full bg-primary/20 flex justify-between items-center px-4 gap-x-2">
+          <FiAlertCircle className="text-primary/20 dark:text-gray-700 rotate-12 text-[250px] absolute -z-20 -bottom-16 -right-20" />
+          <div className="py-4 rounded-t-md text-primary w-full dark:bg-gray-800 dark:text-gray-400 bg-primary/20 flex justify-between items-center px-4 gap-x-2">
             <span className="flex items-center gap-x-3">
               <MdOutlineDiscount size={20} />
               <h1 className="text-lg font-semibold">İndirim Fırsatı!</h1>
             </span>
             <button
               onClick={closeModal}
-              className=" text-primary py-2 px-4 rounded hover:bg-primary/10 transition-colors"
+              className=" text-primary py-2 px-4 rounded hover:bg-primary/10 transition-colors dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
             >
               <CgCloseR />
             </button>
           </div>
           <div className="w-full h-full flex flex-col gap-y-3 p-5">
-            <h1 className="text-xl text-zinc-700">
+            <h1 className="text-xl text-zinc-700 dark:text-white">
               Merhaba, Doğa Turizm'e Hoşgeldin!
             </h1>
-            <p>
+            <p className="dark:text-white">
               Bizlere duymuş olduğunuz güven için teşekkür ederiz. Sana özel bir
               indirim kodu hazırladık. E-Postanı Doğruladıktan sonra indirim
               kodunu kullanarak bir sonraki rezervasyonunda 50TL indirim
@@ -71,11 +71,12 @@ const DiscountModal = ({ setIsModalOpen }) => {
                 type="text"
                 readOnly
                 value={"DOGA50"}
-                className="px-4 py-2 h-10 rounded-md border bg-zinc-200/40 outline-none"
+                className="px-4 py-2 h-10 rounded-md border bg-zinc-200/40 outline-none dark:bg-gray-800 dark:border-gray-700 dark:text-white
+                "
               />
               <button
                 onClick={copyText}
-                className="bg-primary/25 text-primary p-4 py-2 h-10 rounded-md"
+                className="bg-primary/25 text-primary p-4 py-2 h-10 rounded-md dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
               >
                 <MdOutlineContentCopy />
               </button>

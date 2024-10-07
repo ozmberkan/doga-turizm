@@ -1,13 +1,14 @@
-import { collection, deleteDoc, doc } from "firebase/firestore";
+import { collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { BiEdit, BiTrash } from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
 import { userTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
-import UsersEditModal from "~/components/UI/Modals/UsersEditModal";
+import UsersEditModal from "~/components/UI/Modals/Admin/Users/UsersEditModal";
 import moment from "moment";
 import "moment/locale/tr";
 import { toast } from "react-toastify";
+import { MdOutlineLock, MdOutlineLockOpen } from "react-icons/md";
 
 const UsersTab = () => {
   const [isModal, setIsModal] = useState(false);
@@ -37,6 +38,31 @@ const UsersTab = () => {
       .toLowerCase()
       .includes(search.toLowerCase())
   );
+
+  const changeStatusUser = async (user) => {
+    try {
+      const userRef = doc(db, "users", user.uid);
+
+      if (user.disabled === true) {
+        await updateDoc(userRef, {
+          disabled: false,
+        });
+        toast.success("Kullanıcı başarıyla aktif hale getirildi.");
+      } else {
+        if (user.admin) {
+          return toast.error("Yönetici hesapları devre dışı bırakılamaz.");
+        } else {
+          await updateDoc(userRef, {
+            disabled: true,
+          });
+        }
+
+        toast.success("Kullanıcı başarıyla devre dışı bırakıldı.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white dark:bg-gray-800 dark:border-gray-700  p-3 border rounded-md shadow-md">
@@ -105,9 +131,19 @@ const UsersTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(user)}
-                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
                     >
                       <BiEdit size={20} />
+                    </button>
+                    <button
+                      onClick={() => changeStatusUser(user)}
+                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
+                    >
+                      {user.disabled ? (
+                        <MdOutlineLockOpen size={20} />
+                      ) : (
+                        <MdOutlineLock size={20} />
+                      )}
                     </button>
                   </td>
                 </tr>

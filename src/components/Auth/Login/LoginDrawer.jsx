@@ -14,12 +14,13 @@ import { useEffect } from "react";
 const LoginDrawer = ({ setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
   const { open } = useSelector((store) => store.drawer);
-  const { user, isSuccess } = useSelector((store) => store.user);
+  const { isSuccess } = useSelector((store) => store.user);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(loginscheme),
   });
@@ -28,8 +29,8 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
     try {
       dispatch(loginService(data));
       toast.info("Giriş Yapılıyor...");
-
       dispatch(setOpen(!open));
+      reset();
     } catch (error) {
       toast.error(
         "Giriş yapılırken bir hata oluştu. Lütfen bilgilerinizi kontrol edin."

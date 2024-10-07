@@ -7,15 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerService } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
 import { setOpen } from "~/redux/slices/drawerSlice";
+import { useEffect } from "react";
 
 const RegisterDrawer = ({ setLogInMode }) => {
   const dispatch = useDispatch();
   const { open } = useSelector((store) => store.drawer);
+  const { isSuccess } = useSelector((store) => store.user);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(registerscheme),
   });
@@ -23,12 +26,19 @@ const RegisterDrawer = ({ setLogInMode }) => {
   const registerHandle = async (data) => {
     try {
       dispatch(registerService(data));
+      toast.info("Kayıt işlemi başlatıldı...");
+      dispatch(setOpen(!open));
+      reset();
     } catch (error) {
-      toast.error(
-        "Kayıt oluşturulurken bir hata oluştu. Bilgileri kontrol ediniz."
-      );
+      console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Kayıt Başarılı");
+    }
+  }, [isSuccess]);
 
   return (
     <Drawer

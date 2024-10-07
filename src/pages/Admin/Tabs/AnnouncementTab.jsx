@@ -2,7 +2,7 @@ import { collection, doc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BiEdit } from "react-icons/bi";
-import AnnouncementEditModal from "~/components/UI/Modals/AnnouncementEditModal";
+import AnnouncementEditModal from "~/components/UI/Modals/Admin/Announcement/AnnouncementEditModal";
 import { annTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 const AnnouncementTab = () => {
@@ -36,8 +36,11 @@ const AnnouncementTab = () => {
           </thead>
           <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
             {data?.map((announcement) => (
-              <tr className="sm:grid flex sm:grid-cols-9 grid-cols-1 dark:text-white place-items-center p-4 gap-5">
-                <React.Fragment key={announcement.id}>
+              <tr
+                key={announcement.id}
+                className="sm:grid flex sm:grid-cols-9 grid-cols-1 dark:text-white place-items-center p-4 gap-5"
+              >
+                <React.Fragment>
                   <td className="w-full">{announcement.id}</td>
                   <td>{announcement.title}</td>
                   <td>{announcement.titleDesc}</td>

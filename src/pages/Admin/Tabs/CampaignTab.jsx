@@ -7,8 +7,9 @@ import { toast } from "react-toastify";
 import { campaignTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { orderBy } from "lodash";
-import NewCampaignModal from "~/components/UI/Modals/NewCampaignModal";
-import CampaignEditModal from "~/components/UI/Modals/CampaignEditModal";
+import NewCampaignModal from "~/components/UI/Modals/Admin/Campaigns/NewCampaignModal";
+import CampaignEditModal from "~/components/UI/Modals/Admin/Campaigns/CampaignEditModal";
+import React from "react";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);
@@ -97,8 +98,11 @@ const CampaignTab = () => {
             </thead>
             <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
               {filteredCampaigns?.map((campaign) => (
-                <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center dark:text-white p-4 gap-5">
-                  <React.Fragment key={campaign.id}>
+                <tr
+                  key={campaign.id}
+                  className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
+                >
+                  <React.Fragment>
                     <td className="w-full">{campaign.id}</td>
                     <td>{campaign.cityName}</td>
                     <td>{campaign.newPrice}</td>

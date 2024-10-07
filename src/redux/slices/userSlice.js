@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { auth, db } from "~/firebase/firebaseConfig";
 
 const initialState = {
@@ -135,9 +136,15 @@ export const loginService = createAsyncThunk(
         data.email,
         data.password
       );
-
       const user = userCredential.user;
       const userDoc = await getDoc(doc(db, "users", user.uid));
+
+      if (userDoc.data().disabled) {
+        toast.error("Hesabınız devre dışı bırakılmıştır.");
+        return rejectWithValue(
+          "Hesabınız devre dışı bırakılmıştır. Lütfen geliştirici ile iletişime geçin."
+        );
+      }
 
       const userData = {
         uid: user.uid,

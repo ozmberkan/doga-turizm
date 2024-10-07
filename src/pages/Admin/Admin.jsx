@@ -8,7 +8,7 @@ const Admin = () => {
     <FlexContainer>
       <AdminNavbar />
       <AdminTable />
-      <ToastContainer position="top-left" />
+      <ToastContainer position="top-left" autoClose={700} />
     </FlexContainer>
   );
 };
