@@ -55,7 +55,7 @@ const AnnouncementTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(announcement)}
-                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white  sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black text-[#4FC647] dark:text-white dark:border-white  sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>

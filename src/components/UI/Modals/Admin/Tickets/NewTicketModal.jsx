@@ -36,10 +36,10 @@ const NewTicketModal = ({ setIsAddModal }) => {
   };
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
-      <div className="bg-zinc-100 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
+      <div className="bg-zinc-100 dark:bg-gray-800 dark:border-gray-700 border  rounded-2xl shadow-lg p-6 max-w-md w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
-            <h3 className="text-xl font-semibold text-black ">
+            <h3 className="text-xl font-semibold text-black dark:text-white ">
               Yeni Bilet Ekle
             </h3>
             <button
@@ -49,7 +49,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
               <IoClose size={25} />
             </button>
           </div>
-          <form onSubmit={handleSubmit(addTicket)}>
+          <form onSubmit={handleSubmit(addTicket)} className="">
             <div className="grid gap-2">
               {newTicketInput.map((input) => {
                 if (input.name === "departure" || input.name === "arrival") {
@@ -58,11 +58,11 @@ const NewTicketModal = ({ setIsAddModal }) => {
                       key={input.name}
                       className="flex flex-col sm:text-base text-sm"
                     >
-                      <label>{input.label}</label>
+                      <label className="dark:text-white">{input.label}</label>
                       <select
                         name={input.name}
                         {...register(input.name)}
-                        className="px-4 py-2 h-10 rounded-md bg-white border outline-none w-full"
+                        className="px-4 py-2 h-10 rounded-md bg-white dark:bg-transparent dark:text-gray-400 dark:placeholder:text-gray-300 dark:border-gray-700 border outline-none w-full"
                       >
                         {cities.map((city) => (
                           <option key={city.id} value={city.value}>
@@ -78,12 +78,12 @@ const NewTicketModal = ({ setIsAddModal }) => {
                       key={input.name}
                       className="flex flex-col sm:text-base text-sm"
                     >
-                      <label>{input.label}</label>
+                      <label className="dark:text-white">{input.label}</label>
                       <input
                         type={input.type}
                         {...register(input.name)}
                         placeholder={input.placeholder}
-                        className="px-4 py-2 rounded-md h-10  bg-white border outline-none w-full"
+                        className="px-4 py-2 rounded-md h-10 dark:bg-transparent dark:text-white dark:placeholder:text-gray-300 dark:border-gray-700 bg-white border outline-none w-full"
                       />
                     </div>
                   );
@@ -91,14 +91,15 @@ const NewTicketModal = ({ setIsAddModal }) => {
                   return (
                     <label
                       key={input.name}
-                      className="flex items-center gap-x-2"
+                      className="flex items-center gap-x-2  justify-between rounded-md p-2 dark:bg-gray-700 bg-white dark:border-gray-700 border px-4"
                     >
+                      <span className="dark:text-white">{input.label}</span>
                       <input
                         type={input.type}
                         name={input.name}
                         {...register(input.name)}
+                        className="dark:accent-green-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-300 dark:border-gray-700 border outline-none"
                       />
-                      {input.label}
                     </label>
                   );
                 }

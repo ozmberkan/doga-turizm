@@ -116,13 +116,13 @@ const CampaignTab = () => {
                     <td className="flex gap-x-2 ">
                       <button
                         onClick={() => deleteCampaign(campaign.id)}
-                        className="border dark:text-white dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                        className="border dark:text-white hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                       >
                         <BiTrash size={20} />
                       </button>
                       <button
                         onClick={() => openEdit(campaign)}
-                        className="border dark:text-white dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                        className="border dark:text-white hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                       >
                         <BiEdit size={20} />
                       </button>

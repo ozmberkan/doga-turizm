@@ -41,10 +41,12 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
-      <div className="bg-zinc-100 border rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
+      <div className="bg-zinc-100 dark:bg-gray-800 dark:border-gray-700 border rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
-            <h3 className="text-xl font-semibold text-black ">Düzenle</h3>
+            <h3 className="text-xl font-semibold text-black dark:text-white ">
+              Düzenle
+            </h3>
             <button
               className="text-gray-500 hover:text-zinc-300 dark:hover:text-zinc-800 hover:bg-zinc-800 p-1 flex items-center justify-center dark:hover:bg-[#f1f1f1] rounded-md transition-colors duration-500"
               onClick={() => setIsModal(false)}
@@ -60,12 +62,12 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
                     key={input.name}
                     className="flex flex-col sm:text-base text-sm"
                   >
-                    <label>{input.label}</label>
+                    <label className="dark:text-white">{input.label}</label>
                     <select
                       name={input.name}
                       value={formData[input.name]}
                       onChange={handleInputChange}
-                      className="px-4 py-2 h-10 rounded-md w-full bg-white border outline-none"
+                      className="px-4 py-2 h-10 rounded-md w-full bg-white dark:bg-transparent dark:text-gray-400 dark:placeholder:text-gray-300 dark:border-gray-700 border outline-none"
                     >
                       {cities.map((city) => (
                         <option key={city.id} value={city.value}>
@@ -76,26 +78,27 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
                   </div>
                 ) : input.type === "text" || input.type === "date" ? (
                   <div className="flex flex-col sm:text-base text-sm">
-                    <label>{input.label}</label>
+                    <label className="dark:text-white">{input.label}</label>
                     <input
                       key={input.name}
                       type={input.type}
                       name={input.name}
                       value={formData[input.name]}
                       onChange={handleInputChange}
-                      className="px-4 py-2 rounded-md w-full bg-white border outline-none"
+                      className="px-4 py-2 rounded-md w-full bg-white dark:bg-transparent dark:text-gray-400 dark:placeholder:text-gray-300 dark:border-gray-700 border outline-none"
                     />
                   </div>
                 ) : (
                   <div key={input.name}>
-                    <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-2  justify-between rounded-md p-2 dark:bg-gray-700 bg-white dark:border-gray-700 border px-4">
+                      <span className="dark:text-white">{input.label}</span>
                       <input
                         type={input.type}
                         name={input.name}
                         checked={formData[input.name]}
                         onChange={handleCheckboxChange}
+                        className="dark:accent-green-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-300 dark:border-gray-700 border outline-none"
                       />
-                      {input.label}
                     </div>
                   </div>
                 )

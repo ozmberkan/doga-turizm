@@ -131,13 +131,13 @@ const UsersTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(user)}
-                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
+                      className="border border-[#4FC647] text-[#4FC647] dark:hover:bg-white dark:hover:text-black dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
                     >
                       <BiEdit size={20} />
                     </button>
                     <button
                       onClick={() => changeStatusUser(user)}
-                      className="border border-[#4FC647] text-[#4FC647] dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
+                      className="border border-[#4FC647] text-[#4FC647] dark:hover:bg-white dark:hover:text-black dark:text-white dark:border-white sm:p-3 p-1.5 rounded-md hover:bg-primary hover:text-white transition-colors"
                     >
                       {user.disabled ? (
                         <MdOutlineLockOpen size={20} />

@@ -21,10 +21,10 @@ const NewCampaignModal = ({ setIsAddModal }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 sm:p-0 p-6">
-      <div className="bg-zinc-100 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
+      <div className="bg-zinc-100 dark:bg-gray-800 dark:border-gray-700 border  rounded-2xl shadow-lg p-6 max-w-2xl w-full relative z-50">
         <div className="flex w-full gap-y-2 flex-col mb-5">
           <div className="flex justify-between items-center w-full">
-            <h3 className="text-xl font-semibold text-black ">
+            <h3 className="text-xl font-semibold text-black dark:text-white">
               Yeni Kampanya Ekle
             </h3>
             <button
@@ -39,7 +39,7 @@ const NewCampaignModal = ({ setIsAddModal }) => {
               {newCampaignInput.map((input) =>
                 input.name === "cityName" ? (
                   <div className="flex flex-col">
-                    <label>{input.label}</label>
+                    <label className="text-white">{input.label}</label>
                     <select
                       key={input.name}
                       {...register(input.name)}
@@ -55,7 +55,7 @@ const NewCampaignModal = ({ setIsAddModal }) => {
                   </div>
                 ) : (
                   <div className="flex flex-col sm:text-base text-sm">
-                    <label>{input.label}</label>
+                    <label className="dark:text-white">{input.label}</label>
 
                     <input
                       key={input.name}

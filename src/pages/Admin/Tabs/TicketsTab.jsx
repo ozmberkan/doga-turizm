@@ -117,13 +117,13 @@ const TicketsTab = () => {
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => deleteTicket(ticket.id)}
-                      className="border border-[#4FC647] dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiTrash size={20} />
                     </button>
                     <button
                       onClick={() => openEditModal(ticket)}
-                      className="border border-[#4FC647] dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      className="border border-[#4FC647] hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:text-white dark:border-white text-[#4FC647] sm:p-3 p-1.5 rounded-md"
                     >
                       <BiEdit size={20} />
                     </button>
