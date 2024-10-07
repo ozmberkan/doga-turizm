@@ -20,7 +20,6 @@ import road2 from "../assets/carousel/road2.jpg";
 import road3 from "../assets/carousel/road3.webp";
 import doga from "../assets/carousel/doga.webp";
 
-
 export const socialMedia = [
   {
     icon: FaXTwitter,
@@ -75,6 +74,13 @@ export const campaignTableTitles = [
   { id: 4, title: "Eski Fiyat", key: "oldPrice", sortable: true },
   { id: 5, title: "Görsel", key: "image", sortable: false },
   { id: 6, title: "AKSİYON", key: "action", sortable: false },
+];
+
+export const campaignTableTitlesTexts = [
+  { id: 1, title: "Kampanya Bilgi", key: "cityName" },
+  { id: 2, title: "Kampanya Başlık", key: "newPrice" },
+  { id: 3, title: "Kampanya Açıklama", key: "oldPrice" },
+  { id: 4, title: "AKSİYON", key: "oldPrice" },
 ];
 
 export const annTableTitles = [
@@ -431,58 +437,55 @@ export const usersEditInput = [
   },
 ];
 
-
 export const sideBarTabs = [
   {
-    id:1,
-    label:"Kullanıcı Bilgilerim",
-    to : "myprofile",
+    id: 1,
+    label: "Kullanıcı Bilgilerim",
+    to: "myprofile",
     icon: BiUser,
   },
   {
-    id:2,
-    label:"Aktif Biletlerim",
-    to : "mytickets",
+    id: 2,
+    label: "Aktif Biletlerim",
+    to: "mytickets",
     icon: BsTicket,
   },
   {
-    id:3,
-    label:"Geçmiş Biletlerim",
-    to : "lasttickets",
+    id: 3,
+    label: "Geçmiş Biletlerim",
+    to: "lasttickets",
     icon: BsTicketDetailed,
   },
-]
-
+];
 
 export const aboutData = [
   {
     id: 1,
-    text: "Doğa Turizm, çevreye duyarlı ve sürdürülebilir turizm anlayışıyla doğa severlere eşsiz bir deneyim sunmak amacıyla kurulmuştur. Şirketimiz, doğanın korumasını ve ekosistemlerin sürdürülebilirliğini ön planda tutarak, yeşil bir geleceğe katkıda bulunmayı hedefliyor."
+    text: "Doğa Turizm, çevreye duyarlı ve sürdürülebilir turizm anlayışıyla doğa severlere eşsiz bir deneyim sunmak amacıyla kurulmuştur. Şirketimiz, doğanın korumasını ve ekosistemlerin sürdürülebilirliğini ön planda tutarak, yeşil bir geleceğe katkıda bulunmayı hedefliyor.",
   },
   {
     id: 2,
-    text: "Çevre Dostu Yaklaşımımız, Doğa Turizm olarak, çevre bilincini her şeyin önünde tutuyoruz. Bu doğrultuda, tüm ulaşım araçlarımızı çevre dostu elektrikli otobüslerle donatmış bulunuyoruz. Elektrikli otobüslerimiz, sıfır emisyonlu bir sürüş deneyimi sunarak hava kirliliğini azaltmakta ve doğanın korunmasına önemli bir katkı sağlamaktadır. Modern teknolojiyle donatılmış bu araçlar, sessiz ve konforlu bir yolculuk sunarken, çevresel etkileri en aza indirgemektedir."
+    text: "Çevre Dostu Yaklaşımımız, Doğa Turizm olarak, çevre bilincini her şeyin önünde tutuyoruz. Bu doğrultuda, tüm ulaşım araçlarımızı çevre dostu elektrikli otobüslerle donatmış bulunuyoruz. Elektrikli otobüslerimiz, sıfır emisyonlu bir sürüş deneyimi sunarak hava kirliliğini azaltmakta ve doğanın korunmasına önemli bir katkı sağlamaktadır. Modern teknolojiyle donatılmış bu araçlar, sessiz ve konforlu bir yolculuk sunarken, çevresel etkileri en aza indirgemektedir.",
   },
   {
     id: 3,
-    text: "Sürdürülebilir Turizm Anlayışımız, sadece ulaşım araçlarımızla sınırlı değildir. Doğa Turizm olarak, bütün operasyonlarımızda çevre dostu uygulamalara yer veriyoruz. Enerji tasarrufu sağlayan sistemler kullanıyor, geri dönüşüm projelerine destek veriyor ve doğa dostu malzemeler tercih ediyoruz. Ayrıca, hizmet verdiğimiz bölgelerde yerel topluluklarla işbirliği yaparak, hem çevre hem de sosyal sorumluluk projelerine katkıda bulunuyoruz."
+    text: "Sürdürülebilir Turizm Anlayışımız, sadece ulaşım araçlarımızla sınırlı değildir. Doğa Turizm olarak, bütün operasyonlarımızda çevre dostu uygulamalara yer veriyoruz. Enerji tasarrufu sağlayan sistemler kullanıyor, geri dönüşüm projelerine destek veriyor ve doğa dostu malzemeler tercih ediyoruz. Ayrıca, hizmet verdiğimiz bölgelerde yerel topluluklarla işbirliği yaparak, hem çevre hem de sosyal sorumluluk projelerine katkıda bulunuyoruz.",
   },
   {
     id: 4,
-    text: "Eşsiz Doğa Deneyimleri, Müşterilerimize sunmuş olduğumuz tur paketleri, doğanın kalbinde unutulmaz anlar yaşamanız için özenle hazırlanmıştır. Doğa yürüyüşlerinden, ekoturizme kadar geniş bir yelpazede hizmet sunuyoruz. Doğanın sunduğu güzellikleri keşfetmek ve temiz hava eşliğinde huzurlu bir tatil geçirmek isteyenler için ideal bir tercih sunuyoruz. Rehberlerimiz, doğanın korunmasına yönelik bilgilendirmeler yaparak, ziyaretçilerimizi çevre bilinci konusunda da eğitiyor."
+    text: "Eşsiz Doğa Deneyimleri, Müşterilerimize sunmuş olduğumuz tur paketleri, doğanın kalbinde unutulmaz anlar yaşamanız için özenle hazırlanmıştır. Doğa yürüyüşlerinden, ekoturizme kadar geniş bir yelpazede hizmet sunuyoruz. Doğanın sunduğu güzellikleri keşfetmek ve temiz hava eşliğinde huzurlu bir tatil geçirmek isteyenler için ideal bir tercih sunuyoruz. Rehberlerimiz, doğanın korunmasına yönelik bilgilendirmeler yaparak, ziyaretçilerimizi çevre bilinci konusunda da eğitiyor.",
   },
   {
     id: 5,
-    text: "Misyon ve Vizyonumuz, Misyonumuz doğa ile iç içe, çevre dostu bir turizm anlayışını yaymak ve bu anlayışla doğayı korumak adına adımlar atmaktır. Vizyonumuz ise, doğa turizmi sektöründe lider bir rol üstlenerek, tüm paydaşlarımızla birlikte sürdürülebilir bir geleceğin inşasına katkıda bulunmaktır. Doğa Turizm olarak, siz değerli misafirlerimizi çevre dostu bir yolculuğa çıkarmaktan ve doğanın muhteşem güzelliklerini keşfetmenize yardımcı olmaktan büyük mutluluk duyuyoruz. Doğayla uyum içinde, sorumlu ve keyifli bir deneyim için bizi tercih ettiğiniz için teşekkür ederiz."
-  }
+    text: "Misyon ve Vizyonumuz, Misyonumuz doğa ile iç içe, çevre dostu bir turizm anlayışını yaymak ve bu anlayışla doğayı korumak adına adımlar atmaktır. Vizyonumuz ise, doğa turizmi sektöründe lider bir rol üstlenerek, tüm paydaşlarımızla birlikte sürdürülebilir bir geleceğin inşasına katkıda bulunmaktır. Doğa Turizm olarak, siz değerli misafirlerimizi çevre dostu bir yolculuğa çıkarmaktan ve doğanın muhteşem güzelliklerini keşfetmenize yardımcı olmaktan büyük mutluluk duyuyoruz. Doğayla uyum içinde, sorumlu ve keyifli bir deneyim için bizi tercih ettiğiniz için teşekkür ederiz.",
+  },
 ];
-
 
 export const careerData = [
   {
     id: 1,
     title: "Kariyer",
-    text: "Doğa Turizm olarak, çevre dostu ve sürdürülebilir bir geleceğe katkıda bulunmak amacıyla dinamik ve yetenekli bireylerden oluşan bir ekip oluşturmayı hedefliyoruz. Şirketimizdeki her bir çalışan, doğa ve çevre bilincine sahip, yaratıcı ve yenilikçi yaklaşımlarla ekibimize değer katmaktadır."
+    text: "Doğa Turizm olarak, çevre dostu ve sürdürülebilir bir geleceğe katkıda bulunmak amacıyla dinamik ve yetenekli bireylerden oluşan bir ekip oluşturmayı hedefliyoruz. Şirketimizdeki her bir çalışan, doğa ve çevre bilincine sahip, yaratıcı ve yenilikçi yaklaşımlarla ekibimize değer katmaktadır.",
   },
   {
     id: 2,
@@ -490,21 +493,21 @@ export const careerData = [
     items: [
       {
         subtitle: "Sürdürülebilirlik ve Çevre Bilinci",
-        text: "Çalışanlarımız, doğa ve çevre konularında güçlü bir bilinçle hareket ederler. Elektrikli otobüslerimizden, enerji tasarrufu sağlayan sistemlerimize kadar her aşamada çevre dostu uygulamalara katkıda bulunur."
+        text: "Çalışanlarımız, doğa ve çevre konularında güçlü bir bilinçle hareket ederler. Elektrikli otobüslerimizden, enerji tasarrufu sağlayan sistemlerimize kadar her aşamada çevre dostu uygulamalara katkıda bulunur.",
       },
       {
         subtitle: "Kişisel ve Profesyonel Gelişim",
-        text: "Çalışanlarımızın kişisel ve profesyonel gelişimlerine büyük önem veriyoruz. Düzenlediğimiz eğitim programları, seminerler ve atölye çalışmaları ile ekip üyelerimizin bilgi ve becerilerini sürekli olarak geliştirmelerine destek oluyoruz."
+        text: "Çalışanlarımızın kişisel ve profesyonel gelişimlerine büyük önem veriyoruz. Düzenlediğimiz eğitim programları, seminerler ve atölye çalışmaları ile ekip üyelerimizin bilgi ve becerilerini sürekli olarak geliştirmelerine destek oluyoruz.",
       },
       {
         subtitle: "Yenilikçi ve Destekleyici Çalışma Ortamı",
-        text: "İnovasyonu teşvik eden bir çalışma ortamı sunuyoruz. Yaratıcı fikirlerinizi paylaşabileceğiniz ve gelişime katkıda bulunabileceğiniz bir atmosfer sağlıyoruz."
+        text: "İnovasyonu teşvik eden bir çalışma ortamı sunuyoruz. Yaratıcı fikirlerinizi paylaşabileceğiniz ve gelişime katkıda bulunabileceğiniz bir atmosfer sağlıyoruz.",
       },
       {
         subtitle: "Toplumsal Sorumluluk",
-        text: "Sosyal sorumluluk projelerine aktif katılımı destekliyoruz. Çalışanlarımız, çevresel ve toplumsal konularda farkındalık oluşturacak projelerde yer alabilirler."
-      }
-    ]
+        text: "Sosyal sorumluluk projelerine aktif katılımı destekliyoruz. Çalışanlarımız, çevresel ve toplumsal konularda farkındalık oluşturacak projelerde yer alabilirler.",
+      },
+    ],
   },
   {
     id: 3,
@@ -513,86 +516,111 @@ export const careerData = [
     positions: [
       {
         position: "Rehberlik ve Tur Operatörlüğü",
-        description: "Doğa turlarımızda misafirlerimize rehberlik edecek, doğa hakkında bilgi verecek ve unutulmaz bir deneyim sunacak profesyoneller arıyoruz."
+        description:
+          "Doğa turlarımızda misafirlerimize rehberlik edecek, doğa hakkında bilgi verecek ve unutulmaz bir deneyim sunacak profesyoneller arıyoruz.",
       },
       {
         position: "Sürdürülebilirlik ve Çevre Yönetimi",
-        description: "Çevre dostu uygulamaları geliştirecek ve uygulayacak uzmanlar arıyoruz. Sürdürülebilir projelerde rol alacak takım arkadaşları aramaktayız."
+        description:
+          "Çevre dostu uygulamaları geliştirecek ve uygulayacak uzmanlar arıyoruz. Sürdürülebilir projelerde rol alacak takım arkadaşları aramaktayız.",
       },
       {
         position: "Müşteri Hizmetleri",
-        description: "Misafirlerimizin memnuniyetini sağlamak ve yüksek kaliteli hizmet sunmak için müşteri hizmetleri alanında yetenekli kişiler arıyoruz."
+        description:
+          "Misafirlerimizin memnuniyetini sağlamak ve yüksek kaliteli hizmet sunmak için müşteri hizmetleri alanında yetenekli kişiler arıyoruz.",
       },
       {
         position: "Pazarlama ve İletişim",
-        description: "Şirketimizin vizyonunu ve misyonunu etkili bir şekilde iletecek, çevre bilincini yayacak ve markamızın tanıtımını yapacak pazarlama ve iletişim uzmanları arıyoruz."
+        description:
+          "Şirketimizin vizyonunu ve misyonunu etkili bir şekilde iletecek, çevre bilincini yayacak ve markamızın tanıtımını yapacak pazarlama ve iletişim uzmanları arıyoruz.",
       },
       {
         position: "Destek ve İdari İşler",
-        description: "Operasyonel süreçleri destekleyecek ve günlük iş akışını yönetecek idari personel arıyoruz."
-      }
-    ]
+        description:
+          "Operasyonel süreçleri destekleyecek ve günlük iş akışını yönetecek idari personel arıyoruz.",
+      },
+    ],
   },
   {
     id: 4,
     title: "Başvuru Süreci",
-    text: "Doğa Turizm’de kariyer fırsatlarını keşfetmek ve ekibimize katılmak için web sitemizdeki başvuru formunu doldurabilir veya özgeçmişinizi dogaturizm@carier.com adresine gönderebilirsiniz. Başvurularınız incelenecek ve uygun pozisyonlarda sizinle iletişime geçilecektir."
+    text: "Doğa Turizm’de kariyer fırsatlarını keşfetmek ve ekibimize katılmak için web sitemizdeki başvuru formunu doldurabilir veya özgeçmişinizi dogaturizm@carier.com adresine gönderebilirsiniz. Başvurularınız incelenecek ve uygun pozisyonlarda sizinle iletişime geçilecektir.",
   },
   {
     id: 5,
     title: "",
-    text: "Doğa Turizm ailesinin bir parçası olmak ve çevreye duyarlı bir geleceği inşa etmek için sizleri aramızda görmekten mutluluk duyarız."
-  }
+    text: "Doğa Turizm ailesinin bir parçası olmak ve çevreye duyarlı bir geleceği inşa etmek için sizleri aramızda görmekten mutluluk duyarız.",
+  },
 ];
 
-
-export const contactInput = 
-[
-  {id:1,label:"Adınız",name:"name",type:"text", placeholder:"Adınızı Giriniz"},
-  {id:2,label:"E-Posta Adresiniz",name:"email",type:"email", placeholder:"E-Posta Adresinizi Giriniz"},
-  {id:3,label:"Telefon Numaranız",name:"phone",type:"text", placeholder:"Telefon Numaranızı Giriniz"},
-  {id:4,label:"Mesajınız",name:"message",type:"text", placeholder:"Mesajınızı Giriniz"},
-]
+export const contactInput = [
+  {
+    id: 1,
+    label: "Adınız",
+    name: "name",
+    type: "text",
+    placeholder: "Adınızı Giriniz",
+  },
+  {
+    id: 2,
+    label: "E-Posta Adresiniz",
+    name: "email",
+    type: "email",
+    placeholder: "E-Posta Adresinizi Giriniz",
+  },
+  {
+    id: 3,
+    label: "Telefon Numaranız",
+    name: "phone",
+    type: "text",
+    placeholder: "Telefon Numaranızı Giriniz",
+  },
+  {
+    id: 4,
+    label: "Mesajınız",
+    name: "message",
+    type: "text",
+    placeholder: "Mesajınızı Giriniz",
+  },
+];
 
 export const energyData = [
   {
     id: 1,
-    text: "Doğa Turizm olarak, sürdürülebilirlik ve çevre dostu uygulamalar konusundaki kararlılığımızı her alanda göstermekteyiz. Yenilenebilir enerji, çevre üzerindeki etkimizi azaltmanın ve karbon ayak izimizi minimumda tutmanın temel taşlarından biridir. Şirketimiz, yenilenebilir enerji kaynaklarını kullanarak doğaya olan bağlılığını ve sorumluluğunu güçlü bir şekilde ortaya koymaktadır."
+    text: "Doğa Turizm olarak, sürdürülebilirlik ve çevre dostu uygulamalar konusundaki kararlılığımızı her alanda göstermekteyiz. Yenilenebilir enerji, çevre üzerindeki etkimizi azaltmanın ve karbon ayak izimizi minimumda tutmanın temel taşlarından biridir. Şirketimiz, yenilenebilir enerji kaynaklarını kullanarak doğaya olan bağlılığını ve sorumluluğunu güçlü bir şekilde ortaya koymaktadır.",
   },
   {
     id: 2,
-    text: "Güneş Enerjisi: Şirketimiz, operasyonlarımızda güneş enerjisi kullanarak enerji ihtiyacımızı temiz ve sürdürülebilir bir kaynaktan karşılamaktadır. Güneş panellerimiz, enerji maliyetlerini düşürürken, aynı zamanda karbon salınımını azaltmaktadır."
+    text: "Güneş Enerjisi: Şirketimiz, operasyonlarımızda güneş enerjisi kullanarak enerji ihtiyacımızı temiz ve sürdürülebilir bir kaynaktan karşılamaktadır. Güneş panellerimiz, enerji maliyetlerini düşürürken, aynı zamanda karbon salınımını azaltmaktadır.",
   },
   {
     id: 3,
-    text: "Rüzgar Enerjisi: Rüzgar türbinleri, yenilenebilir enerji stratejimizin bir diğer önemli parçasıdır. Rüzgar enerjisi kullanarak enerji üretimimizi çeşitlendiriyor ve rüzgarın gücünden faydalanarak temiz enerji sağlıyoruz."
+    text: "Rüzgar Enerjisi: Rüzgar türbinleri, yenilenebilir enerji stratejimizin bir diğer önemli parçasıdır. Rüzgar enerjisi kullanarak enerji üretimimizi çeşitlendiriyor ve rüzgarın gücünden faydalanarak temiz enerji sağlıyoruz.",
   },
   {
     id: 4,
-    text: "Enerji Verimliliği: Enerji verimliliğini artırmak ve gereksiz enerji tüketimini azaltmak için çeşitli stratejiler uyguluyoruz. Enerji tasarrufu sağlayan aydınlatma sistemleri, yüksek verimli cihazlar ve akıllı enerji yönetim sistemleri kullanıyoruz."
+    text: "Enerji Verimliliği: Enerji verimliliğini artırmak ve gereksiz enerji tüketimini azaltmak için çeşitli stratejiler uyguluyoruz. Enerji tasarrufu sağlayan aydınlatma sistemleri, yüksek verimli cihazlar ve akıllı enerji yönetim sistemleri kullanıyoruz.",
   },
   {
     id: 5,
-    text: "Geleceğe Yatırım: Yenilenebilir enerji projeleri sadece çevreyi korumakla kalmaz, aynı zamanda geleceğe yatırım yapmamızı sağlar. Şirketimiz, sürdürülebilir enerji çözümlerini destekleyerek, hem çevreyi hem de toplumu gelecekte daha temiz bir dünya bırakmayı hedefliyor."
+    text: "Geleceğe Yatırım: Yenilenebilir enerji projeleri sadece çevreyi korumakla kalmaz, aynı zamanda geleceğe yatırım yapmamızı sağlar. Şirketimiz, sürdürülebilir enerji çözümlerini destekleyerek, hem çevreyi hem de toplumu gelecekte daha temiz bir dünya bırakmayı hedefliyor.",
   },
   {
     id: 6,
-    text: "Doğa Turizm olarak, yenilenebilir enerji kullanımı ve çevre dostu uygulamalarımızla, doğayı korumak ve ekosistemleri desteklemek adına adımlar atıyoruz. Bu vizyon doğrultusunda, enerji kullanımımızı sürekli olarak gözden geçiriyor ve en iyi uygulamaları benimsemeye devam ediyoruz. Siz değerli misafirlerimizle bu sürdürülebilir geleceği inşa etmekten gurur duyuyoruz."
-  }
+    text: "Doğa Turizm olarak, yenilenebilir enerji kullanımı ve çevre dostu uygulamalarımızla, doğayı korumak ve ekosistemleri desteklemek adına adımlar atıyoruz. Bu vizyon doğrultusunda, enerji kullanımımızı sürekli olarak gözden geçiriyor ve en iyi uygulamaları benimsemeye devam ediyoruz. Siz değerli misafirlerimizle bu sürdürülebilir geleceği inşa etmekten gurur duyuyoruz.",
+  },
 ];
-
-
 
 export const cookiePolicyData = [
   {
     id: 1,
     title: "Çerezler Nedir?",
-    text: "Çerezler, web tarayıcınızda saklanan küçük veri dosyalarıdır. Bu dosyalar, web sitelerinin sizinle ilgili bilgileri hatırlamasına yardımcı olur ve tarayıcı deneyiminizi kişiselleştirir."
+    text: "Çerezler, web tarayıcınızda saklanan küçük veri dosyalarıdır. Bu dosyalar, web sitelerinin sizinle ilgili bilgileri hatırlamasına yardımcı olur ve tarayıcı deneyiminizi kişiselleştirir.",
   },
   {
     id: 2,
     title: "Çerezleri Nasıl Kullanıyoruz?",
-    text: "Web sitemiz, kullanıcı deneyimini geliştirmek ve analiz yapmak amacıyla çerezler kullanmaktadır. Çerezler sayesinde, ziyaretçi davranışlarını analiz edebilir ve hizmetlerimizi iyileştirebiliriz. Çerezler ayrıca, kullanıcıların giriş bilgilerini hatırlamaya ve tercihlerini kaydetmeye yardımcı olur."
+    text: "Web sitemiz, kullanıcı deneyimini geliştirmek ve analiz yapmak amacıyla çerezler kullanmaktadır. Çerezler sayesinde, ziyaretçi davranışlarını analiz edebilir ve hizmetlerimizi iyileştirebiliriz. Çerezler ayrıca, kullanıcıların giriş bilgilerini hatırlamaya ve tercihlerini kaydetmeye yardımcı olur.",
   },
   {
     id: 3,
@@ -600,41 +628,44 @@ export const cookiePolicyData = [
     items: [
       {
         subtitle: "Zorunlu Çerezler",
-        description: "Web sitesinin düzgün çalışması için gerekli çerezlerdir. Bu çerezler genellikle tarayıcı kapatıldığında silinir."
+        description:
+          "Web sitesinin düzgün çalışması için gerekli çerezlerdir. Bu çerezler genellikle tarayıcı kapatıldığında silinir.",
       },
       {
         subtitle: "Performans Çerezleri",
-        description: "Web sitesinin performansını analiz etmek için kullanılır. Bu çerezler, kullanıcıların web sitesindeki davranışlarını izler."
+        description:
+          "Web sitesinin performansını analiz etmek için kullanılır. Bu çerezler, kullanıcıların web sitesindeki davranışlarını izler.",
       },
       {
         subtitle: "Fonksiyonel Çerezler",
-        description: "Kullanıcı tercihlerini hatırlamak ve daha kişiselleştirilmiş bir deneyim sunmak için kullanılır."
+        description:
+          "Kullanıcı tercihlerini hatırlamak ve daha kişiselleştirilmiş bir deneyim sunmak için kullanılır.",
       },
       {
         subtitle: "Reklam Çerezleri",
-        description: "İlgi alanlarına dayalı reklamlar sunmak ve reklam performansını izlemek için kullanılır."
-      }
-    ]
+        description:
+          "İlgi alanlarına dayalı reklamlar sunmak ve reklam performansını izlemek için kullanılır.",
+      },
+    ],
   },
   {
     id: 4,
     title: "Çerez Yönetimi",
-    text: "Çerezleri tarayıcı ayarlarınızdan yönetebilir veya devre dışı bırakabilirsiniz. Ancak, çerezleri devre dışı bırakmak bazı web sitesi işlevlerini etkileyebilir."
+    text: "Çerezleri tarayıcı ayarlarınızdan yönetebilir veya devre dışı bırakabilirsiniz. Ancak, çerezleri devre dışı bırakmak bazı web sitesi işlevlerini etkileyebilir.",
   },
   {
     id: 5,
     title: "Gizlilik Politikamız",
     text: `Çerezler ve diğer gizlilik konuları hakkında daha fazla bilgi için lütfen Gizlilik Politikamızı inceleyin.`,
-    link: "/privacy"
-  }
+    link: "/privacy",
+  },
 ];
-
 
 export const privacyPolicyData = [
   {
     id: 1,
     title: "Giriş",
-    text: "Bu Gizlilik Politikası, Doğa Turizm olarak, kişisel verilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklamaktadır. Web sitemizi kullanarak, bu politikayı kabul etmiş olursunuz."
+    text: "Bu Gizlilik Politikası, Doğa Turizm olarak, kişisel verilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklamaktadır. Web sitemizi kullanarak, bu politikayı kabul etmiş olursunuz.",
   },
   {
     id: 2,
@@ -643,8 +674,8 @@ export const privacyPolicyData = [
     items: [
       "Kişisel bilgiler (ad, e-posta adresi, telefon numarası)",
       "Kullanıcı davranışları (ziyaret edilen sayfalar, tıklama bilgileri)",
-      "Teknik bilgiler (IP adresi, tarayıcı türü, işletim sistemi)"
-    ]
+      "Teknik bilgiler (IP adresi, tarayıcı türü, işletim sistemi)",
+    ],
   },
   {
     id: 3,
@@ -654,28 +685,28 @@ export const privacyPolicyData = [
       "Size hizmet sunmak ve destek sağlamak",
       "Web sitemizin performansını analiz etmek ve geliştirmek",
       "Size güncellemeler ve teklifler hakkında bilgi vermek",
-      "Yasal yükümlülükleri yerine getirmek"
-    ]
+      "Yasal yükümlülükleri yerine getirmek",
+    ],
   },
   {
     id: 4,
     title: "Bilgilerin Korunması",
-    text: "Kişisel verilerinizi korumak için gerekli güvenlik önlemlerini alıyoruz. Verilerinizi korumak için çeşitli fiziksel, teknik ve idari önlemler uygulamaktayız. Ancak, internet üzerinden veri iletiminin tamamen güvenli olduğunu garanti edemeyiz."
+    text: "Kişisel verilerinizi korumak için gerekli güvenlik önlemlerini alıyoruz. Verilerinizi korumak için çeşitli fiziksel, teknik ve idari önlemler uygulamaktayız. Ancak, internet üzerinden veri iletiminin tamamen güvenli olduğunu garanti edemeyiz.",
   },
   {
     id: 5,
     title: "Bilgilerin Paylaşımı",
-    text: "Kişisel bilgilerinizi üçüncü taraflarla paylaşmayacağız, ancak yasal gereklilikler veya şirketin haklarını koruma amacıyla paylaşabiliriz. Üçüncü taraf hizmet sağlayıcılarla, yalnızca hizmetlerini sağlamak amacıyla veri paylaşabiliriz."
+    text: "Kişisel bilgilerinizi üçüncü taraflarla paylaşmayacağız, ancak yasal gereklilikler veya şirketin haklarını koruma amacıyla paylaşabiliriz. Üçüncü taraf hizmet sağlayıcılarla, yalnızca hizmetlerini sağlamak amacıyla veri paylaşabiliriz.",
   },
   {
     id: 6,
     title: "Kullanıcı Hakları",
-    text: "Kişisel verilerinize erişim hakkına sahip olduğunuzu unutmayın. Kişisel verilerinizi güncelleme, düzeltme veya silme hakkınızı kullanabilirsiniz. İlgili taleplerinizi [e-posta adresi] adresine iletebilirsiniz."
+    text: "Kişisel verilerinize erişim hakkına sahip olduğunuzu unutmayın. Kişisel verilerinizi güncelleme, düzeltme veya silme hakkınızı kullanabilirsiniz. İlgili taleplerinizi [e-posta adresi] adresine iletebilirsiniz.",
   },
   {
     id: 7,
     title: "Politika Değişiklikleri",
-    text: "Gizlilik politikamız zaman zaman güncellenebilir. Politika değişikliklerini web sitemizde yayınlayacağız ve değişikliklerin yürürlüğe girmesiyle ilgili olarak sizi bilgilendireceğiz."
+    text: "Gizlilik politikamız zaman zaman güncellenebilir. Politika değişikliklerini web sitemizde yayınlayacağız ve değişikliklerin yürürlüğe girmesiyle ilgili olarak sizi bilgilendireceğiz.",
   },
   {
     id: 8,
@@ -684,97 +715,93 @@ export const privacyPolicyData = [
     items: [
       "E-posta: dogaturizm@help.com",
       "Telefon: +90123456789",
-      "Adres: İzmir, Türkiye"
-    ]
-  }
+      "Adres: İzmir, Türkiye",
+    ],
+  },
 ];
-
-
 
 export const protectPersonelData = [
   {
     id: 1,
     title: "Kişisel Verilerin Korunması",
-    text: "Doğa Turizm olarak, kişisel verilerinizin güvenliğine büyük önem veriyoruz. Gizliliğinizi korumak ve veri güvenliğini sağlamak amacıyla çeşitli önlemler alıyoruz. İşte kişisel verilerinizi korumak için uyguladığımız bazı temel prensipler:"
+    text: "Doğa Turizm olarak, kişisel verilerinizin güvenliğine büyük önem veriyoruz. Gizliliğinizi korumak ve veri güvenliğini sağlamak amacıyla çeşitli önlemler alıyoruz. İşte kişisel verilerinizi korumak için uyguladığımız bazı temel prensipler:",
   },
   {
     id: 2,
     title: "1. Veri Toplama ve Kullanım",
-    text: "Kişisel verilerinizi yalnızca hizmetlerimizi sağlamak ve iyileştirmek amacıyla topluyoruz. Bu veriler, rezervasyonlarınız, müşteri destek talepleriniz ve geri bildirimleriniz gibi çeşitli işlemler için kullanılabilir."
+    text: "Kişisel verilerinizi yalnızca hizmetlerimizi sağlamak ve iyileştirmek amacıyla topluyoruz. Bu veriler, rezervasyonlarınız, müşteri destek talepleriniz ve geri bildirimleriniz gibi çeşitli işlemler için kullanılabilir.",
   },
   {
     id: 3,
     title: "2. Veri Güvenliği",
-    text: "Kişisel verilerinizi korumak için en son güvenlik teknolojilerini ve prosedürlerini kullanıyoruz. Verileriniz, yetkisiz erişimlere karşı korunur ve şifreleme yöntemleri ile güvenliği sağlanır."
+    text: "Kişisel verilerinizi korumak için en son güvenlik teknolojilerini ve prosedürlerini kullanıyoruz. Verileriniz, yetkisiz erişimlere karşı korunur ve şifreleme yöntemleri ile güvenliği sağlanır.",
   },
   {
     id: 4,
     title: "3. Veri Paylaşımı",
-    text: "Kişisel verilerinizi yalnızca yasal yükümlülüklerimizi yerine getirmek ve hizmetlerimizi sunmak için gerekli olan durumlarda üçüncü taraflarla paylaşabiliriz. Bu tür paylaşımlar, verilerinizin güvenliğini sağlayacak şekilde yapılır."
+    text: "Kişisel verilerinizi yalnızca yasal yükümlülüklerimizi yerine getirmek ve hizmetlerimizi sunmak için gerekli olan durumlarda üçüncü taraflarla paylaşabiliriz. Bu tür paylaşımlar, verilerinizin güvenliğini sağlayacak şekilde yapılır.",
   },
   {
     id: 5,
     title: "4. Haklarınız",
-    text: "Kişisel verilerinizle ilgili olarak erişim, düzeltme, silme ve işlem kısıtlaması haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz."
+    text: "Kişisel verilerinizle ilgili olarak erişim, düzeltme, silme ve işlem kısıtlaması haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz.",
   },
   {
     id: 6,
     title: "5. Politika Güncellemeleri",
-    text: "Çerez ve veri koruma politikalarımızda zaman zaman değişiklikler yapabiliriz. Güncellemeleri takip etmek için bu sayfayı düzenli olarak kontrol etmenizi öneririz."
-  }
+    text: "Çerez ve veri koruma politikalarımızda zaman zaman değişiklikler yapabiliriz. Güncellemeleri takip etmek için bu sayfayı düzenli olarak kontrol etmenizi öneririz.",
+  },
 ];
-
 
 export const hiringData = [
   {
     id: 1,
     title: "Şoförümüz Ol",
-    text: "Doğa Turizm olarak, çevreye duyarlı ve güvenli ulaşımın öncüsü olarak sizleri ekibimize katılmaya davet ediyoruz. Eğer siz de doğa dostu bir şirketin parçası olmak ve profesyonel bir sürücü olarak kariyerinize yeni bir yön vermek istiyorsanız, başvurularınızı bekliyoruz."
+    text: "Doğa Turizm olarak, çevreye duyarlı ve güvenli ulaşımın öncüsü olarak sizleri ekibimize katılmaya davet ediyoruz. Eğer siz de doğa dostu bir şirketin parçası olmak ve profesyonel bir sürücü olarak kariyerinize yeni bir yön vermek istiyorsanız, başvurularınızı bekliyoruz.",
   },
   {
     id: 2,
     title: "Neden Biz?",
-    text: "Çevreye duyarlılığımız ve kaliteli hizmet anlayışımız ile sektörde öncü bir rol üstleniyoruz. Elektrikli otobüslerimiz ve sürdürülebilir ulaşım çözümlerimizle doğaya olan katkımızı sürdürüyoruz."
+    text: "Çevreye duyarlılığımız ve kaliteli hizmet anlayışımız ile sektörde öncü bir rol üstleniyoruz. Elektrikli otobüslerimiz ve sürdürülebilir ulaşım çözümlerimizle doğaya olan katkımızı sürdürüyoruz.",
   },
   {
     id: 3,
     title: "Aradığımız Nitelikler",
-    text: "• En az 2 yıl deneyimli ve geçerli bir sürücü belgesine sahip olmak\n• İyi derecede trafik kurallarına hakim olmak\n• Müşteri odaklı ve iletişim becerileri güçlü olmak\n• Çevre bilincine sahip olmak ve doğa dostu uygulamalara uyum sağlamak"
+    text: "• En az 2 yıl deneyimli ve geçerli bir sürücü belgesine sahip olmak\n• İyi derecede trafik kurallarına hakim olmak\n• Müşteri odaklı ve iletişim becerileri güçlü olmak\n• Çevre bilincine sahip olmak ve doğa dostu uygulamalara uyum sağlamak",
   },
   {
     id: 4,
     title: "Başvuru Süreci",
     text: "Başvurunuzu dogaturizm@carier.com üzerinden bize iletebilir veya başvuru formu linki üzerinden online başvuru yapabilirsiniz. Tüm başvurular titizlikle değerlendirilecek ve uygun adaylarla iletişime geçilecektir.",
-    link: "/contact"
+    link: "/contact",
   },
   {
     id: 5,
     title: "Sizi Aramızda Görmek İsteriz!",
-    text: "Doğa Turizm ailesinin bir parçası olmak ve çevre dostu bir ulaşım hizmetine katkıda bulunmak için başvurularınızı sabırsızlıkla bekliyoruz."
-  }
+    text: "Doğa Turizm ailesinin bir parçası olmak ve çevre dostu bir ulaşım hizmetine katkıda bulunmak için başvurularınızı sabırsızlıkla bekliyoruz.",
+  },
 ];
-
 
 export const rentData = [
   {
     id: 1,
     title: "Otobüsünü Kirala",
-    text: "Doğa Turizm olarak, otobüs kiralama hizmetimizle ihtiyaçlarınıza uygun esnek ve konforlu çözümler sunuyoruz. İster grup gezileri, okul etkinlikleri, ister özel organizasyonlar için geniş ve konforlu otobüslerimizle hizmetinizdeyiz."
+    text: "Doğa Turizm olarak, otobüs kiralama hizmetimizle ihtiyaçlarınıza uygun esnek ve konforlu çözümler sunuyoruz. İster grup gezileri, okul etkinlikleri, ister özel organizasyonlar için geniş ve konforlu otobüslerimizle hizmetinizdeyiz.",
   },
   {
     id: 2,
     title: "Neden Bizi Tercih Etmelisiniz?",
-    text: "• Modern ve konforlu araçlarımız ile güvenli ulaşım\n• Çevre dostu elektrikli otobüs seçenekleri\n• Esnek kiralama süreleri ve uygun fiyat seçenekleri\n• Profesyonel şoför hizmeti"
+    text: "• Modern ve konforlu araçlarımız ile güvenli ulaşım\n• Çevre dostu elektrikli otobüs seçenekleri\n• Esnek kiralama süreleri ve uygun fiyat seçenekleri\n• Profesyonel şoför hizmeti",
   },
   {
     id: 3,
     title: "Nasıl Kiralama Yapabilirsiniz?",
     text: "Otobüs kiralama taleplerinizi dogaturizm@help.com üzerinden bize iletebilir veya kiralama formu linki üzerinden online başvuru yapabilirsiniz. Talep formunuzu doldurduktan sonra, en kısa sürede sizinle iletişime geçeceğiz ve kiralama süreci hakkında detayları paylaşacağız.",
-    link: "/contact"
+    link: "/contact",
   },
   {
     id: 4,
     title: "Bizimle İletişime Geçin",
-    text: "Sorularınız veya özel talepleriniz için bizimle iletişime geçmekten çekinmeyin. Size yardımcı olmak ve ihtiyaçlarınıza uygun en iyi çözümü sunmak için buradayız."
-  }
+    text: "Sorularınız veya özel talepleriniz için bizimle iletişime geçmekten çekinmeyin. Size yardımcı olmak ve ihtiyaçlarınıza uygun en iyi çözümü sunmak için buradayız.",
+  },
 ];

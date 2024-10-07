@@ -4,23 +4,34 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { FaSort } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import { campaignTableTitles } from "~/data/data";
+import { campaignTableTitles, campaignTableTitlesTexts } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { orderBy } from "lodash";
 import NewCampaignModal from "~/components/UI/Modals/Admin/Campaigns/NewCampaignModal";
 import CampaignEditModal from "~/components/UI/Modals/Admin/Campaigns/CampaignEditModal";
 import React from "react";
+import CampaignTextModal from "~/components/UI/Modals/Admin/Campaigns/CampaignTexts/CampaignTextModal";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);
+  const [isTextModal, setIsTextModal] = useState(false);
   const [sorting, setSorting] = useState({ key: "", order: "" });
   const [search, setSearch] = useState("");
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
+  const [selectedCampaignText, setSelectedCampaignText] = useState(null);
 
   const ref = collection(db, "campaigns");
   const [snapshot] = useCollection(ref);
   const data = snapshot?.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  const campaignTexts = collection(db, "campaignsText");
+  const [campaignTextDataSnapshot] = useCollection(campaignTexts);
+
+  const campaignTextData = campaignTextDataSnapshot?.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
@@ -37,6 +48,11 @@ const CampaignTab = () => {
   const openEdit = (campaign) => {
     setIsModal(true);
     setSelectedCampaign(campaign);
+  };
+
+  const openTextEdit = (campaign) => {
+    setIsTextModal(true);
+    setSelectedCampaignText(campaign);
   };
 
   const filteredCampaigns = orderBy(
@@ -133,11 +149,51 @@ const CampaignTab = () => {
             </tbody>
           </table>
         </div>
+        <table className="border w-full mt-5 dark:border-gray-700 ">
+          <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">
+            <tr className="sm:grid flex sm:grid-cols-4 grid-cols-1 place-items-center p-4 gap-5">
+              {campaignTableTitlesTexts.map((title) => (
+                <th key={title.id} className="flex items-center gap-x-2">
+                  {title.title}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
+            {campaignTextData?.map((campaign) => (
+              <tr
+                key={campaign.id}
+                className="sm:grid flex sm:grid-cols-4 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
+              >
+                <React.Fragment>
+                  <td>{campaign.campaignInfo}</td>
+                  <td>{campaign.campaignTitle}</td>
+                  <td>{campaign.campaignDesc}</td>
+
+                  <td className="flex gap-x-2 ">
+                    <button
+                      onClick={() => openTextEdit(campaign)}
+                      className="border dark:text-white hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                    >
+                      <BiEdit size={20} />
+                    </button>
+                  </td>
+                </React.Fragment>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       {isModal && (
         <CampaignEditModal
           setIsModal={setIsModal}
           selectedCampaign={selectedCampaign}
+        />
+      )}
+      {isTextModal && (
+        <CampaignTextModal
+          setIsTextModal={setIsTextModal}
+          selectedCampaignText={selectedCampaignText}
         />
       )}
       {isAddModal && <NewCampaignModal setIsAddModal={setIsAddModal} />}
