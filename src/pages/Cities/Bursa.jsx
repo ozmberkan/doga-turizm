@@ -26,7 +26,7 @@ const Bursa = () => {
           />
           <div className="p-6">
             <h2 className="text-xl font-bold mb-2 dark:text-white">Uludağ</h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Türkiye'nin en ünlü kayak merkezlerinden biri olan Uludağ, kış
               sporları ve doğa yürüyüşleri için ideal bir yer.
             </p>
