@@ -17,6 +17,10 @@ import Payment from "~/pages/Payment/Payment";
 import Profile from "~/pages/Profile/Profile";
 import Layout from "~/layouts/Layout";
 import Home from "~/pages/Home/Home";
+import Istanbul from "~/pages/Cities/Istanbul";
+import Bursa from "~/pages/Cities/Bursa";
+import Canakkale from "~/pages/Cities/Canakkale";
+import Balıkesir from "~/pages/Cities/Balıkesir";
 
 const HomeRoutes = () => {
   const { user } = useSelector((store) => store.user);
@@ -50,6 +54,11 @@ const HomeRoutes = () => {
       { path: "/hiring", element: <Hiring /> },
       { path: "/campaign/:id", element: <CampaignDetail /> },
       { path: "/services", element: <AllServices /> },
+      //
+      { path: "/istanbul", element: <Istanbul /> },
+      { path: "/bursa", element: <Bursa /> },
+      { path: "/canakkale", element: <Canakkale /> },
+      { path: "/balikesir", element: <Balıkesir /> },
     ],
   };
 };

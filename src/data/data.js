@@ -805,3 +805,10 @@ export const rentData = [
     text: "Sorularınız veya özel talepleriniz için bizimle iletişime geçmekten çekinmeyin. Size yardımcı olmak ve ihtiyaçlarınıza uygun en iyi çözümü sunmak için buradayız.",
   },
 ];
+
+export const citiesData = [
+  { id: 1, label: "İstanbul", value: "İstanbul" },
+  { id: 2, label: "Balıkesir", value: "Balıkesir" },
+  { id: 3, label: "Bursa", value: "Bursa" },
+  { id: 4, label: "Çanakkale", value: "Çanakkale" },
+];

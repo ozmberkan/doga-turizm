@@ -1,5 +1,5 @@
 import { Carousel } from "antd";
-import { carouselImg } from "../../data/data";
+import { carouselImg } from "~/data/data";
 import Filter from "./Filter";
 import { useSelector } from "react-redux";
 

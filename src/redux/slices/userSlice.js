@@ -121,7 +121,9 @@ export const registerService = createAsyncThunk(
 
       return userData;
     } catch (error) {
-      console.error("Bir Hata Oluştu", error);
+      toast.error(
+        "Bir hata ile karşılaşıldı. Lütfen bilgileri kontrol ediniz."
+      );
       return rejectWithValue(error.message);
     }
   }
