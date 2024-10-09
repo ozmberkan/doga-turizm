@@ -52,7 +52,7 @@ const Ticket = ({ ticket }) => {
   return (
     <div className="w-full border dark:border-gray-900 rounded-xl text-sm sm:text-base flex flex-col">
       <div className="w-full h-10 rounded-t-xl bg-primary dark:bg-gray-900 flex justify-between items-center px-4 text-white">
-        <span>{pnr}</span>
+        <span>PNR{pnr}</span>
         <div className="flex gap-x-2">
           <span className="flex items-center gap-x-1">
             <MdDateRange />
@@ -68,7 +68,6 @@ const Ticket = ({ ticket }) => {
             </span>
             <span className="flex items-center gap-x-1">
               <MdEventSeat />
-              {/* Her ticket için koltuk bilgilerini ayrı ayrı gösteriyoruz */}
               {ticket.seats.map((seatItem) => (
                 <span key={seatItem.number}>
                   {seatItem.number} - {seatItem.gender}
@@ -76,7 +75,11 @@ const Ticket = ({ ticket }) => {
               ))}
             </span>
             <span className="flex items-center gap-x-1">
-              <FaTurkishLiraSign /> {price * seats.length}₺
+              <FaTurkishLiraSign />{" "}
+              {user.emailVerified === true
+                ? price * seats.length
+                : 650 * seats.length}
+              ₺
             </span>
           </div>
           <div className="p-4 text-lg text-zinc-600 dark:text-white">

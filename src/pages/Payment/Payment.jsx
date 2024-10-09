@@ -44,6 +44,7 @@ const Payment = () => {
         toast.error("Bilet bulunamadı.");
         return;
       }
+
       const existingSeats = ticketSnapshot.data().seats;
 
       const updatedSeats = existingSeats.map((seat) => {
@@ -53,16 +54,21 @@ const Payment = () => {
           : seat;
       });
 
+      const priceValid = user.emailVerified === true ? finalTicket.price : 650;
+
       await updateDoc(ticketRef, {
         seats: updatedSeats,
       });
 
       const updatedOwnedTickets = [
         ...user.ownedTickets,
-        { ...finalTicket, seats },
+        { ...finalTicket, seats, price: priceValid },
       ];
 
-      const updatedAllTickets = [...user.allTickets, { ...finalTicket, seats }];
+      const updatedAllTickets = [
+        ...user.allTickets,
+        { ...finalTicket, seats, price: priceValid },
+      ];
 
       await updateDoc(userRef, {
         ownedTickets: updatedOwnedTickets,
@@ -164,7 +170,10 @@ const Payment = () => {
               <p className="flex justify-between items-center w-full dark:bg-gray-700 bg-white col-span-2 py-2 px-5 rounded-md">
                 Toplam Tutar
                 <span className="text-primary dark:text-white font-semibold text-2xl">
-                  {price}₺
+                  {user.emailVerified === true
+                    ? price * seats.length
+                    : 650 * seats.length}
+                  ₺
                 </span>
               </p>
               <Link

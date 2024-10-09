@@ -16,6 +16,11 @@ const LastTicketTab = () => {
   const ref = doc(db, "users", user.uid);
 
   const deleteLastTickets = async () => {
+    if (user?.allTickets.length === 0) {
+      toast.error("Silinecek bilet bulunamadı.");
+      return;
+    }
+
     try {
       await setDoc(ref, { ...user, allTickets: [] });
       toast.success("Bütün biletler temizlendi.");

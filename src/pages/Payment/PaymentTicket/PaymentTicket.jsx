@@ -8,7 +8,7 @@ const PaymentTicket = ({ finalTicket }) => {
     <div className="sm:w-full w-full rounded-xl flex flex-col ">
       <div className="w-full dark:bg-gray-700 bg-white border dark:border-gray-600 p-3 place-items-center flex flex-col gap-y-2 rounded-xl gap-5">
         <div className="w-full py-2 bg-zinc-100 dark:bg-gray-600 rounded-md flex justify-between items-center px-5">
-          <span>{pnr}</span>
+          <span>PNR{pnr}</span>
           <span>
             {date} {time}
           </span>

@@ -1,4 +1,3 @@
-import moment from "moment";
 import { BiUser } from "react-icons/bi";
 import { MdDateRange, MdEventSeat } from "react-icons/md";
 import { FaTurkishLiraSign } from "react-icons/fa6";
@@ -7,21 +6,18 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const LastTicket = ({ ticket, hide }) => {
   const { user } = useSelector((store) => store.user);
-  const { pnr, departure, arrival, price, date } = ticket;
-  const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
-    "DD.MM.YYYY HH:mm"
-  );
+  const { pnr, departure, arrival, price, date, time, seats } = ticket;
 
   return (
     <>
       {!hide && (
         <div className="w-full rounded-xl border dark:border-gray-900 text-sm sm:text-base flex flex-col transition-all duration-200 ">
           <div className="w-full h-10 rounded-t-xl bg-zinc-100 dark:bg-gray-900  flex justify-between  items-center px-4 text-zinc-500 border-zinc-300">
-            <span className="dark:text-white">{pnr}</span>
+            <span className="dark:text-white">PNR{pnr}</span>
             <div className="flex gap-x-2">
               <span className="flex items-center gap-x-1 dark:text-white">
                 <MdDateRange />
-                {formattedDate}
+                {date} {time}
               </span>
             </div>
           </div>
@@ -33,17 +29,18 @@ const LastTicket = ({ ticket, hide }) => {
                 </span>
                 <span className="flex items-center gap-x-1">
                   <MdEventSeat />{" "}
-                  {user.allTickets.map((item) =>
-                    item.seats.map((seatItem) => (
-                      <span key={seatItem.number}>
-                        {seatItem.number} - {seatItem.gender}
-                      </span>
-                    ))
-                  )}
+                  {ticket.seats.map((seatItem) => (
+                    <span key={seatItem.number}>
+                      {seatItem.number} - {seatItem.gender}
+                    </span>
+                  ))}
                 </span>
                 <span className="flex items-center gap-x-1">
                   <FaTurkishLiraSign />{" "}
-                  {price * user.allTickets.map((item) => item.seats.length)}₺
+                  {user.emailVerified === true
+                    ? price * seats.length
+                    : 650 * seats.length}
+                  ₺
                 </span>
               </div>
               <div className="p-4 text-lg text-zinc-600 dark:text-white">
