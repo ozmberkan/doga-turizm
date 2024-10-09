@@ -8,7 +8,7 @@ const Layout = () => {
     <FlexContainer>
       <Navbar />
       <Outlet />
-      <ToastContainer position="bottom-right" autoClose={700} />
+      <ToastContainer position="top-center" autoClose={700} />
     </FlexContainer>
   );
 };

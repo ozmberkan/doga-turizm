@@ -12,10 +12,7 @@ const NewTicketModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();
 
   const addTicket = async (data) => {
-    const selectedDate = moment(data.date)
-      .set({ hour: 20, minute: 0, second: 0 })
-      .utcOffset("+03:00")
-      .format("MMMM DD, YYYY at hh:mm:ss A [UTC+3]");
+    const selectedDate = moment(data.date).format("DD.MM.YYYY");
 
     data.date = selectedDate;
 

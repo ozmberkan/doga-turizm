@@ -387,6 +387,11 @@ export const newTicketInput = [
     label: "Tarih",
   },
   {
+    type: "time",
+    name: "time",
+    label: "Saat",
+  },
+  {
     type: "text",
     name: "price",
     placeholder: "Fiyat",

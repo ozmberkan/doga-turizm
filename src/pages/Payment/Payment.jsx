@@ -17,55 +17,17 @@ import PaymentTicket from "./PaymentTicket/PaymentTicket";
 const Payment = () => {
   const { finalTicket } = useSelector((store) => store.finalTicket);
   const { user } = useSelector((store) => store.user);
-  const theme = useSelector((store) => store.theme.theme);
-  const { pnr, arrival, departure, date, price, seats } = finalTicket;
+  const { theme } = useSelector((store) => store.theme.theme);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [discountedPrice, setDiscountedPrice] = useState(null);
-  const [coupon, setCoupon] = useState("");
+  const { seats, price } = finalTicket;
 
   if (!finalTicket) {
     toast.error("Bilet bilgisi bulunamadı.");
     navigate("/");
   }
-
-  const applyCoupon = async () => {
-    try {
-      if (user.usedDiscount) {
-        toast.error("Daha önce indirim kullandınız.");
-        return;
-      }
-
-      if (validCoupons.includes(coupon)) {
-        setDiscountedPrice(price * seats?.length - 50);
-
-        try {
-          const userRef = doc(db, "users", user.uid);
-          await updateDoc(userRef, {
-            usedDiscount: true,
-          });
-          dispatch(setUpdate({ ...user, usedDiscount: true }));
-        } catch (error) {
-          console.error("Kupon kullanım hatası:", error);
-        }
-        toast.success("Kupon başarıyla uygulandı.");
-      } else {
-        toast.error("Geçersiz kupon kodu.");
-      }
-    } catch (error) {
-      console.error("Kupon uygulama hatası:", error);
-      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
-    }
-  };
-
-  const getFinalPrice = () => {
-    if (user?.emailVerified === false) {
-      return 650;
-    }
-    return discountedPrice !== null ? discountedPrice : price * seats?.length;
-  };
 
   const paymentDone = async () => {
     if (!user || !finalTicket) {
@@ -82,7 +44,6 @@ const Payment = () => {
         toast.error("Bilet bulunamadı.");
         return;
       }
-
       const existingSeats = ticketSnapshot.data().seats;
 
       const updatedSeats = existingSeats.map((seat) => {
@@ -92,21 +53,16 @@ const Payment = () => {
           : seat;
       });
 
-      const finalPrice = getFinalPrice();
-
       await updateDoc(ticketRef, {
         seats: updatedSeats,
       });
 
       const updatedOwnedTickets = [
         ...user.ownedTickets,
-        { ...finalTicket, seats, price: finalPrice },
+        { ...finalTicket, seats },
       ];
 
-      const updatedAllTickets = [
-        ...user.allTickets,
-        { ...finalTicket, seats, price: finalPrice },
-      ];
+      const updatedAllTickets = [...user.allTickets, { ...finalTicket, seats }];
 
       await updateDoc(userRef, {
         ownedTickets: updatedOwnedTickets,
@@ -154,10 +110,7 @@ const Payment = () => {
         </ConfigProvider>
         <div className="flex w-full mt-5 sm:gap-x-5 gap-y-5 sm:flex-row flex-col ">
           <div className="w-full flex flex-col gap-y-3">
-            <PaymentTicket
-              finalTicket={finalTicket}
-              getFinalPrice={getFinalPrice}
-            />
+            <PaymentTicket finalTicket={finalTicket} />
           </div>
           <div className="flex flex-col gap-y-3 sm:w-1/3 pb-12">
             <div
@@ -190,7 +143,7 @@ const Payment = () => {
                 maxLength={3}
                 className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600 "
               />
-              <div className="w-full  col-span-2">
+              {/* <div className="w-full  col-span-2">
                 <form className="flex flex-1 gap-x-3">
                   <input
                     className="px-4 py-2 rounded-md border focus:ring-2 transition-all ring-offset-1 ring-primary outline-none dark:bg-transparent dark:border-gray-600 dark:ring-gray-600 dark:text-white dark:ring-offset-transparent"
@@ -206,12 +159,12 @@ const Payment = () => {
                     <TbRosetteDiscountCheckFilled size={25} />
                   </button>
                 </form>
-              </div>
+              </div> */}
 
               <p className="flex justify-between items-center w-full dark:bg-gray-700 bg-white col-span-2 py-2 px-5 rounded-md">
                 Toplam Tutar
                 <span className="text-primary dark:text-white font-semibold text-2xl">
-                  {getFinalPrice(price)}₺
+                  {price}₺
                 </span>
               </p>
               <Link

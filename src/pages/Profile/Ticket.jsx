@@ -13,15 +13,13 @@ import { Link } from "react-router-dom";
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
-  const { pnr, departure, arrival, price, date } = ticket;
-  const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
-    "DD.MM.YYYY HH:mm"
-  );
+  const { pnr, departure, arrival, price, date, time, seats, ticketID } =
+    ticket;
 
-  const deleteTicket = async (pnr) => {
+  const deleteTicket = async (ticketID) => {
     try {
       const updatedTickets = user.ownedTickets.filter(
-        (ownedTicket) => ownedTicket.pnr !== pnr
+        (ownedTicket) => ownedTicket.ticketID !== ticketID
       );
 
       dispatch(setUpdate({ ...user, ownedTickets: updatedTickets }));
@@ -47,7 +45,7 @@ const Ticket = ({ ticket }) => {
 
       toast.success("Bilet başarıyla silindi ve koltuk bilgileri güncellendi.");
     } catch (error) {
-      toast.error("Bilet silinirken bir hata oluştu!");
+      toast.error("Bilet silinirken bir hata oluştu!" + error);
     }
   };
 
@@ -58,7 +56,7 @@ const Ticket = ({ ticket }) => {
         <div className="flex gap-x-2">
           <span className="flex items-center gap-x-1">
             <MdDateRange />
-            {formattedDate}
+            {date} {time}
           </span>
         </div>
       </div>
@@ -69,37 +67,31 @@ const Ticket = ({ ticket }) => {
               <BiUser /> {user.displayName}
             </span>
             <span className="flex items-center gap-x-1">
-              <MdEventSeat />{" "}
-              {user.ownedTickets.map((item) =>
-                item.seats.map((seatItem) => (
-                  <span key={seatItem.number}>
-                    {seatItem.number} - {seatItem.gender}
-                  </span>
-                ))
-              )}
+              <MdEventSeat />
+              {/* Her ticket için koltuk bilgilerini ayrı ayrı gösteriyoruz */}
+              {ticket.seats.map((seatItem) => (
+                <span key={seatItem.number}>
+                  {seatItem.number} - {seatItem.gender}
+                </span>
+              ))}
             </span>
             <span className="flex items-center gap-x-1">
-              <FaTurkishLiraSign />{" "}
-              {price * user.ownedTickets.map((item) => item.seats.length)}₺
+              <FaTurkishLiraSign /> {price * seats.length}₺
             </span>
           </div>
           <div className="p-4 text-lg text-zinc-600 dark:text-white">
             <span className="flex items-center gap-x-1">
-              {" "}
-              <IoLocationSharp />
-              {departure}
+              <IoLocationSharp /> {departure}
             </span>
             <span className="flex items-center gap-x-1">
-              {" "}
-              <IoLocationSharp />
-              {arrival}
+              <IoLocationSharp /> {arrival}
             </span>
           </div>
         </div>
         <div className="w-full bg-[#E6F7E6]/25 dark:bg-gray-900 p-4  rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2">
             <button
-              onClick={() => deleteTicket(pnr)}
+              onClick={() => deleteTicket(ticketID)}
               className="flex items-center bg-red-100 text-red-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
               <MdCancel /> İptal Et

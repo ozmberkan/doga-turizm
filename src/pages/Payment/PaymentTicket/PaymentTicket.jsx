@@ -1,20 +1,17 @@
-import moment from "moment";
 import { FaFemale, FaMale } from "react-icons/fa";
 import { MdEventSeat } from "react-icons/md";
 
-const PaymentTicket = ({ finalTicket, getFinalPrice }) => {
-  const { pnr, arrival, departure, date, price, seats } = finalTicket;
-
-  const formattedDate = moment(date, "MMMM DD, YYYY hh:mm:ss A").format(
-    "DD.MM.YYYY HH:mm"
-  );
+const PaymentTicket = ({ finalTicket }) => {
+  const { pnr, arrival, departure, date, time, seats } = finalTicket;
 
   return (
     <div className="sm:w-full w-full rounded-xl flex flex-col ">
       <div className="w-full dark:bg-gray-700 bg-white border dark:border-gray-600 p-3 place-items-center flex flex-col gap-y-2 rounded-xl gap-5">
         <div className="w-full py-2 bg-zinc-100 dark:bg-gray-600 rounded-md flex justify-between items-center px-5">
           <span>{pnr}</span>
-          <span>{formattedDate}</span>
+          <span>
+            {date} {time}
+          </span>
         </div>
         <div className="py-2 px-5 bg-zinc-100  dark:bg-gray-600 rounded-md w-full flex justify-between items-center">
           <span className="dark:text-white">Kalkış: {departure}</span>

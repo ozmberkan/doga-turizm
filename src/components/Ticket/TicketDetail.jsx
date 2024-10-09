@@ -13,6 +13,7 @@ import { PiTelevisionSimple } from "react-icons/pi";
 import { FaWifi } from "react-icons/fa6";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AiOutlineThunderbolt } from "react-icons/ai";
+import { nanoid } from "nanoid";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const TicketDetail = ({ ticket }) => {
     arrival,
     price,
     date,
+    time,
     seats,
     tv,
     food,
@@ -33,15 +35,8 @@ const TicketDetail = ({ ticket }) => {
 
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatToSelect, setSeatToSelect] = useState(null);
+  // cinsiyet seçimi
   const [showGenderModal, setShowGenderModal] = useState(false);
-
-  const parseDate = (dateStr) => {
-    const formattedStr = dateStr.replace(/ at /, " ").replace(/ UTC.*$/, "");
-    return moment(formattedStr, "MMMM DD, YYYY hh:mm:ss A");
-  };
-
-  const editedDate = parseDate(date);
-  const formattedDate = editedDate.format("DD.MM.YYYY HH:mm");
 
   const handleSeatClick = (seat) => {
     if (selectedSeats.length >= 2) {
@@ -53,9 +48,10 @@ const TicketDetail = ({ ticket }) => {
   };
 
   const handleGenderSelect = (gender) => {
+    const { isAvailable, ...restSeatProps } = seatToSelect;
+    setSelectedSeats([...selectedSeats, { ...restSeatProps, gender }]);
     setShowGenderModal(false);
     setSeatToSelect(null);
-    setSelectedSeats([...selectedSeats, { ...seatToSelect, gender: gender }]);
   };
 
   const buyToTicket = async () => {
@@ -74,14 +70,21 @@ const TicketDetail = ({ ticket }) => {
       toast.error("Lütfen en az bir koltuk seçiniz!");
       return;
     }
-
     const finalTicket = {
-      ...ticket,
+      id: ticket.id,
+      ticketID: nanoid(),
+      pnr,
+      departure,
+      arrival,
+      date,
+      time,
+      price,
       seats: selectedSeats.map((selectedSeat) => ({
         ...selectedSeat,
         isAvailable: false,
       })),
     };
+
     dispatch(setFinalTicket(finalTicket));
     navigate("/payment");
   };
@@ -106,7 +109,7 @@ const TicketDetail = ({ ticket }) => {
           </span>
           <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
             <CiCalendarDate size={20} />
-            {formattedDate}
+            {date} {time}
           </span>
           {tv && (
             <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
@@ -131,7 +134,7 @@ const TicketDetail = ({ ticket }) => {
         </div>
         <div className="flex justify-end items-center gap-x-5 w-[300px]">
           <button
-            onClick={() => buyToTicket(ticket)}
+            onClick={buyToTicket}
             className="bg-[#4FC647] sm:w-auto w-full text-white px-4 py-2 text-xl rounded-md"
           >
             Bileti Seç

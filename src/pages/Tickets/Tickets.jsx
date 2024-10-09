@@ -4,7 +4,6 @@ import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
 import TicketDetail from "../../components/Ticket/TicketDetail";
-import moment from "moment";
 
 const Tickets = () => {
   const filterCriteria = useSelector((store) => store.filter.filterCriteria);
@@ -18,14 +17,10 @@ const Tickets = () => {
   }));
 
   const filteredTickets = data?.filter((ticket) => {
-    const formattedTicketDate = moment(ticket.date, "MMMM DD, YYYY").format(
-      "DD.MM.YYYY"
-    );
-
     return (
       ticket.departure === filterCriteria.departure &&
       ticket.arrival === filterCriteria.arrival &&
-      formattedTicketDate === filterCriteria.date
+      ticket.date === filterCriteria.date
     );
   });
 
