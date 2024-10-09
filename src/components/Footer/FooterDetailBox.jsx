@@ -11,7 +11,6 @@ const FooterDetailBox = ({ children }) => {
       <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded-md sm:p-12 p-5 border w-full">
         {children}
       </div>
-      <Footer />
     </div>
   );
 };

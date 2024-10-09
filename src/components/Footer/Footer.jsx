@@ -1,68 +1,7 @@
-import {
-  socialMedia,
-  footerAbout,
-  footerSSS,
-  footerWith,
-  downloadImage,
-} from "../../data/data";
-import LogoBlack from "../../assets/logos/LogoBlack.png";
-import LogoWhite from "../../assets/logos/Logo.png";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from "react";
 
-const FooterSection = ({ title, items }) => (
-  <div className="flex flex-col gap-y-5 sm:items-start items-center py-5 w-full sm:w-auto sm:py-0 border-b sm:border-none">
-    <h1 className="text-md underline">{title}</h1>
-    <ul className="flex flex-col items-start gap-y-2 w-full ">
-      {items.map((item, i) => (
-        <Link
-          to={item.to}
-          key={i}
-          className="p-2 text-sm bg-white dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 rounded-md border w-full sm:min-w-[160px] flex gap-x-2 items-center cursor-pointer hover:bg-hoverPrimary hover:text-white transition-colors duration-200"
-        >
-          {item.icon && <item.icon size={18} />}
-          {item.title || item.name}
-        </Link>
-      ))}
-    </ul>
-  </div>
-);
-
-const Footer = ({ footerWidth }) => {
-  const { theme } = useSelector((store) => store.theme);
-
-  return (
-    <div
-      className={`w-full sm:bg-white dark:bg-gray-800 dark:border-none dark:text-white rounded-t-xl mt-5 border shadow-xl sm:${footerWidth} mx-auto p-12 pb-0 flex flex-col gap-y-6 `}
-    >
-      <div className="sm:grid sm:grid-cols-5 flex flex-col justify-center items-center sm:place-items-start ">
-        <div className="flex flex-col">
-          <img
-            src={theme === "light" ? LogoBlack : LogoWhite}
-            alt=""
-            className="w-44 mb-3"
-          />
-          <div className="flex flex-col gap-y-3">
-            {downloadImage.map((dItem, i) => (
-              <img
-                key={i}
-                src={dItem}
-                alt=""
-                className="w-40 hover:scale-110 transition-all duration-700 cursor-pointer"
-              />
-            ))}
-          </div>
-        </div>
-        <FooterSection title="Bizi Keşfet" items={footerAbout} />
-        <FooterSection title="Yardıma İhtiyacın Var Mı?" items={footerSSS} />
-        <FooterSection title="İş Ortağımız Ol" items={footerWith} />
-        <FooterSection title="Sosyal Medya" items={socialMedia} />
-      </div>
-      <div className="col-span-1 sm:col-span-5 text-zinc-500 dark:text-white text-left  text-sm dark:border-gray-600 border-t py-3 mb-auto ">
-        © 2024 Doğa Turizm. All rights reserved.
-      </div>
-    </div>
-  );
+const Footer = () => {
+  return <div className="mt-auto flex  bg-red-500 w-full">Footer</div>;
 };
 
 export default Footer;

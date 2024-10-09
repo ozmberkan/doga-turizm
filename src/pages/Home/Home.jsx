@@ -25,7 +25,7 @@ const Home = () => {
         <Features />
         <Cities />
         <Announcement />
-        <Footer footerWidth={"w-2/3"} />
+        <Footer />
       </div>
       {user?.hasBeenLogin === false && (
         <DiscountModal

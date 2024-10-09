@@ -203,7 +203,7 @@ export const features = [
     id: 3,
     icon: FaUsersViewfinder,
     title: "Müşteri Memnuniyeti",
-    description: "Müşteri memnuniyeti odaklı hizmet.",
+    description: "Müşteri memnuniyeti hizmeti.",
   },
   {
     id: 4,

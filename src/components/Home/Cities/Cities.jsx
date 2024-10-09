@@ -11,7 +11,7 @@ const Cities = () => {
       <h1 className="text-2xl text-zinc-700 font-semibold dark:text-white">
         Şehir Rehberi
       </h1>
-      <div className="sm:grid sm:grid-cols-3 flex flex-col gap-8 ">
+      <div className="sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex flex-col gap-8 ">
         <Link
           to="/istanbul"
           className="col-span-2 relative hover:scale-105 transition-all duration-500 shadow-md"

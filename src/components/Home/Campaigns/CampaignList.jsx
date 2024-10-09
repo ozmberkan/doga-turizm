@@ -38,7 +38,7 @@ const CampaignList = () => {
   }
 
   return (
-    <div className="w-full py-5 font-rubik grid grid-cols-1 gap-5 sm:grid-cols-3 ">
+    <div className="w-full py-5 font-rubik grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-5 ">
       {campaigns?.map((campaign) => (
         <CampaignBox key={campaign.id} campaign={campaign} />
       ))}
