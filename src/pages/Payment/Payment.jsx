@@ -1,17 +1,15 @@
 import { ConfigProvider, Steps } from "antd";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import moment from "moment";
-import React, { useState } from "react";
-import { FaFemale, FaMale } from "react-icons/fa";
-import { MdEventSeat, MdPayment } from "react-icons/md";
+import { useState } from "react";
+import { MdPayment } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
+import { toast } from "react-toastify";
 import { db } from "~/firebase/firebaseConfig";
 import { setUpdate } from "~/redux/slices/userSlice";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
+import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import PaymentTicket from "./PaymentTicket/PaymentTicket";
 
 const Payment = () => {
@@ -22,12 +20,42 @@ const Payment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [coupon, setCoupon] = useState("");
+
   const { seats, price } = finalTicket;
+  const [discountPrice, setDiscountPrice] = useState(price);
 
   if (!finalTicket) {
     toast.error("Bilet bilgisi bulunamadı.");
     navigate("/");
   }
+
+  const applyCoupon = async () => {
+    const filtered = validCoupons.find((c) => c === coupon);
+
+    if (user.emailVerified === false) {
+      toast.error("Önce e-posta doğrulaması yapmalısınız.");
+      return;
+    }
+
+    if (user.usedDiscount === true) {
+      toast.error("Daha önce indirim kullanılmış!");
+      return;
+    } else {
+      await updateDoc(doc(db, "users", user.uid), {
+        usedDiscount: true,
+      });
+      dispatch(setUpdate({ ...user, usedDiscount: true }));
+    }
+
+    if (filtered) {
+      const discountedPrice = price - 50;
+      setDiscountPrice(discountedPrice);
+      toast.success("Kupon başarıyla uygulandı. 50₺ indirim kazandınız.");
+    } else {
+      toast.error("Geçersiz kupon kodu.");
+    }
+  };
 
   const paymentDone = async () => {
     if (!user || !finalTicket) {
@@ -54,7 +82,8 @@ const Payment = () => {
           : seat;
       });
 
-      const priceValid = user.emailVerified === true ? finalTicket.price : 650;
+      const priceValid =
+        user.emailVerified === true ? discountPrice || finalTicket.price : 650;
 
       await updateDoc(ticketRef, {
         seats: updatedSeats,
@@ -149,12 +178,11 @@ const Payment = () => {
                 maxLength={3}
                 className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600 "
               />
-              {/* <div className="w-full  col-span-2">
+              <div className="w-full  col-span-2">
                 <form className="flex flex-1 gap-x-3">
                   <input
                     className="px-4 py-2 rounded-md border focus:ring-2 transition-all ring-offset-1 ring-primary outline-none dark:bg-transparent dark:border-gray-600 dark:ring-gray-600 dark:text-white dark:ring-offset-transparent"
                     placeholder="İndirim Kuponu"
-                    value={coupon}
                     onChange={(e) => setCoupon(e.target.value)}
                   />
                   <button
@@ -165,13 +193,13 @@ const Payment = () => {
                     <TbRosetteDiscountCheckFilled size={25} />
                   </button>
                 </form>
-              </div> */}
+              </div>
 
               <p className="flex justify-between items-center w-full dark:bg-gray-700 bg-white col-span-2 py-2 px-5 rounded-md">
                 Toplam Tutar
                 <span className="text-primary dark:text-white font-semibold text-2xl">
                   {user.emailVerified === true
-                    ? price * seats.length
+                    ? discountPrice * seats.length
                     : 650 * seats.length}
                   ₺
                 </span>
