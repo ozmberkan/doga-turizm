@@ -71,7 +71,7 @@ const TicketsTab = () => {
         <div className="overflow-x-auto">
           <table className="border dark:border-gray-700 w-full mt-5">
             <thead className="bg-zinc-100 dark:bg-gray-900 dark:text-white sticky top-0">
-              <tr className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center p-4 gap-5">
+              <tr className="sm:grid flex sm:grid-cols-12 grid-cols-1 place-items-center p-4 gap-5">
                 {tableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
                     {title.title}
@@ -102,13 +102,14 @@ const TicketsTab = () => {
               {filteredTickets?.map((ticket) => (
                 <tr
                   key={ticket.id}
-                  className="sm:grid flex sm:grid-cols-11 grid-cols-1 place-items-center dark:text-white  p-4 gap-5"
+                  className="sm:grid flex sm:grid-cols-12 grid-cols-1 place-items-center dark:text-white  p-4 gap-5"
                 >
                   <td className="w-full">{ticket.id}</td>
                   <td>{ticket.pnr}</td>
                   <td>{ticket.departure}</td>
                   <td>{ticket.arrival}</td>
                   <td>{ticket.date}</td>
+                  <td>{ticket.time}</td>
                   <td>{ticket.price}</td>
                   <td>{ticket.wifi ? "Var" : "Yok"}</td>
                   <td>{ticket.electric ? "Var" : "Yok"}</td>

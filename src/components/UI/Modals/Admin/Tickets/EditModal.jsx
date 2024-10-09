@@ -11,6 +11,7 @@ const EditModal = ({ setIsModal, selectedTicket }) => {
     departure: selectedTicket.departure,
     arrival: selectedTicket.arrival,
     date: selectedTicket.date,
+    time: selectedTicket.time,
     price: selectedTicket.price,
     wifi: selectedTicket.wifi,
     electric: selectedTicket.electric,

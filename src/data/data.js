@@ -59,6 +59,7 @@ export const tableTitles = [
   { id: 3, title: "KALKIŞ", key: "departure", sortable: true },
   { id: 4, title: "VARIŞ", key: "arrival", sortable: true },
   { id: 5, title: "TARİH", key: "date", sortable: true },
+  { id: 12, title: "SAAT", key: "time", sortable: true },
   { id: 6, title: "FİYAT", key: "price", sortable: true },
   { id: 7, title: "WIFI", key: "wifi", sortable: true },
   { id: 8, title: "ELEKTRİK", key: "electric", sortable: true },
@@ -307,6 +308,11 @@ export const ticketEditInput = [
     type: "text",
     name: "date",
     label: "Tarih",
+  },
+  {
+    type: "text",
+    name: "time",
+    label: "Saat",
   },
   {
     type: "text",
