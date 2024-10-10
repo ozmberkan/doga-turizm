@@ -1,4 +1,5 @@
-<img src="https://github.com/user-attachments/assets/2447bc42-49f9-4336-9a34-bd8198f82fb0" style="width:300px"/>
+
+![LogoBlack](https://github.com/user-attachments/assets/4dad03b4-bf83-4e36-9bbf-7b000fe49c2f)
 
 
 ## İçindekiler
