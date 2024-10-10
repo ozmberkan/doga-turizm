@@ -66,7 +66,7 @@ const Ticket = ({ ticket }) => {
             <span className="flex items-center gap-x-1">
               <BiUser /> {user.displayName}
             </span>
-            <span className="flex items-center gap-x-1">
+            <span className="flex items-center gap-x-1 ">
               <MdEventSeat />
               {ticket.seats.map((seatItem) => (
                 <span key={seatItem.number}>

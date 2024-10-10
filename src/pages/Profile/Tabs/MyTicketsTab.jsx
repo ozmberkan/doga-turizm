@@ -14,7 +14,7 @@ const MyTicketsTab = () => {
           Aktif Biletlerim
         </h1>
       </div>
-      <div className="sm:grid sm:grid-cols-2 sm:w-full sm:gap-5 flex flex-col gap-y-5 w-full">
+      <div className="sm:grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:w-full sm:gap-5 flex flex-col gap-y-5 w-full">
         {user?.ownedTickets?.length > 0 ? (
           user?.ownedTickets?.map((ticket, i) => (
             <Ticket key={i} ticket={ticket} />

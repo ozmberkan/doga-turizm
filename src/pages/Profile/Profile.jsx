@@ -39,7 +39,9 @@ const Profile = () => {
               </Tab>
               <Tab className="w-full rounded-md py-1 px-5 flex justify-center text-zinc-400 data-[selected]:text-zinc-800  items-center gap-x-1.5 data-[selected]:bg-white dark:data-[selected]:bg-gray-800 dark:text-white data-[selected]:shadow-md outline-none transition-colors duration-300">
                 <BsTicketDetailedFill />
-                <span className="hidden sm:flex">Geçmiş Biletlerim</span>
+                <span className="hidden sm:flex md:whitespace-nowrap">
+                  Geçmiş Biletlerim
+                </span>
               </Tab>
             </TabList>
             <TabPanels>

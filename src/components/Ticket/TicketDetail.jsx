@@ -92,42 +92,42 @@ const TicketDetail = ({ ticket }) => {
   return (
     <div className="w-full rounded-xl p-5 flex gap-x-5 bg-white dark:bg-gray-800 dark:border-gray-700 border flex-col gap-y-5">
       <div className="flex justify-start items-center sm:flex-row flex-col gap-y-2 ">
-        <div className="flex justify-start items-center gap-x-5 sm:text-base text-xs gap-y-2 w-full flex-col sm:flex-row ">
-          <span className="bg-[#4FC647] dark:bg-gray-950 w-full sm:w-auto text-green-100 p-2 sm:p-2 rounded-md">
+        <div className="flex justify-start items-center lg:gap-x-5 md:gap-x-1 sm:text-base text-xs gap-y-2 w-full flex-col sm:flex-row ">
+          <span className="bg-[#4FC647] dark:bg-gray-950 w-full sm:w-auto text-green-100 lg:text-base md:text-xs p-2 sm:p-2 rounded-md">
             PNR{pnr}
           </span>
-          <span className="bg-[#4FC647] dark:bg-gray-950 w-full sm:w-auto text-green-100 p-2 sm:p-2 rounded-md">
+          <span className="bg-[#4FC647] dark:bg-gray-950 w-full sm:w-auto text-green-100 p-2 sm:p-2 rounded-md lg:text-base md:text-xs">
             {user && user.emailVerified === true ? price : "650"}₺
           </span>
-          <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+          <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
             <CiLocationOn size={20} />
             {departure}
           </span>
-          <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+          <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
             <CiLocationOn size={20} />
             {arrival}
           </span>
-          <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+          <span className="flex items-center gap-x-1 md:whitespace-nowrap text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
             <CiCalendarDate size={20} />
             {date} {time}
           </span>
           {tv && (
-            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
               <PiTelevisionSimple /> Televizyon
             </span>
           )}
           {wifi && (
-            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
               <FaWifi /> Wi-Fi
             </span>
           )}
           {food && (
-            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
               <IoFastFoodOutline /> İkram
             </span>
           )}
           {electric && (
-            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
+            <span className="flex items-center gap-x-1 text-zinc-700/90 dark:bg-gray-900 dark:text-white lg:text-base md:text-xs bg-zinc-100 w-full sm:w-auto p-2 rounded-md">
               <AiOutlineThunderbolt /> Elektrik
             </span>
           )}
@@ -135,7 +135,7 @@ const TicketDetail = ({ ticket }) => {
         <div className="flex justify-end items-center gap-x-5 w-[300px]">
           <button
             onClick={buyToTicket}
-            className="bg-[#4FC647] sm:w-auto w-full text-white px-4 py-2 text-xl rounded-md"
+            className="bg-[#4FC647] sm:w-auto w-full text-white lg:px-4 md:px-2 py-2 text-xl lg:text-base md:text-xs rounded-md"
           >
             Bileti Seç
           </button>
@@ -147,7 +147,7 @@ const TicketDetail = ({ ticket }) => {
           <span className="w-12 h-full flex sm:flex-row flex-col justify-center items-end py-6 dark:text-white">
             <TbSteeringWheel size={40} />
           </span>
-          <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-2">
+          <div className="w-full h-full grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 place-items-center gap-2">
             {seats?.map((seat) => {
               const selectedSeat = selectedSeats.find(
                 (s) => s.number === seat.number
