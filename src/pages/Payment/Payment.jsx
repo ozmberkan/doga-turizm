@@ -15,7 +15,7 @@ import PaymentTicket from "./PaymentTicket/PaymentTicket";
 const Payment = () => {
   const { finalTicket } = useSelector((store) => store.finalTicket);
   const { user } = useSelector((store) => store.user);
-  const { theme } = useSelector((store) => store.theme.theme);
+  const { theme } = useSelector((store) => store.theme);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -112,30 +112,28 @@ const Payment = () => {
         })
       );
 
+      toast.success("Ödeme başarılı. Biletleriniz profilinize eklendi.");
+
       navigate("/profile");
     } catch (error) {
       console.log("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
     }
   };
 
-  const configTheme = {
-    token: {
-      colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
-      colorText: theme === "dark" ? "#E5E5E5" : "#000",
-    },
-  };
-
   return (
     <>
-      <div
-        className={`w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik ${
-          theme === "dark" ? "bg-gray-900 text-white" : " text-black"
-        }`}
-      >
-        <ConfigProvider theme={configTheme}>
+      <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
+              colorText: theme === "dark" ? "#E5E5E5" : "#000",
+            },
+          }}
+        >
           <Steps
             size="large"
-            current={4}
+            current={2}
             items={[
               { title: "Sefer Seçimi" },
               { title: "Koltuk Seçimi" },
@@ -195,7 +193,7 @@ const Payment = () => {
                 </form>
               </div>
 
-              <p className="flex justify-between items-center w-full dark:bg-gray-700 bg-white col-span-2 py-2 px-5 rounded-md">
+              <p className="flex justify-between items-center w-full dark:bg-gray-700 dark:text-white bg-white col-span-2 py-2 px-5 rounded-md">
                 Toplam Tutar
                 <span className="text-primary dark:text-white font-semibold text-2xl">
                   {user.emailVerified === true
@@ -206,7 +204,7 @@ const Payment = () => {
               </p>
               <Link
                 onClick={paymentDone}
-                className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border dark:border-gray-700 dark:hover:bg-gray-600 bg-primary dark:bg-gray-700 text-white hover:bg-primary/90 transition-all"
+                className="w-full flex items-center gap-x-3 col-start-1 col-end-3 p-4 rounded-md border dark:border-gray-700 dark:hover:bg-gray-700 bg-primary dark:bg-gray-800 text-white hover:bg-primary/90 transition-all"
               >
                 <MdPayment size={24} /> Ödemeyi Gerçekleştir
               </Link>

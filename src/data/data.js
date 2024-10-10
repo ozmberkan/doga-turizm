@@ -127,6 +127,14 @@ export const footerSSS = [
 export const footerWith = [
   { title: "Otobüsünü Kirala", to: "/rent" },
   { title: "Şoförümüz ol", to: "/hiring" },
+  { title: "Hizmetlerimiz", to: "/services" },
+];
+
+export const footerSocial = [
+  { label: "Instagram" },
+  { label: "Facebook" },
+  { label: "Twitter" },
+  { label: "LinkedIn" },
 ];
 
 export const menus = [
@@ -822,4 +830,10 @@ export const citiesData = [
   { id: 2, label: "Balıkesir", value: "Balıkesir" },
   { id: 3, label: "Bursa", value: "Bursa" },
   { id: 4, label: "Çanakkale", value: "Çanakkale" },
+];
+
+export const myProfileInputs = [
+  { id: 1, label: "Ad Soyad", name: "displayName", type: "text" },
+  { id: 2, label: "Cep Telefonu", name: "phoneNumber", type: "text" },
+  { id: 3, label: "E-Posta", name: "email", type: "email" },
 ];

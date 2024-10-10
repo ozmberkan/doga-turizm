@@ -8,8 +8,8 @@ const PaymentTicket = ({ finalTicket }) => {
     <div className="sm:w-full w-full rounded-xl flex flex-col ">
       <div className="w-full dark:bg-gray-700 bg-white border dark:border-gray-600 p-3 place-items-center flex flex-col gap-y-2 rounded-xl gap-5">
         <div className="w-full py-2 bg-zinc-100 dark:bg-gray-600 rounded-md flex justify-between items-center px-5">
-          <span>PNR{pnr}</span>
-          <span>
+          <span className="dark:text-white">PNR{pnr}</span>
+          <span className="dark:text-white">
             {date} {time}
           </span>
         </div>
@@ -17,11 +17,11 @@ const PaymentTicket = ({ finalTicket }) => {
           <span className="dark:text-white">Kalkış: {departure}</span>
           <span className="dark:text-white">Varış: {arrival}</span>
         </div>
-        <div className="w-full px-2 py-3 dark:bg-gray-600 bg-zinc-100 grid grid-cols-2 gap-5">
+        <div className="w-full px-2 py-3 dark:bg-gray-600 rounded-md bg-zinc-100 grid grid-cols-2 gap-5">
           {seats?.map((seatItem, i) => (
             <span
               key={i}
-              className="flex items-center justify-center gap-x-2 p-2 rounded-md dark:bg-gray-800 bg-zinc-200"
+              className="flex items-center justify-center gap-x-2 p-2 rounded-md dark:bg-gray-500 dark:text-white bg-zinc-200"
             >
               <MdEventSeat /> {seatItem.number} - {seatItem.gender}
               {seatItem.gender === "Erkek" ? (

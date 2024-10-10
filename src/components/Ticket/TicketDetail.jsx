@@ -144,7 +144,7 @@ const TicketDetail = ({ ticket }) => {
 
       <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-5">
         <div className="w-full p-3 border bg-[#f9f9f9] dark:bg-gray-900 dark:border-gray-800 sm:h-[200px] flex-col sm:flex-row rounded-md flex justify-start items-center gap-x-5">
-          <span className="w-12 h-full flex sm:flex-row flex-col justify-center items-end py-6">
+          <span className="w-12 h-full flex sm:flex-row flex-col justify-center items-end py-6 dark:text-white">
             <TbSteeringWheel size={40} />
           </span>
           <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-2">
@@ -190,7 +190,9 @@ const TicketDetail = ({ ticket }) => {
           <div className="bg-white dark:bg-gray-800 p-5 rounded-lg flex flex-col gap-y-5 sm:w-[500px] w-auto">
             <div className="flex flex-col">
               <div className="flex justify-between items-center">
-                <h1 className="text-lg font-semibold">Cinsiyet Seçin</h1>
+                <h1 className="text-lg font-semibold dark:text-white">
+                  Cinsiyet Seçin
+                </h1>
                 <span
                   onClick={() => setShowGenderModal(false)}
                   className="p-2 rounded-md bg-zinc-300 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:text-white cursor-pointer hover:bg-zinc-200 transition-colors text-zinc-700 flex justify-center items-center "

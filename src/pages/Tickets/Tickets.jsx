@@ -26,34 +26,34 @@ const Tickets = () => {
 
   const configTheme = {
     token: {
-      colorPrimary: theme === "dark" ? "#202020" : "#4FC647",
+      colorPrimary: theme === "dark" ? "#4FC647" : "#4FC647",
       colorText: theme === "dark" ? "#E5E5E5" : "#000",
     },
   };
 
   return (
-    <div
-      className={`w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik ${
-        theme === "dark" ? "bg-gray-900 text-white" : ""
-      }`}
-    >
+    <div className="w-full h-screen container mx-auto p-7 flex flex-col gap-y-5 font-rubik">
       <ConfigProvider theme={configTheme}>
         <Steps
           size="large"
-          current={2}
+          current={1}
           items={[
             {
               title: "Sefer Seçimi",
+              status: "finish",
             },
             {
               title: "Koltuk Seçimi",
+              status: "process",
             },
             {
               title: "Ödeme Bilgileri",
+              status: "wait",
             },
           ]}
         />
       </ConfigProvider>
+
       <div className="flex justify-center items-center p-3 w-full flex-col gap-y-12">
         {filteredTickets?.length > 0 ? (
           filteredTickets?.map((ticket) => (

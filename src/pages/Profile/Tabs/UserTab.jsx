@@ -10,6 +10,7 @@ import { updateUserProfile } from "~/redux/slices/userSlice";
 import { FiUser } from "react-icons/fi";
 import { FaRegSave } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import { myProfileInputs } from "~/data/data";
 
 const UserTab = () => {
   const dispatch = useDispatch();
@@ -79,28 +80,6 @@ const UserTab = () => {
     }
   };
 
-  const renderInputField = (label, name, value) => (
-    <div className="flex flex-col gap-y-2">
-      <label className="text-xs text-zinc-500/60 dark:text-white">
-        {label}
-      </label>
-      <div className="flex gap-x-1.5">
-        <input
-          type="text"
-          name={name}
-          className={`rounded-md border dark:border-gray-700 px-6 py-2 outline-none w-full ${
-            isEditMode
-              ? "bg-white dark:bg-gray-800 dark:text-white"
-              : "bg-[#f9f9f9] dark:bg-gray-700 dark:text-white"
-          }`}
-          value={value || ""}
-          onChange={handleChange}
-          disabled={!isEditMode}
-        />
-      </div>
-    </div>
-  );
-
   return (
     <div className="p-5  rounded-md dark:border-gray-700 border flex flex-col gap-y-5 relative flex-grow">
       <div className="flex justify-between sm:items-center items-baseline">
@@ -135,21 +114,25 @@ const UserTab = () => {
         )}
       </div>
       <form className="grid sm:grid-cols-2 grid-cols-1 gap-5 ">
-        {user.photoURL && (
-          <img
-            src={user.photoURL}
-            className="w-12 h-12 rounded-md border mt-auto"
-          />
-        )}
-        {renderInputField("Ad Soyad", "displayName", profileData.displayName)}
-        {renderInputField(
-          "Cep Telefonu",
-          "phoneNumber",
-          profileData.phoneNumber
-            ? profileData.phoneNumber
-            : "Cep telefonu mevcut değil!"
-        )}
-        {renderInputField("E-Posta", "email", profileData.email)}
+        {myProfileInputs.map((input) => (
+          <div className="flex flex-col gap-y-2">
+            <label className="text-xs text-zinc-500/60 dark:text-white">
+              {input.label}
+            </label>
+            <input
+              type={input.type}
+              name={input.name}
+              value={`${profileData[input.name]}`}
+              onChange={handleChange}
+              disabled={!isEditMode}
+              className={`rounded-md border dark:border-gray-700 px-6 py-2 outline-none w-full ${
+                isEditMode
+                  ? "bg-white dark:bg-gray-800 dark:text-white"
+                  : "bg-[#f9f9f9] dark:bg-gray-700 dark:text-white"
+              }`}
+            />
+          </div>
+        ))}
 
         <div className="w-full flex flex-col gap-y-2">
           <label className="text-xs text-zinc-500/60 dark:text-white">
