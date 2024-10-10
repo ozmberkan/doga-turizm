@@ -54,7 +54,7 @@ const Tickets = () => {
         />
       </ConfigProvider>
 
-      <div className="flex justify-center items-center p-3 w-full flex-col gap-y-12">
+      <div className="flex justify-center items-center p-3 w-full flex-col gap-y-12 ">
         {filteredTickets?.length > 0 ? (
           filteredTickets?.map((ticket) => (
             <TicketDetail key={ticket.id} ticket={ticket} />

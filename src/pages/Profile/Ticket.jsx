@@ -9,6 +9,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { IoQrCodeSharp } from "react-icons/io5";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -92,18 +93,26 @@ const Ticket = ({ ticket }) => {
           </div>
         </div>
         <div className="w-full bg-[#E6F7E6]/25 dark:bg-gray-900 p-4  rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
-          <div className="flex gap-x-2">
+          <div className="flex gap-x-2 sm:justify-between md:justify-between lg:justify-start items-center w-full">
             <button
               onClick={() => deleteTicket(ticketID)}
-              className="flex items-center bg-red-100 text-red-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
+              className="flex items-center w-full  justify-center bg-red-100 text-red-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
-              <MdCancel /> İptal Et
+              <MdCancel /> <span className="hidden sm:flex">İptal</span>
             </button>
             <Link
               to="/contact"
-              className="flex items-center bg-blue-100 text-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
+              className="flex items-center w-full  justify-center bg-blue-100 text-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
-              <IoHelp /> Yardım
+              <IoHelp />
+              <span className="hidden sm:flex">Yardım</span>
+            </Link>
+            <Link
+              to={`/mobile-ticket/${ticketID}`}
+              className="flex items-center w-full  justify-center bg-orange-100 text-orange-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
+            >
+              <IoQrCodeSharp />{" "}
+              <span className="hidden sm:flex">Mobil Bilet</span>
             </Link>
           </div>
         </div>

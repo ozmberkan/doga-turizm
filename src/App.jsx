@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import HomeRoutes from "./routes/HomeRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 import Error from "./pages/Error/Error";
-import "react-toastify/dist/ReactToastify.css";
+import QRRoutes from "./routes/QRRoutes";
 import { useSelector } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const { theme } = useSelector((store) => store.theme);
@@ -20,6 +21,7 @@ const App = () => {
   const router = createBrowserRouter([
     HomeRoutes(),
     AdminRoutes(),
+    QRRoutes(),
     { path: "*", element: <Error /> },
   ]);
 

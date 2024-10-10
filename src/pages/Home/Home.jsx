@@ -25,6 +25,7 @@ const Home = () => {
         <Features />
         <Cities />
         <Announcement />
+        <Footer />
       </div>
       {user?.hasBeenLogin === false && (
         <DiscountModal

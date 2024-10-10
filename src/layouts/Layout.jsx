@@ -10,7 +10,6 @@ const Layout = () => {
       <ToastContainer position="top-center" autoClose={700} />
       <Navbar />
       <Outlet />
-      <Footer />
     </FlexContainer>
   );
 };
