@@ -4,7 +4,6 @@
 ## İçindekiler
 - [Kurulum](#kurulum)
 - [Kullanılan Paketler](#Kullanılan-Paketler)
-- [Renk Referansı](#Renk-Referansı)
 
 <hr/>
 
@@ -30,33 +29,24 @@ npm run dev
 
 Bu projede aşağıdaki paketler kullanılmıştır:
 
-- @headlessui/react: ^2.1.2
-- @hookform/resolvers: ^3.9.0
-- @reduxjs/toolkit: ^2.2.7
-- antd: ^5.20.1
-- firebase: ^10.13.0
-- ldrs: ^1.0.2
-- lodash: ^4.17.21
-- moment: ^2.30.1
-- nanoid: ^5.0.7
-- react: ^18.3.1
-- react-dom: ^18.3.1
-- react-firebase-hooks: ^5.1.1
-- react-hook-form: ^7.52.2
-- react-icons: ^5.2.1
-- react-redux: ^9.1.2
-- react-router-dom: ^6.26.1
-- react-toastify: ^10.0.5
-- typewriter-effect: ^2.21.0
-- zod: ^3.23.8
+- @headlessui/react
+- @hookform/resolver
+- @reduxjs/toolki
+- antd
+- firebase
+- ldrs
+- lodash
+- moment
+- nanoid
+- react
+- react-dom
+- react-firebase-hooks
+- react-hook-form
+- react-icons
+- react-redux
+- react-router-dom
+- react-toastify
+- typewriter-effect
+- zod
 
-
-## Renk Referansı
-
-| Renk             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| yakında | ![#3333](https://via.placeholder.com/10/33333?text=+) #333 |
-| yakında | ![#3333](https://via.placeholder.com/10/33333?text=+) #333 |
-| yakında | ![#3333](https://via.placeholder.com/10/33333?text=+) #333 |
-| yakında | ![#3333](https://via.placeholder.com/10/33333?text=+) #333 | 
 
