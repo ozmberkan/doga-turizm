@@ -15,7 +15,7 @@ const Footer = () => {
   const { theme } = useSelector((store) => store.theme);
 
   return (
-    <div className="bg-white dark:bg-gray-900 dark:border-gray-700 flex flex-col pt-12 px-4 md:px-12 border-t mt-12">
+    <div className="bg-white dark:bg-gray-900 dark:border-gray-700 flex flex-col pt-12 px-4 md:px-12 border-t mt-12 w-full">
       <div className="flex lg:justify-between sm:justify-center gap-y-5 py-5 border-b dark:border-gray-700 container mx-auto w-full md:w-2/3 flex-col lg:flex-row items-center">
         <img
           src={theme === "dark" ? LogoDark : LogoLight}
