@@ -58,7 +58,7 @@ const Invoice = () => {
       >
         <div className="w-full flex justify-between items-center border-b  py-2">
           <img
-            src={theme === "dark" ? LogoDark : LogoLight}
+            src={LogoLight}
             className="w-32 sm:w-44"
           />
           <h1 className="text-black text-xl sm:text-2xl sm:flex hidden ">
