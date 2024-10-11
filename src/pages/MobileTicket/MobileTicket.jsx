@@ -36,18 +36,15 @@ const MobileTicket = () => {
         </p>
         <p className="flex gap-x-1 items-center p-1 border rounded-md w-full px-5 dark:border-gray-700">
           <span className="dark:text-white">
-            {" "}
             <TbTicket />
           </span>
           <span className="text-sm dark:text-white"> PNR{findTicket.pnr}</span>
         </p>
         <p className="flex gap-x-1 items-center p-1 border rounded-md w-full px-5 dark:border-gray-700">
           <span className="dark:text-white">
-            {" "}
             <GoClock />
           </span>
           <span className="text-sm dark:text-white">
-            {" "}
             {findTicket.date} {findTicket.time}
           </span>
         </p>
@@ -57,7 +54,6 @@ const MobileTicket = () => {
               <IoLocationOutline />
             </span>
             <span className="text-sm dark:text-white">
-              {" "}
               {findTicket.departure}
             </span>
           </p>
@@ -73,6 +69,7 @@ const MobileTicket = () => {
         <p className="flex gap-x-1 items-center p-1 border rounded-md w-full dark:border-gray-700">
           {findTicket.seats.map((seat, i) => (
             <span
+              key={i}
               className={`flex gap-x-1 items-center dark:text-white justify-center p-1 w-full  rounded-md ${
                 seat.gender === "Erkek" ? "text-blue-500" : "text-pink-500"
               }
@@ -80,7 +77,7 @@ const MobileTicket = () => {
             >
               <MdOutlineEventSeat />
               {seat.number}
-              <span dark:text-white>{seat.gender}</span>
+              <span className="dark:text-white">{seat.gender}</span>
             </span>
           ))}
         </p>

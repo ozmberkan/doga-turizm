@@ -115,7 +115,7 @@ const UserTab = () => {
       </div>
       <form className="grid sm:grid-cols-2 grid-cols-1 gap-5 ">
         {myProfileInputs.map((input) => (
-          <div className="flex flex-col gap-y-2">
+          <div key={input.id} className="flex flex-col gap-y-2">
             <label className="text-xs text-zinc-500/60 dark:text-white">
               {input.label}
             </label>

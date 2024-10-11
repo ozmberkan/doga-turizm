@@ -177,7 +177,7 @@ const Payment = () => {
                 className="border-primary focus:ring-primary border p-4 rounded-md dark:bg-gray-700 dark:text-white dark:bg-transparent dark:border-gray-600 "
               />
               <div className="w-full  col-span-2">
-                <form className="flex flex-1 gap-x-3">
+                <div className="flex flex-1 gap-x-3">
                   <input
                     className="px-4 py-2 rounded-md border focus:ring-2 transition-all ring-offset-1 ring-primary outline-none dark:bg-transparent dark:border-gray-600 dark:ring-gray-600 dark:text-white dark:ring-offset-transparent"
                     placeholder="İndirim Kuponu"
@@ -190,7 +190,7 @@ const Payment = () => {
                   >
                     <TbRosetteDiscountCheckFilled size={25} />
                   </button>
-                </form>
+                </div>
               </div>
 
               <p className="flex justify-between items-center w-full dark:bg-gray-700 dark:text-white bg-white col-span-2 py-2 px-5 rounded-md">

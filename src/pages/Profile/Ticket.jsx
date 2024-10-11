@@ -1,4 +1,3 @@
-import moment from "moment";
 import { BiUser } from "react-icons/bi";
 import { MdCancel, MdDateRange, MdEventSeat } from "react-icons/md";
 import { FaTurkishLiraSign } from "react-icons/fa6";
@@ -11,40 +10,36 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { IoQrCodeSharp } from "react-icons/io5";
 import { PiInvoice } from "react-icons/pi";
+import { useState } from "react";
+import ConfirmModal from "~/components/UI/Modals/ConfirmModal";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   const { pnr, departure, arrival, price, date, time, seats, ticketID } =
     ticket;
+  const [confirmModal, setConfirmModal] = useState(false);
 
   const deleteTicket = async (ticketID) => {
     try {
       const updatedTickets = user.ownedTickets.filter(
         (ownedTicket) => ownedTicket.ticketID !== ticketID
       );
-
       dispatch(setUpdate({ ...user, ownedTickets: updatedTickets }));
-
       const ticketRef = doc(db, "tickets", ticket.id);
       const ticketDoc = await getDoc(ticketRef);
-
       if (ticketDoc.exists()) {
         const ticketData = ticketDoc.data();
-
         const updatedSeats = ticketData.seats.map((seat) => {
           return {
             number: seat.number,
             isAvailable: true,
           };
         });
-
         await updateDoc(ticketRef, { seats: updatedSeats });
       }
-
       const userRef = doc(db, "users", user.uid);
       await updateDoc(userRef, { ownedTickets: updatedTickets });
-
       toast.success("Bilet başarıyla silindi ve koltuk bilgileri güncellendi.");
     } catch (error) {
       toast.error("Bilet silinirken bir hata oluştu!" + error);
@@ -53,6 +48,12 @@ const Ticket = ({ ticket }) => {
 
   return (
     <div className="w-full border dark:border-gray-900 rounded-xl text-sm sm:text-base flex flex-col">
+      {confirmModal && (
+        <ConfirmModal
+          setConfirmModal={setConfirmModal}
+          onConfirm={() => deleteTicket(ticketID)}
+        />
+      )}
       <div className="w-full h-10 rounded-t-xl bg-primary dark:bg-gray-900 flex justify-between items-center px-4 text-white">
         <span>PNR{pnr}</span>
         <div className="flex gap-x-2">
@@ -96,7 +97,7 @@ const Ticket = ({ ticket }) => {
         <div className="w-full bg-[#E6F7E6]/25 dark:bg-gray-900 p-4  rounded-b-xl flex sm:flex-row flex-col gap-y-4 items-center justify-between gap-x-5">
           <div className="flex gap-x-2 sm:justify-between md:justify-between lg:justify-start items-center w-full">
             <button
-              onClick={() => deleteTicket(ticketID)}
+              onClick={() => setConfirmModal(true)}
               className="flex items-center w-full  justify-center bg-red-100 text-red-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
             >
               <MdCancel /> <span className="hidden sm:flex">İptal</span>

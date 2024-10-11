@@ -10,7 +10,6 @@ import html2canvas from "html2canvas";
 const Invoice = () => {
   const { id } = useParams();
   const { user } = useSelector((store) => store.user);
-  const { theme } = useSelector((store) => store.theme);
 
   const findTicket = user.ownedTickets.find((ticket) => ticket.ticketID === id);
 
@@ -57,10 +56,7 @@ const Invoice = () => {
         id="pdf-content"
       >
         <div className="w-full flex justify-between items-center border-b  py-2">
-          <img
-            src={LogoLight}
-            className="w-32 sm:w-44"
-          />
+          <img src={LogoLight} className="w-32 sm:w-44" />
           <h1 className="text-black text-xl sm:text-2xl sm:flex hidden ">
             e-Fatura
           </h1>

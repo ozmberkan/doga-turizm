@@ -22,8 +22,9 @@ const Footer = () => {
           className="w-[200px] md:w-[300px] object-cover"
         />
         <div className="flex gap-x-5 w-full sm:justify-end justify-center items-center  lg:flex mt-5 lg:mt-0">
-          {downloadImage.map((item) => (
+          {downloadImage.map((item, i) => (
             <img
+              key={i}
               src={item}
               className="w-24 md:w-44 hover:scale-105 transition-all duration-500 cursor-pointer"
             />
