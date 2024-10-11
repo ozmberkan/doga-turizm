@@ -37,7 +37,7 @@ const FilterForm = () => {
 
   return (
     <form
-      className="h-full w-full flex  justify-start items-center sm:items-center gap-y-3 gap-x-5 font-rubik sm:flex-row flex-col"
+      className="h-full w-full flex  justify-start items-center sm:items-center gap-y-3 gap-x-5 font-rubik sm:flex-row flex-col z-10"
       onSubmit={handleSubmit(searchTicket)}
     >
       {InputField.map((input, i) => (
@@ -46,7 +46,7 @@ const FilterForm = () => {
           {input.type === "text" ? (
             <select
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-transparent border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
+              className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-gray-800  border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
                 errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             >
@@ -54,7 +54,7 @@ const FilterForm = () => {
                 <option
                   key={city.id}
                   value={city.value}
-                  className="dark:text-black"
+                  className="dark:text-white"
                 >
                   {city.title}
                 </option>
@@ -64,7 +64,7 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
-              className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-transparent border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
+              className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-gray-800 border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
                 errors[input.name] ? "ring-2 ring-red-500" : ""
               }`}
             />
