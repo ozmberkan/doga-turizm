@@ -86,7 +86,7 @@ const MobileTicket = () => {
         </p>
       </div>
 
-      <div className="flex w-full justify-center items-start h-full bg-primary pt-12 relative overflow-hidden">
+      <div className="flex w-full sm:justify-start sm:px-12 justify-center items-start h-full bg-primary pt-12 relative overflow-hidden">
         <IoQrCodeOutline className="text-green-100/60 rotate-12 text-[250px] absolute z-0 -top-24 -left-24 sm:absolute lg:hidden md:hidden" />
 
         <QRCode

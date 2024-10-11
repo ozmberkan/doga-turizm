@@ -10,6 +10,7 @@ import { db } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { IoQrCodeSharp } from "react-icons/io5";
+import { PiInvoice } from "react-icons/pi";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -113,6 +114,12 @@ const Ticket = ({ ticket }) => {
             >
               <IoQrCodeSharp />{" "}
               <span className="hidden sm:flex">Mobil Bilet</span>
+            </Link>
+            <Link
+              to={`/e-invoice/${ticketID}`}
+              className="flex items-center w-full  justify-center bg-purple-100 text-purple-500 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors px-4 py-2 rounded-md gap-x-2"
+            >
+              <PiInvoice /> <span className="hidden sm:flex">E-Fatura</span>
             </Link>
           </div>
         </div>

@@ -4,6 +4,7 @@ import HomeRoutes from "./routes/HomeRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 import Error from "./pages/Error/Error";
 import QRRoutes from "./routes/QRRoutes";
+import InvoiceRoutes from "./routes/InvoiceRoutes";
 import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,6 +23,7 @@ const App = () => {
     HomeRoutes(),
     AdminRoutes(),
     QRRoutes(),
+    InvoiceRoutes(),
     { path: "*", element: <Error /> },
   ]);
 
