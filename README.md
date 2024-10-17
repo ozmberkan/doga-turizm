@@ -60,10 +60,12 @@ Geliştirme sunucusunu başlatın:
 > ENV Dosyalarına sahip olmadığınız için geliştirme sunucusunda hata alınabilir. Canlı demodan görüntüleme şansı bulabilirsiniz.
 
 ## Ekran Görüntüleri
+![photo1](https://github.com/user-attachments/assets/63836f52-c0b9-46c3-a779-a97b8f8e9330)
+![photo2](https://github.com/user-attachments/assets/8e554897-f75c-43f4-9ee0-a30b11416adc)
+![photo3](https://github.com/user-attachments/assets/c78fb51c-ca1b-4d02-b758-176cfb75da90)
+![photo4](https://github.com/user-attachments/assets/ece12a56-9151-4ef3-836c-09ac41a1214a)
 
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 ## Teşekkür
 
