@@ -14,6 +14,7 @@ import { FaWifi } from "react-icons/fa6";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { nanoid } from "nanoid";
+import { setOpen } from "~/redux/slices/drawerSlice";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -35,7 +36,6 @@ const TicketDetail = ({ ticket }) => {
 
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatToSelect, setSeatToSelect] = useState(null);
-  // cinsiyet seçimi
   const [showGenderModal, setShowGenderModal] = useState(false);
 
   const handleSeatClick = (seat) => {
@@ -62,6 +62,7 @@ const TicketDetail = ({ ticket }) => {
       );
       setTimeout(() => {
         navigate("/");
+        dispatch(setOpen(true));
       }, 1000);
       return;
     }
