@@ -86,7 +86,7 @@ const UsersTab = () => {
                 ))}
               </tr>
             </thead>
-            <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
+            <tbody className="bg-zinc-50/5 overflow-y-auto block w-full divide-y">
               {filteredUsers?.map((user) => (
                 <tr
                   key={user.id}

@@ -4,78 +4,34 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { auth, db } from "~/firebase/firebaseConfig";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
+  users: [],
   isLoading: false,
   isError: false,
   isSuccess: false,
   errorMessage: "",
 };
 
-export const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    reset: (state) => {
-      state.user = null;
-      state.isLoading = false;
-      state.isError = false;
-      state.isSuccess = false;
-      state.errorMessage = "";
-    },
-    updateUserProfile: (state, action) => {
-      if (state.user) {
-        state.user = {
-          ...state.user,
-          ...action.payload,
-        };
-        localStorage.setItem("user", JSON.stringify(state.user));
-      }
-    },
-    setUpdate: (state, action) => {
-      state.user = action.payload;
-      localStorage.setItem("user", JSON.stringify(action.payload));
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(registerService.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
-      })
-      .addCase(registerService.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
-      })
-      .addCase(registerService.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload || "Bir hata oluştu.";
-      })
-      .addCase(loginService.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
-      })
-      .addCase(loginService.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
-      })
-      .addCase(loginService.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload || "Bir hata oluştu.";
-      });
-  },
+export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
+  try {
+    const usersRef = collection(db, "users");
+
+    const usersSnapshot = await getDocs(usersRef);
+
+    const users = usersSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return users;
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export const registerService = createAsyncThunk(
@@ -170,6 +126,83 @@ export const loginService = createAsyncThunk(
     }
   }
 );
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.user = null;
+      state.isLoading = false;
+      state.isError = false;
+      state.isSuccess = false;
+      state.errorMessage = "";
+    },
+    updateUserProfile: (state, action) => {
+      if (state.user) {
+        state.user = {
+          ...state.user,
+          ...action.payload,
+        };
+        localStorage.setItem("user", JSON.stringify(state.user));
+      }
+    },
+    setUpdate: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(registerService.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+      })
+      .addCase(registerService.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      })
+      .addCase(registerService.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload || "Bir hata oluştu.";
+      })
+      .addCase(loginService.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+      })
+      .addCase(loginService.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      })
+      .addCase(loginService.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload || "Bir hata oluştu.";
+      })
+      .addCase(getAllUsers.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.users = action.payload;
+      })
+      .addCase(getAllUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload || "Bir hata oluştu.";
+      });
+  },
+});
 
 export const { reset, updateUserProfile, setUpdate } = userSlice.actions;
 

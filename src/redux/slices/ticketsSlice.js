@@ -19,10 +19,8 @@ export const getAllTickets = createAsyncThunk(
         ...doc.data(),
       }));
 
-      console.log("Veri başarıyla çekildi:", data);
       return data;
     } catch (error) {
-      console.log("Veri çekme hatası:", error);
       throw error;
     }
   }

@@ -224,18 +224,22 @@ export const features = [
 export const adminTabs = [
   {
     id: 1,
-    label: "Biletler",
+    label: "Gösterge Paneli",
   },
   {
     id: 2,
-    label: "Kampanyalar",
+    label: "Biletler",
   },
   {
     id: 3,
-    label: "Duyuru / Yenilikler",
+    label: "Kampanyalar",
   },
   {
     id: 4,
+    label: "Duyuru / Yenilikler",
+  },
+  {
+    id: 5,
     label: "Kullanıcılar",
   },
 ];

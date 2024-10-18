@@ -7,6 +7,7 @@ import QRRoutes from "./routes/QRRoutes";
 import InvoiceRoutes from "./routes/InvoiceRoutes";
 import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import { getAllTickets } from "./redux/slices/ticketsSlice";
 
 const App = () => {
   const { theme } = useSelector((store) => store.theme);
