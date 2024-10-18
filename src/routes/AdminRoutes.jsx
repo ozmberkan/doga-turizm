@@ -18,7 +18,7 @@ const AdminRoutes = () => {
       {
         path: "/admin",
         element:
-          user.admin === true ? (
+          user?.admin === true ? (
             <Suspense fallback={<div>Loading Admin...</div>}>
               <Admin />
             </Suspense>
