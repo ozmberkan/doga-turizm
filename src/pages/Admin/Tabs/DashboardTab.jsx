@@ -45,6 +45,8 @@ const DashboardTab = () => {
     );
   }
 
+
+  
   return (
     <div className="bg-[#F3F4F6] h-[700px] rounded-md lg:p-5  flex flex-col gap-y-5">
       <h1 className="lg:text-4xl text-2xl font-semibold text-zinc-700 lg:text-left text-center">

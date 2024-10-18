@@ -136,7 +136,7 @@ const TicketDetail = ({ ticket }) => {
         <div className="flex justify-end items-center gap-x-5 w-[300px]">
           <button
             onClick={buyToTicket}
-            className="bg-[#4FC647] sm:w-auto w-full text-white lg:px-4 md:px-2 py-2 text-xl lg:text-base md:text-xs rounded-md"
+            className="bg-primary border border-transparent hover:border hover:bg-white hover:text-primary transition-colors hover:border-primary sm:w-auto w-full text-white lg:px-4 md:px-2 py-2 text-xl lg:text-base md:text-xs rounded-md"
           >
             Bileti Seç
           </button>
@@ -187,22 +187,22 @@ const TicketDetail = ({ ticket }) => {
       </div>
 
       {showGenderModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center lg:p-0 p-5">
           <div className="bg-white dark:bg-gray-800 p-5 rounded-lg flex flex-col gap-y-5 sm:w-[500px] w-auto">
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:mb-0 mb-4">
               <div className="flex justify-between items-center">
                 <h1 className="text-lg font-semibold dark:text-white">
                   Cinsiyet Seçin
                 </h1>
                 <span
                   onClick={() => setShowGenderModal(false)}
-                  className="p-2 rounded-md bg-zinc-300 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:text-white cursor-pointer hover:bg-zinc-200 transition-colors text-zinc-700 flex justify-center items-center "
+                  className="lg:p-2 p-1 mb-5 lg:mb-0 rounded-md bg-zinc-300 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:text-white cursor-pointer hover:bg-zinc-200 transition-colors text-zinc-700 flex justify-center items-center "
                 >
                   <IoClose />
                 </span>
               </div>
 
-              <p className="text-sm text-zinc-500">
+              <p className="lg:text-sm text-xs text-zinc-500">
                 Lütfen koltuk seçiminiz sırasında cinsiyetinizi seçiniz.
               </p>
             </div>
