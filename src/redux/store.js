@@ -5,6 +5,7 @@ import finalTicketSlice from "./slices/finalTicketSlice";
 import campaignSlice from "./slices/campaignSlice";
 import drawerSlice from "./slices/drawerSlice";
 import themeSlice from "./slices/themeSlice";
+import ticketsSlice from "./slices/ticketsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     campaigns: campaignSlice,
     drawer: drawerSlice,
     theme: themeSlice,
+    tickets: ticketsSlice,
   },
 });
