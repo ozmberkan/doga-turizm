@@ -14,7 +14,7 @@ import { useEffect } from "react";
 const LoginDrawer = ({ setLogInMode, setForgot }) => {
   const dispatch = useDispatch();
   const { open } = useSelector((store) => store.drawer);
-  const { isSuccess } = useSelector((store) => store.user);
+  const { status } = useSelector((store) => store.user);
 
   const {
     register,
@@ -39,10 +39,10 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (status === "success") {
       toast.success("Giriş Başarılı");
     }
-  }, [isSuccess]);
+  }, [status]);
 
   return (
     <Drawer

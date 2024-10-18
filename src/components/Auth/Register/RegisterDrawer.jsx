@@ -12,7 +12,7 @@ import { useEffect } from "react";
 const RegisterDrawer = ({ setLogInMode }) => {
   const dispatch = useDispatch();
   const { open } = useSelector((store) => store.drawer);
-  const { isSuccess } = useSelector((store) => store.user);
+  const { status } = useSelector((store) => store.user);
 
   const {
     register,
@@ -35,10 +35,10 @@ const RegisterDrawer = ({ setLogInMode }) => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (status === "success") {
       toast.success("Kayıt Başarılı");
     }
-  }, [isSuccess]);
+  }, [status]);
 
   return (
     <Drawer
