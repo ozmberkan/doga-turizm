@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "~/firebase/firebaseConfig";
 import Logo from "~/assets/logos/LogoBlack.png";
+import LogoLight from "~/assets/logos/Logo.png";
 
 const AdminNavbar = () => {
-  const { user } = useSelector((store) => store.user);
+  const { theme } = useSelector((store) => store.theme);
 
   const exit = async () => {
     try {
@@ -25,7 +26,10 @@ const AdminNavbar = () => {
   return (
     <div className="w-full border-b bg-white dark:bg-gray-800 dark:border-gray-700   py-3 px-6 flex justify-between items-center">
       <Link to="/">
-        <img src={Logo} className="lg:w-44 w-32" />
+        <img
+          src={theme === "dark" ? LogoLight : Logo}
+          className="lg:w-44 w-32"
+        />
       </Link>
       <div className="flex items-center gap-x-2 sm:gap-x-5">
         <Link

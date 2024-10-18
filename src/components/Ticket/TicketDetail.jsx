@@ -133,7 +133,7 @@ const TicketDetail = ({ ticket }) => {
             </span>
           )}
         </div>
-        <div className="flex justify-end items-center gap-x-5 w-[300px]">
+        <div className="flex justify-end items-center gap-x-5 lg:w-[300px] w-full">
           <button
             onClick={buyToTicket}
             className="bg-primary border border-transparent hover:border hover:bg-white hover:text-primary transition-colors hover:border-primary sm:w-auto w-full text-white lg:px-4 md:px-2 py-2 text-xl lg:text-base md:text-xs rounded-md"
