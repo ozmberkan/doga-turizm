@@ -1,14 +1,32 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Admin from "~/pages/Admin/Admin";
-
+import { lazy, Suspense } from "react";
+const AdminLayout = lazy(() => import("~/layouts/AdminLayout"));
+const Admin = lazy(() => import("~/pages/Admin/Admin"));
 
 const AdminRoutes = () => {
   const { user } = useSelector((store) => store.user);
 
   return {
-    path: "/admin",
-    element: user?.admin === true ? <Admin /> : <Navigate to="/" />,
+    path: "/",
+    element: (
+      <Suspense fallback={<div>Loading Admin Layout...</div>}>
+        <AdminLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/admin",
+        element:
+          user.admin === true ? (
+            <Suspense fallback={<div>Loading Admin...</div>}>
+              <Admin />
+            </Suspense>
+          ) : (
+            <Navigate to="/login" />
+          ),
+      },
+    ],
   };
 };
 

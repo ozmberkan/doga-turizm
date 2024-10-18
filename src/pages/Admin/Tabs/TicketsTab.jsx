@@ -49,7 +49,7 @@ const TicketsTab = () => {
   return (
     <>
       <div className="bg-white dark:bg-gray-800 dark:border-gray-700 p-3 border rounded-md shadow-md">
-        <div className="flex gap-x-2 items-center justify-start mb-2">
+        <div className="flex gap-x-2 items-center justify-start ">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}

@@ -6,8 +6,36 @@ import UsersTab from "./Tabs/UsersTab";
 import { adminTabs } from "~/data/data";
 import DashboardTab from "./Tabs/DashboardTab";
 import ContactsTab from "./Tabs/ContactsTab";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "~/redux/slices/userSlice";
+import { getAllTickets } from "~/redux/slices/ticketsSlice";
+import { getAllMessages } from "~/redux/slices/contactsSlice";
+import { getAllCampaigns } from "~/redux/slices/campaignSlice";
+import { getAllAnnouncement } from "~/redux/slices/announcementSlice";
+import { useEffect } from "react";
+import { quantum } from "ldrs";
 
 const AdminTable = () => {
+  quantum.register();
+  const dispatch = useDispatch();
+  const { status } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+    dispatch(getAllTickets());
+    dispatch(getAllMessages());
+    dispatch(getAllCampaigns());
+    dispatch(getAllAnnouncement());
+  }, [dispatch]);
+
+  if (status === "loading") {
+    return (
+      <div className="w-full h-[700px] flex justify-center items-center">
+        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>;
+      </div>
+    );
+  }
+
   return (
     <div className="p-5 w-full">
       <TabGroup>

@@ -107,9 +107,8 @@ export const userTableTitles = [
   { id: 2, title: "Yönetici" },
   { id: 3, title: "Ad Soyad" },
   { id: 4, title: "E-Mail" },
-  { id: 5, title: "Alınan Bilet/Koltuk" },
-  { id: 6, title: "Telefon Numarası" },
-  { id: 7, title: "AKSİYON" },
+  { id: 5, title: "Telefon Numarası" },
+  { id: 6, title: "AKSİYON" },
 ];
 
 export const InputField = [

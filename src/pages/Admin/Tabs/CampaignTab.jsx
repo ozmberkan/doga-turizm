@@ -63,7 +63,7 @@ const CampaignTab = () => {
   return (
     <div className="bg-white dark:bg-gray-800 p-3 border  dark:border-gray-700 rounded-md shadow-md">
       <div>
-        <div className="flex gap-x-2 items-center justify-start mb-2">
+        <div className="flex gap-x-2 items-center justify-start">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}

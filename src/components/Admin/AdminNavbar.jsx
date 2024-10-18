@@ -9,7 +9,6 @@ import LogoLight from "~/assets/logos/Logo.png";
 
 const AdminNavbar = () => {
   const { theme } = useSelector((store) => store.theme);
-
   const { user } = useSelector((store) => store.user);
 
   const exit = async () => {

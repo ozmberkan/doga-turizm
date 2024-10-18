@@ -62,7 +62,7 @@ const UsersTab = () => {
   return (
     <div className="bg-white dark:bg-gray-800 dark:border-gray-700  p-3 border rounded-md shadow-md">
       <div>
-        <div className="flex gap-x-2 items-center justify-start mb-2">
+        <div className="flex gap-x-2 items-center justify-start">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}
@@ -73,7 +73,7 @@ const UsersTab = () => {
         <div className="overflow-x-auto">
           <table className="border dark:border-gray-700 w-full mt-5">
             <thead className="bg-zinc-100 dark:bg-gray-900 dark:text-white">
-              <tr className="sm:grid flex sm:grid-cols-7 grid-cols-1 place-items-center p-4 gap-5">
+              <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
                 {userTableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
                     {title.title}
@@ -85,43 +85,13 @@ const UsersTab = () => {
               {filteredUsers?.map((user) => (
                 <tr
                   key={user.id}
-                  className="sm:grid flex sm:grid-cols-7 grid-cols-1 dark:text-white place-items-center  p-4 gap-5"
+                  className="sm:grid flex sm:grid-cols-6 grid-cols-1 dark:text-white place-items-center  p-4 gap-5"
                 >
                   <td className="w-full">{user.uid}</td>
                   <td>{user?.admin === true ? "Yönetici" : "Kullanıcı"}</td>
                   <td>{user.displayName}</td>
                   <td>{user.email}</td>
-                  <td>
-                    <div className="flex flex-col gap-3">
-                      {user.ownedTickets.map((ticket, index) => (
-                        <div
-                          key={ticket.id || index}
-                          className="flex flex-col border p-3 rounded-md gap-y-1"
-                        >
-                          <div className="ticketDetail">
-                            Kalkış : {ticket.departure}
-                          </div>
-                          <div className="ticketDetail">
-                            Varış : {ticket.arrival}
-                          </div>
-                          <div className="ticketDetail">
-                            {formatDate(ticket.date)}
-                          </div>
-                          <div className="ticketDetail">
-                            {ticket.seats[0]?.gender}
-                          </div>
-                          <div className="ticketDetail">
-                            Koltuk No : {ticket.seats[0]?.number}
-                          </div>
-                          <div className="ticketDetail">
-                            {ticket.seats[0]?.isAvailable
-                              ? "Rezerv Tamamlanmış"
-                              : "Boş"}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </td>
+
                   <td>{user.phoneNumber}</td>
                   <td className="flex gap-x-2 ">
                     <button
