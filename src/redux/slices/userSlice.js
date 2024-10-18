@@ -11,10 +11,7 @@ import { auth, db } from "~/firebase/firebaseConfig";
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   users: [],
-  isLoading: false,
-  isError: false,
-  isSuccess: false,
-  errorMessage: "",
+  status: "idle",
 };
 
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
@@ -133,9 +130,7 @@ export const userSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.user = null;
-      state.isLoading = false;
-      state.isError = false;
-      state.isSuccess = false;
+      state.status = "idle";
       state.errorMessage = "";
     },
     updateUserProfile: (state, action) => {
@@ -155,51 +150,36 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registerService.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.status = "loading";
       })
       .addCase(registerService.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
+        state.status = "success";
         state.user = action.payload;
         localStorage.setItem("user", JSON.stringify(action.payload));
       })
       .addCase(registerService.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload || "Bir hata oluştu.";
+        state.status = "failed";
       })
       .addCase(loginService.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.status = "loading";
       })
       .addCase(loginService.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
+        state.status = "success";
         state.user = action.payload;
         localStorage.setItem("user", JSON.stringify(action.payload));
       })
       .addCase(loginService.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload || "Bir hata oluştu.";
+        state.status = "failed";
       })
       .addCase(getAllUsers.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.status = "loading";
       })
       .addCase(getAllUsers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
+        state.status = "success";
         state.users = action.payload;
       })
       .addCase(getAllUsers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload || "Bir hata oluştu.";
+        state.status = "failed";
       });
   },
 });

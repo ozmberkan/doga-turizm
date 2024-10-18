@@ -5,6 +5,7 @@ import AnnouncementTab from "./Tabs/AnnouncementTab";
 import UsersTab from "./Tabs/UsersTab";
 import { adminTabs } from "~/data/data";
 import DashboardTab from "./Tabs/DashboardTab";
+import ContactsTab from "./Tabs/ContactsTab";
 
 const AdminTable = () => {
   return (
@@ -35,6 +36,9 @@ const AdminTable = () => {
           </TabPanel>
           <TabPanel>
             <UsersTab />
+          </TabPanel>
+          <TabPanel>
+            <ContactsTab />
           </TabPanel>
         </TabPanels>
       </TabGroup>

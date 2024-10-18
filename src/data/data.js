@@ -77,6 +77,14 @@ export const campaignTableTitles = [
   { id: 6, title: "AKSİYON", key: "action", sortable: false },
 ];
 
+export const contactsTableTitles = [
+  { id: 1, title: "ID" },
+  { id: 2, title: "E-Posta" },
+  { id: 3, title: "İsim Soyisim" },
+  { id: 4, title: "Telefon Numarası" },
+  { id: 5, title: "Mesaj" },
+];
+
 export const campaignTableTitlesTexts = [
   { id: 1, title: "Kampanya Bilgi", key: "cityName" },
   { id: 2, title: "Kampanya Başlık", key: "newPrice" },
@@ -85,14 +93,13 @@ export const campaignTableTitlesTexts = [
 ];
 
 export const annTableTitles = [
-  { id: 1, title: "ID" },
-  { id: 2, title: "Ana Başlık" },
-  { id: 3, title: "Ana Açıklama" },
-  { id: 4, title: "Görsel" },
-  { id: 5, title: "Mobile Görsel" },
-  { id: 6, title: "İç Başlık" },
-  { id: 7, title: "İç Açıklama" },
-  { id: 8, title: "AKSİYON" },
+  { id: 1, title: "Ana Başlık" },
+  { id: 2, title: "Ana Açıklama" },
+  { id: 3, title: "Görsel" },
+  { id: 4, title: "Mobil Görsel" },
+  { id: 5, title: "İç Başlık" },
+  { id: 6, title: "İç Açıklama" },
+  { id: 7, title: "AKSİYON" },
 ];
 
 export const userTableTitles = [
@@ -241,6 +248,10 @@ export const adminTabs = [
   {
     id: 5,
     label: "Kullanıcılar",
+  },
+  {
+    id: 6,
+    label: "Mesajlar",
   },
 ];
 

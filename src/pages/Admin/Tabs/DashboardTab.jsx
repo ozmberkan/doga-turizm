@@ -8,34 +8,26 @@ import { quantum } from "ldrs";
 import { getAllTickets } from "~/redux/slices/ticketsSlice";
 import { IoTicketSharp, IoDocument } from "react-icons/io5";
 import { FaCircleQuestion } from "react-icons/fa6";
+import DashboardBox from "~/components/Admin/DashboardBox";
+import { getAllMessages } from "~/redux/slices/contactsSlice";
+import { getAllCampaigns } from "~/redux/slices/campaignSlice";
+import { getAllAnnouncement } from "~/redux/slices/announcementSlice";
 
 const DashboardTab = () => {
-  const { user, users, isLoading } = useSelector((store) => store.user);
+  quantum.register();
+  const { users, isLoading } = useSelector((store) => store.user);
   const { tickets } = useSelector((store) => store.tickets);
-
-  const [contacts, setContacts] = useState([]);
+  const { contacts } = useSelector((store) => store.contacts);
 
   const dispatch = useDispatch();
-  quantum.register();
+
   useEffect(() => {
     dispatch(getAllUsers());
     dispatch(getAllTickets());
-    fetchContacts();
-  }, []);
-
-  const fetchContacts = async () => {
-    try {
-      const contactsRef = collection(db, "contacts");
-
-      const contactsDocs = await getDocs(contactsRef);
-
-      const contactsData = contactsDocs.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setContacts(contactsData);
-    } catch (error) {}
-  };
+    dispatch(getAllMessages());
+    dispatch(getAllCampaigns());
+    dispatch(getAllAnnouncement());
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -46,71 +38,35 @@ const DashboardTab = () => {
   }
 
   return (
-    <div className="bg-[#F3F4F6] dark:bg-transparent  h-[700px] rounded-md lg:p-5  flex flex-col gap-y-5">
+    <div className="bg-[#F3F4F6] dark:bg-transparent  h-[700px] rounded-md lg:p-4  flex flex-col gap-y-5">
       <h1 className="lg:text-4xl dark:text-white text-2xl font-semibold text-zinc-700 lg:text-left text-center">
-        {user.displayName}
+        Hoş geldin!
       </h1>
       <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-10 lg:p-0 p-5  ">
-        <div className="bg-white dark:bg-gray-800 dark:border-gray-700  w-full rounded-md shadow-lg p-3 border   flex items-center gap-x-5">
-          <div className="w-[20%] flex justify-center items-center">
-            <div className="p-4 bg-primary lg:text-4xl rounded-full text-white">
-              <FaUsers />
-            </div>
-          </div>
-          <div className="p-4 w-[80%] flex-col flex items-start justify-center gap-y-1">
-            <h1 className="lg:text-4xl text-2xl text-zinc-700 dark:text-white">
-              {users?.length}
-            </h1>
-            <span className="lg:text-lg text-base text-zinc-400 dark:text-white">
-              Kullanıcı Sayısı
-            </span>
-          </div>
-        </div>
-        <div className="bg-white dark:bg-gray-800 dark:border-gray-700  w-full rounded-md shadow-lg p-3 border  flex items-center gap-x-5">
-          <div className="w-[20%] flex justify-center items-center">
-            <div className="p-4 bg-primary lg:text-4xl rounded-full text-white">
-              <IoTicketSharp />
-            </div>
-          </div>
-          <div className="p-4 w-[80%] flex-col flex items-start justify-center gap-y-1">
-            <h1 className="lg:text-4xl text-2xl text-zinc-700 dark:text-white">
-              {tickets?.length}
-            </h1>
-            <span className="lg:text-lg text-base text-zinc-400 dark:text-white">
-              Bilet Sayısı
-            </span>
-          </div>
-        </div>
-        <div className="bg-white  dark:bg-gray-800 dark:border-gray-700 w-full rounded-md shadow-lg p-3 border  flex items-center gap-x-5">
-          <div className="w-[20%] flex justify-center items-center">
-            <div className="p-4 bg-primary lg:text-4xl rounded-full text-white">
-              <FaCircleQuestion />
-            </div>
-          </div>
-          <div className="p-4 w-[80%] flex-col flex items-start justify-center gap-y-1">
-            <h1 className="lg:text-4xl text-2xl text-zinc-700 dark:text-white">
-              {contacts?.length}{" "}
-            </h1>
-            <span className="lg:text-lg text-base text-zinc-400 dark:text-white">
-              Soru Sayısı
-            </span>
-          </div>
-        </div>
-        <div className="bg-white dark:bg-gray-800 dark:border-gray-700  w-full rounded-md shadow-lg p-3 border  flex items-center gap-x-5">
-          <div className="w-[20%] flex justify-center items-center">
-            <div className="p-4 bg-primary lg:text-4xl rounded-full text-white">
-              <IoDocument />
-            </div>
-          </div>
-          <div className="p-4 w-[80%] flex-col flex items-start justify-center gap-y-1">
-            <h1 className="lg:text-4xl text-2xl text-zinc-700 dark:text-white">
-              ???
-            </h1>
-            <span className="lg:text-lg text-base text-zinc-400 dark:text-white">
-              Yakında
-            </span>
-          </div>
-        </div>
+        <DashboardBox
+          data={users?.length}
+          icon={<FaUsers />}
+          label={"Kullanıcı Sayısı"}
+          color="primary"
+        />
+        <DashboardBox
+          data={tickets?.length}
+          icon={<IoTicketSharp />}
+          label={"Bilet Sayısı"}
+          color="orange-500"
+        />
+        <DashboardBox
+          data={contacts?.length}
+          icon={<FaCircleQuestion />}
+          label={"Soru Sayısı"}
+          color="blue-500"
+        />
+        <DashboardBox
+          data={"??"}
+          icon={<IoDocument />}
+          label={"Yakında"}
+          color="pink-500"
+        />
       </div>
     </div>
   );

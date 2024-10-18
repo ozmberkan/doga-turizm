@@ -11,6 +11,7 @@ import NewCampaignModal from "~/components/UI/Modals/Admin/Campaigns/NewCampaign
 import CampaignEditModal from "~/components/UI/Modals/Admin/Campaigns/CampaignEditModal";
 import React from "react";
 import CampaignTextModal from "~/components/UI/Modals/Admin/Campaigns/CampaignTexts/CampaignTextModal";
+import { useSelector } from "react-redux";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);
@@ -20,13 +21,7 @@ const CampaignTab = () => {
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [selectedCampaignText, setSelectedCampaignText] = useState(null);
-
-  const ref = collection(db, "campaigns");
-  const [snapshot] = useCollection(ref);
-  const data = snapshot?.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  const { campaigns } = useSelector((store) => store.campaigns);
 
   const campaignTexts = collection(db, "campaignsText");
   const [campaignTextDataSnapshot] = useCollection(campaignTexts);
@@ -56,7 +51,7 @@ const CampaignTab = () => {
   };
 
   const filteredCampaigns = orderBy(
-    data?.filter((campaign) => {
+    campaigns?.filter((campaign) => {
       return `${campaign.cityName}`
         .toLowerCase()
         .includes(search.toLowerCase());
@@ -151,9 +146,16 @@ const CampaignTab = () => {
         </div>
         <table className="border w-full mt-5 dark:border-gray-700 ">
           <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">
-            <tr className="sm:grid flex sm:grid-cols-4 grid-cols-1 place-items-center p-4 gap-5">
+            <tr className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center p-4 gap-5">
               {campaignTableTitlesTexts.map((title) => (
-                <th key={title.id} className="flex items-center gap-x-2">
+                <th
+                  key={title.id}
+                  className={`flex items-center gap-x-2 ${
+                    title.title === "Kampanya Açıklama"
+                      ? "col-span-2 w-full"
+                      : ""
+                  }`}
+                >
                   {title.title}
                 </th>
               ))}
@@ -163,12 +165,12 @@ const CampaignTab = () => {
             {campaignTextData?.map((campaign) => (
               <tr
                 key={campaign.id}
-                className="sm:grid flex sm:grid-cols-4 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
+                className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
               >
                 <React.Fragment>
                   <td>{campaign.campaignInfo}</td>
                   <td>{campaign.campaignTitle}</td>
-                  <td>{campaign.campaignDesc}</td>
+                  <td className="col-span-2 w-full">{campaign.campaignDesc}</td>
 
                   <td className="flex gap-x-2 ">
                     <button

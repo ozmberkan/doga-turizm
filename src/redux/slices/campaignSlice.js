@@ -1,13 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDoc, getDocs, doc } from "firebase/firestore"; // getDocs ve collection eklendi
+import { collection, getDoc, getDocs, doc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
 const initialState = {
   campaigns: [],
   currentCampaign: {},
-  isLoading: false,
-  isSuccess: false,
-  isError: false,
-  errorMesage: "",
+  status: "idle",
 };
 
 export const getAllCampaigns = createAsyncThunk(
@@ -48,45 +45,30 @@ export const campaignSlice = createSlice({
     reset: (state) => {
       state.campaigns = [];
       state.currentCampaign = {};
-      state.isLoading = false;
-      state.isSuccess = false;
-      state.isError = false;
-      state.errorMesage = "";
+      state.status = "idle";
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getAllCampaigns.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.status = "loading";
       })
       .addCase(getAllCampaigns.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.isSuccess = true;
+        state.status = "success";
         state.campaigns = action.payload;
       })
-      .addCase(getAllCampaigns.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMesage = action.payload || "Bir hata oluştu.";
+      .addCase(getAllCampaigns.rejected, (state) => {
+        state.status = "failed";
       })
       .addCase(getCampaignById.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.status = "loading";
       })
       .addCase(getCampaignById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.isSuccess = true;
+        state.status = "success";
         state.currentCampaign = action.payload;
       })
-      .addCase(getCampaignById.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMesage = action.payload || "Bir hata oluştu.";
+      .addCase(getCampaignById.rejected, (state) => {
+        state.status = "failed";
       });
   },
 });

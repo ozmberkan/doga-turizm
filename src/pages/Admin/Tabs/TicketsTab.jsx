@@ -1,12 +1,12 @@
-import { collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
+import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { tableTitles } from "~/data/data";
 import { FaSort } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { orderBy } from "lodash";
+import { useSelector } from "react-redux";
 import EditModal from "~/components/UI/Modals/Admin/Tickets/EditModal";
 import NewTicketModal from "~/components/UI/Modals/Admin/Tickets/NewTicketModal";
 
@@ -20,12 +20,7 @@ const TicketsTab = () => {
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
-  const ref = collection(db, "tickets");
-  const [snapshot] = useCollection(ref);
-  const data = snapshot?.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  const { tickets } = useSelector((store) => store.tickets);
 
   const deleteTicket = async (id) => {
     try {
@@ -42,7 +37,7 @@ const TicketsTab = () => {
   };
 
   const filteredTickets = orderBy(
-    data?.filter((ticket) => {
+    tickets?.filter((ticket) => {
       return `${ticket.pnr} ${ticket.date} ${ticket.arrival} ${ticket.departure}`
         .toLowerCase()
         .includes(search.toLowerCase());

@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { BiHome, BiLogOut, BiUser } from "react-icons/bi";
+import { BiHome, BiLogOut } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,6 +9,8 @@ import LogoLight from "~/assets/logos/Logo.png";
 
 const AdminNavbar = () => {
   const { theme } = useSelector((store) => store.theme);
+
+  const { user } = useSelector((store) => store.user);
 
   const exit = async () => {
     try {
@@ -32,6 +34,9 @@ const AdminNavbar = () => {
         />
       </Link>
       <div className="flex items-center gap-x-2 sm:gap-x-5">
+        <h1 className="px-4 py-1 text-sm rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100">
+          {user.displayName}
+        </h1>
         <Link
           to="/"
           className="p-2 rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100"
