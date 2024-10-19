@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
 import { FaUsers } from "react-icons/fa";
-import { quantum } from "ldrs";
 import { IoTicketSharp, IoDocument } from "react-icons/io5";
 import { FaCircleQuestion } from "react-icons/fa6";
 import DashboardBox from "~/components/Admin/DashboardBox";
 
 const DashboardTab = () => {
-  const { users, isLoading } = useSelector((store) => store.user);
+  const { users } = useSelector((store) => store.user);
   const { tickets } = useSelector((store) => store.tickets);
   const { contacts } = useSelector((store) => store.contacts);
 
