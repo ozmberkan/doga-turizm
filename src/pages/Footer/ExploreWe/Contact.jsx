@@ -54,13 +54,13 @@ const Contact = () => {
                   {...register(input.name)}
                   placeholder={input.placeholder}
                   required
-                  className="w-full dark:bg-transparent dark:ring-offset-transparent dark:ring-gray-700 p-2 border placeholder:text-sm rounded-md ring-2 ring-offset-2 outline-none ring-primary"
+                  className="w-full dark:bg-transparent dark:ring-offset-transparent dark:ring-gray-700 px-4 py-2 border placeholder:text-sm rounded-md outline-none"
                 />
               </div>
             ))}
             <button
               type="submit"
-              className="bg-green-500 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:bg-gray-900 transition-colors text-white p-3 rounded-md mt-4 hover:bg-green-600 transition duration-300"
+              className="bg-green-500 dark:bg-gray-800 dark:border-gray-700 dark:border dark:hover:bg-gray-900  text-white p-3 rounded-md mt-4 hover:bg-green-600 transition duration-300"
             >
               Gönder
             </button>

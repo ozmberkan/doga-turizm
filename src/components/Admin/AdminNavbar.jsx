@@ -33,8 +33,8 @@ const AdminNavbar = () => {
         />
       </Link>
       <div className="flex items-center gap-x-2 sm:gap-x-5">
-        <h1 className="px-4 py-1 text-sm rounded-md hover:bg-primary hover:text-white border flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100">
-          {user.displayName}
+        <h1 className="px-2 py-1 text-xs rounded-md lg:text-lg border hidden lg:flex justify-center items-center gap-x-2 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 text-black bg-white transition-all duration-100">
+          {user?.displayName}
         </h1>
         <Link
           to="/"

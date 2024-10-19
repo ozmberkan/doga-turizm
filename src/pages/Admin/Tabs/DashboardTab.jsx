@@ -10,8 +10,6 @@ const DashboardTab = () => {
   const { tickets } = useSelector((store) => store.tickets);
   const { contacts } = useSelector((store) => store.contacts);
 
-
-
   return (
     <div className="bg-[#F3F4F6] dark:bg-transparent  h-[700px] rounded-md lg:p-4  flex flex-col gap-y-5">
       <h1 className="lg:text-4xl dark:text-white text-2xl font-semibold text-zinc-700 lg:text-left text-center">
@@ -28,7 +26,7 @@ const DashboardTab = () => {
           data={tickets?.length}
           icon={<IoTicketSharp />}
           label={"Bilet Sayısı"}
-          color="orange-500"
+          color="primary"
         />
         <DashboardBox
           data={contacts?.length}

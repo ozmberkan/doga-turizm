@@ -4,7 +4,7 @@ const DashboardBox = ({ data, icon, label, color }) => {
   return (
     <div className="bg-white dark:bg-gray-800 dark:border-gray-700  w-full rounded-md shadow-lg p-3 border  flex items-center gap-x-5">
       <div className="w-[20%] flex justify-center items-center border-r border-zinc-300">
-        <div className={`p-3  bg-${color} lg:text-4xl rounded-full text-white`}>
+        <div className={`p-3 bg-${color} lg:text-4xl rounded-full text-white`}>
           {icon}
         </div>
       </div>

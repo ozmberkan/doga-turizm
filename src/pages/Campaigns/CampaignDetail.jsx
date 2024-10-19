@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCampaignById } from "~/redux/slices/campaignSlice";
 import { CiCalendarDate } from "react-icons/ci";
-
-//
 import { FiInfo } from "react-icons/fi";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { TbLocation } from "react-icons/tb";
@@ -19,11 +17,9 @@ const CampaignDetail = () => {
     dispatch(getCampaignById(id));
   }, []);
 
-  const { currentCampaign, isLoading, isError } = useSelector(
-    (store) => store.campaigns
-  );
+  const { currentCampaign, status } = useSelector((store) => store.campaigns);
 
-  if (isError) {
+  if (status === "failed") {
     return (
       <div className="w-full flex justify-center items-center p-12">
         <span className="w-full text-xl bg-red-200 text-red-500 rounded-md border px-4 py-2">
@@ -33,7 +29,7 @@ const CampaignDetail = () => {
     );
   }
 
-  if (isLoading) {
+  if (status === "loading") {
     return (
       <div className="w-full h-[500px] flex justify-center items-center">
         <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>;

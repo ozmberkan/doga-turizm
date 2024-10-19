@@ -605,7 +605,7 @@ export const contactInput = [
     id: 3,
     label: "Telefon Numaranız",
     name: "phone",
-    type: "text",
+    type: "number",
     placeholder: "Telefon Numaranızı Giriniz",
   },
   {
