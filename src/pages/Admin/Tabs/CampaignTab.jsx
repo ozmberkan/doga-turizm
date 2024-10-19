@@ -144,47 +144,51 @@ const CampaignTab = () => {
             </tbody>
           </table>
         </div>
-        <table className="border w-full mt-5 dark:border-gray-700 ">
-          <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">
-            <tr className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center p-4 gap-5">
-              {campaignTableTitlesTexts.map((title) => (
-                <th
-                  key={title.id}
-                  className={`flex items-center gap-x-2 ${
-                    title.title === "Kampanya Açıklama"
-                      ? "col-span-2 w-full"
-                      : ""
-                  }`}
-                >
-                  {title.title}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
-            {campaignTextData?.map((campaign) => (
-              <tr
-                key={campaign.id}
-                className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
-              >
-                <React.Fragment>
-                  <td>{campaign.campaignInfo}</td>
-                  <td>{campaign.campaignTitle}</td>
-                  <td className="col-span-2 w-full">{campaign.campaignDesc}</td>
-
-                  <td className="flex gap-x-2 ">
-                    <button
-                      onClick={() => openTextEdit(campaign)}
-                      className="border dark:text-white hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
-                    >
-                      <BiEdit size={20} />
-                    </button>
-                  </td>
-                </React.Fragment>
+        <div className="overflow-x-auto">
+          <table className="border w-full mt-5 dark:border-gray-700 ">
+            <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">
+              <tr className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center p-4 gap-5">
+                {campaignTableTitlesTexts.map((title) => (
+                  <th
+                    key={title.id}
+                    className={`flex items-center gap-x-2 ${
+                      title.title === "Kampanya Açıklama"
+                        ? "col-span-2 w-full"
+                        : ""
+                    }`}
+                  >
+                    {title.title}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-zinc-50/5 max-h-96 overflow-y-auto block w-full divide-y">
+              {campaignTextData?.map((campaign) => (
+                <tr
+                  key={campaign.id}
+                  className="sm:grid flex sm:grid-cols-5 grid-cols-1 place-items-center dark:text-white p-4 gap-5"
+                >
+                  <React.Fragment>
+                    <td>{campaign.campaignInfo}</td>
+                    <td>{campaign.campaignTitle}</td>
+                    <td className="col-span-2 w-full">
+                      {campaign.campaignDesc}
+                    </td>
+
+                    <td className="flex gap-x-2 ">
+                      <button
+                        onClick={() => openTextEdit(campaign)}
+                        className="border dark:text-white hover:bg-primary hover:text-white transition-colors dark:hover:bg-white dark:hover:text-black dark:border-white border-[#4FC647] text-[#4FC647] sm:p-3 p-1.5 rounded-md"
+                      >
+                        <BiEdit size={20} />
+                      </button>
+                    </td>
+                  </React.Fragment>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       {isModal && (
         <CampaignEditModal

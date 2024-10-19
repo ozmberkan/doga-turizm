@@ -31,7 +31,7 @@ const AdminTable = () => {
   if (status === "loading") {
     return (
       <div className="w-full h-[700px] flex justify-center items-center">
-        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>;
+        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>
       </div>
     );
   }

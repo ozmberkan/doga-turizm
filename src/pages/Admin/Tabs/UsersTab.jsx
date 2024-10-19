@@ -73,7 +73,7 @@ const UsersTab = () => {
         <div className="overflow-x-auto">
           <table className="border dark:border-gray-700 w-full mt-5">
             <thead className="bg-zinc-100 dark:bg-gray-900 dark:text-white">
-              <tr className="sm:grid flex sm:grid-cols-6 grid-cols-1 place-items-center p-4 gap-5">
+              <tr className="lg:grid  hidden grid-cols-6 place-items-center p-4 gap-5">
                 {userTableTitles.map((title) => (
                   <th key={title.id} className="flex items-center gap-x-2">
                     {title.title}
@@ -85,14 +85,15 @@ const UsersTab = () => {
               {filteredUsers?.map((user) => (
                 <tr
                   key={user.id}
-                  className="sm:grid flex sm:grid-cols-6 grid-cols-1 dark:text-white place-items-center  p-4 gap-5"
+                  className="grid lg:grid-cols-6  dark:text-white place-items-center  p-4 gap-5"
                 >
-                  <td className="w-full">{user.uid}</td>
-                  <td>{user?.admin === true ? "Yönetici" : "Kullanıcı"}</td>
+                  <td className="w-full lg:text-sm text-xs lg:text-left text-center">
+                    {user.uid}
+                  </td>
                   <td>{user.displayName}</td>
                   <td>{user.email}</td>
-
                   <td>{user.phoneNumber}</td>
+                  <td>{user?.admin === true ? "Yönetici" : "Kullanıcı"}</td>
                   <td className="flex gap-x-2 ">
                     <button
                       onClick={() => openEdit(user)}
