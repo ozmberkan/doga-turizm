@@ -144,6 +144,7 @@ const CampaignTab = () => {
             </tbody>
           </table>
         </div>
+
         <div className="overflow-x-auto">
           <table className="border w-full mt-5 dark:border-gray-700 ">
             <thead className="bg-zinc-100 dark:text-white dark:bg-gray-900">

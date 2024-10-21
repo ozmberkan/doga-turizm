@@ -104,10 +104,10 @@ export const annTableTitles = [
 
 export const userTableTitles = [
   { id: 1, title: "ID" },
-  { id: 3, title: "Ad Soyad" },
-  { id: 4, title: "E-Mail" },
-  { id: 5, title: "Telefon Numarası" },
-  { id: 2, title: "Yönetici" },
+  { id: 2, title: "Ad Soyad" },
+  { id: 3, title: "E-Mail" },
+  { id: 4, title: "Telefon Numarası" },
+  { id: 5, title: "Yönetici" },
   { id: 6, title: "AKSİYON" },
 ];
 
@@ -453,6 +453,7 @@ export const usersEditInput = [
     name: "admin",
     label: "Yetki",
   },
+
   {
     type: "text",
     name: "displayName",

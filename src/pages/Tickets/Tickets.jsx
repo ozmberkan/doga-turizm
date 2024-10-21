@@ -2,8 +2,10 @@ import { ConfigProvider, Steps } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllTickets } from "~/redux/slices/ticketsSlice";
-import TicketDetail from "../../components/Ticket/TicketDetail";
 import { quantum } from "ldrs";
+import { LuBadgeInfo } from "react-icons/lu";
+
+import TicketDetail from "../../components/Ticket/TicketDetail";
 
 const Tickets = () => {
   quantum.register();
@@ -69,9 +71,14 @@ const Tickets = () => {
           ))
         ) : tickets?.length > 0 ? (
           <div className="w-full flex flex-col gap-y-5">
-            <div className="w-full px-4 py-2 rounded-md bg-red-100 text-red-500 text-lg">
-              Aranan değerlerde bilet bulunamadı, Ancak farklı tarihlerde
-              bulunan biletlere göz atabilirsiniz.
+            <div className="w-full  py-2 flex justify-between items-center">
+              <div className="py-2 bg-red-100 text-red-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
+                Aranan değerlerde bilet bulunamadı
+              </div>
+              <div className="py-2 bg-blue-100 text-blue-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
+                <LuBadgeInfo />
+                Farklı tarihlerde bulunan biletlere göz atabilirsiniz.
+              </div>
             </div>
             <div className="flex flex-col gap-y-5">
               {tickets?.map((ticket) => (

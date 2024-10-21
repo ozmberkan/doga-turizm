@@ -39,7 +39,7 @@ const NewCampaignModal = ({ setIsAddModal }) => {
               {newCampaignInput.map((input) =>
                 input.name === "cityName" ? (
                   <div className="flex flex-col">
-                    <label className="text-white">{input.label}</label>
+                    <label className="dark:text-white">{input.label}</label>
                     <select
                       key={input.name}
                       {...register(input.name)}

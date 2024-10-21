@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
@@ -57,7 +57,7 @@ const UsersEditModal = ({ setIsModal, selectedUser }) => {
                       onChange={handleInputChange}
                       className="px-4 py-2 h-10 rounded-md w-full bg-white dark:bg-transparent dark:text-gray-400 dark:placeholder:text-gray-300 dark:border-gray-700 border outline-none"
                     >
-                      <option value={true}>Yönetici</option>
+                      <option value={true}>Yetkili</option>
                       <option value={false}>Kullanıcı</option>
                     </select>
                   </div>

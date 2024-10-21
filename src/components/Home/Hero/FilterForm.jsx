@@ -47,7 +47,7 @@ const FilterForm = () => {
             <select
               {...register(input.name)}
               className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-gray-800  border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
-                errors[input.name] ? "ring-2 ring-red-500" : ""
+                errors[input.name] ? "ring-2 ring-red-500 " : ""
               }`}
             >
               {cities.map((city) => (
@@ -65,7 +65,7 @@ const FilterForm = () => {
               type="date"
               {...register(input.name)}
               className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-gray-800 border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
-                errors[input.name] ? "ring-2 ring-red-500" : ""
+                errors[input.name] ? "ring-2 ring-red-500 " : ""
               }`}
             />
           )}

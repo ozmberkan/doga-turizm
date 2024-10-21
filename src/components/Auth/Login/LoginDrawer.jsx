@@ -42,6 +42,9 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
     if (status === "success") {
       toast.success("Giriş Başarılı");
     }
+    if (status === "failed") {
+      toast.error("Giriş Başarısız, lütfen bilgileri kontrol ediniz.");
+    }
   }, [status]);
 
   return (

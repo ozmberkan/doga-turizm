@@ -64,7 +64,7 @@ const PaymentTicket = ({ finalTicket }) => {
             {seats?.map((seatItem, i) => (
               <span
                 key={i}
-                className={`flex items-center w-full justify-between text-white text-xl p-4 rounded-md dark:bg-gray-500 dark:text-white bg-zinc-200 ${
+                className={`flex items-center w-full justify-between text-white text-xl p-4 rounded-md ${
                   seatItem.gender === "Erkek"
                     ? "bg-blue-500 dark:bg-blue-500"
                     : "bg-pink-500 dark:bg-pink-500"

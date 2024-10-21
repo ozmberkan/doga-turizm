@@ -93,6 +93,7 @@ const UsersTab = () => {
                   <td>{user.displayName}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber}</td>
+
                   <td>{user?.admin === true ? "Yönetici" : "Kullanıcı"}</td>
                   <td className="flex gap-x-2 ">
                     <button
