@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { lazy, Suspense } from "react";
+import { quantum } from "ldrs";
 const AdminLayout = lazy(() => import("~/layouts/AdminLayout"));
 const Admin = lazy(() => import("~/pages/Admin/Admin"));
-import { quantum } from "ldrs";
 
 const AdminRoutes = () => {
   quantum.register();
@@ -37,7 +37,7 @@ const AdminRoutes = () => {
               <Admin />
             </Suspense>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           ),
       },
     ],
