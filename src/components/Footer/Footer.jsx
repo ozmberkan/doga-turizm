@@ -27,9 +27,9 @@ const Footer = () => {
               Biletlerinizi alırken en iyi hizmeti sunmak için buradayız.
             </p>
             <div className="flex space-x-4">
-              {footerSocial.map((tab) => (
+              {footerSocial.map((tab, i) => (
                 <Link
-                  key={tab.id}
+                  key={i}
                   to="#"
                   className="hover:text-primary hover:scale-125 transform transition-all duration-300"
                 >
@@ -43,9 +43,9 @@ const Footer = () => {
               Hızlı Bağlantılar
             </h3>
             <div className="space-y-2 flex flex-col">
-              {footerAbout.map((tab) => (
+              {footerAbout.map((tab, i) => (
                 <Link
-                  key={tab.id}
+                  key={i}
                   to={tab.to}
                   className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
                 >
@@ -59,9 +59,9 @@ const Footer = () => {
               Hızlı Bağlantılar
             </h3>
             <div className="space-y-2 flex flex-col">
-              {footerSSS.map((tab) => (
+              {footerSSS.map((tab, i) => (
                 <Link
-                  key={tab.id}
+                  key={i}
                   to={tab.to}
                   className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
                 >
@@ -75,9 +75,9 @@ const Footer = () => {
               Hızlı Bağlantılar
             </h3>
             <div className="space-y-2 flex flex-col">
-              {footerWith.map((tab) => (
+              {footerWith.map((tab, i) => (
                 <Link
-                  key={tab.id}
+                  key={i}
                   to={tab.to}
                   className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
                 >
