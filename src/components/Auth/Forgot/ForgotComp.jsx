@@ -1,29 +1,23 @@
-import { useState } from "react";
 import { Drawer } from "antd";
 import { BiUser } from "react-icons/bi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 
 const ForgotComp = ({ setForgot }) => {
-  const [email, setEmail] = useState("");
-
   const { open } = useSelector((store) => store.drawer);
 
-  const sendResetEmail = async () => {
+  const { register, handleSubmit, reset } = useForm();
+
+  const sendResetEmail = async (data) => {
     try {
-      if (email === "") {
-        toast.error("Lütfen bir e-mail adresi giriniz.");
-        return;
-      } else {
-        await sendPasswordResetEmail(auth, email);
-        toast.success("Şifre sıfırlama bağlantısı başarıyla gönderildi");
-      }
+      await sendPasswordResetEmail(auth, data.email);
+      toast.success("Şifre sıfırlama bağlantısı e-mail adresine gönderildi.");
+      reset();
     } catch (error) {
-      toast.error(
-        "Şifre sıfırlama bağlantısı gönderilirken bir hata oluştu. Lütfen e-mail adresinizi kontrol edin."
-      );
+      toast.error("Şifre sıfırlama bağlantısı gönderilemedi. Yeniden deneyin.");
     }
   };
 
@@ -42,7 +36,10 @@ const ForgotComp = ({ setForgot }) => {
         </p>
       </div>
 
-      <form className="p-4 flex flex-col gap-y-2" onSubmit={sendResetEmail}>
+      <form
+        className="p-4 flex flex-col gap-y-2"
+        onSubmit={handleSubmit(sendResetEmail)}
+      >
         <label className="font-rubik text-xs text-zinc-700 dark:text-white">
           E-Mail
         </label>
@@ -50,7 +47,7 @@ const ForgotComp = ({ setForgot }) => {
           <input
             type="text"
             className="outline-none dark:text-white dark:bg-transparent px-4 rounded-md text-sm w-full peer"
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", { required: true })}
           />
           <span className="flex justify-center items-center p-2 peer-valid:text-green-500 peer-invalid:text-red-500">
             <BiUser size={18} />
@@ -63,12 +60,13 @@ const ForgotComp = ({ setForgot }) => {
         >
           Gönder
         </button>
-        <span
+        <button
           onClick={() => setForgot(false)}
+          type="button"
           className="flex justify-center mt-2 items-center  gap-x-2 font-rubik hover:text-zinc-500 hover:underline dark:text-white text-zinc-700 underline cursor-pointer text-sm"
         >
           Şifreni hatırlıyor musun?
-        </span>
+        </button>
       </form>
     </Drawer>
   );
