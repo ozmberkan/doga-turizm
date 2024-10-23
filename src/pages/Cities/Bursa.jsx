@@ -1,4 +1,6 @@
-import React from "react";
+import Uludag from "~/assets/cities/Bursa/uludag.jpeg";
+import YesilTurbe from "~/assets/cities/Bursa/yesiltürbe.jpg";
+import Cumalikizik from "~/assets/cities/Bursa/cumalikizik.jpg";
 
 const Bursa = () => {
   return (
@@ -19,11 +21,7 @@ const Bursa = () => {
 
       <div className="container mx-auto mt-10 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-5">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-          <img
-            className="h-48 w-full object-cover"
-            src="https://kampturu.com/wp-content/uploads/2022/12/uludag-2.jpeg"
-            alt="Uludağ"
-          />
+          <img className="h-48 w-full object-cover" src={Uludag} alt="Uludağ" />
           <div className="p-6">
             <h2 className="text-xl font-bold mb-2 dark:text-white">Uludağ</h2>
             <p className="text-gray-600 dark:text-gray-400">
@@ -36,7 +34,7 @@ const Bursa = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://holitera.com/blog/wp-content/uploads/2022/12/izz1124_large.jpg"
+            src={YesilTurbe}
             alt="Yeşil Türbe"
           />
           <div className="p-6">
@@ -53,7 +51,7 @@ const Bursa = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://img.piri.net/mnresize/900/-/resim/imagecrop/2022/11/17/01/36/resized_4584b-f684b7a0cumalc4b1kc4b1zc4b1k.jpg"
+            src={Cumalikizik}
             alt="Cumalıkızık Köyü"
           />
           <div className="p-6">

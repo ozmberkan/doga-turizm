@@ -1,4 +1,6 @@
-import React from "react";
+import Ayasofya from "~/assets/cities/Istanbul/ayasofya.png";
+import GalataKulesi from "~/assets/cities/Istanbul/galatakulesi.webp";
+import Sultanahmet from "~/assets/cities/Istanbul/sultanahmet.jpg";
 
 const Istanbul = () => {
   return (
@@ -21,7 +23,7 @@ const Istanbul = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://www.meroddi.com/wp-content/uploads/2022/06/ayasofyanin-gizemi-945x480.png"
+            src={Ayasofya}
             alt="Ayasofya"
           />
           <div className="p-6">
@@ -36,7 +38,7 @@ const Istanbul = () => {
         <div className="bg-white  dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://www.bizevdeyokuz.com/wp-content/uploads/sultanahmet-cami-istanbul-kapak.jpg"
+            src={Sultanahmet}
             alt="Sultanahmet Meydanı"
           />
           <div className="p-6">
@@ -53,7 +55,7 @@ const Istanbul = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://blog.tatil.com/wp-content/uploads/2024/01/galata-kulesi-tarihi.webp"
+            src={GalataKulesi}
             alt="Galata Kulesi"
           />
           <div className="p-6">
@@ -68,7 +70,6 @@ const Istanbul = () => {
         </div>
       </div>
 
-      {/* Alt bilgi bölümü */}
       <div className="container mx-auto mt-10 px-4 text-center pb-5">
         <p className="text-gray-600">
           İstanbul'da gezilecek birçok yer bulunuyor. Boğaz'da yürüyüş yapmayı,
