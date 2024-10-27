@@ -63,8 +63,8 @@ const DiscountModal = ({ setIsModalOpen }) => {
             <p className="dark:text-white">
               Bizlere duymuş olduğunuz güven için teşekkür ederiz. Sana özel bir
               indirim kodu hazırladık. E-Postanı Doğruladıktan sonra indirim
-              kodunu kullanarak bir sonraki rezervasyonunda 50TL indirim
-              kazanabilirsin.
+              kodunu kullanarak bir sonraki rezervasyonunda bilet başına 50TL indirim,
+              toplamda 100TL indirim kazanabilirsin.
             </p>
             <form className="flex gap-x-3 items-center">
               <input
