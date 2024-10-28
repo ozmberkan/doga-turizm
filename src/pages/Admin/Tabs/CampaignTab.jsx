@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { FaSort } from "react-icons/fa6";
-import { toast } from "react-toastify";
 import { campaignTableTitles, campaignTableTitlesTexts } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { orderBy } from "lodash";
@@ -12,6 +11,7 @@ import CampaignEditModal from "~/components/UI/Modals/Admin/Campaigns/CampaignEd
 import React from "react";
 import CampaignTextModal from "~/components/UI/Modals/Admin/Campaigns/CampaignTexts/CampaignTextModal";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const CampaignTab = () => {
   const [isModal, setIsModal] = useState(false);

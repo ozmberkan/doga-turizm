@@ -1,10 +1,9 @@
 import FooterDetailBox from "~/components/Footer/FooterDetailBox";
-import logoBlack from "~/assets/logos/LogoBlack.png";
 import { useForm } from "react-hook-form";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { contactInput } from "~/data/data";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const { register, handleSubmit, reset } = useForm();

@@ -2,10 +2,10 @@ import { signOut } from "firebase/auth";
 import { BiHome, BiLogOut } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { auth } from "~/firebase/firebaseConfig";
 import Logo from "~/assets/logos/LogoBlack.png";
 import LogoLight from "~/assets/logos/Logo.png";
+import toast from "react-hot-toast";
 
 const AdminNavbar = () => {
   const { theme } = useSelector((store) => store.theme);

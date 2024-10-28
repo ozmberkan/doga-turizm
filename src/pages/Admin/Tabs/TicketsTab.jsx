@@ -4,11 +4,11 @@ import { db } from "~/firebase/firebaseConfig";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { tableTitles } from "~/data/data";
 import { FaSort } from "react-icons/fa6";
-import { toast } from "react-toastify";
 import { orderBy } from "lodash";
 import { useSelector } from "react-redux";
 import EditModal from "~/components/UI/Modals/Admin/Tickets/EditModal";
 import NewTicketModal from "~/components/UI/Modals/Admin/Tickets/NewTicketModal";
+import toast from "react-hot-toast";
 
 const TicketsTab = () => {
   const [sorting, setSorting] = useState({

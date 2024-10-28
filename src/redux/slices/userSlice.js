@@ -5,7 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { auth, db } from "~/firebase/firebaseConfig";
 
 const initialState = {

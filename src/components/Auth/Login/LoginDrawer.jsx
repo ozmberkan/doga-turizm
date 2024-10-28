@@ -5,10 +5,10 @@ import { loginscheme } from "~/validation/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { loginForm } from "~/data/data";
 import { loginService } from "~/redux/slices/userSlice";
 import { setOpen } from "~/redux/slices/drawerSlice";
+import toast from "react-hot-toast";
 import { useEffect } from "react";
 
 const LoginDrawer = ({ setLogInMode, setForgot }) => {
@@ -28,7 +28,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
   const LogIn = async (data) => {
     try {
       dispatch(loginService(data));
-      toast.info("Giriş Yapılıyor...");
+      toast.success("Giriş Yapılıyor...");
       dispatch(setOpen(!open));
       reset();
     } catch (error) {
@@ -45,7 +45,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
     if (status === "failed") {
       toast.error("Giriş Başarısız, lütfen bilgileri kontrol ediniz.");
     }
-  }, [status]);
+  }, []);
 
   return (
     <Drawer
@@ -102,7 +102,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
         </div>
         <div className="flex  gap-x-4">
           <div
-            onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
+            onClick={() => toast.error("Yapım Aşamasında", { autoClose: 700 })}
             className="w-full cursor-not-allowed flex justify-center items-center dark:border-gray-600 border rounded-md hover:bg-zinc-100 transition-all duration-300"
           >
             <span className="flex justify-center items-center p-2 gap-x-2 ">
@@ -112,7 +112,7 @@ const LoginDrawer = ({ setLogInMode, setForgot }) => {
             </span>
           </div>
           <div
-            onClick={() => toast.info("Yapım Aşamasında", { autoClose: 700 })}
+            onClick={() => toast.error("Yapım Aşamasında", { autoClose: 700 })}
             className="w-full cursor-not-allowed flex justify-center items-center dark:border-gray-600 border rounded-md  hover:bg-zinc-100 transition-all duration-300"
           >
             <span className="flex justify-center items-center p-2 gap-x-2 ">

@@ -3,11 +3,8 @@ import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { TbSteeringWheel } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { IoClose } from "react-icons/io5";
 import { FaMale, FaFemale } from "react-icons/fa";
-import moment from "moment";
-import "moment/locale/tr";
 import { setFinalTicket } from "~/redux/slices/finalTicketSlice";
 import { PiTelevisionSimple } from "react-icons/pi";
 import { FaWifi } from "react-icons/fa6";
@@ -15,6 +12,7 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { nanoid } from "nanoid";
 import { setOpen } from "~/redux/slices/drawerSlice";
+import toast from "react-hot-toast";
 
 const TicketDetail = ({ ticket }) => {
   const dispatch = useDispatch();

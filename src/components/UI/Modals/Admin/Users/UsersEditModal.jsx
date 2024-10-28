@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { usersEditInput } from "~/data/data";
+import toast from "react-hot-toast";
 
 const UsersEditModal = ({ setIsModal, selectedUser }) => {
   const [formData, setFormData] = useState({

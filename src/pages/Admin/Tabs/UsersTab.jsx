@@ -3,12 +3,12 @@ import { doc, updateDoc } from "firebase/firestore";
 import { BiEdit } from "react-icons/bi";
 import { userTableTitles } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { MdOutlineLock, MdOutlineLockOpen } from "react-icons/md";
 import { useSelector } from "react-redux";
 import UsersEditModal from "~/components/UI/Modals/Admin/Users/UsersEditModal";
 import moment from "moment";
 import "moment/locale/tr";
+import toast from "react-hot-toast";
 
 const UsersTab = () => {
   const [isModal, setIsModal] = useState(false);

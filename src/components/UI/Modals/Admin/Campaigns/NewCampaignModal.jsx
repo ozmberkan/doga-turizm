@@ -1,10 +1,10 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
-import { toast } from "react-toastify";
 import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { newCampaignInput } from "~/data/data";
+import toast from "react-hot-toast";
 
 const NewCampaignModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();

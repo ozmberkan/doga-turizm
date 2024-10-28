@@ -2,8 +2,8 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { campaignEditInput } from "~/data/data";
+import toast from "react-hot-toast";
 
 const CampaignEditModal = ({ setIsModal, selectedCampaign }) => {
   const [formData, setFormData] = useState({

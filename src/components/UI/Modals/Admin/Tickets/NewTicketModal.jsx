@@ -3,10 +3,10 @@ import moment from "moment";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
-import { toast } from "react-toastify";
 import { cities } from "~/data/data";
 import { db } from "~/firebase/firebaseConfig";
 import { newTicketInput } from "~/data/data";
+import toast from "react-hot-toast";
 
 const NewTicketModal = ({ setIsAddModal }) => {
   const { register, handleSubmit } = useForm();

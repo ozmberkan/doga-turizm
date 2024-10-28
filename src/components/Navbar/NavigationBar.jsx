@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import DrawerComp from "../UI/DrawerComp";
 import LogoBlack from "../../assets/logos/LogoBlack.png";
 import LogoWhite from "~/assets/logos/Logo.png";
 import MenuComp from "../UI/MenuComp";
 import { setOpen } from "~/redux/slices/drawerSlice";
+import toast from "react-hot-toast";
 
 const NavigationBar = () => {
   const { user } = useSelector((store) => store.user);

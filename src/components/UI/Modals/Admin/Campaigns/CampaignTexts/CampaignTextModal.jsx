@@ -1,7 +1,7 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { IoClose } from "react-icons/io5";
-import { toast } from "react-toastify";
 import { db } from "~/firebase/firebaseConfig";
 
 const CampaignTextModal = ({ setIsTextModal, selectedCampaignText }) => {

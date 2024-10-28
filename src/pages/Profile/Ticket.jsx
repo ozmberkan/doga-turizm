@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUpdate } from "~/redux/slices/userSlice";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { IoQrCodeSharp } from "react-icons/io5";
 import { PiInvoice } from "react-icons/pi";
 import { useState } from "react";
 import ConfirmModal from "~/components/UI/Modals/ConfirmModal";
+import toast from "react-hot-toast";
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();

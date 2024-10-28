@@ -64,6 +64,7 @@ const FilterForm = () => {
             <input
               type="date"
               {...register(input.name)}
+              min={moment().format("YYYY-MM-DD")}
               className={`px-4 h-10 rounded-md dark:border-gray-700 dark:bg-gray-800 border outline-none transition-all duration-500 focus-within:ring-2 ring-green-500  ${
                 errors[input.name] ? "ring-2 ring-red-500 " : ""
               }`}

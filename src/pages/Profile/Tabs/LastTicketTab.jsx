@@ -5,9 +5,9 @@ import { setUpdate } from "~/redux/slices/userSlice";
 import { doc, setDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import LastTicket from "../LastTicket";
 import { BsTicketDetailedFill } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 const LastTicketTab = () => {
   const [hide, setHide] = useState(false);

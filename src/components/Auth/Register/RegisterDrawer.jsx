@@ -1,13 +1,13 @@
 import { Drawer } from "antd";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
 import { registerscheme } from "~/validation/scheme";
 import { useDispatch, useSelector } from "react-redux";
 import { registerService } from "~/redux/slices/userSlice";
 import { registerForm } from "~/data/data";
 import { setOpen } from "~/redux/slices/drawerSlice";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const RegisterDrawer = ({ setLogInMode }) => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const RegisterDrawer = ({ setLogInMode }) => {
   const registerHandle = async (data) => {
     try {
       dispatch(registerService(data));
-      toast.info("Kayıt işlemi başlatıldı...");
+      toast.success("Kayıt işlemi başlatıldı...");
       dispatch(setOpen(!open));
       reset();
     } catch (error) {

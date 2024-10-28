@@ -1,13 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import HomeRoutes from "./routes/HomeRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 import Error from "./pages/Error/Error";
 import QRRoutes from "./routes/QRRoutes";
 import InvoiceRoutes from "./routes/InvoiceRoutes";
-import { useSelector } from "react-redux";
-import "react-toastify/dist/ReactToastify.css";
-import { getAllTickets } from "./redux/slices/ticketsSlice";
 
 const App = () => {
   const { theme } = useSelector((store) => store.theme);

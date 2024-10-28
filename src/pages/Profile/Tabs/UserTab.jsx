@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
 import { CiEdit } from "react-icons/ci";
 import { useState } from "react";
 import { updateUserProfile } from "~/redux/slices/userSlice";
@@ -11,6 +10,7 @@ import { FiUser } from "react-icons/fi";
 import { FaRegSave } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { myProfileInputs } from "~/data/data";
+import toast from "react-hot-toast";
 
 const UserTab = () => {
   const dispatch = useDispatch();

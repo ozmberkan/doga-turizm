@@ -6,8 +6,8 @@ import { setUpdate } from "~/redux/slices/userSlice";
 import { MdOutlineDiscount } from "react-icons/md";
 import { CgCloseR } from "react-icons/cg";
 import { MdOutlineContentCopy } from "react-icons/md";
-import { toast } from "react-toastify";
 import { FiAlertCircle } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const DiscountModal = ({ setIsModalOpen }) => {
   const { user } = useSelector((store) => store.user);

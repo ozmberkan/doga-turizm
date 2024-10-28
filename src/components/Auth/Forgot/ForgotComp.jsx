@@ -3,8 +3,9 @@ import { Drawer } from "antd";
 import { BiUser } from "react-icons/bi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
-import { toast } from "react-toastify";
+
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const ForgotComp = ({ setForgot }) => {
   const [email, setEmail] = useState("");

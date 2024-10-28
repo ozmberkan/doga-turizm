@@ -4,13 +4,13 @@ import { useState } from "react";
 import { MdPayment } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { db } from "~/firebase/firebaseConfig";
 import { setUpdate } from "~/redux/slices/userSlice";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { validCoupons } from "~/data/data";
 import PaymentCreditCart from "~/components/Payment/PaymentCreditCart";
 import PaymentTicket from "./PaymentTicket/PaymentTicket";
+import toast from "react-hot-toast";
 
 const Payment = () => {
   const { finalTicket } = useSelector((store) => store.finalTicket);
