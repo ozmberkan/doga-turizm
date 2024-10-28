@@ -37,7 +37,7 @@ const AdminRoutes = () => {
               <Admin />
             </Suspense>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           ),
       },
     ],

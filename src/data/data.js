@@ -1,6 +1,8 @@
 import {
   FaFacebook,
   FaInstagram,
+  FaL,
+  FaLinkedin,
   FaWhatsapp,
   FaXTwitter,
 } from "react-icons/fa6";
@@ -137,10 +139,10 @@ export const footerWith = [
 ];
 
 export const footerSocial = [
-  { label: "Instagram" },
-  { label: "Facebook" },
-  { label: "Twitter" },
-  { label: "LinkedIn" },
+  { label: "Instagram", icon: FaInstagram },
+  { label: "Facebook", icon: FaFacebook },
+  { label: "Twitter", icon: FaXTwitter },
+  { label: "LinkedIn", icon: FaLinkedin },
 ];
 
 export const menus = [

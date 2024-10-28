@@ -15,77 +15,81 @@ const Footer = () => {
   const { theme } = useSelector((store) => store.theme);
 
   return (
-    <div className="bg-white dark:bg-gray-900 dark:border-gray-700 flex flex-col pt-12 px-4 md:px-6 border-t mt-12 w-full ">
-      <div className="flex lg:justify-between sm:justify-center gap-y-5 py-5 border-b md:px-5 dark:border-gray-700 container mx-auto w-full md:w-full flex-col lg:flex-row items-center">
-        <img
-          src={theme === "dark" ? LogoDark : LogoLight}
-          className="w-[200px] md:w-[250px] object-cover"
-        />
-        <div className="flex gap-x-5 w-full sm:justify-end justify-center items-center  lg:flex mt-5 lg:mt-0">
-          {downloadImage.map((item, i) => (
+    <div className="bg-white dark:bg-gray-800 dark:border-transparent rounded border text-gray-600 w-full mt-12 ">
+      <div className=" max-w-6xl mx-auto ">
+        <div className="w-full grid lg:grid-cols-4 grid-cols-1 gap-12 p-12">
+          <div className="flex flex-col gap-y-3 items-start justify-start">
             <img
-              key={i}
-              src={item}
-              className="w-24 md:w-44 hover:scale-105 transition-all duration-500 cursor-pointer"
+              src={theme === "dark" ? LogoDark : LogoLight}
+              className="w-32"
             />
-          ))}
+            <p className="mb-4 dark:text-zinc-300">
+              Biletlerinizi alırken en iyi hizmeti sunmak için buradayız.
+            </p>
+            <div className="flex space-x-4">
+              {footerSocial.map((tab, i) => (
+                <Link
+                  key={i}
+                  to="#"
+                  className="hover:text-primary hover:scale-125 transform transition-all duration-300"
+                >
+                  <tab.icon />
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-700 dark:text-white mb-4">
+              Hızlı Bağlantılar
+            </h3>
+            <div className="space-y-2 flex flex-col">
+              {footerAbout.map((tab, i) => (
+                <Link
+                  key={i}
+                  to={tab.to}
+                  className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
+                >
+                  {tab.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-700 dark:text-white mb-4">
+              Hızlı Bağlantılar
+            </h3>
+            <div className="space-y-2 flex flex-col">
+              {footerSSS.map((tab, i) => (
+                <Link
+                  key={i}
+                  to={tab.to}
+                  className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
+                >
+                  {tab.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-700 dark:text-white mb-4">
+              Hızlı Bağlantılar
+            </h3>
+            <div className="space-y-2 flex flex-col">
+              {footerWith.map((tab, i) => (
+                <Link
+                  key={i}
+                  to={tab.to}
+                  className="hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
+                >
+                  {tab.title}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 place-items-start container mx-auto w-full md:w-full md:px-5">
-        <div className="flex flex-col gap-y-5">
-          {footerAbout.map((item, i) => (
-            <Link
-              key={i}
-              to={item.to}
-              className="hover:underline dark:text-white"
-            >
-              {item.title}
-            </Link>
-          ))}
+        <div className="border-t border-zinc-400 dark:border-zinc-600  dark:text-zinc-300 py-4 text-sm text-center">
+          <p>&copy; 2024 Doğa Turizm. Tüm hakları saklıdır.</p>
         </div>
-        <div className="flex flex-col gap-y-5">
-          {footerSSS.map((item, i) => (
-            <Link
-              key={i}
-              to={item.to}
-              className="hover:underline dark:text-white"
-            >
-              {item.title}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-y-5">
-          {footerWith.map((item, i) => (
-            <Link
-              key={i}
-              to={item.to}
-              className="hover:underline dark:text-white"
-            >
-              {item.title}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-y-5">
-          {footerSocial.map((item, i) => (
-            <Link
-              key={i}
-              to={item.to}
-              className="hover:underline dark:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row py-3 mt-3 border-t dark:border-gray-700 justify-between items-center container mx-auto w-full md:w-full md:px-5">
-        <span className="font-semibold text-center md:text-left dark:text-white">
-          Doğa Turizm
-        </span>
-        <span className="text-sm text-center md:text-left dark:text-white">
-          2024 © Tüm Hakları Saklıdır
-        </span>
       </div>
     </div>
   );

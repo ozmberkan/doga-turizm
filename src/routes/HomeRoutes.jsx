@@ -21,7 +21,6 @@ import Istanbul from "~/pages/Cities/Istanbul";
 import Bursa from "~/pages/Cities/Bursa";
 import Canakkale from "~/pages/Cities/Canakkale";
 import Balıkesir from "~/pages/Cities/Balıkesir";
-import MobileTicket from "~/pages/MobileTicket/MobileTicket";
 
 const HomeRoutes = () => {
   const { user } = useSelector((store) => store.user);

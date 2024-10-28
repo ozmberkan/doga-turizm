@@ -75,7 +75,7 @@ const Payment = () => {
 
       const existingSeats = ticketSnapshot.data().seats;
 
-      const updatedSeats = existingSeats.map((seat) => {
+      const updatedSeats = existingSeats?.map((seat) => {
         const selectedSeat = seats.find((s) => s.number === seat.number);
         return selectedSeat
           ? { ...seat, isAvailable: false, gender: selectedSeat.gender }
@@ -113,7 +113,6 @@ const Payment = () => {
       );
 
       toast.success("Ödeme başarılı. Biletleriniz profilinize eklendi.");
-
       navigate("/profile");
     } catch (error) {
       console.log("Bir hata oluştu, lütfen tekrar deneyiniz." + error);
@@ -197,7 +196,7 @@ const Payment = () => {
                 Toplam Tutar
                 <span className="text-primary dark:text-white font-semibold text-2xl">
                   {user.emailVerified === true
-                    ? discountPrice * seats.length
+                    ? discountPrice * seats?.length
                     : 650 * seats.length}
                   ₺
                 </span>

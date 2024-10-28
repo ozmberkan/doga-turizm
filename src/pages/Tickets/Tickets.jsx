@@ -71,12 +71,14 @@ const Tickets = () => {
           ))
         ) : tickets?.length > 0 ? (
           <div className="w-full flex flex-col gap-y-5">
-            <div className="w-full  py-2 flex justify-between items-center">
-              <div className="py-2 bg-red-100 text-red-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
+            <div className="w-full  py-2 flex justify-between items-center lg:flex-row flex-col gap-y-4">
+              <div className="py-2 lg:w-auto w-full bg-red-100 text-red-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
                 Aranan değerlerde bilet bulunamadı
               </div>
-              <div className="py-2 bg-blue-100 text-blue-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
-                <LuBadgeInfo />
+              <div className="py-2 lg:w-auto w-full bg-blue-100 text-blue-500 px-4 rounded-md flex items-center gap-x-2 font-medium text-sm">
+                <span className="lg:text-sm text-lg">
+                  <LuBadgeInfo />
+                </span>
                 Farklı tarihlerde bulunan biletlere göz atabilirsiniz.
               </div>
             </div>

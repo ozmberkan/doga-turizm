@@ -1,4 +1,6 @@
-import React from "react";
+import Cunda from "~/assets/cities/Balıkesir/cunda.jpg";
+import Ayvalik from "~/assets/cities/Balıkesir/ayvalik.jpg";
+import Kazdaglari from "~/assets/cities/Balıkesir/kazdaglari.jpg";
 
 const Balikesir = () => {
   return (
@@ -21,7 +23,7 @@ const Balikesir = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://static.baranselgrup.com/nwm-147370-w1920-cunda-adasi-hakkinda-bilinmesi-gerekenler.png"
+            src={Cunda}
             alt="Cunda Adası"
           />
           <div className="p-6">
@@ -38,7 +40,7 @@ const Balikesir = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://gezimanya.com/sites/default/files/inline-images/kazdaglari_0.jpg"
+            src={Kazdaglari}
             alt="Kaz Dağları"
           />
           <div className="p-6">
@@ -55,7 +57,7 @@ const Balikesir = () => {
         <div className="bg-white  dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://www.geziport.com.tr/upload/images/cunda%20adas%C4%B1/ayvalik.jpg"
+            src={Ayvalik}
             alt="Ayvalık"
           />
           <div className="p-6">

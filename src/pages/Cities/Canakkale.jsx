@@ -1,4 +1,6 @@
-import React from "react";
+import SehitlerAniti from "~/assets/cities/Canakkale/sehitleraniti.png";
+import TruvaAntikKenti from "~/assets/cities/Canakkale/truva.png";
+import AynaliCarsi from "~/assets/cities/Canakkale/aynalicarsi.jpg";
 
 const Canakkale = () => {
   return (
@@ -21,7 +23,7 @@ const Canakkale = () => {
         <div className="bg-white dark:bg-gray-800  rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://catab.ktb.gov.tr/Resim/192890,sehitler-abidesi-677-x-381jpg.png?0"
+            src={SehitlerAniti}
             alt="Çanakkale Şehitler Anıtı"
           />
           <div className="p-6">
@@ -38,7 +40,7 @@ const Canakkale = () => {
         <div className="bg-white  dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://basin.ktb.gov.tr/Resim/35505,dsc6412345678enhancerjpg.png?0"
+            src={TruvaAntikKenti}
             alt="Truva Antik Kenti"
           />
           <div className="p-6">
@@ -55,7 +57,7 @@ const Canakkale = () => {
         <div className="bg-white dark:bg-gray-800  rounded-lg shadow-md overflow-hidden">
           <img
             className="h-48 w-full object-cover"
-            src="https://ayderkibris.com/uploads/p/o/Z4lX9gh8ApIW.jpg"
+            src={AynaliCarsi}
             alt="Aynalı Çarşı"
           />
           <div className="p-6">
