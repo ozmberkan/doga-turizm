@@ -17,7 +17,7 @@ const Campaign = () => {
   if (status === "loading") {
     return (
       <div className="w-full flex justify-center items-center h-[200px] mt-2">
-        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>;
+        <l-quantum size="90" speed="1.75" color="#4FC646"></l-quantum>
       </div>
     );
   }
