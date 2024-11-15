@@ -4,6 +4,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "~/firebase/firebaseConfig";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const ForgotComp = ({ setForgot }) => {
   const { open } = useSelector((store) => store.drawer);
